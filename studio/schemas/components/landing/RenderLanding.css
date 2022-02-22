@@ -1,0 +1,36 @@
+.text, .dots {
+    font-family: BOARCCourier;
+    font-size: 1.2rem;
+    line-height: 100%;
+}
+
+.dots {
+    position: relative;
+    display: block;
+    user-select: none;
+    pointer-events: none;
+}
+
+.text {
+    position: absolute;
+    display: block;
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+.title, .description {
+    white-space: nowrap;
+    background: #ffffff;
+}
+
+.title {
+    color: #686CE3;
+    text-transform: uppercase;
+}
+
+.description {
+    text-transform: lowercase;
+}

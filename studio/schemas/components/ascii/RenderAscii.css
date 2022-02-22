@@ -1,0 +1,21 @@
+.table {
+    font-family: BOARCCourier;
+    font-size: 1.5rem;
+    color: #696cdc;
+    line-height: 100%;
+    letter-spacing: -3px;
+    text-transform: uppercase;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+.marquee {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}

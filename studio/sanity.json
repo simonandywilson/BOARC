@@ -11,7 +11,9 @@
     "@sanity/base",
     "@sanity/default-layout",
     "@sanity/default-login",
-    "@sanity/desk-tool"
+    "@sanity/desk-tool",
+    "@sanity/orderable-document-list",
+    "table"
   ],
   "env": {
     "development": {
@@ -24,6 +26,22 @@
     {
       "name": "part:@sanity/base/schema",
       "path": "./schemas/schema"
+    },
+    {
+      "name": "part:@sanity/desk-tool/structure",
+      "path": "./deskStructure"
+    },
+    {
+      "implements": "part:@sanity/base/theme/variables/override-style",
+      "path": "./schemas/styles/GlobalStyle.css"
+    },
+    {
+      "implements": "part:@sanity/base/theme/variables/fonts-style",
+      "path": "./schemas/styles/GlobalFonts.css"
+    },
+    {
+      "implements": "part:@sanity/base/document-actions/resolver",
+      "path": "./schemas/actions/resolveDocumentActions.js"
     }
   ]
 }

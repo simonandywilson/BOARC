@@ -34,6 +34,7 @@ Temporary Items
 
 # Node Modules
 node_modules/
+node_modules.nosync
 .cache/
 public
 

@@ -1,0 +1,16 @@
+.container {
+    position: relative;
+    width: 100%;
+    font-family: BOARCCourier;
+    font-size: 1.2rem;
+    line-height: 100%;
+    text-transform: uppercase;
+    display: block;
+    overflow: hidden;
+}
+
+.border,
+.heading {
+    display: block;
+    white-space: nowrap;
+}
