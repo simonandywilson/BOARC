@@ -1,0 +1,17 @@
+import sanityClient from "part:@sanity/base/client";
+const client = sanityClient.withConfig({ apiVersion: "2022-02-15" });
+
+export function isUniqueAcrossAllDocuments(slug, options) {
+    const { document } = options;
+
+    const id = document._id.replace(/^drafts\./, "");
+    const params = {
+        draft: `drafts.${id}`,
+        published: id,
+        slug,
+    };
+
+    const query = `!defined(*[!(_id in [$draft, $published]) && slug.current == $slug][0]._id)`;
+
+    return client.fetch(query, params);
+}

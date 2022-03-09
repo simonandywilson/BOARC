@@ -1,4 +1,4 @@
-import RenderBlockImg from "../../components/block/RenderBlockImg";
+import RenderBlockImg from "../../components/block/img/RenderBlockImg";
 import { ImgIcon } from "../../styles/Icons";
 
 export default {
@@ -24,7 +24,7 @@ export default {
         {
             name: "caption",
             title: "Caption",
-            type: "captionBlock",
+            type: "basicBlock",
             options: {
                 isHighlighted: true,
             },

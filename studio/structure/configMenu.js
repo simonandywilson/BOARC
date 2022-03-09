@@ -5,6 +5,7 @@ import {
     ConfigIconLarge,
     HomepageIconLarge,
     MenuIconLarge,
+    InActionIconLarge,
     ASCIIIconLarge,
     IconsIconLarge,
     BordersIconLarge,

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Card, Flex } from "@sanity/ui";
 import { FormField } from "@sanity/base/components";
 import { withDocument } from "part:@sanity/form-builder";
-import * as style from "./RenderAscii.css";
+import * as style from "./renderascii.module.css";
 import sanityClient from "part:@sanity/base/client";
 const client = sanityClient.withConfig({ apiVersion: "2022-02-15" });
 

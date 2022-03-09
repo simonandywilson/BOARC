@@ -1,7 +1,7 @@
 import React from "react";
 import * as style from "../styles/PageBlockStyle.css";
-import { CopyIconLarge } from "../styles/Icons"
-import CustomRichTextEditor from "../components/block/CustomRichTextEditor"
+import { CopyIconLarge } from "../styles/Icons";
+import CustomRichTextEditor from "../components/block/CustomRichTextEditor";
 
 const HeadingStyle = (props) => <div className={style.heading}>{props.children}</div>;
 
@@ -29,13 +29,13 @@ export default {
                 decorators: [],
                 annotations: [
                     {
-                        type: "blockFile",
-                    },
-                    {
                         type: "blockInternal",
                     },
                     {
                         type: "blockExternal",
+                    },
+                    {
+                        type: "blockFile",
                     },
                     {
                         type: "blockComment",
@@ -47,13 +47,17 @@ export default {
             type: "blockHeading",
         },
         {
+            type: "blockCollapsible",
+        },
+        {
             type: "blockCarousel",
         },
         {
             type: "blockImg",
         },
         {
-            type: "blockCollapsible",
+            type: "blockEvent",
         },
     ],
 };
+

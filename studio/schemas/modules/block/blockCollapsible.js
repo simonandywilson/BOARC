@@ -1,4 +1,5 @@
 import { CollapsibleIcon } from "../../styles/Icons";
+import RenderBlockCollapsible from "../../components/block/collapsible/RenderBlockCollapsible";
 
 export default {
     name: "blockCollapsible",
@@ -21,21 +22,40 @@ export default {
             initialValue: "simple",
         },
         {
+            name: "icon",
+            title: "Reference to Icon:",
+            type: "reference",
+            to: [{ type: "icons" }],
+            hidden: ({ parent }) => {
+                if ("type" in parent) {
+                    if (parent.type === "simple") {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return true;
+                }
+            },
+        },
+        {
             name: "title",
             title: "Title",
             type: "string",
         },
+        {
+            name: "text",
+            title: "Text",
+            type: "basicBlock",
+        },
     ],
-    // preview: {
-    //     select: {
-    //         title: "title",
-    //     },
-    //     prepare(selection) {
-    //         const { content } = selection;
-    //         return {
-    //             title: content ? "Carousel" : "Empty Carousel",
-    //             media: content ? content[0] : carouselIconPreview,
-    //         };
-    //     },
-    // },
+    preview: {
+        select: {
+            title: "title",
+            icon: "icon",
+            text: "text",
+            type: "type"
+        },
+        component: RenderBlockCollapsible,
+    },
 };

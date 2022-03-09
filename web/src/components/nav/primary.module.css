@@ -1,0 +1,17 @@
+.primary {
+    color: var(--brown);
+    background: #ffffff;
+}
+
+.primary > a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.primary > a:hover > span {
+    color: var(--purple);
+}
+
+.divider {
+    pointer-events: none;
+}

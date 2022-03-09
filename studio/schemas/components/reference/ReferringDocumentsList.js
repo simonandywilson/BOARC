@@ -3,7 +3,7 @@ import Preview from "part:@sanity/base/preview";
 import { IntentLink } from "part:@sanity/base/router";
 import schema from "part:@sanity/base/schema";
 import { Item as DefaultItem, List as DefaultList } from "part:@sanity/components/lists/default";
-import * as style from "./ReferringDocuments.css";
+import * as style from "./referringdocuments.module.css";
 import { Card, Label, Stack } from "@sanity/ui";
 
 const ReferringDocumentsList = (props) => {

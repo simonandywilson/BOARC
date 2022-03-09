@@ -1,4 +1,6 @@
 import { CarouselIcon, CarouselIconLarge } from "../../styles/Icons";
+import RenderBlockCarousel from "../../components/block/carousel/RenderBlockCarousel";
+
 
 export default {
     name: "blockCarousel",
@@ -17,12 +19,6 @@ export default {
         select: {
             content: "content",
         },
-        prepare(selection) {
-            const { content } = selection;
-            return {
-                title: content ? "Carousel" : "Empty Carousel",
-                media: content ? content[0] : CarouselIconLarge,
-            };
-        },
+        component: RenderBlockCarousel,
     },
 };

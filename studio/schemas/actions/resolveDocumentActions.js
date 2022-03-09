@@ -2,7 +2,8 @@ import defaultResolve, { PublishAction } from "part:@sanity/base/document-action
 import SetAndPublishAction from "./SetAndPublishAction";
 
 export default function resolveDocumentActions(props) {
-    return defaultResolve(props).map((Action) =>
-        Action === PublishAction ? SetAndPublishAction : Action
-    );
+    // return [...defaultResolve(props), SetAndPublishAction];
+    return defaultResolve(props).map((Action) => {
+        return Action === PublishAction ? SetAndPublishAction : Action;
+    });
 }

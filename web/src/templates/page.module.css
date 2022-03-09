@@ -1,0 +1,6 @@
+.page {
+    position: relative;
+    padding: var(--margin);
+    color: var(--brown);
+    width: 100vw;
+}

@@ -1,0 +1,6 @@
+.container, .container > span {
+     border-bottom: 1px solid rgba(255, 255, 255, 0) !important;
+}
+.container > div > span > span {
+     border-bottom: 1px dashed #45556d !important;
+}

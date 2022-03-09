@@ -1,0 +1,8 @@
+.external {
+    color: var(--purple);
+    text-decoration: none;
+}
+
+.external:hover {
+    color: var(--red);
+}

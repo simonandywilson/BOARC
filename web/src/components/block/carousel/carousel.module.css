@@ -1,0 +1,15 @@
+.grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--grid-columns);
+    column-gap: var(--grid-columns-gap);
+    justify-items: end;
+}
+
+.carousel {
+    position: relative;
+    grid-column: var(--grid-position-carousel);
+    max-height: 80vh;
+    width: 100%;
+}
+

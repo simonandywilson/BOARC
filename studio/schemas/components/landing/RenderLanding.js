@@ -5,19 +5,22 @@ import { withDocument } from "part:@sanity/form-builder";
 import * as style from "./RenderLanding.css";
 import sanityClient from "part:@sanity/base/client";
 const client = sanityClient.withConfig({ apiVersion: "2022-02-15" });
+import { nanoid } from "nanoid";
 
 export const RenderLanding = React.forwardRef((props, ref) => {
     const { type, markers, presence, compareValue, parent, document } = props;
 
-    const targets = document.pages.map((target) => {
-        if (target._ref) {
-            return `*[_id == '${target._ref}'][0]`;
-        }
-    });
+    const targets = document.pages
+        ? document.pages.map((target) => {
+              if (target._ref) {
+                  return `*[_id == '${target._ref}'][0]`;
+              }
+          })
+        : [];
 
     const [data, setData] = useState([]);
 
-    const rows = data.length * 4;
+    const rows = data.length > 0 ? data.length * 4 : 4
 
     useEffect(() => {
         let toFetch = true;
@@ -51,12 +54,7 @@ export const RenderLanding = React.forwardRef((props, ref) => {
                 <Grid
                     padding={[2, 2, 2, 2]}
                     columns={[1, 1, 1, 1]}
-                    rows={[
-                        rows / data.length - 1,
-                        rows / data.length - 1,
-                        rows / data.length - 1,
-                        rows / data.length - 1,
-                    ]}
+                    rows={[data.length, data.length, data.length, data.length]}
                     className={style.text}
                 >
                     {data &&
@@ -67,13 +65,13 @@ export const RenderLanding = React.forwardRef((props, ref) => {
                             const titlePosition = page.landingTitlePosition
                                 ? page.landingTitlePosition
                                 : 1;
-                            const description = page.description
-                                ? [...page.description]
+                            const description = page.landingDescription
+                                ? [...page.landingDescription]
                                 : [..."No description"];
                             const descriptionPosition = page.landingDescriptionPosition
                                 ? page.landingDescriptionPosition
                                 : 1;
-                            
+
                             return (
                                 <Grid
                                     key={page._id}
@@ -99,7 +97,9 @@ export const RenderLanding = React.forwardRef((props, ref) => {
                                         rows={[1, 1, 1, 1]}
                                     >
                                         {title.map((t) => (
-                                            <span className={style.title}>{t}</span>
+                                            <span className={style.title} key={nanoid()}>
+                                                {t}
+                                            </span>
                                         ))}
                                     </Grid>
                                     <Grid
@@ -116,7 +116,9 @@ export const RenderLanding = React.forwardRef((props, ref) => {
                                         rows={[1, 1, 1, 1]}
                                     >
                                         {description.map((t) => (
-                                            <span className={style.description}>{t}</span>
+                                            <span className={style.description} key={nanoid()}>
+                                                {t}
+                                            </span>
                                         ))}
                                     </Grid>
                                 </Grid>
@@ -128,8 +130,8 @@ export const RenderLanding = React.forwardRef((props, ref) => {
                     rows={[rows, rows, rows, rows]}
                     className={style.dots}
                 >
-                    {[...Array(45 * rows)].map((e, i) => (
-                        <span key={i}>.</span>
+                    {[...Array(45 * rows)].map(() => (
+                        <span key={nanoid()}>.</span>
                     ))}
                 </Grid>
             </Card>

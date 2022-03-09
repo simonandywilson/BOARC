@@ -1,5 +1,5 @@
 import RenderHeading from "../../components/heading/RenderHeading";
-import RenderBlockHeading from "../../components/block/RenderBlockHeading";
+import RenderBlockHeading from "../../components/block/heading/RenderBlockHeading";
 
 import { HeadingIcon } from "../../styles/Icons";
 

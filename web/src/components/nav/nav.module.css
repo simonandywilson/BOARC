@@ -1,0 +1,29 @@
+.nav {
+    position: -webkit-sticky;
+    position: sticky;
+    display: block;
+    top: var(--margin);
+    margin: var(--margin);
+    text-transform: uppercase;
+    z-index: 99;
+    max-width: calc(100% - var(--margin-double));
+    /* height: calc(var(--font-size) * 7); */
+}
+
+.title {
+    margin-bottom: var(--margin);
+    color: var(--purple);
+    background: #ffffff;
+    width: max-content;
+    max-width: calc(100% - var(--margin-double));
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.wrapper > div {
+    flex-shrink: 0;
+}

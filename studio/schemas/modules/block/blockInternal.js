@@ -1,4 +1,4 @@
-import RenderBlockInternalLink from "../../components/block/RenderBlockInternalLink";
+import RenderBlockInternalLink from "../../components/block/internal/RenderBlockInternalLink";
 import { InternalIcon } from "../../styles/Icons";
 
 export default {
@@ -13,7 +13,7 @@ export default {
     fields: [
         {
             name: "reference",
-            title: "Reference to page:",
+            title: "Reference to Page:",
             type: "reference",
             to: [{ type: "page" }],
         },

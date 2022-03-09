@@ -10,8 +10,8 @@ export const PageIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="�
 export const ConfigIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="⚙️" />;
 export const ConfigIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="⚙️" />;
 
-export const HomepageIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="🌐" />;
-export const HomepageIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="🌐" />;
+export const HomepageIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="🏠" />;
+export const HomepageIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="🏠" />;
 
 export const MenuIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="📂" />;
 export const MenuIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="📂" />;
@@ -49,11 +49,11 @@ export const CollapsibleIconLarge = () => <Emoji style={{ fontSize: "2rem" }} sy
 export const FileIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="📎" />;
 export const FileIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="📎" />;
 
-export const InternalIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="🔗" />;
-export const InternalIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="🔗" />;
+export const InternalIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="📄" />;
+export const InternalIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="📄" />;
 
-export const ExternalIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="📍" />;
-export const ExternalIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="↗📍" />;
+export const ExternalIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="🔗" />;
+export const ExternalIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="🔗" />;
 
 export const CopyIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="✏️" />;
 export const CopyIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="✏️" />;
@@ -61,13 +61,35 @@ export const CopyIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="�
 export const CommentIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="💭" />;
 export const CommentIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="💭" />;
 
+export const LandingIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="🚀" />;
+export const LandingIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="🚀" />;
+
+export const HomeIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="🏠" />;
+export const HomeIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="🏠" />;
+
+export const EmailIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="✉️" />;
+export const EmailIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="✉️" />;
+
+export const PhoneIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="☎️" />;
+export const PhoneIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="☎️" />;
+
+export const EventIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="⏰" />;
+export const EventIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="⏰" />;
+
+export const DomesIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="📡" />;
+export const DomesIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="📡" />;
+
+export const ShowIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="🎵" />;
+export const ShowIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="🎵" />;
+
+
 export const ASCIIIconLarge = () => (
     <span
         style={{
             width: "1.5rem",
             height: "1.5rem",
             position: "relative",
-            background: "#e14530",
+            background: "red",
             borderRadius: "5px",
             display: "flex",
             alignItems: "center",

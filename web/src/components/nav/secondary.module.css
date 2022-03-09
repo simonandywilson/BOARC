@@ -1,0 +1,32 @@
+.secondary {
+    position: absolute;
+    left: 0;
+    background: #ffffff;
+    width: max-content;
+    max-width: 100%;
+    margin-bottom: var(--margin);
+}
+
+.secondary > button {
+    all: unset;
+}
+
+.secondary > button,
+.secondary > a {
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--purple);
+}
+
+.secondary > button:hover,
+.secondary > a:hover {
+    color: var(--red);
+}
+
+.secondary > .divider {
+    color: var(--purple);
+}
+
+.divider {
+    pointer-events: none;
+}

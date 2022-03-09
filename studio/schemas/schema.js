@@ -5,6 +5,10 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 
 import seo from "./documents/seo";
 import page from "./documents/page";
+import landing from "./documents/landing";
+import event from "./documents/event";
+import domes from "./documents/domes";
+import show from "./documents/show";
 
 import homepage from "./documents/homepage";
 import menu from "./documents/menu";
@@ -25,11 +29,14 @@ import blockInternal from "./modules/block/blockInternal";
 import blockExternal from "./modules/block/blockExternal";
 import blockComment from "./modules/block/blockComment";
 
+import blockEvent from "./modules/block/blockEvent";
+
 import img from "./modules/img";
 
 import pageBlock from "./modules/pageBlock";
 import faqBlock from "./modules/faqBlock";
-import captionBlock from "./modules/captionBlock";
+import basicBlock from "./modules/basicBlock";
+import programmeBlock from "./modules/programmeBlock";
 
 export default createSchema({
     name: "default",
@@ -38,7 +45,13 @@ export default createSchema({
         homepage,
         menu,
         seo,
+
         page,
+        landing,
+        event,
+        domes,
+        show,
+
         faq,
         ascii,
         files,
@@ -54,12 +67,14 @@ export default createSchema({
         blockInternal,
         blockExternal,
         blockComment,
+        blockEvent,
 
         // Module
         img,
 
         pageBlock,
         faqBlock,
-        captionBlock,
+        basicBlock,
+        programmeBlock,
     ]),
 });

@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "@sanity/ui";
 import { FormField } from "@sanity/base/components";
 import { withDocument } from "part:@sanity/form-builder";
-import * as style from "./RenderBorder.css";
+import * as style from "./renderborder.module.css";
 
 export const RenderBorder = React.forwardRef((props, ref) => {
     const { type, markers, presence, compareValue, document } = props;

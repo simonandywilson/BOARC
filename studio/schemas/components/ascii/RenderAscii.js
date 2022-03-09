@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Flex } from "@sanity/ui";
 import { FormField } from "@sanity/base/components";
 import { withDocument } from "part:@sanity/form-builder";
-import * as style from "./RenderAscii.css"
+import * as style from "./renderascii.module.css"
 
 export const RenderAscii = React.forwardRef((props, ref) => {
     const { type, markers, presence, compareValue } = props;

@@ -13,7 +13,9 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "@sanity/orderable-document-list",
-    "table"
+    "table",
+    "@sanity/color-input",
+    "color-picker"
   ],
   "env": {
     "development": {

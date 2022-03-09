@@ -1,4 +1,4 @@
-import RenderBlockComment from "../../components/block/RenderBlockComment";
+import RenderBlockComment from "../../components/block/comment/RenderBlockComment";
 import { CommentIcon } from "../../styles/Icons";
 
 export default {
@@ -17,13 +17,7 @@ export default {
         {
             name: "comment",
             title: "Comment",
-            type: "text",
-        },
-        {
-            name: "reference",
-            title: "Reference to page:",
-            type: "reference",
-            to: [{ type: "page" }],
+            type: "basicBlock",
         },
     ],
 };

@@ -1,12 +1,24 @@
-import { isUnique } from "../functions/isUnique";
+import { isUniqueAcrossAllDocuments } from "../functions/isUniqueAcrossAllDocuments";
 import ReferencedBy from "../components/reference/ReferencedBy";
-import { PageIconLarge } from "../styles/Icons";
+import { PageIconLarge, HomeIconLarge } from "../styles/Icons";
 
 export default {
     name: "page",
     title: "Pages",
     icon: PageIconLarge,
     type: "document",
+    fieldsets: [
+        {
+            name: "landing",
+            title: "Landing Options",
+            description:
+                "Choose how this page is displayed on its landing page, if applicable.",
+            options: {
+                collapsible: false,
+              
+            },
+        },
+    ],
     groups: [
         {
             name: "content",
@@ -38,6 +50,7 @@ export default {
             type: "string",
             readOnly: true,
             group: "content",
+            hidden: true,
         },
         {
             name: "landing",
@@ -46,6 +59,16 @@ export default {
             readOnly: true,
             group: "content",
             initialValue: false,
+            hidden: true,
+        },
+        {
+            name: "homepage",
+            title: "Homepage",
+            type: "boolean",
+            readOnly: true,
+            group: "content",
+            initialValue: false,
+            hidden: true,
         },
         {
             name: "title",
@@ -55,15 +78,17 @@ export default {
         },
         {
             name: "slug",
+            title: "Slug",
             type: "slug",
             description: "bidstonobservatory.org/",
             group: "content",
             options: {
                 source: "title",
                 basePath: "bidstonobservatory.org/",
-                isUnique: isUnique,
+                isUnique: isUniqueAcrossAllDocuments,
                 maxLength: 30,
             },
+            validation: (Rule) => [Rule.required().error(`Please enter a slug.`)],
         },
         {
             name: "content",
@@ -75,16 +100,16 @@ export default {
             name: "landingTitle",
             title: "Landing Title",
             type: "string",
+            fieldset: "landing",
             group: "landing",
-            hidden: ({ parent }) => !parent?.landing,
         },
         {
             name: "landingTitlePosition",
             title: "Landing Title Position",
             type: "number",
+            fieldset: "landing",
             group: "landing",
             description: "Choose a column number for the landing page title.",
-            hidden: ({ parent }) => !parent?.landing,
             initialValue: 1,
             validation: (Rule) => [
                 Rule.required().error(`Please enter a column number.`),
@@ -96,16 +121,16 @@ export default {
             name: "landingDescription",
             title: "Landing Description",
             type: "string",
+            fieldset: "landing",
             group: "landing",
-            hidden: ({ parent }) => !parent?.landing,
         },
         {
             name: "landingDescriptionPosition",
             title: "Landing Description Position",
             type: "number",
+            fieldset: "landing",
             group: "landing",
             description: "Choose a column number for the landing page description.",
-            hidden: ({ parent }) => !parent?.landing,
             initialValue: 1,
             validation: (Rule) => [
                 Rule.required().error(`Please enter a column number.`),
@@ -152,12 +177,13 @@ export default {
         select: {
             title: "title",
             referring: "referring",
+            homepage: "homepage",
         },
         prepare(selection) {
-            const { title, referring } = selection;
+            const { title, referring, homepage } = selection;
             return {
                 title: title ? title : "Untitled Page",
-                media: PageIconLarge,
+                media: homepage ? HomeIconLarge : PageIconLarge,
                 subtitle: referring ?? referring,
             };
         },

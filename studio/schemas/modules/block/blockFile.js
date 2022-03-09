@@ -1,4 +1,4 @@
-import RenderBlockFiles from "../../components/block/RenderBlockFiles";
+import RenderBlockFiles from "../../components/block/files/RenderBlockFiles";
 import { FileIcon } from "../../styles/Icons";
 
 export default {

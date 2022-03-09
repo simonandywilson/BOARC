@@ -1,0 +1,8 @@
+.file {
+    color: var(--purple);
+    text-decoration: none;
+}
+
+.file:hover {
+    color: var(--red);
+}

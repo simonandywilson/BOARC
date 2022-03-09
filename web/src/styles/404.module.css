@@ -1,0 +1,43 @@
+.container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.wrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100vw;
+    height: var(--wrapper-height);
+    max-height: var(--wrapper-height-max);
+    max-width: var(--wrapper-width);
+    margin: auto;
+    top: var(--wrapper-offset);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+.wrapper:hover {
+    background: red;
+}
+
+.wrapper:hover > .text {
+    color: #ffffff;
+}
+
+.text {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #000000;
+    text-align: center;
+}

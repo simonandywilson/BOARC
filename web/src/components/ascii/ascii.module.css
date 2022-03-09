@@ -1,0 +1,41 @@
+.ascii {
+    position: relative;
+    padding-top: var(--margin);
+    display: inline-block;
+    letter-spacing: -3px;
+    color: var(--purple);
+    line-height: 100%;
+    width: 100%;
+    font-family: var(--font-regular);
+}
+
+.wrapper {
+    width: max-content;
+    padding-left: 100%;
+    animation: marquee 10s linear infinite;
+}
+
+.table {
+    border-spacing: 0;
+    table-layout: fixed;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.table:first-child {
+    padding-left: 0rem;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-100%, 0);
+    }
+}

@@ -1,6 +1,5 @@
 import { orderRankField, orderRankOrdering } from "@sanity/orderable-document-list";
 import { MenuIconLarge, MenuIconSingleLarge } from "../styles/Icons";
-import RenderLanding from "../components/landing/RenderLanding"
 
 export default {
     name: "menu",
@@ -16,23 +15,10 @@ export default {
             type: "string",
         },
         {
-            name: "pages",
-            title: "Pages",
-            type: "array",
-            of: [
-                {
-                    type: "reference",
-                    to: [{ type: "page" }],
-                    title: "Reference to Pages or Events",
-                },
-            ],
-        },
-        {
             name: "landing",
             title: "Landing",
-            type: "string",
-            readOnly: true,
-            inputComponent: RenderLanding,
+            type: "reference",
+            to: [{ type: "landing", title: "Reference to Landing Page" }],
             hidden: ({ parent }) => {
                 if ("pages" in parent) {
                     if (parent.pages.length <= 1) {
@@ -44,6 +30,27 @@ export default {
                     return true;
                 }
             },
+            validation: (Rule) =>
+                Rule.custom((name, context) => {
+                    const pages = context.parent.pages ? context.parent.pages.length : 0;
+                    if (pages > 1 && typeof name === "undefined") {
+                        return "Multi page menus must have a landing page.";
+                    } else {
+                        return true;
+                    }
+                }),
+        },
+        {
+            name: "pages",
+            title: "Pages",
+            type: "array",
+            of: [
+                {
+                    type: "reference",
+                    to: [{ type: "page" }, { type: "domes" }],
+                    title: "Reference to Pages or Domes FM",
+                },
+            ],
         },
     ],
     preview: {

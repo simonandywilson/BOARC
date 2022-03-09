@@ -8,10 +8,20 @@ const client = sanityClient.withConfig({ apiVersion: "2022-02-15" });
 const ReferringDocuments = ({ document, referringDocuments }) => {
     useEffect(() => {
         if (referringDocuments) {
-            const references = referringDocuments.map((referred) => referred.title);
+            const references = referringDocuments.map((referred) => {
+                if (referred._type === "homepage") {
+                    return "Homepage";
+                } else {
+                    return referred.title;
+                }
+            });
             const siblings = referringDocuments.map((referred) => {
-                const length = referred.pages.length;
-                return parseInt(length, 10);
+                if (referred.pages) {
+                    const length = referred.pages.length;
+                    return parseInt(length, 10);
+                } else {
+                    return;
+                }
             });
 
             client
@@ -19,12 +29,13 @@ const ReferringDocuments = ({ document, referringDocuments }) => {
                 .set({
                     referring: references.join(", "),
                     landing: siblings.some((el) => el > 1) ? true : false,
+                    homepage: references.includes("Homepage") ? true : false,
                 })
                 .commit()
                 .catch((err) => {
                     console.error("Oh no, the update to 'referring' failed: ", err.message);
                 });
-        } 
+        }
     }, [referringDocuments]);
 
     return (

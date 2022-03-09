@@ -1,4 +1,4 @@
-import RenderBlockExternalLink from "../../components/block/RenderBlockExternalLink";
+import RenderBlockExternalLink from "../../components/block/external/RenderBlockExternalLink";
 import { ExternalIcon } from "../../styles/Icons";
 
 export default {
