@@ -12,6 +12,11 @@ export default {
             type: "string",
         },
         {
+            name: "subtitle",
+            title: "Subtitle",
+            type: "string",
+        },
+        {
             name: "date",
             title: "Broadcast Date",
             type: "date",
@@ -31,9 +36,9 @@ export default {
             },
         },
         {
-            name: "text",
-            title: "Text",
-            type: "programmeBlock",
+            name: "info",
+            title: "Information",
+            type: "basicBlock",
         },
 
         {

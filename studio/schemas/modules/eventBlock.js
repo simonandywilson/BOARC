@@ -1,14 +1,15 @@
 import React from "react";
-const HeadingStyle = (props) => <h3 style={{fontWeight: 400, margin: 0 }}>{props.children}</h3>;
+const HeadingStyle = (props) => <h3 style={{ fontWeight: 400, margin: 0 }}>{props.children}</h3>;
 
 export default {
-    name: "programmeBlock",
+    name: "eventBlock",
     title: "Text",
     type: "array",
     of: [
         {
             type: "block",
             styles: [
+                { title: "Body", value: "normal" },
                 {
                     title: "Heading",
                     value: "heading",
@@ -16,7 +17,6 @@ export default {
                         render: HeadingStyle,
                     },
                 },
-                { title: "Body", value: "normal" },
             ],
             lists: [],
             marks: {
@@ -33,6 +33,9 @@ export default {
                     },
                 ],
             },
+        },
+        {
+            type: "blockImgFull",
         },
     ],
 };

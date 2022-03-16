@@ -1,5 +1,6 @@
 import React, { useCallback, useRef, useState, useEffect } from "react";
 import PatchEvent, { set, unset } from "@sanity/form-builder/PatchEvent";
+import { withDocument } from "part:@sanity/form-builder";
 import { HexColorPicker, HexColorInput } from "react-colorful";
 import useClickOutside from "./useClickOutside";
 import { Inline, Badge, Label, Card, Stack, Box, Text } from "@sanity/ui";
@@ -13,17 +14,17 @@ export const RenderColour = React.forwardRef((props, ref) => {
     const {
         type,
         value,
-        readOnly,
-        placeholder,
         markers,
         presence,
         compareValue,
         onFocus,
         onBlur,
         onChange,
+        document
     } = props;
+
     const popover = useRef();
-    const [colour, setColour] = useState("#f2ff8e");
+    const [colour, setColour] = useState(value ? value : type?.options?.defaultColour ? type.options.defaultColour : "#ffffff" );
     const [isOpen, toggle] = useState(false);
     const [regularAA, setRegularAA] = useState("");
     const [regularAAA, setRegularAAA] = useState("");
@@ -34,22 +35,17 @@ export const RenderColour = React.forwardRef((props, ref) => {
     useClickOutside(popover, close);
     const inputId = nanoid();
 
-    const handleChange = React.useCallback(() => {
-        const inputValue = colour;
-        onChange(PatchEvent.from(inputValue ? set(inputValue) : unset()));
-    }, [onChange]);
-
     useEffect(() => {
-        handleChange();
+       onChange(PatchEvent.from(set(colour)));
     }, [debouncedColour]);
 
     useEffect(() => {
-        const contrast = wcagContrastChecker("#786A2F", colour);
+        const contrast = wcagContrastChecker(document?.text?.value ? document.text.value : "#786A2F", colour);
         contrast.regularText.aa ? setRegularAA("positive") : setRegularAA("critical");
         contrast.largeText.aa ? setLargeAA("positive") : setLargeAA("critical");
         contrast.regularText.aaa ? setRegularAAA("positive") : setRegularAAA("critical");
         contrast.largeText.aaa ? setLargeAAA("positive") : setLargeAAA("critical");
-    }, [colour]);
+    }, [colour, document?.text?.value]);
 
     return (
         <FormField
@@ -112,4 +108,4 @@ export const RenderColour = React.forwardRef((props, ref) => {
     );
 });
 
-export default RenderColour;
+export default withDocument(RenderColour)

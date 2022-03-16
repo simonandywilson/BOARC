@@ -48,12 +48,25 @@ export const useEventsAccessedUpdateContext = () => {
     return useContext(EventsAccessedUpdateContext);
 };
 
+// Colours
+const ColoursContext = createContext();
+const ColoursUpdateContext = createContext();
+
+export const useColoursContext = () => {
+    return useContext(ColoursContext);
+};
+
+export const useColoursUpdateContext = () => {
+    return useContext(ColoursUpdateContext);
+};
+
 // Context Provider
 const ContextProvider = ({ children }) => {
     const [easyRead, setEasyRead] = useState(false);
     const [eventsFuture, setEventsFuture] = useState([]);
     const [eventsPast, setEventsPast] = useState([]);
     const [eventsAccessed, setEventsAccessed] = useState(false);
+    const [colours, setColours] = useState({ text: "var(--brown)"});
 
     return (
         <EasyReadContext.Provider value={easyRead}>
@@ -64,7 +77,11 @@ const ContextProvider = ({ children }) => {
                             <EventsPastUpdateContext.Provider value={setEventsPast}>
                                 <EventsAccessedContext.Provider value={eventsAccessed}>
                                     <EventsAccessedUpdateContext.Provider value={setEventsAccessed}>
-                                        {children}
+                                        <ColoursContext.Provider value={colours}>
+                                            <ColoursUpdateContext.Provider value={setColours}>
+                                                {children}
+                                            </ColoursUpdateContext.Provider>
+                                        </ColoursContext.Provider>
                                     </EventsAccessedUpdateContext.Provider>
                                 </EventsAccessedContext.Provider>
                             </EventsPastUpdateContext.Provider>

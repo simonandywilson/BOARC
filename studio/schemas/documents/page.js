@@ -1,5 +1,6 @@
 import { isUniqueAcrossAllDocuments } from "../functions/isUniqueAcrossAllDocuments";
 import ReferencedBy from "../components/reference/ReferencedBy";
+import RenderColour from "../components/colour/RenderColour";
 import { PageIconLarge, HomeIconLarge } from "../styles/Icons";
 
 export default {
@@ -11,11 +12,9 @@ export default {
         {
             name: "landing",
             title: "Landing Options",
-            description:
-                "Choose how this page is displayed on its landing page, if applicable.",
+            description: "Choose how this page is displayed on its landing page, if applicable.",
             options: {
                 collapsible: false,
-              
             },
         },
     ],
@@ -28,6 +27,10 @@ export default {
         {
             name: "landing",
             title: "Landing",
+        },
+        {
+            name: "customisation",
+            title: "Customisation",
         },
         {
             name: "seo",
@@ -137,6 +140,36 @@ export default {
                 Rule.min(1).error(`Please choose a column number bigger than 1.`),
                 Rule.max(45).error(`Please choose a column number smaller than 45.`),
             ],
+        },
+        {
+            name: "text",
+            title: "Text Colour",
+            type: "colorlist",
+            group: "customisation",
+            options: {
+                list: [
+                    { title: "Brown", value: "#786A2F" },
+                    { title: "Black", value: "#000000" },
+                    { title: "White", value: "#ffffff" },
+                ],
+                borderradius: {
+                    inner: "100%",
+                    outer: "20%",
+                },
+                tooltip: true,
+                darken: 20,
+            },
+            initialValue: "#786A2F",
+        },
+        {
+            name: "background",
+            title: "Background Colour",
+            type: "string",
+            group: "customisation",
+            inputComponent: RenderColour,
+            options: {
+                defaultColour: "#ffffff",
+            },
         },
         {
             title: "SEO Description",

@@ -5,8 +5,14 @@
     column-gap: var(--grid-columns-gap);
 }
 
-.text {
+.normal, .heading {
     grid-column: var(--grid-position-main);
+    line-height: var(--line-height);
+    font-weight: normal;
+}
+
+.heading {
+    font-size:var(--font-size-medium);
 }
 
 .comment {

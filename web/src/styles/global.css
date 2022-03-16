@@ -158,6 +158,8 @@ Variables
     --brown-translucent: rgb(120, 106, 47, 0.9);
     --brown-translucent-image: rgb(120, 106, 47, 0.5);
     --red: rgb(237, 107, 108, 1);
+
+    --text-colour: var(--brown);
 }
 
 /*----------------------------------------

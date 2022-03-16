@@ -14,8 +14,12 @@ export default {
             default: true,
         },
         {
-            name: "details",
-            title: "Details",
+            name: "content",
+            title: "Content",
+        },
+        {
+            name: "customisation",
+            title: "Customisation",
         },
         {
             name: "seo",
@@ -86,18 +90,12 @@ export default {
             type: "text",
             group: "preview",
         },
-        {
-            name: "background",
-            title: "Background Colour",
-            type: "string",
-            group: "details",
-            inputComponent: RenderColour,
-        },
+
         {
             name: "banner",
             title: "Banner",
             type: "image",
-            group: "details",
+            group: "content",
             options: {
                 hotspot: true,
             },
@@ -105,16 +103,44 @@ export default {
         {
             name: "programme",
             title: "Programme",
-            type: "programmeBlock",
-            group: "details",
+            type: "eventBlock",
+            group: "content",
         },
         {
             name: "description",
             title: "Description",
-            type: "basicBlock",
-            group: "details",
+            type: "eventBlock",
+            group: "content",
         },
-
+        {
+            name: "text",
+            title: "Text Colour",
+            type: "colorlist",
+            group: "customisation",
+            options: {
+                list: [
+                    { title: "Brown", value: "#786A2F" },
+                    { title: "White", value: "#ffffff" },
+                ],
+                borderradius: {
+                    inner: "100%",
+                    outer: "20%",
+                },
+                tooltip: true,
+                darken: 20,
+            },
+            initialValue: { title: "brown", value: "#786A2F" },
+        },
+        {
+            name: "background",
+            title: "Background Colour",
+            type: "string",
+            group: "customisation",
+            inputComponent: RenderColour,
+            options: {
+                defaultColour: "#f2ff8e",
+            },
+        },
         {
             title: "SEO Description",
             name: "seoDescription",

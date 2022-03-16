@@ -9,7 +9,8 @@ const Secondary = ({ items, isMulti, isActiveMulti, isActiveSingular, singular, 
         <div
             className={style.secondary}
             style={{
-                visibility: isActiveMulti ? "visible" : "hidden",
+                // visibility: isActiveMulti ? "visible" : "hidden",
+                display: isActiveMulti ? "block" : "none",
             }}
         >
             {items.map((item, index) => {
@@ -36,7 +37,8 @@ const Secondary = ({ items, isMulti, isActiveMulti, isActiveSingular, singular, 
         <div
             className={style.secondary}
             style={{
-                visibility: isActiveSingular ? "visible" : "hidden",
+                // visibility: isActiveSingular ? "visible" : "hidden",
+                display: isActiveSingular ? "block" : "none",
             }}
         >
             {singular.map((tab, index) => {

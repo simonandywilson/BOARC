@@ -5,6 +5,7 @@ import {
     useEventsPastContext,
     useEventsPastUpdateContext,
     useEventsAccessedContext,
+    useColoursContext,
 } from "../../state/GlobalState";
 const sanityClient = require("@sanity/client");
 const client = sanityClient({
@@ -25,6 +26,12 @@ const Fetch = () => {
     const EventsPastContext = useEventsPastContext();
     const EventsPastUpdateContext = useEventsPastUpdateContext();
     const EventsAccessedContext = useEventsAccessedContext();
+
+    const ColoursContext = useColoursContext();
+
+    useEffect(() => {
+        document.documentElement.style.setProperty("--text-colour", ColoursContext.text);
+    }, [ColoursContext])
 
     useEffect(() => {
         if (EventsAccessedContext && EventsFutureContext.length === 0 && EventsPastContext.length === 0) {

@@ -5,7 +5,7 @@ import * as style from "./event.module.css";
 import Image from "gatsby-plugin-sanity-image";
 
 const Event = ({ pageContext, data: { sanityEvent } }) => {
-    const { title, banner, start, _rawProgramme, _rawDescription } = sanityEvent;
+    const { title, banner, start, _rawProgramme, _rawDescription, background } = sanityEvent;
     const options = { day: "numeric", year: "numeric", month: "short" };
     const date = new Date(start).toLocaleDateString("en-GB", options);
     return (
@@ -39,6 +39,7 @@ const Event = ({ pageContext, data: { sanityEvent } }) => {
                     <PortableText value={_rawDescription} />
                 </div>
             </div>
+            <div className={style.background} style={{background: background ? background : "#ffffff"}}></div>
         </div>
     );
 };
@@ -55,6 +56,10 @@ export const query = graphql`
             title
             _rawProgramme
             _rawDescription
+            text {
+                value
+            }
+            background
         }
     }
 `;

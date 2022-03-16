@@ -1,7 +1,8 @@
-import React, {useEffect} from "react";
+import React, { useEffect, useMemo } from "react";
 import { graphql } from "gatsby";
 import { PortableText } from "@portabletext/react";
 import * as style from "./page.module.css";
+import { useColoursContext, useColoursUpdateContext } from "../state/GlobalState";
 
 import TextRenderer from "../components/block/text/TextRenderer";
 import HeadingRenderer from "../components/block/heading/HeadingRenderer";
@@ -16,9 +17,43 @@ import EventRendererCarousel from "../components/block/event/EventRendererCarous
 import EventRendererList from "../components/block/event/EventRendererList";
 
 const Page = ({ data: { page } }) => {
+    const { background, text } = page;
+
+    const ColoursContext = useColoursContext();
+    const ColoursUpdateContext = useColoursUpdateContext();
+
+    useEffect(() => {
+        ColoursUpdateContext({ ...ColoursContext, text: text ? text.value : "var(--brown)" });
+    }, []);
+
+    const factorial = useMemo(() => {
+        const components = {
+            block: (data) => <TextRenderer data={data} />,
+            types: {
+                blockHeading: HeadingRenderer,
+                blockImg: ImageRenderer,
+                blockCollapsible: collapsibleType,
+                blockCarousel: CarouselRenderer,
+                blockEvent: eventType,
+            },
+            marks: {
+                blockFile: FileRenderer,
+                blockInternal: InternalRenderer,
+                blockExternal: ExternalRenderer,
+                blockComment: () => null,
+            },
+        };
+
+        return components;
+    }, []);
+
     return (
         <div className={style.page}>
-            <PortableText value={page._rawContent} components={components} />
+            <PortableText value={page._rawContent} components={factorial} test={"test"} />
+            <div
+                className={style.background}
+                style={{ background: background ? background : "#ffffff" }}
+            ></div>
         </div>
     );
 };
@@ -41,27 +76,31 @@ const eventType = (data) => {
     );
 };
 
-const components = {
-    block: TextRenderer,
-    types: {
-        blockHeading: HeadingRenderer,
-        blockImg: ImageRenderer,
-        blockCollapsible: collapsibleType,
-        blockCarousel: CarouselRenderer,
-        blockEvent: eventType,
-    },
-    marks: {
-        blockFile: FileRenderer,
-        blockInternal: InternalRenderer,
-        blockExternal: ExternalRenderer,
-        blockComment: () => null,
-    },
-};
+// const components = {
+//     block: (data) => <TextRenderer data={data} test={page.background} />,
+//     types: {
+//         blockHeading: HeadingRenderer,
+//         blockImg: ImageRenderer,
+//         blockCollapsible: collapsibleType,
+//         blockCarousel: CarouselRenderer,
+//         blockEvent: eventType,
+//     },
+//     marks: {
+//         blockFile: FileRenderer,
+//         blockInternal: InternalRenderer,
+//         blockExternal: ExternalRenderer,
+//         blockComment: () => null,
+//     },
+// };
 
 export const query = graphql`
     query getSinglePage($slug: String) {
         page: sanityPage(slug: { current: { eq: $slug } }) {
             _rawContent(resolveReferences: { maxDepth: 10 })
+            text {
+                value
+            }
+            background
         }
     }
 `;

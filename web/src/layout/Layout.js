@@ -5,6 +5,7 @@ import Fetch from "../components/fetch/Fetch"
 import Ascii from "../components/ascii/Ascii";
 import Nav from "../components/nav/Nav";
 import Faq from "../components/faq/Faq";
+import Sketch from "../components/sketch/Sketch";
 
 
 const Layout = ({ children }) => {
@@ -14,6 +15,7 @@ const Layout = ({ children }) => {
         <GlobalState>
             <main>
                 <Fetch />
+                <Sketch />
                 <Ascii />
                 <Nav />
                 {children}

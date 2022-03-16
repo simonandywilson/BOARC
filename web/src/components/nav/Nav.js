@@ -8,7 +8,6 @@ const Nav = () => {
     const { homepage, menu: nodes } = useStaticQuery(getData);
     const menus = nodes.nodes;
 
-
     const [active, setActive] = useState(window.location.pathname);
 
     useEffect(() => {
@@ -20,7 +19,6 @@ const Nav = () => {
             <div className={style.title}>{homepage.title}</div>
             <nav className={style.wrapper}>
                 {menus.map((menu, index) => {
-                    
                     const items = menu.pages;
                     const landing = menu.landing;
                     const isMulti = items.length > 1 ? true : false;
@@ -43,6 +41,7 @@ const Nav = () => {
                                 isActiveSingular={isActiveSingular}
                                 isLast={index + 1 !== menus.length ? false : true}
                             />
+
                             <Secondary
                                 items={menu.pages}
                                 isMulti={isMulti}
@@ -55,6 +54,11 @@ const Nav = () => {
                     );
                 })}
             </nav>
+            {/* <div className={style.secondary}>
+                <div>The Project</div>
+                <div>Values and Accountability</div>
+                <div>Opportunities</div>
+            </div> */}
         </section>
     );
 };

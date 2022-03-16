@@ -1,0 +1,19 @@
+.container {
+    padding: 5px;
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    background: olive;
+    overflow: hidden;
+   
+}
+
+.image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

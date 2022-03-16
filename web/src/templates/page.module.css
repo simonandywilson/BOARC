@@ -1,6 +1,15 @@
 .page {
     position: relative;
     padding: var(--margin);
-    color: var(--brown);
+    color: var(--text-colour);
     width: 100vw;
+}
+
+.background {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }

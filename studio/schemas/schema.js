@@ -23,20 +23,24 @@ import borders from "./documents/borders";
 import blockHeading from "./modules/block/blockHeading";
 import blockCarousel from "./modules/block/blockCarousel";
 import blockImg from "./modules/block/blockImg";
+import blockImgFull from "./modules/block/blockImgFull";
+import blockImgGrid from "./modules/block/blockImgGrid";
 import blockCollapsible from "./modules/block/blockCollapsible";
 import blockFile from "./modules/block/blockFile";
 import blockInternal from "./modules/block/blockInternal";
 import blockExternal from "./modules/block/blockExternal";
 import blockComment from "./modules/block/blockComment";
 
+
 import blockEvent from "./modules/block/blockEvent";
+import blockShow from "./modules/block/blockShow";
 
 import img from "./modules/img";
 
 import pageBlock from "./modules/pageBlock";
 import faqBlock from "./modules/faqBlock";
 import basicBlock from "./modules/basicBlock";
-import programmeBlock from "./modules/programmeBlock";
+import eventBlock from "./modules/eventBlock";
 
 export default createSchema({
     name: "default",
@@ -62,12 +66,15 @@ export default createSchema({
         blockHeading,
         blockCarousel,
         blockImg,
+        blockImgFull,
+        blockImgGrid,
         blockCollapsible,
         blockFile,
         blockInternal,
         blockExternal,
         blockComment,
         blockEvent,
+        blockShow,
 
         // Module
         img,
@@ -75,6 +82,6 @@ export default createSchema({
         pageBlock,
         faqBlock,
         basicBlock,
-        programmeBlock,
+        eventBlock,
     ]),
 });

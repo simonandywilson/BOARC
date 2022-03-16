@@ -76,11 +76,17 @@ export const PhoneIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="
 export const EventIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="⏰" />;
 export const EventIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="⏰" />;
 
+export const EventIconAlt = () => <Emoji style={{ fontSize: "1rem" }} symbol="🗓" />;
+export const EventIconAltLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="🗓" />;
+
 export const DomesIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="📡" />;
 export const DomesIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="📡" />;
 
 export const ShowIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="🎵" />;
 export const ShowIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="🎵" />;
+
+export const ImgGridIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="🖼" />;
+export const ImgGridIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="🖼" />;
 
 
 export const ASCIIIconLarge = () => (

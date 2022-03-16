@@ -4,7 +4,6 @@ import * as style from "./image.module.css";
 import { PortableText } from "@portabletext/react";
 
 const ImageRenderer = ({ value }) => {
-    console.log(value);
     return (
         <div className={style.grid}>
             {"caption" in value ? (

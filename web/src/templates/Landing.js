@@ -24,8 +24,8 @@ const Landing = ({
                         const titlePosition = page.landingTitlePosition
                             ? page.landingTitlePosition
                             : 1;
-                        const description = page.description
-                            ? [...page.description]
+                        const description = page.landingDescription
+                            ? [...page.landingDescription]
                             : [..."No description"];
                         const descriptionPosition = page.landingDescriptionPosition
                             ? page.landingDescriptionPosition
