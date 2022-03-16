@@ -16,6 +16,7 @@
   "dependencies": {
     "@mdhnpm/wcag-contrast-checker": "^1.1.0",
     "@sanity/base": "^2.28.0",
+    "@sanity/cli": "^2.28.0",
     "@sanity/color-input": "^2.28.0",
     "@sanity/core": "^2.28.1",
     "@sanity/default-layout": "^2.28.0",

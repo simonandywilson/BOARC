@@ -7,12 +7,13 @@ import Secondary from "./Secondary";
 const Nav = () => {
     const { homepage, menu: nodes } = useStaticQuery(getData);
     const menus = nodes.nodes;
+    const currentSlug = typeof window !== "undefined" ? window.location.pathname : null
 
-    const [active, setActive] = useState(window.location.pathname);
+    const [active, setActive] = useState(currentSlug);
 
     useEffect(() => {
-        setActive(window.location.pathname);
-    }, [window.location.pathname]);
+        setActive(currentSlug);
+    }, [currentSlug]);
 
     return (
         <section className={style.nav}>
