@@ -10,15 +10,18 @@
     font-weight: normal;
     text-transform: uppercase;
     overflow: hidden;
-    grid-column: var(--grid-position-main);
     margin: var(--block-margin);
+    text-align: center;
 }
 
 .heading > span {
     display: block;
-    white-space: nowrap;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    height: calc(var(--font-size) * 1.2);
+    text-align: left;
 }
 
 .anchor {
-    transform: translateY(-100px)
+    transform: translateY(-100px);
 }

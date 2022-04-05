@@ -8,6 +8,8 @@ import { Card, Label, Stack } from "@sanity/ui";
 
 const ReferringDocumentsList = (props) => {
     const { documents } = props;
+    
+
     return (
         <DefaultList>
             <Card padding={[4, 4, 4, 4]} shadow={1} radius={2}>

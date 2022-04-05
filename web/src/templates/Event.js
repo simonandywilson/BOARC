@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { graphql, Link } from "gatsby";
 import { PortableText } from "@portabletext/react";
 import * as style from "./event.module.css";
 import Image from "gatsby-plugin-sanity-image";
+import { useAsciiUpdateContext } from "../state/GlobalState";
 
 const Event = ({ pageContext, data: { sanityEvent } }) => {
     const { title, banner, start, _rawProgramme, _rawDescription, background } = sanityEvent;
     const options = { day: "numeric", year: "numeric", month: "short" };
     const date = new Date(start).toLocaleDateString("en-GB", options);
+    const AsciiUpdateContext = useAsciiUpdateContext();
+
+    useEffect(() => {
+        AsciiUpdateContext(false);
+    }, []);
+
     return (
         <div>
             <div className={style.nav}>
-                <Link to={`/events`} className={style.back}>
-                    &lsaquo;Back to Event List
+                <Link to={`/${sanityEvent.parent.slug.current}`} className={style.back}>
+                    &lsaquo;{`Back to ${sanityEvent.parent.title}`}
                 </Link>
                 <div className={style.subNav}>
                     <div className={style.border}>{"-".repeat(100)}</div>
@@ -39,7 +46,10 @@ const Event = ({ pageContext, data: { sanityEvent } }) => {
                     <PortableText value={_rawDescription} />
                 </div>
             </div>
-            <div className={style.background} style={{background: background ? background : "#ffffff"}}></div>
+            <div
+                className={style.background}
+                style={{ background: background ? background : "#ffffff" }}
+            ></div>
         </div>
     );
 };
@@ -60,6 +70,12 @@ export const query = graphql`
                 value
             }
             background
+            parent: eventParent {
+                title
+                slug {
+                    current
+                }
+            }
         }
     }
 `;

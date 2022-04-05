@@ -7,7 +7,6 @@ import seo from "./documents/seo";
 import page from "./documents/page";
 import landing from "./documents/landing";
 import event from "./documents/event";
-import domes from "./documents/domes";
 import show from "./documents/show";
 
 import homepage from "./documents/homepage";
@@ -53,7 +52,6 @@ export default createSchema({
         page,
         landing,
         event,
-        domes,
         show,
 
         faq,

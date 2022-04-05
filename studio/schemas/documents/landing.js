@@ -32,8 +32,8 @@ export default {
             of: [
                 {
                     type: "reference",
-                    to: [{ type: "page" }, { type: "domes" }],
-                    title: "Reference to Pages or Domes",
+                    to: [{ type: "page" }],
+                    title: "Reference to Pages",
                 },
             ],
         },

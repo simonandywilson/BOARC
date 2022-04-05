@@ -23,9 +23,10 @@
 }
 
 .box > div {
-    background: #ffffff;
+    background: var(--red);
     display: flex;
     flex-direction: column;
+    padding: var(--box-padding);
 }
 
 .box > div > button {
@@ -36,14 +37,14 @@
     padding: 0;
     font-family: var(--font);
     font-size: var(--font-size);
-    color: var(--purple);
+    color: #ffffff;
     text-transform: uppercase;
     pointer-events: all;
     cursor: pointer;
 }
 
 .box > div > button:hover {
-    color: var(--red);
+    color: var(--purple);
 }
 
 .panel {
@@ -52,7 +53,8 @@
     height: 100%;
     background: var(--brown-translucent);
     pointer-events: all;
-    padding: var(--margin);
+    padding-top: var(--margin);
+    padding-bottom: var(--margin);
     color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -102,6 +104,6 @@
 }
 
 .body {
-    padding-left: 10%;
-    padding-right: var(--margin-double);
+    padding-left: calc(var(--column-single) + var(--margin));
+    padding-right: calc(var(--column-single) + var(--margin));
 }

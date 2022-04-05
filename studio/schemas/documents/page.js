@@ -1,6 +1,9 @@
 import { isUniqueAcrossAllDocuments } from "../functions/isUniqueAcrossAllDocuments";
 import ReferencedBy from "../components/reference/ReferencedBy";
 import RenderColour from "../components/colour/RenderColour";
+import RenderSingleLanding from "../components/landing/RenderSingleLanding";
+import RenderReadingTime from "../components/reading/RenderReadingTime";
+
 import { PageIconLarge, HomeIconLarge } from "../styles/Icons";
 
 export default {
@@ -94,6 +97,15 @@ export default {
             validation: (Rule) => [Rule.required().error(`Please enter a slug.`)],
         },
         {
+            name: "reading",
+            title: "Reading Time",
+            type: "string",
+            readOnly: false,
+            group: "content",
+            inputComponent: RenderReadingTime,
+            options: { fieldName: "reading", target: "content" },
+        },
+        {
             name: "content",
             title: "Content",
             type: "pageBlock",
@@ -142,6 +154,44 @@ export default {
             ],
         },
         {
+            name: "landingPreview",
+            title: "Landing Preview",
+            type: "string",
+            readOnly: true,
+            group: "landing",
+            inputComponent: RenderSingleLanding,
+        },
+        {
+            name: "width",
+            title: "Content Width",
+            type: "string",
+            options: {
+                list: [
+                    { title: "Normal", value: "normal" },
+                    { title: "Wide", value: "wide" },
+                ],
+                layout: "radio",
+                direction: "horizontal",
+            },
+            initialValue: "normal",
+            group: "customisation",
+        },
+        {
+            name: "ascii",
+            title: "Ascii Banner",
+            type: "string",
+            options: {
+                list: [
+                    { title: "False", value: "false" },
+                    { title: "True", value: "true" },
+                ],
+                layout: "radio",
+                direction: "horizontal",
+            },
+            initialValue: "false",
+            group: "customisation",
+        },
+        {
             name: "text",
             title: "Text Colour",
             type: "colorlist",
@@ -159,7 +209,7 @@ export default {
                 tooltip: true,
                 darken: 20,
             },
-            initialValue: "#786A2F",
+            initialValue: { title: "Brown", value: "#786A2F" },
         },
         {
             name: "background",
@@ -170,6 +220,13 @@ export default {
             options: {
                 defaultColour: "#ffffff",
             },
+        },
+        {
+            name: "images",
+            title: "Background Images",
+            type: "array",
+            group: "customisation",
+            of: [{ type: "image" }],
         },
         {
             title: "SEO Description",

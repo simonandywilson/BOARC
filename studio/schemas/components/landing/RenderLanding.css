@@ -24,6 +24,7 @@
 .title, .description {
     white-space: nowrap;
     background: #ffffff;
+    z-index: 1;
 }
 
 .title {

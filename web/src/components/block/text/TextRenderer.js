@@ -2,18 +2,54 @@ import React from "react";
 import * as style from "./text.module.css";
 import { PortableText } from "@portabletext/react";
 
-const TextRenderer = (data) => {
-    const { children, value } = data.data;
+const TextRenderer = ({ data, width }) => {
+    const { children, value } = data;
 
     const hasComment = children[0]?.props?.markType === "blockComment" ? true : false;
 
     const format = (text) => {
         switch (value.style) {
-            case "heading":
-                return <h3 className={style.heading}>{text}</h3>;
+            case "subheading":
+                return (
+                    <h3
+                        className={style.subheading}
+                        style={{
+                            gridColumn: "var(--grid-position-main-wide)",
+                        }}
+                    >
+                        {text}
+                    </h3>
+                );
+
+            case "centered":
+                return (
+                    <p
+                        className={style.centered}
+                        style={{
+                            gridColumn:
+                                width === "wide"
+                                    ? "var(--grid-position-main-wide)"
+                                    : "var(--grid-position-main-normal)",
+                        }}
+                    >
+                        {text}
+                    </p>
+                );
 
             default:
-                return <p className={style.normal}>{text}</p>;
+                return (
+                    <p
+                        className={style.normal}
+                        style={{
+                            gridColumn:
+                                width === "wide"
+                                    ? "var(--grid-position-main-wide)"
+                                    : "var(--grid-position-main-normal)",
+                        }}
+                    >
+                        {text}
+                    </p>
+                );
         }
     };
 

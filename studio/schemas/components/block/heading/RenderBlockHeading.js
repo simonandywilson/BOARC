@@ -5,7 +5,7 @@ import sanityClient from "part:@sanity/base/client";
 const client = sanityClient.withConfig({ apiVersion: "2022-02-15" });
 
 const RenderBlockHeading = ({ value }) => {
-    const { heading, border } = value;
+    const { heading, border, colour } = value;
 
     const target = border ? border._ref : undefined;
 
@@ -50,9 +50,24 @@ const RenderBlockHeading = ({ value }) => {
                 portal
             >
                 <div>
-                    <div className={style.border}>{borderTop}</div>
-                    <span className={style.heading}>{heading}</span>
-                    <div className={style.border}>{borderBottom}</div>
+                    <div
+                        className={style.border}
+                        style={{ color: colour?.value ? colour.value : "#000000" }}
+                    >
+                        {borderTop}
+                    </div>
+                    <span
+                        className={style.heading}
+                        style={{ color: colour?.value ? colour.value : "#000000" }}
+                    >
+                        {heading}
+                    </span>
+                    <div
+                        className={style.border}
+                        style={{ color: colour?.value ? colour.value : "#000000" }}
+                    >
+                        {borderBottom}
+                    </div>
                 </div>
             </Tooltip>
         </Container>

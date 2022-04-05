@@ -5,26 +5,32 @@
     column-gap: var(--grid-columns-gap);
 }
 
-.normal, .heading {
-    grid-column: var(--grid-position-main);
+.normal,
+.subheading {
     line-height: var(--line-height);
     font-weight: normal;
 }
 
-.heading {
-    font-size:var(--font-size-medium);
+.subheading {
+    font-size: var(--font-size-medium);
+}
+
+.centered {
+    text-align: center;
+    /* margin-bottom: 0; */
+}
+
+.normal {
+    /* margin-bottom: 0; */
 }
 
 .comment {
-    grid-column:var(--grid-position-comment);
+    grid-column: var(--grid-position-comment);
     font-size: var(--font-size-small);
     order: var(--comment-caption-order);
-    
+    line-height: var(--line-height);
 }
 
 .comment > p:first-child {
     margin-top: var(--margin);
 }
-
-
-

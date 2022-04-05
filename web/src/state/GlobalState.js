@@ -60,13 +60,26 @@ export const useColoursUpdateContext = () => {
     return useContext(ColoursUpdateContext);
 };
 
+// Ascii
+const AsciiContext = createContext();
+const AsciiUpdateContext = createContext();
+
+export const useAsciiContext = () => {
+    return useContext(AsciiContext);
+};
+
+export const useAsciiUpdateContext = () => {
+    return useContext(AsciiUpdateContext);
+};
+
 // Context Provider
 const ContextProvider = ({ children }) => {
     const [easyRead, setEasyRead] = useState(false);
     const [eventsFuture, setEventsFuture] = useState([]);
     const [eventsPast, setEventsPast] = useState([]);
     const [eventsAccessed, setEventsAccessed] = useState(false);
-    const [colours, setColours] = useState({ text: "var(--brown)"});
+    const [colours, setColours] = useState({ text: "var(--brown)" });
+    const [ascii, setAscii] = useState(true);
 
     return (
         <EasyReadContext.Provider value={easyRead}>
@@ -79,7 +92,11 @@ const ContextProvider = ({ children }) => {
                                     <EventsAccessedUpdateContext.Provider value={setEventsAccessed}>
                                         <ColoursContext.Provider value={colours}>
                                             <ColoursUpdateContext.Provider value={setColours}>
-                                                {children}
+                                                <AsciiContext.Provider value={ascii}>
+                                                    <AsciiUpdateContext.Provider value={setAscii}>
+                                                        {children}
+                                                    </AsciiUpdateContext.Provider>
+                                                </AsciiContext.Provider>
                                             </ColoursUpdateContext.Provider>
                                         </ColoursContext.Provider>
                                     </EventsAccessedUpdateContext.Provider>

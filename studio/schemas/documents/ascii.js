@@ -32,7 +32,7 @@ const ASCIIIcon = (title) => (
                 fontSize="16"
                 fontFamily="Nunito"
             >
-                {title ? title : "~"}
+                {title ? (title.length > 1 ? "♣︎" : title) : "♣︎"}
             </text>
         </svg>
     </span>
@@ -62,17 +62,17 @@ export default {
                             return true;
                         }
 
-                        if (table.rows.length !== 7 && table.rows[0].cells.length !== 6) {
-                            return "Table must have 7 rows & 6 columns.";
-                        }
+                        // if (table.rows.length !== 7 && table.rows[0].cells.length !== 6) {
+                        //     return "Table must have 7 rows & 6 columns.";
+                        // }
 
                         if (table.rows.length !== 7) {
                             return "Table must have 7 rows.";
                         }
 
-                        if (table.rows[0].cells.length !== 6) {
-                            return "Table must have 6 columns.";
-                        }
+                        // if (table.rows[0].cells.length !== 6) {
+                        //     return "Table must have 6 columns.";
+                        // }
 
                         let duplicates = false;
 
@@ -119,6 +119,10 @@ export default {
             const number = /\d/;
 
             const checkType = () => {
+                if (title.length > 1) {
+                    return "Other";
+                }
+
                 if (symbol.test(title)) {
                     return "Symbol";
                 }

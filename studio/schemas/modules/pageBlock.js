@@ -1,10 +1,16 @@
 import React from "react";
-import * as style from "../styles/PageBlockStyle.css";
 import { CopyIconLarge } from "../styles/Icons";
 import CustomRichTextEditor from "../components/block/CustomRichTextEditor";
 
-// const HeadingStyle = (props) => <div className={style.heading}>{props.children}</div>;
-const HeadingStyle = (props) => <h3 style={{ fontWeight: 400, margin: 0, paddingBottom: "0.75rem" }}>{props.children}</h3>;
+const CenteredStyle = (props) => (
+    <div style={{textAlign: 'center'}}>
+        <span>{props.children}</span>
+    </div>
+);
+
+const SubheadingStyle = (props) => (
+    <h3 style={{ fontWeight: 400, margin: 0, paddingBottom: "0.75rem" }}>{props.children}</h3>
+);
 
 export default {
     name: "pageBlock",
@@ -18,10 +24,17 @@ export default {
             styles: [
                 { title: "Body", value: "normal" },
                 {
-                    title: "Heading",
-                    value: "heading",
+                    title: "Subheading",
+                    value: "subheading",
                     blockEditor: {
-                        render: HeadingStyle,
+                        render: SubheadingStyle,
+                    },
+                },
+                {
+                    title: "Centered",
+                    value: "centered",
+                    blockEditor: {
+                        render: CenteredStyle,
                     },
                 },
             ],

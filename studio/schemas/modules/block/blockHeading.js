@@ -23,6 +23,24 @@ export default {
             validation: (Rule) => Rule.required().error(`Your heading needs a border.`),
         },
         {
+            name: "colour",
+            title: "Colour",
+            type: "colorlist",
+            options: {
+                list: [
+                    { title: "Black", value: "#000000" },
+                    { title: "Red", value: "#ed6b6c" },
+                ],
+                borderradius: {
+                    inner: "100%",
+                    outer: "20%",
+                },
+                tooltip: true,
+                darken: 20,
+            },
+            initialValue: { title: "Black", value: "#000000" },
+        },
+        {
             name: "headingPreview",
             title: "Heading Preview",
             type: "string",
@@ -33,6 +51,7 @@ export default {
         select: {
             heading: "heading",
             border: "border",
+            colour: "colour",
         },
         component: RenderBlockHeading,
     },

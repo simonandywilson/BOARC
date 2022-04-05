@@ -47,8 +47,8 @@ export default {
             of: [
                 {
                     type: "reference",
-                    to: [{ type: "page" }, { type: "domes" }],
-                    title: "Reference to Pages or Domes FM",
+                    to: [{ type: "page" }],
+                    title: "Reference to Pages",
                 },
             ],
         },

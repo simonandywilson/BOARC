@@ -8,7 +8,6 @@
 .collapsible {
     margin: var(--block-margin);
     padding-left: var(--margin-double);
-    grid-column: var(--grid-position-main);
 }
 
 .featured {
@@ -43,9 +42,17 @@
     padding-left: var(--margin);
 }
 
+
+
 .text > p:first-child {
     margin-top: 0;
 }
+
+
+.text > * {
+    margin-bottom: 0;
+}
+
 
 .read {
     color: var(--purple);

@@ -41,7 +41,7 @@ const Faq = () => {
                             {index + 1 !== faq.faq.length && <span>, </span>}
                         </a>
                     ))}
-                    {faq.faq.map((text) => (
+                    {faq.faq.map((text, index) => (
                         <div key={text._id}>
                             <PortableText value={text._rawText} components={components} />
                         </div>

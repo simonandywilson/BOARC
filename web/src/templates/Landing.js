@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as style from "./landing.module.css";
 import { graphql, Link } from "gatsby";
 import { nanoid } from "nanoid";
+import { useAsciiUpdateContext } from "../state/GlobalState";
 
 const Landing = ({
     data: {
@@ -9,6 +10,12 @@ const Landing = ({
     },
 }) => {
     const rows = pages.length * 4;
+    const AsciiUpdateContext = useAsciiUpdateContext();
+
+    useEffect(() => {
+        AsciiUpdateContext(false);
+    }, []);
+
     return (
         <div className={style.landing}>
             <div className={style.container}>

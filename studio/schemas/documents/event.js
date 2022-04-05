@@ -28,6 +28,16 @@ export default {
     ],
     fields: [
         {
+            name: "eventParent",
+            title: "Parent",
+            type: "reference",
+            to: [{ type: "page" }],
+            initialValue: { _ref: "2b61b9b3-5f4d-4f9e-aca0-36e6043166ec" },
+            group: "preview",
+            options: { disableNew: true },
+            validation: (Rule) => Rule.required().error(`Please select a parent page.`),
+        },
+        {
             name: "title",
             title: "Title",
             type: "string",
@@ -78,7 +88,7 @@ export default {
             title: "Icon",
             type: "image",
             description:
-                "Icon will be cropped to a square. Click the pencil icon to choose a crop and hotspot.",
+                "Icon will be cropped to a square. After uploading/selecting an image, click the pencil icon to choose a crop and hotspot.",
             group: "preview",
             options: {
                 hotspot: true,
@@ -129,7 +139,7 @@ export default {
                 tooltip: true,
                 darken: 20,
             },
-            initialValue: { title: "brown", value: "#786A2F" },
+            initialValue: { title: "Brown", value: "#786A2F" },
         },
         {
             name: "background",

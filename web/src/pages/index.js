@@ -1,14 +1,11 @@
-import React from "react";
-import * as style from "../styles/index.module.css";
-import { graphql } from "gatsby";
+import { useEffect } from "react";
+import { navigate } from "@reach/router";
 
-const Home = ({ data }) => {
-
-    return (
-        <div>
-            
-        </div>
-    );
+const Home = () => {
+    useEffect(() => {
+        navigate("/about");
+    }, []);
+    return null;
 };
 
 export default Home;

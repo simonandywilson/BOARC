@@ -22,7 +22,7 @@ export const RenderAsciiBanner = React.forwardRef((props, ref) => {
             const data = await client.fetch(`[${targets.join(" ,")}]`);
 
             if (toFetch) {
-                setData(data);
+                setData(data.filter(i => i));
             }
         };
 
@@ -43,7 +43,7 @@ export const RenderAsciiBanner = React.forwardRef((props, ref) => {
                 <Card padding={[4, 4, 4, 4]} shadow={1} overflow={"hidden"} ref={ref}>
                     <div className={style.marquee}>
                         <Flex align={"center"} justify={"center"} direction={"row"}>
-                            {data.map((ascii, index) => {
+                            {data && data.map((ascii, index) => {
                                 return (
                                     <table key={ascii._id + index} className={style.table}>
                                         <tbody>
@@ -57,7 +57,8 @@ export const RenderAsciiBanner = React.forwardRef((props, ref) => {
                                         </tbody>
                                     </table>
                                 );
-                            })}
+                            })} 
+                            
                         </Flex>
                     </div>
                 </Card>

@@ -36,10 +36,6 @@ export const ContentMenu = S.listItem()
                             .filter("_type == $type")
                             .params({ type: "page" })
                     ),
-                S.listItem()
-                    .title("Domes FM")
-                    .icon(DomesIconLarge)
-                    .child(S.document().title("Domes FM").schemaType("domes").documentId("domes")),
                 S.divider(),
                 S.listItem()
                     .title("Events")

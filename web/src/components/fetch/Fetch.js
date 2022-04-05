@@ -14,8 +14,7 @@ const client = sanityClient({
     apiVersion: "2022-03-08",
     useCdn: true,
 });
-const futureEvents =
-    '*[_type == "event" && dateTime(start) > dateTime(now())] {_id, title, "slug": slug.current, start, "icon": icon.asset->, previewText} | order(start asc)';
+const futureEvents = `*[_type == "event" && dateTime(start) > dateTime(now())] {_id, title, "slug": slug.current, start, "icon": icon.asset->, previewText} | order(start asc)`;
 
 const pastEvents =
     '*[_type == "event" && dateTime(start) < dateTime(now())] {_id, title, "slug": slug.current, start, "icon": icon.asset->, previewText} | order(start asc)';
@@ -31,18 +30,26 @@ const Fetch = () => {
 
     useEffect(() => {
         document.documentElement.style.setProperty("--text-colour", ColoursContext.text);
-    }, [ColoursContext])
+    }, [ColoursContext]);
 
     useEffect(() => {
-        if (EventsAccessedContext && EventsFutureContext.length === 0 && EventsPastContext.length === 0) {
+        if (
+            EventsAccessedContext &&
+            EventsFutureContext.length === 0 &&
+            EventsPastContext.length === 0
+        ) {
             console.log("fetching...");
             client
-                .fetch(futureEvents)
-                .then((events) => EventsFutureUpdateContext(events))
-                .catch((error) => console.error(error.message));
-            client
-                .fetch(pastEvents)
-                .then((events) => EventsPastUpdateContext(events))
+                .fetch(
+                    `{
+                    "futureEvents": ${futureEvents},
+                    "pastEvents": ${pastEvents},
+                    }`
+                )
+                .then((events) => {
+                    EventsFutureUpdateContext(events.futureEvents);
+                    EventsPastUpdateContext(events.pastEvents);
+                })
                 .catch((error) => console.error(error.message));
         }
     }, [EventsAccessedContext]);

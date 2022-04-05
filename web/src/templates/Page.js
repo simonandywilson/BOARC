@@ -2,7 +2,11 @@ import React, { useEffect, useMemo } from "react";
 import { graphql } from "gatsby";
 import { PortableText } from "@portabletext/react";
 import * as style from "./page.module.css";
-import { useColoursContext, useColoursUpdateContext } from "../state/GlobalState";
+import {
+    useColoursContext,
+    useColoursUpdateContext,
+    useAsciiUpdateContext,
+} from "../state/GlobalState";
 
 import TextRenderer from "../components/block/text/TextRenderer";
 import HeadingRenderer from "../components/block/heading/HeadingRenderer";
@@ -21,20 +25,34 @@ const Page = ({ data: { page } }) => {
 
     const ColoursContext = useColoursContext();
     const ColoursUpdateContext = useColoursUpdateContext();
+    const AsciiUpdateContext = useAsciiUpdateContext();
 
     useEffect(() => {
         ColoursUpdateContext({ ...ColoursContext, text: text ? text.value : "var(--brown)" });
+        AsciiUpdateContext(page.ascii === "true" ? true : false);
     }, []);
 
-    const factorial = useMemo(() => {
+    const serialiser = useMemo(() => {
         const components = {
-            block: (data) => <TextRenderer data={data} />,
+            block: (data) => <TextRenderer data={data} width={page.width} />,
             types: {
-                blockHeading: HeadingRenderer,
+                blockHeading: (data) => <HeadingRenderer data={data} width={page.width} />,
                 blockImg: ImageRenderer,
-                blockCollapsible: collapsibleType,
+                blockCollapsible: (data) => {
+                    return data.value.type === "featured" ? (
+                        <CollapsibleFeaturedRenderer value={data.value} width={page.width} />
+                    ) : (
+                        <CollapsibleRenderer value={data.value} width={page.width} />
+                    );
+                },
                 blockCarousel: CarouselRenderer,
-                blockEvent: eventType,
+                blockEvent: (data) => {
+                    return data.value.type === "carousel" ? (
+                        <EventRendererCarousel value={data.value} width={page.width} />
+                    ) : (
+                        <EventRendererList value={data.value} width={page.width} />
+                    );
+                },
             },
             marks: {
                 blockFile: FileRenderer,
@@ -49,7 +67,7 @@ const Page = ({ data: { page } }) => {
 
     return (
         <div className={style.page}>
-            <PortableText value={page._rawContent} components={factorial} test={"test"} />
+            <PortableText value={page._rawContent} components={serialiser} />
             <div
                 className={style.background}
                 style={{ background: background ? background : "#ffffff" }}
@@ -60,39 +78,6 @@ const Page = ({ data: { page } }) => {
 
 export default Page;
 
-const collapsibleType = (data) => {
-    return data.value.type === "featured" ? (
-        <CollapsibleFeaturedRenderer value={data.value} />
-    ) : (
-        <CollapsibleRenderer value={data.value} />
-    );
-};
-
-const eventType = (data) => {
-    return data.value.type === "carousel" ? (
-        <EventRendererCarousel value={data.value} />
-    ) : (
-        <EventRendererList value={data.value} />
-    );
-};
-
-// const components = {
-//     block: (data) => <TextRenderer data={data} test={page.background} />,
-//     types: {
-//         blockHeading: HeadingRenderer,
-//         blockImg: ImageRenderer,
-//         blockCollapsible: collapsibleType,
-//         blockCarousel: CarouselRenderer,
-//         blockEvent: eventType,
-//     },
-//     marks: {
-//         blockFile: FileRenderer,
-//         blockInternal: InternalRenderer,
-//         blockExternal: ExternalRenderer,
-//         blockComment: () => null,
-//     },
-// };
-
 export const query = graphql`
     query getSinglePage($slug: String) {
         page: sanityPage(slug: { current: { eq: $slug } }) {
@@ -101,6 +86,11 @@ export const query = graphql`
                 value
             }
             background
+            width
+            images {
+                _rawAsset(resolveReferences: { maxDepth: 10 })
+            }
+            ascii
         }
     }
 `;
