@@ -5,6 +5,7 @@ import {
     useEventsAccessedUpdateContext,
 } from "../../../state/GlobalState";
 import EventRendererListRow from "./EventRendererListRow";
+import EventRendererListLoader from "./EventRendererListLoader";
 
 const EventRendererList = ({ value, width }) => {
     const tense = value.tense;
@@ -13,20 +14,24 @@ const EventRendererList = ({ value, width }) => {
     const EventsPastContext = useEventsPastContext();
     useEffect(() => EventsAccessedUpdateContext(true), []);
 
+    
+
     return (
         <>
-            {EventsFutureContext.length > 0 &&
-                tense === "future" &&
-                EventsFutureContext.map((event) => (
-                    <EventRendererListRow
-                        key={event._id}
-                        data={event}
-                        tense={"future"}
-                        width={width}
-                    />
-                ))}
-            {EventsPastContext.length > 0 &&
-                tense === "past" &&
+            {tense === "future" ? (
+                EventsFutureContext.length > 0 ? (
+                    EventsFutureContext.map((event) => (
+                        <EventRendererListRow
+                            key={event._id}
+                            data={event}
+                            tense={"future"}
+                            width={width}
+                        />
+                    ))
+                ) : (
+                    <EventRendererListLoader width={width} />
+                )
+            ) : EventsPastContext.length > 0 ? (
                 EventsPastContext.map((event) => (
                     <EventRendererListRow
                         key={event._id}
@@ -34,7 +39,10 @@ const EventRendererList = ({ value, width }) => {
                         tense={"past"}
                         width={width}
                     />
-                ))}
+                ))
+            ) : (
+                <EventRendererListLoader width={width} />
+            )}
         </>
     );
 };

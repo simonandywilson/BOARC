@@ -21,9 +21,9 @@ const HeadingRenderer = ({ data, width }) => {
                             : "var(--grid-position-main-normal)",
                 }}
             >
-                <span>{value.border.borderTop.repeat(100)}</span>
+                <span>{value.border.borderTop.repeat(200)}</span>
                 {value.heading}
-                <span>{value.border.borderBottom.repeat(100)}</span>
+                <span>{value.border.borderBottom.repeat(200)}</span>
             </h2>
         </div>
     );

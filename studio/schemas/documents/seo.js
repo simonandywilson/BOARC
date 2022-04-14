@@ -12,8 +12,16 @@ export default {
             title: "Site Title",
             name: "seoTitle",
             type: "string",
-            description: "Appears in browser window & search engine results.",
+            description: "Appears in search engine results.",
             validation: (Rule) => [Rule.required().warning(`Your site needs a Title.`)],
+        },
+        {
+            // Site Acronym
+            title: "Site Acronym",
+            name: "seoAcronym",
+            type: "string",
+            description: "Appears in browser tab.",
+            validation: (Rule) => [Rule.required().warning(`Your site needs an Acronym.`)],
         },
         {
             // Site Decription

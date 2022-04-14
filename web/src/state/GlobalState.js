@@ -74,7 +74,7 @@ export const useAsciiUpdateContext = () => {
 
 // Context Provider
 const ContextProvider = ({ children }) => {
-    const [easyRead, setEasyRead] = useState(false);
+    const [easyRead, setEasyRead] = useState({ text: false, image: false });
     const [eventsFuture, setEventsFuture] = useState([]);
     const [eventsPast, setEventsPast] = useState([]);
     const [eventsAccessed, setEventsAccessed] = useState(false);

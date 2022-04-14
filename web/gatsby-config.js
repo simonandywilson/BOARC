@@ -4,7 +4,7 @@ require("dotenv").config({
 
 module.exports = {
     siteMetadata: {
-        siteUrl: `http://www.bidstonobservatory.org`,
+        siteUrl: `https://www.bidstonobservatory.org`,
     },
     plugins: [
         {
@@ -26,7 +26,7 @@ module.exports = {
         {
             resolve: "gatsby-plugin-manifest",
             options: {
-                icon: "src/images/icon.png",
+                icon: "src/images/favicon.svg",
             },
         },
         `gatsby-plugin-image`,

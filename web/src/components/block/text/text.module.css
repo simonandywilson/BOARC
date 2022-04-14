@@ -17,11 +17,10 @@
 
 .centered {
     text-align: center;
-    /* margin-bottom: 0; */
 }
 
-.normal {
-    /* margin-bottom: 0; */
+.indent {
+    margin-left: var(--margin-double);
 }
 
 .comment {
@@ -29,6 +28,11 @@
     font-size: var(--font-size-small);
     order: var(--comment-caption-order);
     line-height: var(--line-height);
+}
+
+.comment > p {
+    padding: var(--box-padding);
+    background: #ffffff;
 }
 
 .comment > p:first-child {

@@ -5,11 +5,13 @@ import * as style from "../styles/404.module.css";
 const NotFoundPage = () => {
     return (
         <main className={style.container}>
-            <Link to="/">
-                <div className={style.wrapper}>
-                    <h4 className={style.text}>Page Not Found.<br/>Return Home?</h4>
-                </div>
-            </Link>
+            <div>PAGE NOT FOUND</div>
+            <br />
+            <div>
+                <span className={style.spinner}></span>
+            </div>
+            <br />
+            <Link to={"/"}>Return Home?</Link>
         </main>
     );
 };

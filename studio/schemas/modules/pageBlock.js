@@ -3,13 +3,23 @@ import { CopyIconLarge } from "../styles/Icons";
 import CustomRichTextEditor from "../components/block/CustomRichTextEditor";
 
 const CenteredStyle = (props) => (
-    <div style={{textAlign: 'center'}}>
-        <span>{props.children}</span>
+    <div style={{ textAlign: "center" }}>
+        <h4 style={{ fontWeight: 500, margin: 0, paddingBottom: "0.75rem", paddingTop: "0.5rem" }}>
+            {props.children}
+        </h4>
     </div>
 );
 
 const SubheadingStyle = (props) => (
-    <h3 style={{ fontWeight: 400, margin: 0, paddingBottom: "0.75rem" }}>{props.children}</h3>
+    <h3 style={{ fontWeight: 400, margin: 0, paddingBottom: "0.75rem", paddingTop: "0.5rem" }}>{props.children}</h3>
+);
+
+const IndentStyle = (props) => (
+    <div style={{ marginLeft: "2rem" }}>
+        <span>
+            {props.children}
+        </span>
+    </div>
 );
 
 export default {
@@ -35,6 +45,13 @@ export default {
                     value: "centered",
                     blockEditor: {
                         render: CenteredStyle,
+                    },
+                },
+                {
+                    title: "Indent",
+                    value: "indent",
+                    blockEditor: {
+                        render: IndentStyle,
                     },
                 },
             ],

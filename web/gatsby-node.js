@@ -1,7 +1,37 @@
 const path = require("path");
 
 exports.createPages = async ({ graphql, actions }) => {
-    const { createPage } = actions;
+    const { createRedirect, createPage } = actions;
+
+    const homepageQuery = await graphql(`
+        query getQuery {
+            homepage: sanityHomepage {
+                initial {
+                    ... on SanityPage {
+                        id
+                        slug {
+                            current
+                        }
+                    }
+                    ... on SanityLanding {
+                        id
+                        slug {
+                            current
+                        }
+                    }
+                }
+            }
+        }
+    `);
+
+    createRedirect({
+        fromPath: "/",
+        exactPath: true,
+        isPermanent: false,
+        redirectInBrowser: true,
+        toPath: `/${homepageQuery.data.homepage.initial.slug.current}`,
+    });
+
     const landingQuery = await graphql(`
         query getQuery {
             landing: allSanityLanding {
@@ -13,6 +43,7 @@ exports.createPages = async ({ graphql, actions }) => {
             }
         }
     `);
+
     const pageQuery = await graphql(`
         query getQuery {
             page: allSanityPage {
@@ -61,7 +92,7 @@ exports.createPages = async ({ graphql, actions }) => {
             context: { slug: node.slug.current },
         });
     });
-    eventQuery.data.event.edges.forEach(({node, next, previous}) => {
+    eventQuery.data.event.edges.forEach(({ node, next, previous }) => {
         createPage({
             path: node.slug.current,
             component: path.resolve(`src/templates/Event.js`),

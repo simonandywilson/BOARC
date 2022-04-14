@@ -8,6 +8,7 @@ Media Queries
         --font-size-small: 0.8rem;
         --font-size-medium: calc(var(--font-size) * 1.25);
         --font-size-large: calc(var(--font-size) * 1);
+        --font-size-event-carousel: var(--font-size-medium);
 
         --grid-position-main-normal: 1 / 12;
         --grid-position-main-wide: 1 / 12;
@@ -38,6 +39,7 @@ Media Queries
         --font-size-small: 0.8rem;
         --font-size-medium: calc(var(--font-size) * 1.25);
         --font-size-large: calc(var(--font-size) * 2);
+        --font-size-event-carousel: var(--font-size-medium);
 
         --grid-position-main-normal: 4 / 10;
         --grid-position-main-wide: 4 / 12;
@@ -68,11 +70,12 @@ Media Queries
         --font-size-small: 0.8rem;
         --font-size-medium: calc(var(--font-size) * 1.25);
         --font-size-large: calc(var(--font-size) * 2);
+        --font-size-event-carousel: var(--font-size-large);
 
-        --grid-position-main-normal: 4 / 10;
+        --grid-position-main-normal: 4 / 11;
         --grid-position-main-wide: 4 / 12;
 
-        --grid-position-comment: 1 / 3;
+        --grid-position-comment: 1 / 4;
         --grid-position-faq: 2 / 12;
 
         --grid-position-eventcarousel: 2 / 11;
@@ -98,6 +101,7 @@ Media Queries
         --font-size-small: 0.8rem;
         --font-size-medium: calc(var(--font-size) * 1.25);
         --font-size-large: calc(var(--font-size) * 2);
+        --font-size-event-carousel: var(--font-size-large);
 
         --grid-position-main-normal: 4 / 10;
         --grid-position-main-wide: 4 / 12;
@@ -151,6 +155,7 @@ Variables
     --brown-translucent: rgba(120, 106, 47, 0.9);
     --brown-highlight: rgb(120, 106, 47, 0.3);
     --red: #ed6b6c;
+    --grey: #ebebeb;
 
     --text-colour: var(--brown);
 }

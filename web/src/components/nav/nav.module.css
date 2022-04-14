@@ -15,9 +15,11 @@
 .title {
     margin-bottom: var(--margin);
     color: var(--purple);
-    background: #ffffff;
     width: max-content;
     max-width: calc(100% - var(--margin-double));
+    background: #ffffff;
+    padding-left: calc(var(--box-padding) * 2);
+    padding-right: calc(var(--box-padding) * 2);
 }
 
 .wrapper {
@@ -29,6 +31,15 @@
 
 .wrapper > div {
     flex-shrink: 0;
+    background: #ffffff;
+}
+
+.wrapper > div:first-child {
+    padding-left: calc(var(--box-padding) * 2);
+}
+
+.wrapper > div:last-child {
+    padding-right: calc(var(--box-padding) * 2);
 }
 
 /* .secondary {

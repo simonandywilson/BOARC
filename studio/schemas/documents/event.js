@@ -1,6 +1,8 @@
 import { isUniqueAcrossAllDocuments } from "../functions/isUniqueAcrossAllDocuments";
 import RenderColour from "../components/colour/RenderColour";
 import { EventsIconLarge } from "../styles/Icons";
+import sanityClient from "part:@sanity/base/client";
+const client = sanityClient.withConfig({ apiVersion: "2022-02-15" });
 
 export default {
     name: "event",
@@ -50,8 +52,15 @@ export default {
             description: "bidstonobservatory.org/",
             group: "preview",
             options: {
-                source: "title",
-                basePath: "bidstonobservatory.org/",
+                isHighlighted: true,
+                source: async (doc) => {
+                    const query = "*[_id == $parentId] {'slug': slug.current}";
+                    const params = { parentId: doc.eventParent._ref };
+                    const parent = await client.fetch(query, params);
+                    const slug = `${parent[0].slug}/${doc.title}`;
+                    return slug.replace(/\.[^/.]+$/, "");
+                },
+                slugify: (input) => input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
                 isUnique: isUniqueAcrossAllDocuments,
                 maxLength: 30,
             },

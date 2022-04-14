@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo } from "react";
 import { graphql } from "gatsby";
 import { PortableText } from "@portabletext/react";
+import Image from "gatsby-plugin-sanity-image";
 import * as style from "./page.module.css";
 import {
     useColoursContext,
@@ -19,9 +20,10 @@ import ExternalRenderer from "../components/block/external/ExternalRenderer";
 import CarouselRenderer from "../components/block/carousel/CarouselRenderer";
 import EventRendererCarousel from "../components/block/event/EventRendererCarousel";
 import EventRendererList from "../components/block/event/EventRendererList";
+import Seo from "../components/seo/Seo"
 
 const Page = ({ data: { page } }) => {
-    const { background, text } = page;
+    const { title, background, text, images, seoDescription, seoImage } = page;
 
     const ColoursContext = useColoursContext();
     const ColoursUpdateContext = useColoursUpdateContext();
@@ -66,13 +68,33 @@ const Page = ({ data: { page } }) => {
     }, []);
 
     return (
-        <div className={style.page}>
-            <PortableText value={page._rawContent} components={serialiser} />
-            <div
-                className={style.background}
-                style={{ background: background ? background : "#ffffff" }}
-            ></div>
-        </div>
+        <>
+            <Seo
+                title={title}
+                description={seoDescription}
+                image={seoImage?.asset?.url}
+            />
+            <div className={style.page}>
+                <PortableText value={page._rawContent} components={serialiser} />
+                <div className={style.decoration}>
+                    {images.map((image, index) => (
+                        <div className={style.grid} key={image.asset._id}>
+                            <Image
+                                {...image}
+                                className={style.decorationImage}
+                                alt=""
+                                width={1000}
+                                style={{ gridColumn: index % 2 === 0 ? "10 / 12" : "1 / 4" }}
+                            />
+                        </div>
+                    ))}
+                </div>
+                <div
+                    className={style.background}
+                    style={{ background: background ? background : "#ffffff" }}
+                ></div>
+            </div>
+        </>
     );
 };
 
@@ -81,6 +103,7 @@ export default Page;
 export const query = graphql`
     query getSinglePage($slug: String) {
         page: sanityPage(slug: { current: { eq: $slug } }) {
+            title
             _rawContent(resolveReferences: { maxDepth: 10 })
             text {
                 value
@@ -88,9 +111,15 @@ export const query = graphql`
             background
             width
             images {
-                _rawAsset(resolveReferences: { maxDepth: 10 })
+                ...ImageWithPreview
             }
             ascii
+            seoDescription
+            seoImage {
+                asset {
+                    url
+                }
+            }
         }
     }
 `;

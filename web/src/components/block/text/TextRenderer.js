@@ -36,6 +36,21 @@ const TextRenderer = ({ data, width }) => {
                     </p>
                 );
 
+            case "indent":
+                return (
+                    <p
+                        className={style.indent}
+                        style={{
+                            gridColumn:
+                                width === "wide"
+                                    ? "var(--grid-position-main-wide)"
+                                    : "var(--grid-position-main-normal)",
+                        }}
+                    >
+                        {text}
+                    </p>
+                );
+
             default:
                 return (
                     <p

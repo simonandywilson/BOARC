@@ -1,23 +1,29 @@
-import { useEffect } from "react";
-import { navigate } from "@reach/router";
+import React from "react";
+import { graphql } from "gatsby";
+import Seo from "../components/seo/Seo";
 
-const Home = () => {
-    useEffect(() => {
-        navigate("/about");
-    }, []);
-    return null;
+const index = ({ data }) => {
+    const { sanitySeo } = data;
+    return (
+        <Seo
+            description={sanitySeo.seoDescription}
+            image={sanitySeo.seoImage.asset.url}
+        />
+    );
 };
 
-export default Home;
+export default index;
 
-// export const query = graphql`
-//     query {
-//         menu: allSanityMenu(sort: { fields: [orderRank], order: ASC }) {
-//             nodes {
-//                 pages {
-//                     _rawContent(resolveReferences: { maxDepth: 5 })
-//                 }
-//             }
-//         }
-//     }
-// `;
+export const query = graphql`
+    {
+        sanitySeo {
+            seoTitle
+            seoDescription
+            seoImage {
+                asset {
+                    url
+                }
+            }
+        }
+    }
+`;

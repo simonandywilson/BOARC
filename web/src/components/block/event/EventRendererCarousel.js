@@ -15,12 +15,12 @@ const EventRendererCarousel = ({ value }) => {
     useEffect(() => EventsAccessedUpdateContext(true), []);
     return (
         <>
-            {EventsFutureContext.length > 0 &&
-                tense === "future" &&
-                <EventRendererCarouselSlide data={EventsFutureContext} tense={"future"} />}
-            {EventsPastContext.length > 0 &&
-                tense === "past" &&
-                <EventRendererCarouselSlide data={EventsPastContext} tense={"future"} />}
+            {tense === "future" && (
+                <EventRendererCarouselSlide data={EventsFutureContext} tense={"future"} />
+            )}
+            {tense === "past" && (
+                <EventRendererCarouselSlide data={EventsPastContext} tense={"past"} />
+            )}
         </>
     );
 };

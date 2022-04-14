@@ -43,7 +43,7 @@
 }
 
 .content {
-    margin-left: calc(var(--column-single) + var(--margin));
+    margin-left: calc(var(--column-double) + (var(--margin) * 2));
 }
 
 .description {
@@ -77,4 +77,37 @@
     overflow: hidden;
     height: calc(var(--font-size) * 1.2);
     font-size: var(--font-size);
+}
+
+.loader {
+    position: relative;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: none;
+    font-size: var(--font-size);
+}
+
+.spinner:before {
+    content: "";
+    animation: spinner 700ms steps(1, end) infinite;
+}
+
+@keyframes spinner {
+    0%,
+    100% {
+        content: "-";
+    }
+    25% {
+        content: "\\";
+    }
+    50% {
+        content: "|";
+    }
+    75% {
+        content: "/";
+    }
 }

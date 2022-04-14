@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useStaticQuery, graphql, Link } from "gatsby";
+import { useResizeDetector } from "react-resize-detector";
+import { useStaticQuery, graphql } from "gatsby";
 import * as style from "./nav.module.css";
 import Primary from "./Primary";
 import Secondary from "./Secondary";
 
-const Nav = () => {
+const Nav = ({ setAsciiWidth }) => {
     const { homepage, menu: nodes } = useStaticQuery(getData);
     const menus = nodes.nodes;
-    const currentSlug = typeof window !== "undefined" ? window.location.pathname : null
-
+    const currentSlug = typeof window !== "undefined" ? window.location.pathname : null;
     const [active, setActive] = useState(currentSlug);
+    const { width, ref } = useResizeDetector();
+
+    useEffect(() => setAsciiWidth(width), [width]);
 
     useEffect(() => {
         setActive(currentSlug);
@@ -17,7 +20,9 @@ const Nav = () => {
 
     return (
         <section className={style.nav}>
-            <div className={style.title}>{homepage.title}</div>
+            <div className={style.title} ref={ref}>
+                {homepage.title}
+            </div>
             <nav className={style.wrapper}>
                 {menus.map((menu, index) => {
                     const items = menu.pages;

@@ -1,43 +1,61 @@
 .container {
-    height: 100%;
     width: 100%;
     position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    flex-direction: column;
+    z-index: 9999;
+    font-size: var(--font-size-medium);
+    color: var(--red);
 }
 
-.wrapper {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    width: 100vw;
-    height: var(--wrapper-height);
-    max-height: var(--wrapper-height-max);
-    max-width: var(--wrapper-width);
-    margin: auto;
-    top: var(--wrapper-offset);
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #ffffff;
-    cursor: pointer;
-}
-
-.wrapper:hover {
-    background: red;
-}
-
-.wrapper:hover > .text {
-    color: #ffffff;
-}
-
-.text {
-    text-transform: uppercase;
+.container > a {
+    color: var(--red);
     text-decoration: none;
-    color: #000000;
-    text-align: center;
+}
+
+.container > a:hover {
+    color: var(--purple);
+}
+
+.spinner:before {
+    content: "";
+    animation: spinner 700ms steps(1, end) infinite;
+}
+
+@keyframes spinner {
+    0% {
+        content: "،  ";
+    }
+    10% {
+        content: "′  ";
+    }
+    20% {
+        content: " ´ ";
+    }
+    30% {
+        content: " ‾ ";
+    }
+    40% {
+        content: "  ⸌";
+    }
+    50% {
+        content: "  ⸊";
+    }
+    60% {
+        content: "  |";
+    }
+    70% {
+        content: "  ⁎";
+    }
+    80% {
+        content: "  ⁕";
+    }
+    90% {
+        content: " ෴ ";
+    }
+    100% {
+        content: "،  ";
+    }
 }

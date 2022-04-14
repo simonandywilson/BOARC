@@ -1,5 +1,9 @@
 import React from "react";
-const HeadingStyle = (props) => <h3 style={{ fontWeight: 400, margin: 0 }}>{props.children}</h3>;
+const SubheadingStyle = (props) => (
+    <h3 style={{ fontWeight: 400, margin: 0, paddingBottom: "0.75rem", paddingTop: "0.5rem" }}>
+        {props.children}
+    </h3>
+);
 
 export default {
     name: "eventBlock",
@@ -11,10 +15,10 @@ export default {
             styles: [
                 { title: "Body", value: "normal" },
                 {
-                    title: "Heading",
-                    value: "heading",
+                    title: "Subheading",
+                    value: "subheading",
                     blockEditor: {
-                        render: HeadingStyle,
+                        render: SubheadingStyle,
                     },
                 },
             ],

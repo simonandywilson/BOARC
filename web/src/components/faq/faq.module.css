@@ -23,13 +23,17 @@
 }
 
 .box > div {
-    background: var(--red);
     display: flex;
-    flex-direction: column;
-    padding: var(--box-padding);
 }
 
-.box > div > button {
+.toggleMain {
+    background: var(--red);
+    flex-direction: column;
+    padding: var(--box-padding);
+    width: max-content;
+}
+
+.toggleMain > button {
     background: none;
     border: none;
     text-align: left;
@@ -43,8 +47,42 @@
     cursor: pointer;
 }
 
-.box > div > button:hover {
+.toggleMain > button:hover {
     color: var(--purple);
+}
+
+.toggleEasyRead {
+    background: var(--grey);
+    padding: var(--margin-half);
+    align-items: center;
+}
+
+.toggleEasyRead > button {
+    background: none;
+    text-align: left;
+    padding: 0;
+    font-family: var(--font);
+    font-size: var(--font-size-large);
+    color: var(--purple);
+    pointer-events: all;
+    cursor: pointer;
+}
+
+.toggleEasyRead > button:hover {
+    color: var(--brown) !important;
+    border-color: var(--brown) !important;
+}
+
+.toggleText {
+    border: none;
+    margin-right: var(--margin-half);
+}
+
+.toggleImage {
+    height: var(--font-size-large);
+    width: calc(var(--font-size-large) * 1.5);
+    flex-shrink: 0;
+    border: 2px solid var(--purple);
 }
 
 .panel {
@@ -62,7 +100,7 @@
     grid-column: var(--grid-position-faq);
 }
 
-.panel > button {
+.close {
     position: fixed;
     background: none;
     border: none;
@@ -75,9 +113,11 @@
     cursor: pointer;
     right: 0;
     margin-right: var(--margin-double);
+    background: var(--brown);
+    padding: var(--box-padding);
 }
 
-.panel > button:hover {
+.close:hover {
     color: var(--red);
 }
 
@@ -86,11 +126,28 @@
     margin-left: var(--faq-margin);
 }
 
+.heading {
+    position: sticky;
+    top: 0;
+    background: var(--brown);
+    width: max-content;
+    padding: var(--box-padding);
+}
+
 .title {
     text-transform: uppercase;
 }
 
 .tab {
+    background: none;
+    border: none;
+    text-align: left;
+    width: max-content;
+    padding: 0;
+    font-family: var(--font);
+    font-size: var(--font-size);
+    color: #ffffff;
+    pointer-events: all;
     cursor: pointer;
 }
 
@@ -98,7 +155,7 @@
     color: var(--red);
 }
 
-.heading {
+.question {
     font-size: var(--font-size);
     font-weight: normal;
 }
@@ -106,4 +163,9 @@
 .body {
     padding-left: calc(var(--column-single) + var(--margin));
     padding-right: calc(var(--column-single) + var(--margin));
+}
+
+.anchor {
+    position: absolute;
+    transform: translateY(-100px)
 }

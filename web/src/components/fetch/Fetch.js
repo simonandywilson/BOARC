@@ -38,7 +38,6 @@ const Fetch = () => {
             EventsFutureContext.length === 0 &&
             EventsPastContext.length === 0
         ) {
-            console.log("fetching...");
             client
                 .fetch(
                     `{
