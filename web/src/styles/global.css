@@ -215,7 +215,7 @@ Typography
 Swiper
 ----------------------------------------*/
 
-.swiper-pagination {
+/* .swiper-pagination {
     position: absolute;
     text-align: center;
     transition: 300ms opacity;
@@ -263,4 +263,4 @@ Swiper
 }
 .swiper-pagination-lock {
     display: none;
-}
+} */

@@ -4,9 +4,20 @@ import { PortableText } from "@portabletext/react";
 import * as style from "./event.module.css";
 import Image from "gatsby-plugin-sanity-image";
 import { useAsciiUpdateContext } from "../state/GlobalState";
+import Seo from "../components/seo/Seo"
 
 const Event = ({ pageContext, data: { sanityEvent } }) => {
-    const { title, banner, start, _rawProgramme, _rawDescription, background } = sanityEvent;
+    const {
+        parent,
+        title,
+        banner,
+        start,
+        _rawProgramme,
+        _rawDescription,
+        background,
+        seoDescription,
+        seoImage,
+    } = sanityEvent;
     const options = { day: "numeric", year: "numeric", month: "short" };
     const date = new Date(start).toLocaleDateString("en-GB", options);
     const AsciiUpdateContext = useAsciiUpdateContext();
@@ -16,7 +27,12 @@ const Event = ({ pageContext, data: { sanityEvent } }) => {
     }, []);
 
     return (
-        <div>
+        <>
+            <Seo
+                title={`${parent.title}: ${title}`}
+                description={seoDescription}
+                image={seoImage?.asset?.url}
+            />
             <div className={style.nav}>
                 <Link to={`/${sanityEvent.parent.slug.current}`} className={style.back}>
                     &lsaquo;{`Back to ${sanityEvent.parent.title}`}
@@ -50,7 +66,7 @@ const Event = ({ pageContext, data: { sanityEvent } }) => {
                 className={style.background}
                 style={{ background: background ? background : "#ffffff" }}
             ></div>
-        </div>
+        </>
     );
 };
 
@@ -74,6 +90,12 @@ export const query = graphql`
                 title
                 slug {
                     current
+                }
+            }
+            seoDescription
+            seoImage {
+                asset {
+                    url
                 }
             }
         }
