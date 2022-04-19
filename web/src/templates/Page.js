@@ -75,9 +75,16 @@ const Page = ({ data: { page } }) => {
         <>
             <Seo title={title} description={seoDescription} image={seoImage?.asset?.url} />
             <div className={style.page}>
-                {/* <Radio /> */}
+                <Radio />
                 <PortableText value={page._rawContent} components={serialiser} />
-                <div className={style.decoration}>
+                <div
+                    className={style.decoration}
+                    style={{
+                        transform: page.ascii
+                            ? "translateY(calc((var(--ascii-height) * -1) + ((var(--margin) + var(--margin-half)) * -1)))"
+                            : 0,
+                    }}
+                >
                     {images.map((image, index) => (
                         <div className={style.grid} key={image.asset._id}>
                             <Image

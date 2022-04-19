@@ -85,6 +85,11 @@ export const ShowIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="�
 export const ImgGridIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="🖼" />;
 export const ImgGridIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="🖼" />;
 
+export const RadioIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="📡" />;
+export const RadioIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="📡" />;
+
+export const ChatIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="💬" />;
+export const ChatIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="💬" />;
 
 export const ASCIIIconLarge = () => (
     <span

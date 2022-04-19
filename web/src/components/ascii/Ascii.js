@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import * as style from "./ascii.module.css";
 import { useStaticQuery, graphql } from "gatsby";
 import { nanoid } from "nanoid";
@@ -8,7 +8,13 @@ import { useResizeDetector } from "react-resize-detector";
 const Ascii = ({ asciiWidth }) => {
     const { homepage: ascii } = useStaticQuery(getData);
     const AsciiContext = useAsciiContext();
-     const { height, ref } = useResizeDetector();
+    const { height, ref } = useResizeDetector();
+    
+    useEffect(
+        () => document.documentElement.style.setProperty("--ascii-height", `${height}px`),
+        [height]
+    );
+
     return (
         <header
             className={style.ascii}

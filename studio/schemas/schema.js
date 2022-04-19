@@ -29,6 +29,8 @@ import blockFile from "./modules/block/blockFile";
 import blockInternal from "./modules/block/blockInternal";
 import blockExternal from "./modules/block/blockExternal";
 import blockComment from "./modules/block/blockComment";
+import blockRadio from "./modules/block/blockRadio";
+import blockChat from "./modules/block/blockChat";
 
 
 import blockEvent from "./modules/block/blockEvent";
@@ -73,6 +75,8 @@ export default createSchema({
         blockComment,
         blockEvent,
         blockShow,
+        blockRadio,
+        blockChat,
 
         // Module
         img,

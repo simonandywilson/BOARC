@@ -23,5 +23,5 @@
 }
 
 .anchor {
-    transform: translateY(calc(var(--nav-height) + (var(--margin) * -1)));
+    transform: translateY(calc(var(--nav-height) + (var(--margin-double) * -1)));
 }

@@ -95,6 +95,12 @@ export default {
         {
             type: "blockShow",
         },
+        {
+            type: "blockRadio",
+        },
+        {
+            type: "blockChat",
+        },
     ],
 };
 

@@ -19,6 +19,7 @@ const Nav = ({ setAsciiWidth }) => {
         () => document.documentElement.style.setProperty("--nav-height", `-${height}px`),
         [height]
     );
+
     const ActiveContext = useActiveContext();
 
     return (

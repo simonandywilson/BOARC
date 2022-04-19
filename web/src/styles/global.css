@@ -148,6 +148,7 @@ Variables
     --margin-double: calc(var(--margin) * 2);
     --block-margin: var(--font-size) 0 var(--font-size) 0;
 
+    --ascii-height: 0;
     --nav-height: 0;
 
     --box-padding: 3px;
