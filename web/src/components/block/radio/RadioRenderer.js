@@ -1,29 +1,20 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import ReactPlayer from "react-player";
 import * as style from "./radio.module.css";
+import RadioRendererTime from "./RadioRendererTime";
 
-const Radio = () => {
+const RadioRenderer = ({ value }) => {
+    const { title, url } = value;
     const [playing, setPlaying] = useState(false);
     const [volume, setVolume] = useState(1);
     const playerRef = useRef(null);
-
-    const [time, setTime] = useState(5000);
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setTime((prevTime) => prevTime + 1);
-        }, 1000);
-        return () => {
-            clearInterval(timer);
-        };
-    }, []);
 
     return (
         <div className={style.grid}>
             <div className={style.radio}>
                 <ReactPlayer
                     className={style.player}
-                    url="http://us3.internet-radio.com:8485/stream"
+                    url={url}
                     controls={false}
                     height={0}
                     width={0}
@@ -34,7 +25,7 @@ const Radio = () => {
                     ref={playerRef}
                 />
                 <div className={style.title}>
-                    <h3>Domes FM Player</h3>
+                    <h3>{title}</h3>
                 </div>
                 <div className={style.controls}>
                     <button
@@ -66,9 +57,7 @@ const Radio = () => {
                         <div className={style.status}>
                             NOW LIVE <span className={style.spinner}></span>
                         </div>
-                        <div className={style.time}>
-                            {new Date(time * 1000).toISOString().substr(11, 8)}
-                        </div>
+                        <RadioRendererTime />
                         <input
                             className={style.volume}
                             type="range"
@@ -87,4 +76,4 @@ const Radio = () => {
     );
 };
 
-export default Radio;
+export default RadioRenderer;

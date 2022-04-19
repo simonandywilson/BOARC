@@ -16,6 +16,7 @@ Media Queries
         --grid-position-comment: 3 / 12;
         --grid-position-faq: 1 / 12;
          --grid-position-radio: 1 / 4;
+         --grid-position-chat: 1 / 4;
 
         --grid-position-eventcarousel: 2 / 11;
         --grid-position-event-back: 1 / 4;
@@ -48,6 +49,7 @@ Media Queries
         --grid-position-comment: 3 / 7;
         --grid-position-faq: 1 / 12;
          --grid-position-radio: 1 / 4;
+         --grid-position-chat: 1 / 4;
 
         --grid-position-eventcarousel: 2 / 11;
         --grid-position-event-back: 1 / 4;
@@ -80,6 +82,7 @@ Media Queries
         --grid-position-comment: 1 / 4;
         --grid-position-faq: 2 / 12;
          --grid-position-radio: 1 / 4;
+         --grid-position-chat: 1 / 4;
 
         --grid-position-eventcarousel: 2 / 11;
         --grid-position-event-back: 1 / 4;
@@ -112,6 +115,7 @@ Media Queries
         --grid-position-comment: 2 / 4;
         --grid-position-faq: 2 / 12;
         --grid-position-radio: 1 / 4;
+         --grid-position-chat: 1 / 4;
 
         --grid-position-eventcarousel: 2 / 11;
         --grid-position-event-back: 1 / 4;

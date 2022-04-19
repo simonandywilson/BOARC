@@ -1,7 +1,7 @@
 import React from "react";
 import * as style from "./secondary.module.css";
 import scrollTo from "gatsby-plugin-smoothscroll";
-const slugify = require("slugify");
+ import slugify from "slugify";
 
 const SecondaryTab = ({ items, isActive }) => {
     const tabs = items[0]._rawContent?.filter((type) => type._type === "blockHeading");

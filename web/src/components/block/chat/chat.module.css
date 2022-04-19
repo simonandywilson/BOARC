@@ -1,0 +1,17 @@
+.grid {
+    position: absolute;
+    display: grid;
+    grid-template-columns: var(--grid-columns);
+    column-gap: var(--grid-columns-gap);
+    margin-top: var(--margin);
+    top: 200px;
+    width: calc(100% - var(--margin-double));
+    z-index: 99999;
+}
+
+.chat {
+    grid-column: var(--grid-position-chat);
+    background: #d8d8d8;
+    width: 100%;
+    height: 500px;
+}

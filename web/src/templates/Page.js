@@ -21,8 +21,10 @@ import ExternalRenderer from "../components/block/external/ExternalRenderer";
 import CarouselRenderer from "../components/block/carousel/CarouselRenderer";
 import EventRendererCarousel from "../components/block/event/EventRendererCarousel";
 import EventRendererList from "../components/block/event/EventRendererList";
+import RadioRenderer from "../components/block/radio/RadioRenderer";
+import ChatRenderer from "../components/block/chat/ChatRenderer";
 import Seo from "../components/seo/Seo";
-import Radio from "../components/block/radio/Radio";
+
 
 const Page = ({ data: { page } }) => {
     const { title, slug, background, text, images, seoDescription, seoImage } = page;
@@ -59,6 +61,8 @@ const Page = ({ data: { page } }) => {
                         <EventRendererList value={data.value} width={page.width} />
                     );
                 },
+                blockRadio: RadioRenderer,
+                blockChat: ChatRenderer,
             },
             marks: {
                 blockFile: FileRenderer,
@@ -75,7 +79,6 @@ const Page = ({ data: { page } }) => {
         <>
             <Seo title={title} description={seoDescription} image={seoImage?.asset?.url} />
             <div className={style.page}>
-                <Radio />
                 <PortableText value={page._rawContent} components={serialiser} />
                 <div
                     className={style.decoration}
