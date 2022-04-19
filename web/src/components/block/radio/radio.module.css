@@ -1,0 +1,182 @@
+.grid {
+    position: sticky;
+    top: 130px;
+    z-index: 9999;
+    display: grid;
+    grid-template-columns: var(--grid-columns);
+    column-gap: var(--grid-columns-gap);
+}
+
+.radio {
+    grid-column: var(--grid-position-radio);
+    background: #d8d8d8;
+}
+
+.title {
+    font-size: var(--font-size);
+    color: #000000;
+    text-align: center;
+}
+
+.title > h3 {
+    font-weight: 400;
+    margin-top: var(--margin);
+    margin-bottom: var(--margin);
+}
+
+.player {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+.controls {
+    position: relative;
+    background: #ffffff;
+    height: max-content;
+    width: calc(100% - var(--margin-double));
+    display: flex;
+    color: #ffffff;
+    margin: var(--margin);
+    padding: var(--margin);
+}
+
+.play {
+    height: 100%;
+    cursor: pointer;
+    background: #d8d8d8;
+    border: none;
+    font-family: var(--font-family);
+    color: #ffffff;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--margin);
+    flex-shrink: 0;
+    padding: var(--margin);
+}
+
+.play > svg {
+    width: var(--font-size-medium);
+    height: var(--font-size-medium);
+}
+
+.play:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    color: #000000;
+}
+
+.status {
+    position: relative;
+    width: 100%;
+    color: var(--red);
+}
+
+.time {
+    flex: 1;
+}
+
+.volume {
+    flex: 1;
+}
+
+.spinner:before {
+    content: "";
+    animation: spinner 700ms steps(1, end) infinite;
+}
+
+@keyframes spinner {
+    0%,
+    100% {
+        content: "✶";
+    }
+    16% {
+        content: "✸";
+    }
+    32% {
+        content: "✹";
+    }
+    48% {
+        content: "✺";
+    }
+    64% {
+        content: "✹";
+    }
+    80% {
+        content: "✷";
+    }
+}
+
+
+/********** Range Input Styles **********/
+/*Range Reset*/
+input[type="range"] {
+   -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Removes default focus */
+input[type="range"]:focus {
+  outline: none;
+}
+
+/***** Chrome, Safari, Opera and Edge Chromium styles *****/
+/* slider track */
+input[type="range"]::-webkit-slider-runnable-track {
+   background-color: #000000;
+   height: 2px;  
+}
+
+/* slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+   appearance: none;
+   margin-top: -6px; /* Centers thumb on the track */
+
+   /*custom styles*/
+   background-color: #000000;
+   height: 1rem;
+   width: 1rem;
+   border-radius: 50%;
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {   
+  border: 1px solid #000000;
+  outline: 2px solid #000000;
+  outline-offset: 2px; 
+}
+
+/******** Firefox styles ********/
+/* slider track */
+input[type="range"]::-moz-range-track {
+   background-color: #000000;
+   height: 2px;  
+}
+
+input[type="range"]::-moz-range-thumb {
+   border: none;
+   border-radius: 0;
+
+   /*custom styles*/
+   background-color: #000000;
+   height: 1rem;
+   width: 1rem;
+   border-radius: 50%;
+}
+
+input[type="range"]:focus::-moz-range-thumb {
+  border: 1px solid #000000;
+  outline: 2px solid #000000;
+  outline-offset: 2px; 
+}

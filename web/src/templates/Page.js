@@ -4,6 +4,7 @@ import { PortableText } from "@portabletext/react";
 import Image from "gatsby-plugin-sanity-image";
 import * as style from "./page.module.css";
 import {
+    useActiveUpdateContext,
     useColoursContext,
     useColoursUpdateContext,
     useAsciiUpdateContext,
@@ -20,16 +21,19 @@ import ExternalRenderer from "../components/block/external/ExternalRenderer";
 import CarouselRenderer from "../components/block/carousel/CarouselRenderer";
 import EventRendererCarousel from "../components/block/event/EventRendererCarousel";
 import EventRendererList from "../components/block/event/EventRendererList";
-import Seo from "../components/seo/Seo"
+import Seo from "../components/seo/Seo";
+import Radio from "../components/block/radio/Radio";
 
 const Page = ({ data: { page } }) => {
-    const { title, background, text, images, seoDescription, seoImage } = page;
+    const { title, slug, background, text, images, seoDescription, seoImage } = page;
 
+    const ActiveUpdateContext = useActiveUpdateContext();
     const ColoursContext = useColoursContext();
     const ColoursUpdateContext = useColoursUpdateContext();
     const AsciiUpdateContext = useAsciiUpdateContext();
 
     useEffect(() => {
+        ActiveUpdateContext(slug.current);
         ColoursUpdateContext({ ...ColoursContext, text: text ? text.value : "var(--brown)" });
         AsciiUpdateContext(page.ascii === "true" ? true : false);
     }, []);
@@ -69,12 +73,9 @@ const Page = ({ data: { page } }) => {
 
     return (
         <>
-            <Seo
-                title={title}
-                description={seoDescription}
-                image={seoImage?.asset?.url}
-            />
+            <Seo title={title} description={seoDescription} image={seoImage?.asset?.url} />
             <div className={style.page}>
+                {/* <Radio /> */}
                 <PortableText value={page._rawContent} components={serialiser} />
                 <div className={style.decoration}>
                     {images.map((image, index) => (
@@ -104,6 +105,9 @@ export const query = graphql`
     query getSinglePage($slug: String) {
         page: sanityPage(slug: { current: { eq: $slug } }) {
             title
+            slug {
+                current
+            }
             _rawContent(resolveReferences: { maxDepth: 10 })
             text {
                 value
@@ -120,6 +124,7 @@ export const query = graphql`
                     url
                 }
             }
+            landing
         }
     }
 `;

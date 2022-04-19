@@ -28,7 +28,6 @@ const CarouselRenderer = ({ value }) => {
                         />
                     </svg>
                 </button>
-
                 <Swiper
                     // pagination={{
                     //     type: "progressbar",

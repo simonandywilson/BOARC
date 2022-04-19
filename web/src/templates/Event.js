@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby";
 import { PortableText } from "@portabletext/react";
 import * as style from "./event.module.css";
 import Image from "gatsby-plugin-sanity-image";
-import { useAsciiUpdateContext } from "../state/GlobalState";
+import { useActiveUpdateContext, useAsciiUpdateContext } from "../state/GlobalState";
 import Seo from "../components/seo/Seo"
 
 const Event = ({ pageContext, data: { sanityEvent } }) => {
@@ -20,9 +20,11 @@ const Event = ({ pageContext, data: { sanityEvent } }) => {
     } = sanityEvent;
     const options = { day: "numeric", year: "numeric", month: "short" };
     const date = new Date(start).toLocaleDateString("en-GB", options);
+    const ActiveUpdateContext = useActiveUpdateContext();
     const AsciiUpdateContext = useAsciiUpdateContext();
 
     useEffect(() => {
+        ActiveUpdateContext(parent.slug.current);
         AsciiUpdateContext(false);
     }, []);
 

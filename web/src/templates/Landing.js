@@ -2,18 +2,19 @@ import React, { useEffect } from "react";
 import * as style from "./landing.module.css";
 import { graphql, Link } from "gatsby";
 import { nanoid } from "nanoid";
-import { useAsciiUpdateContext } from "../state/GlobalState";
+import { useActiveUpdateContext, useAsciiUpdateContext } from "../state/GlobalState";
 import Seo from "../components/seo/Seo";
 
 const Landing = ({ data: { sanityLanding } }) => {
-    const { pages } = sanityLanding;
+    const { pages, slug } = sanityLanding;
     const rows = pages.length * 4;
+    const ActiveUpdateContext = useActiveUpdateContext();
     const AsciiUpdateContext = useAsciiUpdateContext();
 
     useEffect(() => {
+        ActiveUpdateContext(slug.current);
         AsciiUpdateContext(false);
     }, []);
-
     return (
         <>
             <Seo title={sanityLanding.title} />
@@ -101,6 +102,9 @@ export const query = graphql`
     query getSingleLanding($slug: String) {
         sanityLanding(slug: { current: { eq: $slug } }) {
             title
+            slug {
+                current
+            }
             pages {
                 ... on SanityPage {
                     _id

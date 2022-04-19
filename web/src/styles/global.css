@@ -15,6 +15,7 @@ Media Queries
 
         --grid-position-comment: 3 / 12;
         --grid-position-faq: 1 / 12;
+         --grid-position-radio: 1 / 4;
 
         --grid-position-eventcarousel: 2 / 11;
         --grid-position-event-back: 1 / 4;
@@ -46,6 +47,7 @@ Media Queries
 
         --grid-position-comment: 3 / 7;
         --grid-position-faq: 1 / 12;
+         --grid-position-radio: 1 / 4;
 
         --grid-position-eventcarousel: 2 / 11;
         --grid-position-event-back: 1 / 4;
@@ -77,6 +79,7 @@ Media Queries
 
         --grid-position-comment: 1 / 4;
         --grid-position-faq: 2 / 12;
+         --grid-position-radio: 1 / 4;
 
         --grid-position-eventcarousel: 2 / 11;
         --grid-position-event-back: 1 / 4;
@@ -108,6 +111,7 @@ Media Queries
 
         --grid-position-comment: 2 / 4;
         --grid-position-faq: 2 / 12;
+        --grid-position-radio: 1 / 4;
 
         --grid-position-eventcarousel: 2 / 11;
         --grid-position-event-back: 1 / 4;
@@ -115,7 +119,7 @@ Media Queries
         --grid-position-event-description: 6 / 12;
 
         --grid-position-ascii: 1 / 5;
-        --grid-position-carousel: 3 / 12;
+        --grid-position-carousel: 4 / 12;
         --grid-position-image-large: 3 / 12;
         --grid-position-image-small: 6 / 12;
         --grid-position-image-caption: 4 / 6;
@@ -143,6 +147,8 @@ Variables
     --margin-half: calc(var(--margin) / 2);
     --margin-double: calc(var(--margin) * 2);
     --block-margin: var(--font-size) 0 var(--font-size) 0;
+
+    --nav-height: 0;
 
     --box-padding: 3px;
 

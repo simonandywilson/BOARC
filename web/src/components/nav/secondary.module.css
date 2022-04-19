@@ -1,12 +1,8 @@
 .secondary {
-    position: absolute;
+    position: relative;
     left: 0;
     width: max-content;
     max-width: 100%;
-    margin-bottom: var(--margin);
-    background: #ffffff;
-    padding-left: calc(var(--box-padding) * 2);
-    padding-right: calc(var(--box-padding) * 2);
 }
 
 .secondary > button {
