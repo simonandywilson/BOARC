@@ -1,4 +1,4 @@
-let Pusher = require("pusher");
+import Pusher from "pusher";
 const pusher = new Pusher({
     appId: "1385717",
     key: "f7ee7537880eb58daa4a",
@@ -21,6 +21,8 @@ export default async function handler(req, res) {
 
     const auth = pusher.authenticate(socket_id, channel_name, presenceData);
     res.send(auth);
+
+    console.log(auth, res.send);
 
     // try {
     //     const auth = pusher.authenticate(socket_id, channel_name, presenceData);
