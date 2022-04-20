@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import ReactPlayer from "react-player";
 import * as style from "./radio.module.css";
-import "react-h5-audio-player/lib/styles.css";
 import RadioRendererTime from "./RadioRendererTime";
 
 const RadioRenderer = ({ value }) => {
