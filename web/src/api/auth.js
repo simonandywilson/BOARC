@@ -21,6 +21,5 @@ export default async function handler(req, res) {
     };
 
     const auth = JSON.stringify(pusher.authenticate(socket_id, channel_name, presenceData));
-
     res.send(auth);
 }

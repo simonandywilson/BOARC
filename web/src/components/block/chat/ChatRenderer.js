@@ -4,7 +4,6 @@ import axios from "axios";
 import * as style from "./chat.module.css";
 
 const ChatRenderer = ({ value }) => {
-    console.log(value);
     const [username, setUsername] = useState("Guest");
     const [chats, setChats] = useState([]);
     const [messageToSend, setMessageToSend] = useState("");
@@ -13,7 +12,7 @@ const ChatRenderer = ({ value }) => {
     // const [usersRemoved, setUsersRemoved] = useState([]);
 
     const pusher = new Pusher(process.env.GATSBY_PUSHER_KEY, {
-        cluster: "eu",
+        cluster: process.env.GATSBY_PUSHER_CLUSTER,
         authEndpoint: "/api/auth",
         auth: { params: { username } },
     });
@@ -23,13 +22,15 @@ const ChatRenderer = ({ value }) => {
         if (mounted) {
             const channel = pusher.subscribe("presence-channel");
 
-            // new member subscription to channel
+            // member subscribes to channel
             channel.bind("pusher:subscription_succeeded", (members) => {
+                // total subscribed
                 setOnlineUsersCount(members.count);
             });
 
-            // member joining chat
+            // member joins chat
             channel.bind("pusher:member_added", (member) => {
+                // console.log("count",channel.members.count)
                 setOnlineUsersCount(channel.members.count);
                 // setOnlineUsers((prevState) => [
                 //     ...prevState,
