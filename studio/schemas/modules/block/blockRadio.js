@@ -15,6 +15,10 @@ export default {
             name: "url",
             title: "Stream URL",
             type: "url",
+            validation: (Rule) =>
+                Rule.uri({
+                    scheme: ["https"],
+                }),
         },
     ],
     preview: {

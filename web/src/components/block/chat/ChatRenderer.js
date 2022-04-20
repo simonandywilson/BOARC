@@ -4,35 +4,32 @@ import axios from "axios";
 import * as style from "./chat.module.css";
 
 const ChatRenderer = ({ value }) => {
+    console.log(value);
     const [username, setUsername] = useState("Guest");
     const [chats, setChats] = useState([]);
     const [messageToSend, setMessageToSend] = useState("");
     const [onlineUsersCount, setOnlineUsersCount] = useState(0);
+    // const [onlineUsers, setOnlineUsers] = useState([]);
+    // const [usersRemoved, setUsersRemoved] = useState([]);
 
     const pusher = new Pusher(process.env.GATSBY_PUSHER_KEY, {
         cluster: "eu",
         authEndpoint: "/api/auth",
         auth: { params: { username } },
     });
-    
-    console.log(pusher);
-    // const [onlineUsers, setOnlineUsers] = useState([]);
-    // const [usersRemoved, setUsersRemoved] = useState([]);
 
     useEffect(() => {
         let mounted = true;
         if (mounted) {
             const channel = pusher.subscribe("presence-channel");
 
-            // when a new member successfully subscribes to the channel
+            // new member subscription to channel
             channel.bind("pusher:subscription_succeeded", (members) => {
-                // total subscribed
                 setOnlineUsersCount(members.count);
             });
 
-            // when a new member joins the chat
+            // member joining chat
             channel.bind("pusher:member_added", (member) => {
-                // console.log("count",channel.members.count)
                 setOnlineUsersCount(channel.members.count);
                 // setOnlineUsers((prevState) => [
                 //     ...prevState,
@@ -40,13 +37,13 @@ const ChatRenderer = ({ value }) => {
                 // ]);
             });
 
-            // when a member leaves the chat
+            // member leaves chat
             channel.bind("pusher:member_removed", (member) => {
                 setOnlineUsersCount(channel.members.count);
                 // setUsersRemoved((prevState) => [...prevState, member.info.username]);
             });
 
-            // updates chats
+            // new chat updates
             channel.bind("chat-update", function (data) {
                 const { username, message, date } = data;
                 setChats((prevState) => [...prevState, { username, message, date }]);
@@ -97,7 +94,7 @@ const ChatRenderer = ({ value }) => {
                     />
                     <button type="submit">Send</button>
                 </form>
-                <h3>Domes FM Chat</h3>
+                <h3>{value.title}</h3>
                 <div>
                     {onlineUsersCount} user{onlineUsersCount === 1 ? "" : "s"} online now
                 </div>
