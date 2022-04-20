@@ -8,10 +8,10 @@ const ChatRenderer = ({ value }) => {
     const [chats, setChats] = useState([]);
     const [messageToSend, setMessageToSend] = useState("");
     const [onlineUsersCount, setOnlineUsersCount] = useState(0);
-    
+
     const pusher = new Pusher("f7ee7537880eb58daa4a", {
         cluster: "eu",
-        authEndpoint: "http://localhost:8000/api/auth",
+        authEndpoint: "/api/auth",
         auth: { params: { username } },
     });
     
@@ -61,7 +61,7 @@ const ChatRenderer = ({ value }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://localhost:8000/api/chat", {
+            await axios.post("/api/chat", {
                 message: messageToSend,
                 username,
                 date: new Date(),
