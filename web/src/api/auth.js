@@ -1,8 +1,9 @@
 import Pusher from "pusher";
 
 export default async function handler(req, res) {
-    console.log(req, req.body);
     const { socket_id, channel_name, username, date } = req.body;
+    console.log(req.body);
+    console.log(socket_id, channel_name, username, date);
     const pusher = new Pusher({
         appId: "1385717",
         key: "f7ee7537880eb58daa4a",
