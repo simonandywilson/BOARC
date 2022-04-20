@@ -1,48 +1,124 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Pusher from "pusher-js";
-import slugify from "slugify";
+import axios from "axios";
 import * as style from "./chat.module.css";
 
 const ChatRenderer = ({ value }) => {
-    const [message, setMessage] = useState("");
-    const pusher = new Pusher("697e15716cd63c88c880", {
-        authEndpoint: "http://localhost:8888/.netlify/functions/server",
+    const pusher = new Pusher("f7ee7537880eb58daa4a", {
         cluster: "eu",
-        encrypted: true,
+        authEndpoint: "http://localhost:8000/api/auth",
+        auth: { params: { username } },
     });
+    const [username, setUsername] = useState("Guest");
+    const [chats, setChats] = useState([]);
+    const [messageToSend, setMessageToSend] = useState("");
+    const [onlineUsersCount, setOnlineUsersCount] = useState(0);
+    // const [onlineUsers, setOnlineUsers] = useState([]);
+    // const [usersRemoved, setUsersRemoved] = useState([]);
 
-    const channel1 = pusher.subscribe("my-channel-1");
+    useEffect(() => {
+        let mounted = true;
+        if (mounted) {
+            const channel = pusher.subscribe("presence-channel");
 
-    const handleChange = (e) => {
-        setMessage(e.target.value);
-    };
+            // when a new member successfully subscribes to the channel
+            channel.bind("pusher:subscription_succeeded", (members) => {
+                // total subscribed
+                setOnlineUsersCount(members.count);
+            });
 
-    const onSubmit = (e) => {
-        e.preventDefault();
-        const newMessage = {
-            by: "Simon",
-            body: message,
-            time: new Date(),
+            // when a new member joins the chat
+            channel.bind("pusher:member_added", (member) => {
+                // console.log("count",channel.members.count)
+                setOnlineUsersCount(channel.members.count);
+                // setOnlineUsers((prevState) => [
+                //     ...prevState,
+                //     { username: member.info.username, userLocation: member.info.userLocation },
+                // ]);
+            });
+
+            // when a member leaves the chat
+            channel.bind("pusher:member_removed", (member) => {
+                setOnlineUsersCount(channel.members.count);
+                // setUsersRemoved((prevState) => [...prevState, member.info.username]);
+            });
+
+            // updates chats
+            channel.bind("chat-update", function (data) {
+                const { username, message, date } = data;
+                setChats((prevState) => [...prevState, { username, message, date }]);
+            });
+        }
+
+        return () => {
+            mounted = false;
+            pusher.unsubscribe("presence-channel");
         };
+    }, []);
 
-        channel1.trigger("client-on-message", newMessage);
-        setMessage("");
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.post("http://localhost:8000/api/chat", {
+                message: messageToSend,
+                username,
+                date: new Date(),
+            });
+            setMessageToSend("");
+        } catch (err) {
+            console.error(err.message);
+        }
     };
-
     return (
         <div className={style.grid}>
             <div className={style.chat}>
-                <form onSubmit={(e) => onSubmit(e)}>
-                    <label for="fname">Message:</label>
+                <form onSubmit={(e) => handleSubmit(e)}>
+                    <label htmlFor="username">Name</label>
                     <br />
                     <input
                         type="text"
-                        placeholder="Type your message here.."
-                        onChange={(e) => handleChange(e)}
+                        onChange={(e) => setUsername(e.target.value)}
+                        placeholder="your name"
+                        defaultValue="Guest"
+                        id="username"
                     />
                     <br />
-                    <input type="submit" value="Submit"></input>
+                    <label htmlFor="message">Message</label>
+                    <br />
+                    <input
+                        type="text"
+                        value={messageToSend}
+                        onChange={(e) => setMessageToSend(e.target.value)}
+                        placeholder="Start typing...."
+                        id="message"
+                    />
+                    <button type="submit">Send</button>
                 </form>
+                <h3>Domes FM Chat</h3>
+                <div>
+                    {onlineUsersCount} user{onlineUsersCount === 1 ? "" : "s"} online now
+                </div>
+                {chats.map((chat, id) => {
+                    const options = {
+                        weekday: "long",
+                        year: "2-digit",
+                        month: "numeric",
+                        day: "numeric",
+                        hour: "numeric",
+                        minute: "numeric",
+                        second: "numeric",
+                    };
+                    const date = new Date(chat.date).toLocaleDateString("en-GB", options);
+                    return (
+                        <div key={id}>
+                            <p>
+                                <strong>{chat.username}</strong>
+                                <span> {chat.message}</span>
+                            </p>
+                            <small>{date}</small>
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );
