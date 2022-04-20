@@ -4,11 +4,11 @@ import {
     ContentIconLarge,
     PageIconLarge,
     LandingIconLarge,
-    DomesIconLarge,
     ShowIconLarge,
     EventIconLarge,
     FAQIconLarge,
     FilesIconLarge,
+    CommentsIconLarge,
 } from "../schemas/styles/Icons";
 
 export const ContentMenu = S.listItem()
@@ -46,7 +46,6 @@ export const ContentMenu = S.listItem()
                             .filter("_type == $type")
                             .params({ type: "event" })
                     ),
-                
 
                 S.listItem()
                     .title("Shows")
@@ -71,6 +70,15 @@ export const ContentMenu = S.listItem()
                             .title("Files")
                             .filter("_type == $type")
                             .params({ type: "files" })
+                    ),
+                S.listItem()
+                    .title("Comments")
+                    .icon(CommentsIconLarge)
+                    .child(
+                        S.documentTypeList("comments")
+                            .title("Comments")
+                            .filter("_type == $type")
+                            .params({ type: "comments" })
                     ),
             ])
     );

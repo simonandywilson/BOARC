@@ -9,12 +9,14 @@ const ChatRenderer = ({ value }) => {
     const [messageToSend, setMessageToSend] = useState("");
     const [onlineUsersCount, setOnlineUsersCount] = useState(0);
 
+    const name = "guest";
+
     const pusher = new Pusher("f7ee7537880eb58daa4a", {
         cluster: "eu",
         authEndpoint: "/api/auth",
-        auth: { params: { username } },
+        auth: { params: { name } },
     });
-    
+
     // const [onlineUsers, setOnlineUsers] = useState([]);
     // const [usersRemoved, setUsersRemoved] = useState([]);
 

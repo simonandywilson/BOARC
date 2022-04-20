@@ -16,6 +16,7 @@ import ascii from "./documents/ascii";
 import files from "./documents/files";
 import icons from "./documents/icons";
 import borders from "./documents/borders";
+import comments from "./documents/comments";
 
 // Modules
 
@@ -61,6 +62,7 @@ export default createSchema({
         files,
         icons,
         borders,
+        comments,
 
         // Block
         blockHeading,

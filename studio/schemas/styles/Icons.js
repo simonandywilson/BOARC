@@ -91,6 +91,10 @@ export const RadioIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="
 export const ChatIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="💬" />;
 export const ChatIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="💬" />;
 
+export const CommentsIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="💭" />;
+export const CommentsIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="💭" />;
+
+
 export const ASCIIIconLarge = () => (
     <span
         style={{
