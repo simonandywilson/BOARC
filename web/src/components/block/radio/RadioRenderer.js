@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import ReactPlayer from "react-player";
 import * as style from "./radio.module.css";
-import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import RadioRendererTime from "./RadioRendererTime";
 
@@ -25,12 +24,6 @@ const RadioRenderer = ({ value }) => {
                     onPlay={() => setPlaying(true)}
                     onPause={() => setPlaying(false)}
                     ref={playerRef}
-                />
-                <AudioPlayer
-                    autoPlay
-                    src={url}
-                    onPlay={(e) => console.log("onPlay")}
-                    // other props here
                 />
                 <div className={style.title}>
                     <h3>{title}</h3>
