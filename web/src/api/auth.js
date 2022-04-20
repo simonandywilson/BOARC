@@ -1,7 +1,5 @@
 export default async function handler(req, res) {
     const { socket_id, channel_name, username } = req.body;
-    console.log(req.body);
-    console.log(socket_id, channel_name, username);
     let Pusher = require("pusher");
     const pusher = new Pusher({
         appId: "1385717",
