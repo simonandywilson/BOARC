@@ -4,15 +4,17 @@ import axios from "axios";
 import * as style from "./chat.module.css";
 
 const ChatRenderer = ({ value }) => {
+    const [username, setUsername] = useState("Guest");
+    const [chats, setChats] = useState([]);
+    const [messageToSend, setMessageToSend] = useState("");
+    const [onlineUsersCount, setOnlineUsersCount] = useState(0);
+    
     const pusher = new Pusher("f7ee7537880eb58daa4a", {
         cluster: "eu",
         authEndpoint: "http://localhost:8000/api/auth",
         auth: { params: { username } },
     });
-    const [username, setUsername] = useState("Guest");
-    const [chats, setChats] = useState([]);
-    const [messageToSend, setMessageToSend] = useState("");
-    const [onlineUsersCount, setOnlineUsersCount] = useState(0);
+    
     // const [onlineUsers, setOnlineUsers] = useState([]);
     // const [usersRemoved, setUsersRemoved] = useState([]);
 
