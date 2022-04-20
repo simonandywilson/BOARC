@@ -1,12 +1,13 @@
 import Pusher from "pusher";
 
 const pusher = new Pusher({
-    appId: "1385717",
-    key: "f7ee7537880eb58daa4a",
-    secret: "6eda52651a5958b8b5fe",
-    cluster: "eu",
+    appId: process.env.GATSBY_PUSHER_APP_ID,
+    key: process.env.GATSBY_PUSHER_KEY,
+    secret: process.env.GATSBY_PUSHER_SECRET,
+    cluster: process.env.GATSBY_PUSHER_CLUSTER,
     useTLS: true,
 });
+
 export default async function handler(req, res) {
     const { message, username, date } = req.body;
 
