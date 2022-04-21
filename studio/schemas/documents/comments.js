@@ -7,15 +7,23 @@ export default {
     type: "document",
     fields: [
         {
+            name: "visible",
+            title: "Visible in Chat?",
+            type: "boolean",
+            initialValue: true
+        },
+        {
             name: "name",
             title: "Name",
             type: "string",
+            readOnly: true,
         },
         {
             name: "message",
             title: "Message",
             type: "text",
-            rows: 4
+            rows: 4,
+            readOnly: true,
         },
         {
             title: "Published At",
@@ -26,7 +34,7 @@ export default {
     ],
     preview: {
         select: {
-            title: "title",
+            title: "name",
             subtitle: "message",
         },
         // prepare(selection) {

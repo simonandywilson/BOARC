@@ -10,8 +10,21 @@
 }
 
 .chat {
+    position: relative;
     grid-column: var(--grid-position-chat);
     background: #d8d8d8;
     width: 100%;
     height: 500px;
+    min-height: 500px;
+    display: flex;
+    flex-direction:column;
+    flex-grow: 0;
+}
+
+.chatBox {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    overflow-y: scroll;
+    min-height: 0;
 }

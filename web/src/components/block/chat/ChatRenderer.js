@@ -1,21 +1,44 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Pusher from "pusher-js";
 import axios from "axios";
 import * as style from "./chat.module.css";
+import { useForm } from "react-hook-form";
+import ChatRendererComment from "./ChatRendererComment";
+
+const sanityClient = require("@sanity/client");
+const client = sanityClient({
+    projectId: process.env.GATSBY_SANITY_PROJECT_ID,
+    dataset: "production",
+    apiVersion: "2022-04-21",
+    useCdn: false,
+});
 
 const ChatRenderer = ({ value }) => {
     const [username, setUsername] = useState("Guest");
     const [chats, setChats] = useState([]);
-    const [messageToSend, setMessageToSend] = useState("");
     const [onlineUsersCount, setOnlineUsersCount] = useState(0);
+    const [errorMessage, setErrorMessage] = useState("");
     // const [onlineUsers, setOnlineUsers] = useState([]);
     // const [usersRemoved, setUsersRemoved] = useState([]);
 
-    const pusher = new Pusher(process.env.GATSBY_PUSHER_KEY, {
-        cluster: process.env.GATSBY_PUSHER_CLUSTER,
-        authEndpoint: "/api/auth",
-        auth: { params: { username } },
-    });
+    const chatQuery =
+        '*[_type == "comments" && visible]| order(_createdAt asc)[0..29] {name, message, publishedAt}';
+
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm();
+
+    const pusher = useMemo(() => {
+        const pusherInit = new Pusher(process.env.GATSBY_PUSHER_KEY, {
+            cluster: process.env.GATSBY_PUSHER_CLUSTER,
+            authEndpoint: "/api/auth",
+            auth: { params: { username } },
+        });
+        return pusherInit;
+    }, [username]);
 
     useEffect(() => {
         let mounted = true;
@@ -23,32 +46,25 @@ const ChatRenderer = ({ value }) => {
             const channel = pusher.subscribe("presence-channel");
 
             // member subscribes to channel
-            channel.bind("pusher:subscription_succeeded", (members) => {
-                // total subscribed
-                setOnlineUsersCount(members.count);
-            });
+            channel.bind("pusher:subscription_succeeded", (members) =>
+                setOnlineUsersCount(members.count)
+            );
 
             // member joins chat
             channel.bind("pusher:member_added", (member) => {
-                // console.log("count",channel.members.count)
                 setOnlineUsersCount(channel.members.count);
-                // setOnlineUsers((prevState) => [
-                //     ...prevState,
-                //     { username: member.info.username, userLocation: member.info.userLocation },
-                // ]);
             });
 
             // member leaves chat
             channel.bind("pusher:member_removed", (member) => {
                 setOnlineUsersCount(channel.members.count);
-                // setUsersRemoved((prevState) => [...prevState, member.info.username]);
             });
 
             // new chat updates
-            channel.bind("chat-update", function (data) {
-                const { username, message, date } = data;
-                setChats((prevState) => [...prevState, { username, message, date }]);
-            });
+            // channel.bind("chat-update", function (data) {
+            //     const { username, message, date } = data;
+            //     setChats((prevState) => [...prevState, { username, message, date }]);
+            // });
         }
 
         return () => {
@@ -57,69 +73,83 @@ const ChatRenderer = ({ value }) => {
         };
     }, []);
 
-    const handleSubmit = async (e) => {
+    // Fetch old chats
+    useEffect(() => {
+        let mounted = true;
+        if (mounted) client.fetch(chatQuery).then((comments) => setChats(comments));
+        return () => (mounted = false);
+    }, []);
+
+    // Listen for chat updates
+    useEffect(() => {
+        const query = '*[_type == "comments"]';
+
+        const subscription = client.listen(query).subscribe((update) => {
+            const { name, message, publishedAt } = update.result;
+            const newMessage = { message: message, name: name, publishedAt: publishedAt };
+            setChats((prevArray) => [...prevArray, newMessage]);
+        });
+
+        return () => subscription.unsubscribe();
+    }, []);
+
+    const onSubmit = async (data, e) => {
         e.preventDefault();
+        setUsername(data.username);
+        setErrorMessage("");
         try {
-            await axios.post("/api/chat", {
-                message: messageToSend,
+            // await axios.post("/api/chat", {
+            //     message: data.message,
+            //     username,
+            //     date: new Date(),
+            // });
+            await axios.post("/api/submit", {
+                message: data.message,
                 username,
                 date: new Date(),
             });
-            setMessageToSend("");
+            reset();
         } catch (err) {
             console.error(err.message);
+            setErrorMessage("Sorry, there was an error sending your message. Please try again.");
         }
     };
+
     return (
         <div className={style.grid}>
             <div className={style.chat}>
-                <form onSubmit={(e) => handleSubmit(e)}>
-                    <label htmlFor="username">Name</label>
-                    <br />
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <input
-                        type="text"
-                        onChange={(e) => setUsername(e.target.value)}
-                        placeholder="your name"
-                        defaultValue="Guest"
-                        id="username"
+                        label="Name"
+                        defaultValue={username}
+                        {...register("username", { required: true, maxLength: 20 })}
                     />
-                    <br />
-                    <label htmlFor="message">Message</label>
-                    <br />
+                    {errors.name?.type === "required" && <span>A name is required.</span>}
+                    {errors.name?.type === "maxLength" && (
+                        <span>Your name can be a maximum of 20 characters.</span>
+                    )}
+
                     <input
-                        type="text"
-                        value={messageToSend}
-                        onChange={(e) => setMessageToSend(e.target.value)}
-                        placeholder="Start typing...."
-                        id="message"
+                        label="Message"
+                        {...register("message", { required: true, maxLength: 50 })}
                     />
-                    <button type="submit">Send</button>
+                    {errors.message?.type === "required" && <span>A message is required.</span>}
+                    {errors.message?.type === "maxLength" && (
+                        <span>Your message can be a maximum of 50 characters.</span>
+                    )}
+
+                    <input type="submit" value="Send Message" />
                 </form>
+                <span>{errorMessage}</span>
                 <h3>{value.title}</h3>
                 <div>
                     {onlineUsersCount} user{onlineUsersCount === 1 ? "" : "s"} online now
                 </div>
-                {chats.map((chat, id) => {
-                    const options = {
-                        weekday: "long",
-                        year: "2-digit",
-                        month: "numeric",
-                        day: "numeric",
-                        hour: "numeric",
-                        minute: "numeric",
-                        second: "numeric",
-                    };
-                    const date = new Date(chat.date).toLocaleDateString("en-GB", options);
-                    return (
-                        <div key={id}>
-                            <p>
-                                <strong>{chat.username}</strong>
-                                <span> {chat.message}</span>
-                            </p>
-                            <small>{date}</small>
-                        </div>
-                    );
-                })}
+                <div className={style.chatBox}>
+                    {chats.map((chat, index) => {
+                        return <ChatRendererComment key={index} chat={chat} />;
+                    })}
+                </div>
             </div>
         </div>
     );
