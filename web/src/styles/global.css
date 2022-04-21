@@ -38,7 +38,7 @@ Media Queries
 @media only screen and (min-width: 420px) {
     :root {
         --font-size: 1.2rem;
-        --font-size-small: 0.8rem;
+        --font-size-small: 0.9rem;
         --font-size-medium: calc(var(--font-size) * 1.25);
         --font-size-large: calc(var(--font-size) * 2);
         --font-size-event-carousel: var(--font-size-medium);
@@ -71,7 +71,7 @@ Media Queries
 @media only screen and (min-width: 800px) {
     :root {
         --font-size: 1.3rem;
-        --font-size-small: 0.8rem;
+        --font-size-small: 0.9rem;
         --font-size-medium: calc(var(--font-size) * 1.25);
         --font-size-large: calc(var(--font-size) * 2);
         --font-size-event-carousel: var(--font-size-large);
@@ -104,7 +104,7 @@ Media Queries
 @media only screen and (min-width: 1200px) {
     :root {
         --font-size: 1.3rem;
-        --font-size-small: 0.8rem;
+        --font-size-small: 1rem;
         --font-size-medium: calc(var(--font-size) * 1.25);
         --font-size-large: calc(var(--font-size) * 2);
         --font-size-event-carousel: var(--font-size-large);
@@ -195,6 +195,7 @@ html body {
     font-size: var(--font-size);
     line-height: var(--line-height);
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 body {

@@ -94,6 +94,12 @@ export const ChatIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="�
 export const CommentsIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="💭" />;
 export const CommentsIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="💭" />;
 
+export const AllowedIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="✅" />;
+export const AllowedIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="✅" />;
+
+export const DisallowedIcon = () => <Emoji style={{ fontSize: "1rem" }} symbol="❌" />;
+export const DisallowedIconLarge = () => <Emoji style={{ fontSize: "2rem" }} symbol="❌" />;
+
 
 export const ASCIIIconLarge = () => (
     <span

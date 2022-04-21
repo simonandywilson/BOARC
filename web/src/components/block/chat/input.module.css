@@ -1,0 +1,41 @@
+.form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--margin-half);
+    margin: var(--margin);
+    z-index: 3;
+}
+
+.input, .submit {
+    border: none;
+    width: 100%;
+    height: var(--margin-double);
+    padding-left: var(--margin);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    border-radius: none;
+    background: #ffffff;
+}
+
+.input:focus {
+    outline: none;
+    border: 2px solid var(--purple);
+}
+
+.submit {
+    color: #ffffff;
+    background: #000000;
+    padding: 0;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background: var(--purple);
+}
+
+.error {
+    color: var(--red);
+    font-size: var(--font-size-small);
+    text-transform: uppercase;
+}

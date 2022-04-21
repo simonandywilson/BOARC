@@ -6,6 +6,7 @@
     grid-template-columns: var(--grid-columns);
     column-gap: var(--grid-columns-gap);
     width: calc(100% - var(--margin-double));
+    margin-top:var(--margin);
 }
 
 .radio {
@@ -14,15 +15,18 @@
 }
 
 .title {
-    font-size: var(--font-size);
+    font-size: var(--font-size-medium);
+    margin: var(--margin);
+    margin-bottom: 0;
     color: #000000;
-    text-align: center;
 }
 
-.title > h3 {
-    font-weight: 400;
-    margin-top: var(--margin);
-    margin-bottom: var(--margin);
+.status {
+    position: relative;
+    width: 100%;
+    color: var(--red);
+    margin-top: var(--margin-half);
+    margin-left: var(--margin);
 }
 
 .player {
@@ -33,19 +37,17 @@
 
 .controls {
     position: relative;
-    background: #ffffff;
     height: max-content;
     width: calc(100% - var(--margin-double));
     display: flex;
-    color: #ffffff;
     margin: var(--margin);
-    padding: var(--margin);
 }
 
 .play {
-    height: 100%;
+    width: var(--margin-double);
+    height: var(--margin-double);
     cursor: pointer;
-    background: #d8d8d8;
+    background: #ffffff;
     border: none;
     font-family: var(--font-family);
     color: #ffffff;
@@ -55,7 +57,7 @@
     justify-content: center;
     margin-right: var(--margin);
     flex-shrink: 0;
-    padding: var(--margin);
+    padding: var(--margin-half);
 }
 
 .play > svg {
@@ -69,24 +71,12 @@
     padding-bottom: 100%;
 }
 
-.details {
-    display: flex;
-    flex-direction: column;
-    color: #000000;
-}
-
-.status {
-    position: relative;
-    width: 100%;
-    color: var(--red);
-}
-
-.time {
-    flex: 1;
-}
-
 .volume {
+    height: var(--margin-double);
     flex: 1;
+    background: #ffffff;
+    padding: var(--margin-half);
+    display: flex;
 }
 
 .spinner:before {
@@ -126,25 +116,19 @@ input[type="range"] {
     width: 100%;
 }
 
-/* Removes default focus */
 input[type="range"]:focus {
     outline: none;
 }
 
-/***** Chrome, Safari, Opera and Edge Chromium styles *****/
-/* slider track */
 input[type="range"]::-webkit-slider-runnable-track {
     background-color: #000000;
     height: 2px;
 }
 
-/* slider thumb */
 input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
+    -webkit-appearance: none;
     appearance: none;
-    margin-top: -6px; /* Centers thumb on the track */
-
-    /*custom styles*/
+    margin-top: -6px;
     background-color: #000000;
     height: 1rem;
     width: 1rem;
@@ -157,8 +141,6 @@ input[type="range"]:focus::-webkit-slider-thumb {
     outline-offset: 2px;
 }
 
-/******** Firefox styles ********/
-/* slider track */
 input[type="range"]::-moz-range-track {
     background-color: #000000;
     height: 2px;
@@ -167,8 +149,6 @@ input[type="range"]::-moz-range-track {
 input[type="range"]::-moz-range-thumb {
     border: none;
     border-radius: 0;
-
-    /*custom styles*/
     background-color: #000000;
     height: 1rem;
     width: 1rem;

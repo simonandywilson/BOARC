@@ -1,0 +1,13 @@
+.comment {
+    background: #c7c7c7;
+    margin: 0 var(--margin) var(--margin-half) var(--margin);
+    padding: var(--margin-half);
+}
+
+.message {
+    color: #000000;
+}
+
+.date {
+    font-size: var(--font-size-small);
+}

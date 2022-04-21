@@ -1,9 +1,9 @@
-import { CommentsIconLarge } from "../styles/Icons";
+import { CommentsIconLarge, AllowedIconLarge, DisallowedIconLarge } from "../styles/Icons";
 
 export default {
     name: "comments",
     title: "Comments",
-    icon: CommentsIconLarge,
+    // icon: CommentsIconLarge,
     type: "document",
     fields: [
         {
@@ -36,14 +36,15 @@ export default {
         select: {
             title: "name",
             subtitle: "message",
+            visible: "visible"
         },
-        // prepare(selection) {
-        //     const { title, subtitle } = selection;
-        //     const date = new Date(subtitle);
-        //     return {
-        //         title: title ?? "File",
-        //         subtitle: subtitle && date.toLocaleDateString("en-GB"),
-        //     };
-        // },
+        prepare(selection) {
+            const { title, subtitle, visible } = selection;
+            return {
+                title: title ?? "Comment",
+                subtitle: subtitle,
+                media: visible ? AllowedIconLarge : DisallowedIconLarge
+            };
+        },
     },
 };

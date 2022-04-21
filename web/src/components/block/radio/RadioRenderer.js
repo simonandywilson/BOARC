@@ -24,8 +24,9 @@ const RadioRenderer = ({ value }) => {
                     onPause={() => setPlaying(false)}
                     ref={playerRef}
                 />
-                <div className={style.title}>
-                    <h3>{title}</h3>
+                <div className={style.title}>{title}</div>
+                <div className={style.status}>
+                    NOW LIVE <span className={style.spinner}></span>
                 </div>
                 <div className={style.controls}>
                     <button
@@ -53,13 +54,8 @@ const RadioRenderer = ({ value }) => {
                             </svg>
                         )}
                     </button>
-                    <div className={style.details}>
-                        <div className={style.status}>
-                            NOW LIVE <span className={style.spinner}></span>
-                        </div>
-                        <RadioRendererTime />
+                    <div className={style.volume}>
                         <input
-                            className={style.volume}
                             type="range"
                             id="volume"
                             name="volume"
