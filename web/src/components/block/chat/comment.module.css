@@ -1,5 +1,5 @@
 .comment {
-    background: #c7c7c7;
+    background: var(--dark-grey);
     margin: 0 var(--margin) var(--margin-half) var(--margin);
     padding: var(--margin-half);
      word-wrap: break-word;

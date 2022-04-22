@@ -5,6 +5,7 @@
     gap: var(--margin-half);
     margin: var(--margin);
     z-index: 3;
+    background: var(--grey);
 }
 
 .input, .submit {

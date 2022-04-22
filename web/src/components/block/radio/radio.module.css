@@ -11,7 +11,7 @@
 
 .radio {
     grid-column: var(--grid-position-radio);
-    background: #d8d8d8;
+    background: var(--grey);
 }
 
 .title {
