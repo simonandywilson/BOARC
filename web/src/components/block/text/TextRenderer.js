@@ -14,7 +14,10 @@ const TextRenderer = ({ data, width }) => {
                     <h3
                         className={style.subheading}
                         style={{
-                            gridColumn: "var(--grid-position-main-wide)",
+                            gridColumn:
+                                width === "wide"
+                                    ? "var(--grid-position-main-wide)"
+                                    : "var(--grid-position-main-normal)",
                         }}
                     >
                         {text}

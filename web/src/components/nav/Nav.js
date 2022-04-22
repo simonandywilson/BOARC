@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { useResizeDetector } from "react-resize-detector";
 import { useStaticQuery, graphql } from "gatsby";
 import * as style from "./nav.module.css";

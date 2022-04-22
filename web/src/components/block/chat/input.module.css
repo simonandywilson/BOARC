@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--margin-half);
-    margin: var(--margin);
+    padding: var(--margin);
     z-index: 3;
     background: var(--grey);
 }

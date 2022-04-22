@@ -5,7 +5,6 @@
     column-gap: var(--grid-columns-gap);
     justify-items: end;
     visibility: var(--image-visibility);
-   
 }
 
 .small {
@@ -22,7 +21,7 @@
     max-height: 80vh;
     width: 100%;
     background: #ffffff;
-     margin-top: var(--margin);
+    margin-top: var(--margin);
     margin-bottom: var(--margin);
 }
 

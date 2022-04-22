@@ -1,6 +1,4 @@
-import { ShowIcon, ShowIconLarge } from "../../styles/Icons";
-
-import RenderHeading from "../../components/heading/RenderHeading";
+import { ShowIcon } from "../../styles/Icons";
 
 export default {
     name: "blockShow",
@@ -9,32 +7,20 @@ export default {
     icon: ShowIcon,
     fields: [
         {
-            name: "heading",
-            title: "Heading",
-            type: "string",
-        },
-        {
-            name: "border",
-            title: "Border",
-            type: "reference",
-            to: [{ type: "borders" }],
-        },
-        {
-            name: "headingPreview",
-            title: "Heading Preview",
-            type: "string",
-            inputComponent: RenderHeading,
+            name: "number",
+            title: "Number of Shows Visible",
+            type: "number",
+            initialValue: 5,
         },
     ],
     preview: {
         select: {
-            heading: "heading",
+            subtitle: "number",
         },
         prepare(selection) {
-            const { heading } = selection;
             return {
-                title: heading ? heading : "Shows",
-                media: ShowIconLarge,
+                title: "Past Shows",
+                subtitle: `${selection.subtitle} Shows Visible`,
             };
         },
     },

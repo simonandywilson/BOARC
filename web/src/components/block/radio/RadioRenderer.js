@@ -1,7 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ReactPlayer from "react-player";
 import * as style from "./radio.module.css";
-import RadioRendererTime from "./RadioRendererTime";
+import { useResizeDetector } from "react-resize-detector";
 
 const RadioRenderer = ({ value }) => {
     const { title, url } = value;
@@ -9,9 +9,16 @@ const RadioRenderer = ({ value }) => {
     const [volume, setVolume] = useState(1);
     const playerRef = useRef(null);
 
+    const { height, ref } = useResizeDetector();
+
+    useEffect(
+        () => document.documentElement.style.setProperty("--radio-height", `-${height}px`),
+        [height]
+    );
+
     return (
         <div className={style.grid}>
-            <div className={style.radio}>
+            <div className={style.radio} ref={ref}>
                 <ReactPlayer
                     className={style.player}
                     url={url}

@@ -6,7 +6,6 @@ import {
 } from "../../../state/GlobalState";
 import EventRendererCarouselSlide from "./EventRendererCarouselSlide";
 
-
 const EventRendererCarousel = ({ value }) => {
     const tense = value.tense;
     const EventsAccessedUpdateContext = useEventsAccessedUpdateContext();

@@ -1,0 +1,40 @@
+.grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--grid-columns);
+    column-gap: var(--grid-columns-gap);
+    justify-items: end;
+    visibility: var(--image-visibility);
+}
+
+.imagegrid {
+    position: relative;
+    grid-column: var(--grid-position-imagegrid);
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: var(--margin);
+}
+
+.square {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    height: 0;
+}
+
+.wrapper {
+    position: absolute;
+    width: 86%;
+    height: 86%;
+    left: 7%;
+    top: 7%;
+}
+
+.image {
+    position: relative;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}

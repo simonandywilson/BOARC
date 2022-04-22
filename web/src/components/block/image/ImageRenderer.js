@@ -16,7 +16,7 @@ const ImageRenderer = ({ value }) => {
                         <Image
                             {...value}
                             className={style.image}
-                            alt={value.alt}
+                            alt={value?.alt ? value.alt : "Unknown image"}
                             width={1000}
                         />
                     </div>
@@ -24,7 +24,12 @@ const ImageRenderer = ({ value }) => {
             ) : (
                 <div className={style.large}>
                     <div className={style.overlay}></div>
-                    <Image {...value} className={style.image} alt={value.alt} width={1000} />
+                    <Image
+                        {...value}
+                        className={style.image}
+                        alt={value?.alt ? value.alt : "Unknown image"}
+                        width={1000}
+                    />
                 </div>
             )}
         </div>

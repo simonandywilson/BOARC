@@ -12,11 +12,6 @@ export default {
             type: "string",
         },
         {
-            name: "subtitle",
-            title: "Subtitle",
-            type: "string",
-        },
-        {
             name: "date",
             title: "Broadcast Date",
             type: "date",

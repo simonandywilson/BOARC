@@ -14,8 +14,6 @@ const EventRendererList = ({ value, width }) => {
     const EventsPastContext = useEventsPastContext();
     useEffect(() => EventsAccessedUpdateContext(true), []);
 
-    
-
     return (
         <>
             {tense === "future" ? (

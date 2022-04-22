@@ -29,7 +29,9 @@ const EventRendererListRow = ({ data, tense, width }) => {
                             style={{
                                 textDecoration: tense === "future" ? "none" : "line-through",
                                 marginRight:
-                                    width === "wide" ? "calc(var(--column-single) + var(--margin))" : 0,
+                                    width === "wide"
+                                        ? "calc(var(--column-single) + var(--margin))"
+                                        : 0,
                             }}
                         >
                             {date}

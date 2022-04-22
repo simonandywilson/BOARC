@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo } from "react";
 import { graphql } from "gatsby";
 import { PortableText } from "@portabletext/react";
-import Image from "gatsby-plugin-sanity-image";
 import * as style from "./page.module.css";
 import {
     useActiveUpdateContext,
@@ -23,8 +22,11 @@ import EventRendererCarousel from "../components/block/event/EventRendererCarous
 import EventRendererList from "../components/block/event/EventRendererList";
 import RadioRenderer from "../components/block/radio/RadioRenderer";
 import ChatRenderer from "../components/block/chat/ChatRenderer";
-import Seo from "../components/seo/Seo";
+import ImageGridRenderer from "../components/block/imagegrid/ImageGridRenderer";
+import ShowRenderer from "../components/block/show/ShowRenderer";
 
+import Seo from "../components/seo/Seo";
+import Decoration from "../components/decoration/Decoration";
 
 const Page = ({ data: { page } }) => {
     const { title, slug, background, text, images, seoDescription, seoImage } = page;
@@ -63,6 +65,8 @@ const Page = ({ data: { page } }) => {
                 },
                 blockRadio: RadioRenderer,
                 blockChat: ChatRenderer,
+                blockImgGrid: ImageGridRenderer,
+                blockShow: (data) => <ShowRenderer value={data.value} width={page.width} />,
             },
             marks: {
                 blockFile: FileRenderer,
@@ -80,26 +84,7 @@ const Page = ({ data: { page } }) => {
             <Seo title={title} description={seoDescription} image={seoImage?.asset?.url} />
             <div className={style.page}>
                 <PortableText value={page._rawContent} components={serialiser} />
-                <div
-                    className={style.decoration}
-                    style={{
-                        transform: page.ascii
-                            ? "translateY(calc((var(--ascii-height) * -1) + ((var(--margin) + var(--margin-half)) * -1)))"
-                            : 0,
-                    }}
-                >
-                    {images.map((image, index) => (
-                        <div className={style.grid} key={image.asset._id}>
-                            <Image
-                                {...image}
-                                className={style.decorationImage}
-                                alt=""
-                                width={1000}
-                                style={{ gridColumn: index % 2 === 0 ? "10 / 12" : "1 / 4" }}
-                            />
-                        </div>
-                    ))}
-                </div>
+                <Decoration hasAscii={page.ascii ? true : false} images={images} />
                 <div
                     className={style.background}
                     style={{ background: background ? background : "#ffffff" }}
