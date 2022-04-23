@@ -9,6 +9,8 @@
 .subheading {
     line-height: var(--line-height);
     font-weight: normal;
+    margin-top: var(--margin);
+     margin-bottom: var(--margin);
 }
 
 .subheading {

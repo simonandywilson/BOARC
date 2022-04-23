@@ -42,7 +42,8 @@
     font-family: var(--font-family);
     color: var(--brown);
     z-index: 10;
-    margin: var(--margin);
+    margin: 0;
+    padding: var(--margin);
 }
 
 .arrowRight {

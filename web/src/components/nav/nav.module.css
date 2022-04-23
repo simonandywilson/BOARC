@@ -1,9 +1,8 @@
 .nav {
-    position: -webkit-sticky;
     position: sticky;
     display: block;
     top: var(--margin);
-    margin: var(--margin);
+    margin: var(--margin) var(--margin) var(--margin) var(--margin);
     text-transform: uppercase;
     z-index: 99;
     max-width: calc(100% - var(--margin-double));
@@ -14,25 +13,20 @@
     color: var(--purple);
     width: max-content;
     max-width: calc(100% - var(--margin-double));
+}
+
+.title > span {
     background: #ffffff;
     padding-left: calc(var(--box-padding) * 2);
     padding-right: calc(var(--box-padding) * 2);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
 }
 
 .container {
+    position: sticky;
+    top: 0;
     width: max-content;
     max-width: 100%;
     margin-bottom: var(--margin);
-}
-
-.wrapper {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    height: max-content;
-    width: max-content;
-    max-width: 100%;
-    background: #ffffff;
-    padding-left: calc(var(--box-padding) * 2);
-    padding-right: calc(var(--box-padding) * 2);
 }

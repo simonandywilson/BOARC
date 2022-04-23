@@ -16,7 +16,8 @@ const ChatRendererComment = ({ chat }) => {
     return (
         <div className={style.comment}>
             <div>
-                <span>{chat.name}</span> <span className={style.message}>{chat.message}</span>
+                <span className={style.name}>{chat.name}</span>{" "}
+                <span className={style.message}>{chat.message}</span>
             </div>
             {/* <small className={style.date}>{date}</small> */}
             <TimeAgo className={style.date} date={chat.publishedAt} />

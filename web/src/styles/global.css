@@ -2,10 +2,10 @@
 Media Queries
 ----------------------------------------*/
 
-@media only screen and (max-width: 419px) {
+@media only screen and (max-width: 649px) {
     :root {
         --font-size: 1.1rem;
-        --font-size-small: 0.8rem;
+        --font-size-small: 0.9rem;
         --font-size-medium: calc(var(--font-size) * 1.25);
         --font-size-large: calc(var(--font-size) * 1);
         --font-size-event-carousel: var(--font-size-medium);
@@ -15,8 +15,8 @@ Media Queries
 
         --grid-position-comment: 3 / 12;
         --grid-position-faq: 1 / 12;
-         --grid-position-radio: 1 / 4;
-         --grid-position-chat: 1 / 4;
+        --grid-position-radio: 1 / 14;
+        --grid-position-chat: 1 / 14;
 
         --grid-position-eventcarousel: 2 / 11;
         --grid-position-event-back: 1 / 4;
@@ -28,15 +28,29 @@ Media Queries
         --grid-position-image-large: 3 / 12;
         --grid-position-image-small: 5 / 12;
         --grid-position-image-caption: 5 / 12;
-        --grid-position-imagegrid: 4 / 12;
+        --grid-position-imagegrid: 1 / 12;
+
+        --chat-position: relative;
+        --chat-offset: calc(var(--margin-double) + (var(--radio-height) * -1));
+        --chat-width: 100%;
 
         --comment-caption-order: 1;
 
         --faq-margin: var(--margin);
+
+        --decoration-visibility: none;
+
+        --event-list-details-font-size: var(--font-size);
+        --event-list-links-font-size: var(--font-size-small);
+        --event-list-icon-width: var(--column-double);
+
+        --show-details-font-size: var(--font-size);
+        --show-tracklist-font-size: var(--font-size-small);
+        --show-icon-width: var(--column-double);
     }
 }
 
-@media only screen and (min-width: 420px) {
+@media only screen and (min-width: 650px) {
     :root {
         --font-size: 1.2rem;
         --font-size-small: 0.9rem;
@@ -49,8 +63,8 @@ Media Queries
 
         --grid-position-comment: 3 / 7;
         --grid-position-faq: 1 / 12;
-         --grid-position-radio: 1 / 4;
-         --grid-position-chat: 1 / 4;
+        --grid-position-radio: 1 / 4;
+        --grid-position-chat: 1 / 4;
 
         --grid-position-eventcarousel: 2 / 11;
         --grid-position-event-back: 1 / 4;
@@ -64,9 +78,25 @@ Media Queries
         --grid-position-image-caption: 6 / 12;
         --grid-position-imagegrid: 4 / 12;
 
+        --chat-position: fixed;
+        --chat-offset: calc(
+            var(--margin-double) + (var(--radio-height) * -1) + (var(--nav-height) * -1)
+        );
+        --chat-width: calc(100% - var(--margin-double));
+
         --comment-caption-order: 1;
 
         --faq-margin: var(--margin);
+
+        --decoration-visibility: flex;
+
+        --event-list-details-font-size: var(--font-size-medium);
+        --event-list-links-font-size: var(--font-size);
+        --event-list-icon-width: var(--column-single);
+
+        --show-details-font-size: var(--font-size-medium);
+        --show-tracklist-font-size: var(--font-size);
+        --show-icon-width: var(--column-single);
     }
 }
 
@@ -83,8 +113,8 @@ Media Queries
 
         --grid-position-comment: 1 / 4;
         --grid-position-faq: 2 / 12;
-         --grid-position-radio: 1 / 4;
-         --grid-position-chat: 1 / 4;
+        --grid-position-radio: 1 / 4;
+        --grid-position-chat: 1 / 4;
 
         --grid-position-eventcarousel: 2 / 11;
         --grid-position-event-back: 1 / 4;
@@ -98,9 +128,25 @@ Media Queries
         --grid-position-image-caption: 3 / 6;
         --grid-position-imagegrid: 4 / 12;
 
+        --chat-position: fixed;
+        --chat-offset: calc(
+            var(--margin-double) + (var(--radio-height) * -1) + (var(--nav-height) * -1)
+        );
+        --chat-width: calc(100% - var(--margin-double));
+
         --comment-caption-order: 0;
 
         --faq-margin: calc(var(--column-single) + var(--margin) * 2);
+
+        --decoration-visibility: flex;
+
+        --event-list-details-font-size: var(--font-size-medium);
+        --event-list-links-font-size: var(--font-size);
+        --event-list-icon-width: var(--column-single);
+
+        --show-details-font-size: var(--font-size-medium);
+        --show-tracklist-font-size: var(--font-size);
+        --show-icon-width: var(--column-single);
     }
 }
 
@@ -118,7 +164,7 @@ Media Queries
         --grid-position-comment: 2 / 4;
         --grid-position-faq: 2 / 12;
         --grid-position-radio: 1 / 4;
-         --grid-position-chat: 1 / 4;
+        --grid-position-chat: 1 / 4;
 
         --grid-position-eventcarousel: 2 / 11;
         --grid-position-event-back: 1 / 4;
@@ -132,9 +178,25 @@ Media Queries
         --grid-position-image-caption: 4 / 6;
         --grid-position-imagegrid: 4 / 12;
 
+        --chat-position: fixed;
+        --chat-offset: calc(
+            var(--margin-double) + (var(--radio-height) * -1) + (var(--nav-height) * -1)
+        );
+        --chat-width: calc(100% - var(--margin-double));
+
         --comment-caption-order: 0;
 
         --faq-margin: calc(var(--column-double) + var(--margin) * 2);
+
+        --decoration-visibility: flex;
+
+        --event-list-details-font-size: var(--font-size-medium);
+        --event-list-links-font-size: var(--font-size);
+        --event-list-icon-width: var(--column-single);
+
+        --show-details-font-size: var(--font-size-medium);
+        --show-tracklist-font-size: var(--font-size);
+        --show-icon-width: var(--column-single);
     }
 }
 

@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import * as style from "./carousel.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper";
 import Image from "gatsby-plugin-sanity-image";
 import "swiper/css";
-// import "swiper/css/pagination";
 
 const CarouselRenderer = ({ value }) => {
     const [swiper, setSwiper] = useState(null);
@@ -29,10 +27,6 @@ const CarouselRenderer = ({ value }) => {
                     </svg>
                 </button>
                 <Swiper
-                    // pagination={{
-                    //     type: "progressbar",
-                    // }}
-                    modules={[Pagination]}
                     onSwiper={(swiper) => setSwiper(swiper)}
                     loop={true}
                 >

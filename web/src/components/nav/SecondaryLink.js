@@ -1,18 +1,18 @@
 import React from "react";
 import { Link } from "gatsby";
-import * as style from "./secondary.module.css";
+import * as style from "./secondaryLink.module.css";
 
 const SecondaryLink = ({ items, isActive, active }) => {
     return (
         <div
-            className={style.secondary}
+            className={style.wrapper}
             style={{
-                display: isActive ? "block" : "none",
+                display: isActive ? "flex" : "none",
             }}
         >
             {items.map((link, index) => {
                 return (
-                    <React.Fragment key={link._id + index}>
+                    <div className={style.secondary} key={link._id + index}>
                         <Link to={`/${link.slug.current}`}>
                             <span
                                 style={{
@@ -26,7 +26,7 @@ const SecondaryLink = ({ items, isActive, active }) => {
                         {index !== items.length - 1 && (
                             <span className={style.divider}>&nbsp;|&nbsp;</span>
                         )}
-                    </React.Fragment>
+                    </div>
                 );
             })}
         </div>

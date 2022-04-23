@@ -1,8 +1,12 @@
 .comment {
     background: var(--dark-grey);
-    margin: 0 var(--margin) var(--margin-half) var(--margin);
-    padding: var(--margin-half);
-     word-wrap: break-word;
+    margin: 0 var(--margin) calc(var(--margin-half) / 2) var(--margin);
+    padding: calc(var(--margin-half) / 2);
+    word-wrap: break-word;
+}
+
+.name {
+    color: var(--brown);
 }
 
 .message {

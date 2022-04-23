@@ -7,7 +7,7 @@
     row-gap: var(--margin);
     margin-bottom: var(--margin-double);
     overflow: hidden;
-    font-size: var(--font-size-medium);
+    font-size: var(--show-details-font-size);
     line-height: var(--line-height);
 }
 
@@ -21,7 +21,7 @@
 }
 
 .icon {
-    width: var(--column-single);
+    width: var(--show-icon-width);
     flex-shrink: 0;
     height: max-content;
     background: #d8d8d8;
@@ -42,7 +42,7 @@
 
 .flex {
     display: flex;
-    height: var(--column-single);
+    min-height: var(--column-single);
     flex-shrink: 0;
     flex-direction: column;
     justify-content: space-between;
@@ -52,6 +52,7 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+    margin-bottom: var(--margin);
 }
 
 .play {
@@ -70,7 +71,7 @@
     margin: 0;
     padding: 0;
     width: max-content;
-    font-size: var(--font-size);
+    font-size: var(--show-tracklist-font-size);
     font-family: var(--font-family);
     color: var(--text-color);
     cursor: pointer;
@@ -87,7 +88,19 @@
 }
 
 .info {
-    margin-top: var(--margin);
-    font-size: var(--font-size);
+    font-size: var(--show-tracklist-font-size);
 }
 
+.info:before {
+    content: " ";
+    display:block;
+    height: var(--margin);
+}
+
+.border {
+    display: block;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    height: calc(var(--font-size) * 1.2);
+    font-size: var(--font-size);
+}

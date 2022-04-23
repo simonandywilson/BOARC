@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
 
     return (
         <GlobalState>
-            <main>
+            <main className={style.main}>
                 <Fetch />
                 <Sketch />
                 <Ascii asciiWidth={asciiWidth} />

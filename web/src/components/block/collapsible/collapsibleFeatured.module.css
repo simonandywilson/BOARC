@@ -10,17 +10,20 @@
     padding-left: var(--margin-double);
 }
 
-.wrapper {
-    display: flex;    
+.flex {
+    display: flex;
 }
 
-.content {
-    padding-left: var(--margin)
+.featured {
+    display: flex;
+}
+
+.featured + div {
+    margin-left: var(--margin-double);
 }
 
 .icon {
-    width: var(--margin);
-    flex-shrink: 0;
+    width: var(--margin-double);
 }
 
 .button {
@@ -33,17 +36,31 @@
     color: var(--brown);
     cursor: pointer;
     text-align: left;
-    margin-bottom: var(--margin);
 }
 
 .button:hover {
     color: var(--purple);
 }
 
+.text {
+    padding-left: var(--margin);
+}
+
+
+
 .text > p:first-child {
     margin-top: 0;
 }
 
+
 .text > * {
     margin-bottom: 0;
+}
+
+
+.read {
+    color: var(--purple);
+}
+.read:hover {
+    color: var(--red);
 }

@@ -3,9 +3,7 @@ import { useResizeDetector } from "react-resize-detector";
 import { useStaticQuery, graphql } from "gatsby";
 import * as style from "./nav.module.css";
 import Primary from "./Primary";
-import SecondaryLink from "./SecondaryLink";
-import SecondaryTab from "./SecondaryTab";
-import { useActiveContext } from "../../state/GlobalState";
+import Secondary from "./Secondary";
 
 const Nav = ({ setAsciiWidth }) => {
     const {
@@ -20,62 +18,12 @@ const Nav = ({ setAsciiWidth }) => {
         [height]
     );
 
-    const ActiveContext = useActiveContext();
-
     return (
         <section className={style.nav} ref={ref}>
             <Title setAsciiWidth={setAsciiWidth} title={homepage.title} />
             <nav className={style.container}>
-                <div className={style.wrapper}>
-                    {menus.map((menu, index) => {
-                        const items = menu.pages;
-                        const landing = menu.landing;
-                        const isMulti = items.length > 1 ? true : false;
-                        const slug = isMulti ? landing.slug.current : items[0].slug.current;
-                        const multiSlugs = isMulti && items.map((slug) => `${slug.slug.current}`);
-                        const isActive =
-                            slug === ActiveContext ||
-                            (isMulti && multiSlugs.includes(ActiveContext));
-
-                        return (
-                            <Primary
-                                key={menu._id + menu.title}
-                                title={menu.title}
-                                slug={slug}
-                                isActive={isActive}
-                                isLast={index + 1 !== menus.length ? false : true}
-                            />
-                        );
-                    })}
-                </div>
-                <div className={style.wrapper}>
-                    {menus.map((menu) => {
-                        const items = menu.pages;
-                        const landing = menu.landing;
-                        const isMulti = items.length > 1 ? true : false;
-                        const slug = isMulti ? landing.slug.current : items[0].slug.current;
-                        const multiSlugs = isMulti && items.map((slug) => `${slug.slug.current}`);
-                        const isActive =
-                            slug === ActiveContext ||
-                            (isMulti && multiSlugs.includes(ActiveContext));
-
-                        return isMulti ? (
-                            <SecondaryLink
-                                key={menu._id}
-                                items={items}
-                                isActive={isActive}
-                                active={ActiveContext}
-                            />
-                        ) : (
-                            <SecondaryTab
-                                key={menu._id}
-                                items={items}
-                                isActive={isActive}
-                                active={ActiveContext}
-                            />
-                        );
-                    })}
-                </div>
+                <Primary menus={menus} />
+                <Secondary menus={menus} />
             </nav>
         </section>
     );
@@ -87,7 +35,7 @@ const Title = ({ setAsciiWidth, title }) => {
 
     return (
         <div className={style.title} ref={ref}>
-            {title}
+            <span>{title}</span>
         </div>
     );
 };

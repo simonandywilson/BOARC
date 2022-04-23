@@ -69,6 +69,7 @@ const ShowRendererRow = ({ width, show }) => {
                         </motion.div>
                     )}
                 </AnimatePresence>
+                <span className={style.border}>{"-".repeat(100)}</span>
             </div>
         </div>
     );

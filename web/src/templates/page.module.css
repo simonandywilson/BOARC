@@ -5,6 +5,10 @@
     width: 100vw;
 }
 
+.page > div:first-child {
+    margin-top: 0 !important;
+}
+
 .background {
     position: fixed;
     height: 100vh;

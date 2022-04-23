@@ -3,7 +3,6 @@ import * as style from "./collapsible.module.css";
 import { PortableText } from "@portabletext/react";
 import { motion, AnimatePresence } from "framer-motion";
 
-
 const CollapsibleRenderer = ({ value, width }) => {
     const [open, setOpen] = useState(false);
     return (
@@ -17,31 +16,36 @@ const CollapsibleRenderer = ({ value, width }) => {
                             : "var(--grid-position-main-normal)",
                 }}
             >
-                <button
-                    onClick={() => {
-                        setOpen((prevState) => !prevState);
-                    }}
-                    className={style.button}
-                >
-                    <span>{open ? "–" : "+"}</span> {value.title}
-                </button>
-                <AnimatePresence>
-                    {open && (
-                        <motion.div
-                            className={style.text}
-                            initial="collapsed"
-                            animate="open"
-                            exit="collapsed"
-                            variants={{
-                                open: { opacity: 1, height: "auto" },
-                                collapsed: { opacity: 0, height: 0 },
+                <div className={style.wrapper}>
+                    <span className={style.icon}>{open ? "–" : "+"}&nbsp;</span>
+                    <div className={style.content}>
+                        <button
+                            onClick={() => {
+                                setOpen((prevState) => !prevState);
                             }}
-                            transition={{ duration: 0.25 }}
+                            className={style.button}
                         >
-                            <PortableText value={value.text} components={components} />
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                            {value.title}
+                        </button>
+                        <AnimatePresence>
+                            {open && (
+                                <motion.div
+                                    className={style.text}
+                                    initial="collapsed"
+                                    animate="open"
+                                    exit="collapsed"
+                                    variants={{
+                                        open: { opacity: 1, height: "auto" },
+                                        collapsed: { opacity: 0, height: 0 },
+                                    }}
+                                    transition={{ duration: 0.25 }}
+                                >
+                                    <PortableText value={value.text} components={components} />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
+                </div>
             </div>
         </div>
     );

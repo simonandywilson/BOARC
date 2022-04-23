@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as style from "./collapsible.module.css";
+import * as style from "./collapsibleFeatured.module.css";
 import { PortableText } from "@portabletext/react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -26,7 +26,9 @@ const CollapsibleFeaturedRenderer = ({ value, width }) => {
                             }}
                             className={style.button}
                         >
-                            <span className={style.read}>{open ? "–" : "+"} read more</span>
+                            <span className={style.read}>
+                                {open ? "–" : "+"} read {open ? "less" : "more"}
+                            </span>
                         </button>
                     </div>
                 </div>
