@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import * as style from "./secondaryLink.module.css";
+import { nanoid } from "nanoid";
 
 const SecondaryLink = ({ items, isActive, active }) => {
     return (
@@ -12,7 +13,7 @@ const SecondaryLink = ({ items, isActive, active }) => {
         >
             {items.map((link, index) => {
                 return (
-                    <div className={style.secondary} key={link._id + index}>
+                    <div className={style.secondary} key={nanoid()}>
                         <Link to={`/${link.slug.current}`}>
                             <span
                                 style={{

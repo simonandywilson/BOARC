@@ -1,119 +1,60 @@
-import React, {useEffect} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import * as style from "./ascii.module.css";
 import { useStaticQuery, graphql } from "gatsby";
 import { nanoid } from "nanoid";
 import { useAsciiContext } from "../../state/GlobalState";
 import { useResizeDetector } from "react-resize-detector";
+import Ticker from "./ticker/Ticker";
+import PageVisibility from "react-page-visibility";
 
 const Ascii = ({ asciiWidth }) => {
     const { homepage: ascii } = useStaticQuery(getData);
     const AsciiContext = useAsciiContext();
     const { height, ref } = useResizeDetector();
-    
+    const [pageIsVisible, setPageIsVisible] = useState(true);
+
     useEffect(
         () => document.documentElement.style.setProperty("--ascii-height", `${height}px`),
         [height]
     );
 
+    const handleVisibilityChange = (isVisible) => setPageIsVisible(isVisible);
+
     return (
         <header
             className={style.ascii}
-            style={{ width: asciiWidth, height: height, display: AsciiContext === true ? "inline-block" : "none" }}
+            style={{
+                width: asciiWidth,
+                height: "var(--ascii-height)",
+                display: AsciiContext === true ? "inline-block" : "none",
+            }}
         >
-            <div className={style.wrapper}>
-                <div className={style.flex} ref={ref}>
-                    {ascii.ascii.map((asc) => {
-                        return (
-                            <table className={style.table} key={asc._id}>
-                                <tbody>
-                                    {asc.characterLayout.rows.map((row) => (
-                                        <tr key={row._key}>
-                                            {row.cells.map((cell) => (
-                                                <td key={nanoid()}>{cell}</td>
-                                            ))}
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        );
-                    })}
-                </div>
-            </div>
-            <div className={style.wrapper}>
-                <div className={style.flex}>
-                    {ascii.ascii.map((asc) => {
-                        return (
-                            <table className={style.table} key={asc._id}>
-                                <tbody>
-                                    {asc.characterLayout.rows.map((row) => (
-                                        <tr key={row._key}>
-                                            {row.cells.map((cell) => (
-                                                <td key={nanoid()}>{cell}</td>
-                                            ))}
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        );
-                    })}
-                </div>
-            </div>
-            <div className={style.wrapper}>
-                <div className={style.flex}>
-                    {ascii.ascii.map((asc) => {
-                        return (
-                            <table className={style.table} key={asc._id}>
-                                <tbody>
-                                    {asc.characterLayout.rows.map((row) => (
-                                        <tr key={row._key}>
-                                            {row.cells.map((cell) => (
-                                                <td key={nanoid()}>{cell}</td>
-                                            ))}
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        );
-                    })}
-                </div>
-            </div>
-            <div className={style.wrapper}>
-                <div className={style.flex}>
-                    {ascii.ascii.map((asc) => {
-                        return (
-                            <table className={style.table} key={asc._id}>
-                                <tbody>
-                                    {asc.characterLayout.rows.map((row) => (
-                                        <tr key={row._key}>
-                                            {row.cells.map((cell) => (
-                                                <td key={nanoid()}>{cell}</td>
-                                            ))}
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        );
-                    })}
-                </div>
-            </div>
-            <div className={style.wrapper}>
-                <div className={style.flex}>
-                    {ascii.ascii.map((asc) => {
-                        return (
-                            <table className={style.table} key={asc._id}>
-                                <tbody>
-                                    {asc.characterLayout.rows.map((row) => (
-                                        <tr key={row._key}>
-                                            {row.cells.map((cell) => (
-                                                <td key={nanoid()}>{cell}</td>
-                                            ))}
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        );
-                    })}
-                </div>
+            <div className={style.container}>
+                <PageVisibility onChange={handleVisibilityChange}>
+                    {pageIsVisible && (
+                        <Ticker speed={5} offset={0}>
+                            {() => (
+                                <div className={style.flex} ref={ref}>
+                                    {ascii.ascii.map((asc) => {
+                                        return (
+                                            <table className={style.table} key={asc._id}>
+                                                <tbody>
+                                                    {asc.characterLayout.rows.map((row) => (
+                                                        <tr key={row._key}>
+                                                            {row.cells.map((cell) => (
+                                                                <td key={nanoid()}>{cell}</td>
+                                                            ))}
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        );
+                                    })}
+                                </div>
+                            )}
+                        </Ticker>
+                    )}
+                </PageVisibility>
             </div>
         </header>
     );

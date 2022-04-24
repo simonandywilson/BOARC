@@ -8,7 +8,7 @@ import Faq from "../components/faq/Faq";
 import Sketch from "../components/sketch/Sketch";
 
 const Layout = ({ children }) => {
-    const [asciiWidth, setAsciiWidth] = useState("1200px");
+    const [asciiWidth, setAsciiWidth] = useState(555);
 
     return (
         <GlobalState>

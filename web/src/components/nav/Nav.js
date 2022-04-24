@@ -31,7 +31,11 @@ const Nav = ({ setAsciiWidth }) => {
 
 const Title = ({ setAsciiWidth, title }) => {
     const { width, ref } = useResizeDetector();
-    useEffect(() => setAsciiWidth(width), [width]);
+    useEffect(() => {
+        if (width !== undefined) {
+            setAsciiWidth(width);
+        }
+    }, [width]);
 
     return (
         <div className={style.title} ref={ref}>

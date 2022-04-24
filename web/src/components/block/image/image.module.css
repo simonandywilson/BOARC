@@ -5,6 +5,8 @@
     column-gap: var(--grid-columns-gap);
     justify-items: end;
     visibility: var(--image-visibility);
+    margin-top: var(--margin);
+    margin-bottom: var(--margin);
 }
 
 .small {
@@ -21,8 +23,7 @@
     max-height: 80vh;
     width: 100%;
     background: #ffffff;
-    margin-top: var(--margin);
-    margin-bottom: var(--margin);
+    
 }
 
 .small:hover > .overlay,

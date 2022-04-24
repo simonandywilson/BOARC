@@ -2,6 +2,7 @@ import React from "react";
 import SecondaryLink from "./SecondaryLink";
 import SecondaryTab from "./SecondaryTab";
 import { useActiveContext } from "../../state/GlobalState";
+import { nanoid } from "nanoid";
 
 const Secondary = ({ menus }) => {
     const ActiveContext = useActiveContext();
@@ -21,7 +22,7 @@ const Secondary = ({ menus }) => {
                 active={ActiveContext}
             />
         ) : (
-            <SecondaryTab key={menu._id} items={items} isActive={isActive} active={ActiveContext} />
+            <SecondaryTab key={nanoid()} items={items} isActive={isActive} active={ActiveContext} />
         );
     });
 };

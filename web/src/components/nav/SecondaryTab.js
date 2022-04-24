@@ -2,6 +2,7 @@ import React from "react";
 import * as style from "./secondaryTab.module.css";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import slugify from "slugify";
+import { nanoid } from "nanoid";
 
 const SecondaryTab = ({ items, isActive }) => {
     const tabs = items[0]._rawContent?.filter((type) => type._type === "blockHeading");
@@ -14,7 +15,7 @@ const SecondaryTab = ({ items, isActive }) => {
         >
             {tabs.map((tab, index) => {
                 return (
-                    <div className={style.secondary} key={tab._key}>
+                    <div className={style.secondary} key={nanoid()}>
                         <button
                             onClick={() =>
                                 scrollTo(

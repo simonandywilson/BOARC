@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import * as style from "./primary.module.css";
 import { useActiveContext } from "../../state/GlobalState";
+import { nanoid } from "nanoid";
 
 const Primary = ({ menus }) => {
     const ActiveContext = useActiveContext();
@@ -17,7 +18,7 @@ const Primary = ({ menus }) => {
                     slug === ActiveContext || (isMulti && multiSlugs.includes(ActiveContext));
                 const isLast = index + 1 !== menus.length ? false : true;
                 return (
-                    <div className={style.primary}>
+                    <div className={style.primary} key={nanoid()}>
                         <Link to={`/${slug}`}>
                             <span
                                 style={{
