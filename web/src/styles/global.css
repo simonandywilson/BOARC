@@ -91,7 +91,7 @@ Media Queries
         --faq-margin: var(--margin);
 
         --decoration-visibility: flex;
-         --landing-portrait-visibility: none;
+        --landing-portrait-visibility: none;
         --landing-landscape-visibility: flex;
 
         --event-list-details-font-size: var(--font-size-medium);
@@ -143,7 +143,7 @@ Media Queries
         --faq-margin: calc(var(--column-single) + var(--margin) * 2);
 
         --decoration-visibility: flex;
-         --landing-portrait-visibility: none;
+        --landing-portrait-visibility: none;
         --landing-landscape-visibility: flex;
 
         --event-list-details-font-size: var(--font-size-medium);
@@ -195,7 +195,7 @@ Media Queries
         --faq-margin: calc(var(--column-double) + var(--margin) * 2);
 
         --decoration-visibility: flex;
-         --landing-portrait-visibility: none;
+        --landing-portrait-visibility: none;
         --landing-landscape-visibility: flex;
 
         --event-list-details-font-size: var(--font-size-medium);
@@ -233,7 +233,7 @@ Variables
     --box-padding: 3px;
 
     --font-regular: BOARCCourier;
-    --font-easy: Inter;
+    --font-easy: Khula;
     --font: var(--font-regular);
 
     --purple: rgb(104, 108, 227, 1);
@@ -292,11 +292,16 @@ body {
 Typography
 ----------------------------------------*/
 
-@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Khula&display=swap');
 
 @font-face {
     font-family: "BOARCCourier";
     src: url("../fonts/BOARCCourier.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "BOARCSymbols";
+    src: url("../fonts/BOARCSymbols.otf") format("opentype");
 }
 
 /*----------------------------------------

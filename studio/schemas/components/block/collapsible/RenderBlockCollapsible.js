@@ -16,7 +16,7 @@ const RenderBlockCollapsible = ({ value }) => {
         if (icon !== undefined) {
             const fetchData = async () => {
                 const data = await client.fetch(
-                    `*[_id == $targetId][0]{"imageUrl": icon.asset->url}`,
+                    `*[_id == $targetId][0]{character}`,
                     {
                         targetId: icon._ref,
                     }
@@ -57,24 +57,30 @@ const RenderBlockCollapsible = ({ value }) => {
                             subtitle: text !== undefined ? text : "",
                             media:
                                 icon !== undefined && data !== null ? (
-                                    <div
+                                    <span
                                         style={{
+                                            width: "1.5rem",
+                                            height: "1.5rem",
                                             position: "relative",
-                                            height: "100%",
-                                            width: "100%",
-                                            padding: "4px",
+                                            display: "flex",
+                                            alignItems: "center",
+                                            justifyContent: "center",
                                         }}
                                     >
-                                        <img
-                                            src={data.imageUrl}
-                                            alt=""
-                                            style={{
-                                                position: "relative",
-                                                maxHeight: "100%",
-                                                maxWidth: "100%",
-                                            }}
-                                        />
-                                    </div>
+                                        <svg width="100%" height="100%">
+                                            <text
+                                                x="50%"
+                                                y="50%"
+                                                textAnchor="middle"
+                                                dy=".25em"
+                                                fill="#786a2f"
+                                                fontSize="32"
+                                                fontFamily="BOARCSymbols"
+                                            >
+                                                {data.character}
+                                            </text>
+                                        </svg>
+                                    </span>
                                 ) : (
                                     CollapsibleIcon
                                 ),

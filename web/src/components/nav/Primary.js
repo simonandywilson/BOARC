@@ -12,6 +12,7 @@ const Primary = ({ menus }) => {
                 const items = menu.pages;
                 const landing = menu.landing;
                 const isMulti = items.length > 1 ? true : false;
+                const isHomepage = isMulti ? false : items[0].homepage ? true : false;
                 const slug = isMulti ? landing.slug.current : items[0].slug.current;
                 const multiSlugs = isMulti && items.map((slug) => `${slug.slug.current}`);
                 const isActive =
@@ -19,7 +20,7 @@ const Primary = ({ menus }) => {
                 const isLast = index + 1 !== menus.length ? false : true;
                 return (
                     <div className={style.primary} key={nanoid()}>
-                        <Link to={`/${slug}`}>
+                        <Link to={isHomepage ? `/` : `/${slug}`}>
                             <span
                                 style={{
                                     color: isActive ? "var(--purple)" : "var(--brown)",

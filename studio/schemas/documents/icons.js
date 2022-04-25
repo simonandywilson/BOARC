@@ -57,7 +57,7 @@ export default {
                                 textAnchor="middle"
                                 dy=".25em"
                                 fill="#786a2f"
-                                fontSize="38"
+                                fontSize="32"
                                 fontFamily="BOARCSymbols"
                             >
                                 {subtitle}

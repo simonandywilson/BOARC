@@ -17,7 +17,9 @@ const CollapsibleFeaturedRenderer = ({ value, width }) => {
                 }}
             >
                 <div className={style.featured}>
-                    <div className={style.icon}>?</div>
+                    <div className={style.icon}>
+                        {value.icon?.character ? value.icon.character : "A"}
+                    </div>
                     <div>
                         <div>{value.title}</div>
                         <button

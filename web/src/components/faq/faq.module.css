@@ -45,6 +45,7 @@
     text-transform: uppercase;
     pointer-events: all;
     cursor: pointer;
+    line-height: var(--line-height);
 }
 
 .toggleMain > button:hover {
@@ -66,6 +67,7 @@
     color: var(--purple);
     pointer-events: all;
     cursor: pointer;
+    line-height: 0;
 }
 
 .toggleEasyRead > button:hover {
@@ -167,5 +169,5 @@
 
 .anchor {
     position: absolute;
-    transform: translateY(-100px)
+    transform: translateY(-100px);
 }

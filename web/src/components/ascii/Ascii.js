@@ -13,10 +13,11 @@ const Ascii = ({ asciiWidth }) => {
     const { height, ref } = useResizeDetector();
     const [pageIsVisible, setPageIsVisible] = useState(true);
 
-    useEffect(
-        () => document.documentElement.style.setProperty("--ascii-height", `${height}px`),
-        [height]
-    );
+    useEffect(() => {
+        if (height && height > 0) {
+            document.documentElement.style.setProperty("--ascii-height", `${height}px`);
+        }
+    }, [height]);
 
     const handleVisibilityChange = (isVisible) => setPageIsVisible(isVisible);
 

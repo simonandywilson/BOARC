@@ -24,13 +24,13 @@ exports.createPages = async ({ graphql, actions }) => {
         }
     `);
 
-    createRedirect({
-        fromPath: "/",
-        exactPath: true,
-        isPermanent: false,
-        redirectInBrowser: true,
-        toPath: `/${homepageQuery.data.homepage.initial.slug.current}`,
-    });
+    // createRedirect({
+    //     fromPath: "/",
+    //     exactPath: true,
+    //     isPermanent: false,
+    //     redirectInBrowser: true,
+    //     toPath: `/${homepageQuery.data.homepage.initial.slug.current}`,
+    // });
 
     const landingQuery = await graphql(`
         query getQuery {
@@ -48,6 +48,7 @@ exports.createPages = async ({ graphql, actions }) => {
         query getQuery {
             page: allSanityPage {
                 nodes {
+                    homepage
                     slug {
                         current
                     }
@@ -86,8 +87,12 @@ exports.createPages = async ({ graphql, actions }) => {
         });
     });
     pageQuery.data.page.nodes.forEach((node) => {
+        let slug = node.slug.current;
+        if (node.homepage) {
+            slug = "/"
+        }
         createPage({
-            path: node.slug.current,
+            path: slug,
             component: path.resolve(`src/templates/Page.js`),
             context: { slug: node.slug.current },
         });
