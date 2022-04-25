@@ -3,10 +3,13 @@
     margin: 0 var(--margin) calc(var(--margin-half) / 2) var(--margin);
     padding: calc(var(--margin-half) / 2);
     word-wrap: break-word;
+    font-size: var(--font-size-small);
+    line-height: 110%;
 }
 
 .name {
-    color: var(--brown);
+    
+    color: var(--purple);
 }
 
 .message {
@@ -16,4 +19,5 @@
 
 .date {
     font-size: var(--font-size-small);
+    color: var(--brown);
 }
