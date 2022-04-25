@@ -36,15 +36,12 @@ export const ConfigMenu = S.listItem()
                     title: "ASCII",
                     icon: ASCIIIconLarge,
                 }),
-                S.listItem()
-                    .title("Icons")
-                    .icon(IconsIconLarge)
-                    .child(
-                        S.documentTypeList("icons")
-                            .title("Icons")
-                            .filter("_type == $type")
-                            .params({ type: "icons" })
-                    ),
+                orderableDocumentListDeskItem({
+                    type: "icons",
+                    title: "Icons",
+                    icon: IconsIconLarge,
+                }),
+               
                 S.listItem()
                     .title("Borders")
                     .icon(BordersIconLarge)

@@ -2,3 +2,8 @@
   font-family: 'BOARCCourier';
   src: url("../fonts/BOARCCourier.otf") format("opentype"),
 }
+
+@font-face {
+  font-family: 'BOARCSymbols';
+  src: url("../fonts/BOARCSymbols.otf") format("opentype"),
+}
