@@ -24,7 +24,7 @@ const Ascii = ({ asciiWidth }) => {
         <header
             className={style.ascii}
             style={{
-                width: asciiWidth,
+                width: "100%",
                 height: "var(--ascii-height)",
                 display: AsciiContext === true ? "inline-block" : "none",
             }}
@@ -32,9 +32,9 @@ const Ascii = ({ asciiWidth }) => {
             <div className={style.container}>
                 <PageVisibility onChange={handleVisibilityChange}>
                     {pageIsVisible && (
-                        <Ticker speed={5} offset={0}>
+                        <Ticker speed={0}>
                             {() => (
-                                <div className={style.flex} ref={ref}>
+                                <div className={style.wrapper} ref={ref}>
                                     {ascii.ascii.map((asc) => {
                                         return (
                                             <table className={style.table} key={asc._id}>
@@ -50,6 +50,7 @@ const Ascii = ({ asciiWidth }) => {
                                             </table>
                                         );
                                     })}
+                                    
                                 </div>
                             )}
                         </Ticker>

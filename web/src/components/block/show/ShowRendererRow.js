@@ -8,8 +8,6 @@ const ShowRendererRow = ({ width, show }) => {
     const [open, setOpen] = useState(false);
     const [playing, setPlaying] = useState(false);
 
-    console.log(width);
-
     return (
         <div
             className={style.row}

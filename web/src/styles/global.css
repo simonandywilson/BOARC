@@ -7,7 +7,7 @@ Media Queries
         --font-size: 1.1rem;
         --font-size-small: 0.9rem;
         --font-size-medium: calc(var(--font-size) * 1.25);
-        --font-size-large: calc(var(--font-size) * 1);
+        --font-size-large: 5vw;
         --font-size-event-carousel: var(--font-size-medium);
 
         --grid-position-main-normal: 1 / 12;
@@ -39,6 +39,8 @@ Media Queries
         --faq-margin: var(--margin);
 
         --decoration-visibility: none;
+        --landing-portrait-visibility: flex;
+        --landing-landscape-visibility: none;
 
         --event-list-details-font-size: var(--font-size);
         --event-list-links-font-size: var(--font-size-small);
@@ -55,7 +57,7 @@ Media Queries
         --font-size: 1.2rem;
         --font-size-small: 0.9rem;
         --font-size-medium: calc(var(--font-size) * 1.25);
-        --font-size-large: calc(var(--font-size) * 2);
+        --font-size-large: 2.95vw;
         --font-size-event-carousel: var(--font-size-medium);
 
         --grid-position-main-normal: 4 / 10;
@@ -89,6 +91,8 @@ Media Queries
         --faq-margin: var(--margin);
 
         --decoration-visibility: flex;
+         --landing-portrait-visibility: none;
+        --landing-landscape-visibility: flex;
 
         --event-list-details-font-size: var(--font-size-medium);
         --event-list-links-font-size: var(--font-size);
@@ -105,7 +109,7 @@ Media Queries
         --font-size: 1.3rem;
         --font-size-small: 0.9rem;
         --font-size-medium: calc(var(--font-size) * 1.25);
-        --font-size-large: calc(var(--font-size) * 2);
+        --font-size-large: 2.95vw;
         --font-size-event-carousel: var(--font-size-large);
 
         --grid-position-main-normal: 4 / 11;
@@ -139,6 +143,8 @@ Media Queries
         --faq-margin: calc(var(--column-single) + var(--margin) * 2);
 
         --decoration-visibility: flex;
+         --landing-portrait-visibility: none;
+        --landing-landscape-visibility: flex;
 
         --event-list-details-font-size: var(--font-size-medium);
         --event-list-links-font-size: var(--font-size);
@@ -155,7 +161,7 @@ Media Queries
         --font-size: 1.3rem;
         --font-size-small: 1rem;
         --font-size-medium: calc(var(--font-size) * 1.25);
-        --font-size-large: calc(var(--font-size) * 2);
+        --font-size-large: 2.95vw;
         --font-size-event-carousel: var(--font-size-large);
 
         --grid-position-main-normal: 4 / 10;
@@ -189,6 +195,8 @@ Media Queries
         --faq-margin: calc(var(--column-double) + var(--margin) * 2);
 
         --decoration-visibility: flex;
+         --landing-portrait-visibility: none;
+        --landing-landscape-visibility: flex;
 
         --event-list-details-font-size: var(--font-size-medium);
         --event-list-links-font-size: var(--font-size);

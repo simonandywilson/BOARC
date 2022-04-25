@@ -8,20 +8,19 @@
     line-height: 100%;
     font-family: var(--font-regular);
     overflow: hidden;
-    display: flex;
-    justify-content: space-between;
     margin-left: var(--margin);
 }
 
 .container {
     position: absolute;
     width: 100%;
-    height: 100%;
+    display: inline-block;
 }
 
-.flex {
+.wrapper {
     display: flex;
     flex-direction: row;
+    width: max-content;
 }
 
 .table {
@@ -38,4 +37,3 @@
 .table:last-child {
     padding-right: 0rem;
 }
-
