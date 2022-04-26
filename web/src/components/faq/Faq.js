@@ -70,9 +70,11 @@ const Faq = () => {
                 </div>
                 <div className={style.toggleMain}>
                     <button onClick={() => setEasyReadOpen((prevState) => !prevState)}>
-                        Easy Read
+                        <p>Easy Read</p>
                     </button>
-                    <button onClick={() => setFaqOpen((prevState) => !prevState)}>FAQ</button>
+                    <button onClick={() => setFaqOpen((prevState) => !prevState)}>
+                        <p>FAQ</p>
+                    </button>
                 </div>
             </div>
             <div className={style.panel} style={{ visibility: faqOpen ? "visible" : "hidden" }}>

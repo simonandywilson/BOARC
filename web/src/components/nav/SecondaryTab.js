@@ -3,9 +3,11 @@ import * as style from "./secondaryTab.module.css";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import slugify from "slugify";
 import { nanoid } from "nanoid";
+import { useSubheadingContext } from "../../state/GlobalState";
 
 const SecondaryTab = ({ items, isActive }) => {
     const tabs = items[0]._rawContent?.filter((type) => type._type === "blockHeading");
+    const SubheadingContext = useSubheadingContext();
     return (
         <div
             className={style.wrapper}
@@ -14,16 +16,16 @@ const SecondaryTab = ({ items, isActive }) => {
             }}
         >
             {tabs.map((tab, index) => {
+                const slug = slugify(tab.heading, {
+                    lower: true,
+                });
                 return (
                     <div className={style.secondary} key={nanoid()}>
                         <button
-                            onClick={() =>
-                                scrollTo(
-                                    `#${slugify(tab.heading, {
-                                        lower: true,
-                                    })}`
-                                )
-                            }
+                            onClick={() => scrollTo(`#${slug}`)}
+                            style={{
+                                textDecoration: slug === SubheadingContext ? "underline" : "none",
+                            }}
                         >
                             {tab.heading}
                         </button>

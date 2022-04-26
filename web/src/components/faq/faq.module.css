@@ -29,8 +29,11 @@
 .toggleMain {
     background: var(--red);
     flex-direction: column;
-    padding: var(--box-padding);
     width: max-content;
+    padding: calc(var(--box-padding) * 2);
+    padding-bottom: calc(var(--box-padding) * 1);
+    padding-left: calc(var(--box-padding) * 0.8);
+    padding-right: calc(var(--box-padding) * 0.8);
 }
 
 .toggleMain > button {
@@ -38,14 +41,21 @@
     border: none;
     text-align: left;
     width: max-content;
-    padding: 0;
+    height: max-content;
+    
     font-family: var(--font);
     font-size: var(--font-size);
     color: #ffffff;
     text-transform: uppercase;
     pointer-events: all;
     cursor: pointer;
-    line-height: var(--line-height);
+    
+}
+
+.toggleMain > button > p {
+    margin: 0;
+    line-height: 100%;
+    vertical-align: bottom;
 }
 
 .toggleMain > button:hover {

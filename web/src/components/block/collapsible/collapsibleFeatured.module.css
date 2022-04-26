@@ -25,7 +25,7 @@
 .icon {
     width: var(--margin-double);
     font-size: var(--font-size-medium);
-    font-family: BOARCSymbols;
+    font-family: var(--font-symbol);
 }
 
 .button {

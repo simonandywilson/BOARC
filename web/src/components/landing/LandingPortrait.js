@@ -4,7 +4,6 @@ import { Link } from "gatsby";
 import { nanoid } from "nanoid";
 
 const LandingPortrait = ({ pages, rows, delta }) => {
-  console.log(pages.length);
     const columns = 30;
     return (
         <div className={style.landing}>

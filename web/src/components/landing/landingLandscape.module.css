@@ -6,6 +6,7 @@
     font-size: var(--font-size-large);
     line-height: 120%;
     color: var(--brown);
+    font-family: var(--font-mono);
 }
 
 .container {

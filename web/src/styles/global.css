@@ -233,6 +233,8 @@ Variables
     --box-padding: 3px;
 
     --font-regular: BOARCCourier;
+    --font-mono: BOARCCourierMono;
+    --font-symbol: BOARCSymbols;
     --font-easy: Khula;
     --font: var(--font-regular);
 
@@ -292,7 +294,7 @@ body {
 Typography
 ----------------------------------------*/
 
-@import url('https://fonts.googleapis.com/css2?family=Khula&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Khula&display=swap");
 
 @font-face {
     font-family: "BOARCCourier";
@@ -300,60 +302,11 @@ Typography
 }
 
 @font-face {
+    font-family: "BOARCCourierMono";
+    src: url("../fonts/BOARCCourierMono.otf") format("opentype");
+}
+
+@font-face {
     font-family: "BOARCSymbols";
     src: url("../fonts/BOARCSymbols.otf") format("opentype");
 }
-
-/*----------------------------------------
-Swiper
-----------------------------------------*/
-
-/* .swiper-pagination {
-    position: absolute;
-    text-align: center;
-    transition: 300ms opacity;
-    transform: translate3d(0, 0, 0);
-    z-index: 10;
-}
-
-.swiper-pagination.swiper-pagination-hidden {
-    opacity: 0;
-}
-
-.swiper-pagination-progressbar {
-    position: absolute;
-}
-.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-    background: var(--purple);
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    transform: scale(0);
-    transform-origin: left top;
-}
-.swiper-rtl .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-    transform-origin: right top;
-}
-.swiper-horizontal > .swiper-pagination-progressbar,
-.swiper-pagination-progressbar.swiper-pagination-horizontal,
-.swiper-vertical > .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite,
-.swiper-pagination-progressbar.swiper-pagination-vertical.swiper-pagination-progressbar-opposite {
-    width: 100%;
-    height: 1px;
-    left: 0;
-    bottom: 0;
-}
-.swiper-vertical > .swiper-pagination-progressbar,
-.swiper-pagination-progressbar.swiper-pagination-vertical,
-.swiper-horizontal > .swiper-pagination-progressbar.swiper-pagination-progressbar-opposite,
-.swiper-pagination-progressbar.swiper-pagination-horizontal.swiper-pagination-progressbar-opposite {
-    width: 1px;
-    height: 100%;
-    left: 0;
-    bottom: 0;
-}
-.swiper-pagination-lock {
-    display: none;
-} */

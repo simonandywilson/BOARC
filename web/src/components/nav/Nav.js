@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useResizeDetector } from "react-resize-detector";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 import * as style from "./nav.module.css";
 import Primary from "./Primary";
 import Secondary from "./Secondary";
@@ -39,7 +39,7 @@ const Title = ({ setAsciiWidth, title }) => {
 
     return (
         <div className={style.title} ref={ref}>
-            <span>{title}</span>
+            <Link to="/">{title}</Link>
         </div>
     );
 };

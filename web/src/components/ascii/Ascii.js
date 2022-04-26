@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import * as style from "./ascii.module.css";
 import { useStaticQuery, graphql } from "gatsby";
 import { nanoid } from "nanoid";

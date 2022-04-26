@@ -6,7 +6,7 @@
     letter-spacing: -3px;
     color: var(--purple);
     line-height: 100%;
-    font-family: var(--font-regular);
+    font-family: var(--font-mono);
     overflow: hidden;
     margin-left: var(--margin);
 }

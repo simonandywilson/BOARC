@@ -12,6 +12,18 @@ export const useActiveUpdateContext = () => {
     return useContext(ActiveUpdateContext);
 };
 
+// Active
+const SubheadingContext = createContext();
+const SubheadingUpdateContext = createContext();
+
+export const useSubheadingContext = () => {
+    return useContext(SubheadingContext);
+};
+
+export const useSubheadingUpdateContext = () => {
+    return useContext(SubheadingUpdateContext);
+};
+
 // Easy Read
 const EasyReadContext = createContext();
 const EasyReadUpdateContext = createContext();
@@ -87,6 +99,7 @@ export const useAsciiUpdateContext = () => {
 // Context Provider
 const ContextProvider = ({ children }) => {
     const [active, setActive] = useState("");
+    const [subheading, setSubheading] = useState("");
     const [easyRead, setEasyRead] = useState({ text: false, image: false });
     const [eventsFuture, setEventsFuture] = useState([]);
     const [eventsPast, setEventsPast] = useState([]);
@@ -97,37 +110,45 @@ const ContextProvider = ({ children }) => {
     return (
         <ActiveContext.Provider value={active}>
             <ActiveUpdateContext.Provider value={setActive}>
-                <EasyReadContext.Provider value={easyRead}>
-                    <EasyReadUpdateContext.Provider value={setEasyRead}>
-                        <EventsFutureContext.Provider value={eventsFuture}>
-                            <EventsFutureUpdateContext.Provider value={setEventsFuture}>
-                                <EventsPastContext.Provider value={eventsPast}>
-                                    <EventsPastUpdateContext.Provider value={setEventsPast}>
-                                        <EventsAccessedContext.Provider value={eventsAccessed}>
-                                            <EventsAccessedUpdateContext.Provider
-                                                value={setEventsAccessed}
-                                            >
-                                                <ColoursContext.Provider value={colours}>
-                                                    <ColoursUpdateContext.Provider
-                                                        value={setColours}
+                <SubheadingContext.Provider value={subheading}>
+                    <SubheadingUpdateContext.Provider value={setSubheading}>
+                        <EasyReadContext.Provider value={easyRead}>
+                            <EasyReadUpdateContext.Provider value={setEasyRead}>
+                                <EventsFutureContext.Provider value={eventsFuture}>
+                                    <EventsFutureUpdateContext.Provider value={setEventsFuture}>
+                                        <EventsPastContext.Provider value={eventsPast}>
+                                            <EventsPastUpdateContext.Provider value={setEventsPast}>
+                                                <EventsAccessedContext.Provider
+                                                    value={eventsAccessed}
+                                                >
+                                                    <EventsAccessedUpdateContext.Provider
+                                                        value={setEventsAccessed}
                                                     >
-                                                        <AsciiContext.Provider value={ascii}>
-                                                            <AsciiUpdateContext.Provider
-                                                                value={setAscii}
+                                                        <ColoursContext.Provider value={colours}>
+                                                            <ColoursUpdateContext.Provider
+                                                                value={setColours}
                                                             >
-                                                                {children}
-                                                            </AsciiUpdateContext.Provider>
-                                                        </AsciiContext.Provider>
-                                                    </ColoursUpdateContext.Provider>
-                                                </ColoursContext.Provider>
-                                            </EventsAccessedUpdateContext.Provider>
-                                        </EventsAccessedContext.Provider>
-                                    </EventsPastUpdateContext.Provider>
-                                </EventsPastContext.Provider>
-                            </EventsFutureUpdateContext.Provider>
-                        </EventsFutureContext.Provider>
-                    </EasyReadUpdateContext.Provider>
-                </EasyReadContext.Provider>
+                                                                <AsciiContext.Provider
+                                                                    value={ascii}
+                                                                >
+                                                                    <AsciiUpdateContext.Provider
+                                                                        value={setAscii}
+                                                                    >
+                                                                        {children}
+                                                                    </AsciiUpdateContext.Provider>
+                                                                </AsciiContext.Provider>
+                                                            </ColoursUpdateContext.Provider>
+                                                        </ColoursContext.Provider>
+                                                    </EventsAccessedUpdateContext.Provider>
+                                                </EventsAccessedContext.Provider>
+                                            </EventsPastUpdateContext.Provider>
+                                        </EventsPastContext.Provider>
+                                    </EventsFutureUpdateContext.Provider>
+                                </EventsFutureContext.Provider>
+                            </EasyReadUpdateContext.Provider>
+                        </EasyReadContext.Provider>
+                    </SubheadingUpdateContext.Provider>
+                </SubheadingContext.Provider>
             </ActiveUpdateContext.Provider>
         </ActiveContext.Provider>
     );
