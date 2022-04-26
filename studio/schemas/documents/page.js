@@ -1,6 +1,5 @@
 import { isUniqueAcrossAllDocuments } from "../functions/isUniqueAcrossAllDocuments";
 import ReferencedBy from "../components/reference/ReferencedBy";
-import RenderColour from "../components/colour/RenderColour";
 import RenderColourSimple from "../components/colour/RenderColourSimple";
 import RenderSingleLanding from "../components/landing/RenderSingleLanding";
 import RenderReadingTime from "../components/reading/RenderReadingTime";
@@ -23,12 +22,15 @@ export default {
         },
         {
             name: "gradient",
-            title: "Gradient Background",
+            title: "Background Colour",
+            description: `This tool uses the Web Content Accessibility Guidelines’s formula for colour
+                        contrast to compare the text colour to the background colour(s) you select. Aim
+                        to choose a background that passes level AA for both regular and
+                        large text sizes.`,
             options: {
                 collapsible: false,
                 columns: 2,
             },
-            hidden: ({ document }) => !document?.backgroundType,
         },
     ],
     groups: [
@@ -222,39 +224,11 @@ export default {
             initialValue: { title: "Brown", value: "#786A2F" },
         },
         {
-            name: "textBackground",
-            title: "Text Background Colour",
-            type: "string",
-            group: "customisation",
-            inputComponent: RenderColour,
-            options: {
-                defaultColour: "#ffffff",
-            },
-        },
-        {
-            name: "backgroundType",
-            title: "Gradient Background",
-            type: "boolean",
-            group: "customisation",
-        },
-        {
-            name: "background",
-            title: "Background Colour",
-            type: "string",
-            group: "customisation",
-            inputComponent: RenderColourSimple,
-            hidden: ({ document }) => document?.backgroundType,
-            options: {
-                defaultColour: "#ffffff",
-            },
-        },
-        {
             name: "backgroundLeft",
-            title: "Background Colour Left",
+            title: "Left Colour",
             type: "string",
             group: "customisation",
             inputComponent: RenderColourSimple,
-            hidden: ({ document }) => !document?.backgroundType,
             fieldset: "gradient",
             options: {
                 defaultColour: "#ffffff",
@@ -262,11 +236,10 @@ export default {
         },
         {
             name: "backgroundRight",
-            title: "Background Colour Right",
+            title: "Right Colour",
             type: "string",
             group: "customisation",
             inputComponent: RenderColourSimple,
-            hidden: ({ document }) => !document?.backgroundType,
             fieldset: "gradient",
             options: {
                 defaultColour: "#ffffff",

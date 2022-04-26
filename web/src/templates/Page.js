@@ -29,7 +29,16 @@ import Seo from "../components/seo/Seo";
 import Decoration from "../components/decoration/Decoration";
 
 const Page = ({ data: { page } }) => {
-    const { title, slug, background, text, images, seoDescription, seoImage } = page;
+    const {
+        title,
+        slug,
+        backgroundLeft,
+        backgroundRight,
+        text,
+        images,
+        seoDescription,
+        seoImage,
+    } = page;
 
     const ActiveUpdateContext = useActiveUpdateContext();
     const ColoursContext = useColoursContext();
@@ -87,7 +96,11 @@ const Page = ({ data: { page } }) => {
                 <Decoration hasAscii={page.ascii ? true : false} images={images} />
                 <div
                     className={style.background}
-                    style={{ background: background ? background : "#ffffff" }}
+                    style={{
+                        background: backgroundLeft && backgroundRight
+                            ? `linear-gradient(to right, ${backgroundLeft}, ${backgroundRight})`
+                            : "#ffffff",
+                    }}
                 ></div>
             </div>
         </>
@@ -107,7 +120,8 @@ export const query = graphql`
             text {
                 value
             }
-            background
+            backgroundLeft
+            backgroundRight
             width
             images {
                 ...ImageWithPreview
