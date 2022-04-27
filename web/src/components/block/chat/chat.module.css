@@ -80,6 +80,10 @@
     min-height: 0;
 }
 
+.chatbox > div:last-child {
+    margin-bottom: var(--margin);
+}
+
 .loader {
     width: 100%;
     text-align: center;
