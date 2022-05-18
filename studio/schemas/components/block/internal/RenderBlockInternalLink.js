@@ -21,7 +21,7 @@ const RenderBlockInternalLink = (props) => (
             }}
         >
             <span className={style.border}>
-                {props.children} {InternalIcon()} {}
+                {props.children} {InternalIcon("small")} {}
             </span>
         </div>
     </div>

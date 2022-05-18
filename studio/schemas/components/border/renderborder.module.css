@@ -14,3 +14,7 @@
     display: block;
     white-space: nowrap;
 }
+
+.heading {
+    text-align: center;
+}

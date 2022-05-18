@@ -5,9 +5,9 @@ export default {
     name: "blockExternal",
     title: "External Link",
     type: "object",
-    icon: ExternalIcon,
+    icon: () => ExternalIcon("small"),
     blockEditor: {
-        icon: ExternalIcon,
+        icon: () => ExternalIcon("small"),
         render: RenderBlockExternalLink,
     },
     fields: [

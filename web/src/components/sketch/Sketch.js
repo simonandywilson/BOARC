@@ -26,6 +26,7 @@ const snap = (mousePos) => {
 
 const Sketch = () => {
     const isSSR = typeof window === "undefined";
+
     return (
         <>
             {!isSSR && (

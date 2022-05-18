@@ -1,11 +1,11 @@
-import { ImgGridIcon, ImgGridIconLarge } from "../../styles/Icons";
+import { ImgGridIcon } from "../../styles/Icons";
 import RenderBlockGrid from "../../components/block/grid/RenderBlockGrid";
 
 export default {
     name: "blockImgGrid",
     title: "Image Grid",
     type: "object",
-    icon: ImgGridIcon,
+    icon: () => ImgGridIcon("small"),
     fields: [
         {
             name: "image",

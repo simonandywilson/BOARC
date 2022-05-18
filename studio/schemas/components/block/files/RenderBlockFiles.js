@@ -5,7 +5,7 @@ import * as style from "./blockfiles.module.css";
 
 const RenderBlockFiles = (props) => (
     <span className={style.link}>
-        {props.children} {FileIcon()} {}
+        {props.children} {FileIcon("small")} {}
     </span>
 );
 

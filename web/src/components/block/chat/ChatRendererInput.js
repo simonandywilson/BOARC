@@ -16,7 +16,7 @@ const ChatRendererInput = ({ username, setUsername, setErrorMessage }) => {
         setUsername(data.username);
         setErrorMessage("");
         try {
-            await axios.post("/api/submit", {
+            await axios.post("/api/submit-chat", {
                 message: data.message,
                 username,
                 date: new Date(),

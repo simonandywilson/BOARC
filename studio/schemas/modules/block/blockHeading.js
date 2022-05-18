@@ -7,7 +7,7 @@ export default {
     name: "blockHeading",
     title: "Heading",
     type: "object",
-    icon: HeadingIcon,
+    icon: () => HeadingIcon("small"),
     fields: [
         {
             name: "heading",

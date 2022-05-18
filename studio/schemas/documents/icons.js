@@ -1,12 +1,12 @@
 import React from "react";
-import { IconsIconLarge } from "../styles/Icons";
+import { IconsIcon } from "../styles/Icons";
 import RenderIcon from "../components/icon/RenderIcon";
 import { orderRankField, orderRankOrdering } from "@sanity/orderable-document-list";
 
 export default {
     name: "icons",
     title: "Icons",
-    icon: IconsIconLarge,
+    icon: () => IconsIcon(),
     type: "document",
     orderings: [orderRankOrdering],
     fields: [
@@ -36,18 +36,20 @@ export default {
         },
         prepare(selection) {
             const { title, subtitle } = selection;
+
+
+
             return {
                 title: title ?? "Icon",
                 subtitle: subtitle,
                 media: (
                     <span
                         style={{
-                            width: "1.5rem",
-                            height: "1.5rem",
                             position: "relative",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
+                            overflow: "visible"
                         }}
                     >
                         <svg width="100%" height="100%">
@@ -57,7 +59,6 @@ export default {
                                 textAnchor="middle"
                                 dy=".25em"
                                 fill="#786a2f"
-                                fontSize="32"
                                 fontFamily="BOARCSymbols"
                             >
                                 {subtitle}

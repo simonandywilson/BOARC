@@ -5,7 +5,7 @@ export default {
     name: "blockImgFull",
     title: "Image",
     type: "image",
-    icon: ImgIcon,
+    icon: () => ImgIcon("small"),
     validation: (Rule) => Rule.required().error(`You need to add an image.`),
     options: {
         hotspot: true,

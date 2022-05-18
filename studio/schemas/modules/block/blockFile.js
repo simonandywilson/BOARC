@@ -5,9 +5,9 @@ export default {
     name: "blockFile",
     title: "Attach File",
     type: "object",
-    icon: FileIcon,
+    icon: () => FileIcon("small"),
     blockEditor: {
-        icon: FileIcon,
+        icon: () => FileIcon("small"),
         render: RenderBlockFiles,
     },
     fields: [

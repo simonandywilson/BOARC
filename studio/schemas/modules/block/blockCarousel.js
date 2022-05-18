@@ -1,4 +1,4 @@
-import { CarouselIcon, CarouselIconLarge } from "../../styles/Icons";
+import { CarouselIcon } from "../../styles/Icons";
 import RenderBlockCarousel from "../../components/block/carousel/RenderBlockCarousel";
 
 
@@ -6,7 +6,7 @@ export default {
     name: "blockCarousel",
     title: "Carousel",
     type: "object",
-    icon: CarouselIcon,
+    icon: () => CarouselIcon("small"),
     fields: [
         {
             name: "content",

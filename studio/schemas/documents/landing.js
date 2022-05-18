@@ -1,12 +1,12 @@
 import { isUniqueAcrossAllDocuments } from "../functions/isUniqueAcrossAllDocuments";
-import { LandingIconLarge } from "../styles/Icons";
+import { LandingIcon} from "../styles/Icons";
 import RenderLanding from "../components/landing/RenderLanding";
 
 export default {
     name: "landing",
     title: "Landing",
     type: "document",
-    icon: LandingIconLarge,
+    icon: () => LandingIcon(),
     fields: [
         {
             name: "title",
@@ -56,7 +56,7 @@ export default {
             const { title } = selection;
             return {
                 title: title ? title : "Untitled Landing Page",
-                media: LandingIconLarge,
+                media: () => LandingIcon(),
             };
         },
     },

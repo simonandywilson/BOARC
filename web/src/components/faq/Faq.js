@@ -6,7 +6,7 @@ import { useEasyReadContext, useEasyReadUpdateContext } from "../../state/Global
 import scrollTo from "gatsby-plugin-smoothscroll";
 const slugify = require("slugify");
 
-const Faq = () => {
+const Faq = ({clearSketch}) => {
     const [faqOpen, setFaqOpen] = useState(false);
     const [easyReadOpen, setEasyReadOpen] = useState(false);
     const { allSanityFaq: faq } = useStaticQuery(getData);
@@ -66,6 +66,9 @@ const Faq = () => {
                         }
                     >
                         <span></span>
+                    </button>
+                    <button className={style.clearSketch} onClick={() => clearSketch()}>
+                        X
                     </button>
                 </div>
                 <div className={style.toggleMain}>

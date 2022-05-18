@@ -1,16 +1,16 @@
-import { CommentsIconLarge, AllowedIconLarge, DisallowedIconLarge } from "../styles/Icons";
+import { CommentsIcon, AllowedIcon, DisallowedIcon } from "../styles/Icons";
 
 export default {
     name: "comments",
     title: "Comments",
-    // icon: CommentsIconLarge,
+    icon: () => CommentsIcon(),
     type: "document",
     fields: [
         {
             name: "visible",
             title: "Visible in Chat?",
             type: "boolean",
-            initialValue: true
+            initialValue: true,
         },
         {
             name: "name",
@@ -36,14 +36,14 @@ export default {
         select: {
             title: "name",
             subtitle: "message",
-            visible: "visible"
+            visible: "visible",
         },
         prepare(selection) {
             const { title, subtitle, visible } = selection;
             return {
                 title: title ?? "Comment",
                 subtitle: subtitle,
-                media: visible ? AllowedIconLarge : DisallowedIconLarge
+                media: visible ? (() => AllowedIcon()) : (() => DisallowedIcon()),
             };
         },
     },

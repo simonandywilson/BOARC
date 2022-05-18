@@ -14,7 +14,8 @@
     "@sanity/desk-tool",
     "@sanity/orderable-document-list",
     "table",
-    "color-list"
+    "color-list",
+    "export-newsletter-subscribers"
   ],
   "env": {
     "development": {

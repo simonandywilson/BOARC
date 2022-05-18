@@ -1,5 +1,5 @@
 import React from "react";
-import { CopyIconLarge } from "../styles/Icons";
+import { CopyIcon } from "../styles/Icons";
 import CustomRichTextEditor from "../components/block/CustomRichTextEditor";
 
 const CenteredStyle = (props) => (
@@ -25,7 +25,7 @@ const IndentStyle = (props) => (
 export default {
     name: "pageBlock",
     title: "Page Content",
-    icon: CopyIconLarge,
+    icon: () => CopyIcon(),
     type: "array",
     inputComponent: CustomRichTextEditor,
     of: [

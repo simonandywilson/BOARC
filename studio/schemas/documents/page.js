@@ -4,12 +4,12 @@ import RenderColourSimple from "../components/colour/RenderColourSimple";
 import RenderSingleLanding from "../components/landing/RenderSingleLanding";
 import RenderReadingTime from "../components/reading/RenderReadingTime";
 
-import { PageIconLarge, HomeIconLarge } from "../styles/Icons";
+import { PageIcon, HomeIcon } from "../styles/Icons";
 
 export default {
     name: "page",
     title: "Pages",
-    icon: PageIconLarge,
+    icon: () => PageIcon(),
     type: "document",
     fieldsets: [
         {
@@ -297,7 +297,7 @@ export default {
             const { title, referring, homepage } = selection;
             return {
                 title: title ? title : "Untitled Page",
-                media: homepage ? HomeIconLarge : PageIconLarge,
+                media: homepage ? () => HomeIcon() : () => PageIcon(),
                 subtitle: referring ?? referring,
             };
         },

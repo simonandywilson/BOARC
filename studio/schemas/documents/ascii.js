@@ -1,47 +1,11 @@
-import React from "react";
 import { orderRankField, orderRankOrdering } from "@sanity/orderable-document-list";
 import RenderAscii from "../components/ascii/RenderAscii";
-
-const ASCIIIcon = (title) => (
-    <span
-        style={{
-            width: "1.5rem",
-            height: "1.5rem",
-            position: "relative",
-            background: "#000000",
-            borderRadius: "5px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-        }}
-    >
-        <svg width="100%" height="100%">
-            <defs>
-                <style>
-                    @import
-                    url("https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap");
-                </style>
-            </defs>
-
-            <text
-                x="50%"
-                y="50%"
-                textAnchor="middle"
-                dy=".35em"
-                fill="#ffffff"
-                fontSize="16"
-                fontFamily="Nunito"
-            >
-                {title ? (title.length > 1 ? "♣︎" : title) : "♣︎"}
-            </text>
-        </svg>
-    </span>
-);
+import {AsciiIcon} from "../styles/Icons"
 
 export default {
     name: "ascii",
     title: "ASCII",
-    icon: ASCIIIcon("A"),
+    icon: () => AsciiIcon("A"),
     type: "document",
     orderings: [orderRankOrdering],
     fields: [
@@ -135,12 +99,12 @@ export default {
                     return "Number";
                 }
 
-                return "Other"
+                return "Other";
             };
             return {
                 title: title ? title : "Character",
-                media: ASCIIIcon(title),
-                subtitle: checkType()
+                media: () => AsciiIcon(title),
+                subtitle: checkType(),
             };
         },
     },

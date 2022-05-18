@@ -42,14 +42,13 @@
     text-align: left;
     width: max-content;
     height: max-content;
-    
+
     font-family: var(--font);
     font-size: var(--font-size);
     color: #ffffff;
     text-transform: uppercase;
     pointer-events: all;
     cursor: pointer;
-    
 }
 
 .toggleMain > button > p {
@@ -66,6 +65,7 @@
     background: var(--grey);
     padding: var(--margin-half);
     align-items: center;
+    
 }
 
 .toggleEasyRead > button {
@@ -95,6 +95,14 @@
     width: calc(var(--font-size-large) * 1.5);
     flex-shrink: 0;
     border: 2px solid var(--purple);
+    margin-right: var(--margin-half);
+}
+
+.clearSketch {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
 }
 
 .panel {

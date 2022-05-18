@@ -1,9 +1,9 @@
-import { ShowIconLarge } from "../styles/Icons";
+import { ShowIcon } from "../styles/Icons";
 
 export default {
     name: "show",
     title: "Shows",
-    icon: ShowIconLarge,
+    icon: () => ShowIcon(),
     type: "document",
     fields: [
         {
@@ -65,7 +65,7 @@ export default {
             const date = new Date(subtitle);
             return {
                 title: title ? title : "Show",
-                media: media ?? ShowIconLarge,
+                media: media ?? (() => ShowIcon()),
                 subtitle: subtitle && date.toLocaleDateString("en-GB"),
             };
         },

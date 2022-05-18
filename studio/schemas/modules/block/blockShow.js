@@ -4,7 +4,7 @@ export default {
     name: "blockShow",
     title: "Shows",
     type: "object",
-    icon: ShowIcon,
+    icon: () => ShowIcon("small"),
     fields: [
         {
             name: "number",

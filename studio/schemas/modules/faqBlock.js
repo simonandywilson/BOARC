@@ -1,5 +1,5 @@
 import React from "react";
-import { CopyIconLarge } from "../styles/Icons";
+import { CopyIcon } from "../styles/Icons";
 
 const HeadingStyle = (props) => (
     <span
@@ -9,7 +9,7 @@ const HeadingStyle = (props) => (
             padding: "5px",
             color: "var(--card-fg-color)",
             width: "max-content",
-            fontWeight: "normal"
+            fontWeight: "normal",
         }}
     >
         {props.children}
@@ -25,7 +25,7 @@ const BodyStyle = (props) => (
 export default {
     name: "faqBlock",
     title: "FAQ Block",
-    icon: CopyIconLarge,
+    icon: () => CopyIcon(),
     type: "array",
     of: [
         {

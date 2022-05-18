@@ -10,6 +10,7 @@ import event from "./documents/event";
 import show from "./documents/show";
 
 import homepage from "./documents/homepage";
+import newsletter from "./documents/newsletter";
 import menu from "./documents/menu";
 import faq from "./documents/faq";
 import ascii from "./documents/ascii";
@@ -17,6 +18,7 @@ import files from "./documents/files";
 import icons from "./documents/icons";
 import borders from "./documents/borders";
 import comments from "./documents/comments";
+import subscriber from "./documents/subscriber";
 
 // Modules
 
@@ -32,7 +34,6 @@ import blockExternal from "./modules/block/blockExternal";
 import blockComment from "./modules/block/blockComment";
 import blockRadio from "./modules/block/blockRadio";
 import blockChat from "./modules/block/blockChat";
-
 
 import blockEvent from "./modules/block/blockEvent";
 import blockShow from "./modules/block/blockShow";
@@ -59,10 +60,13 @@ export default createSchema({
 
         faq,
         ascii,
+        newsletter,
         files,
         icons,
         borders,
         comments,
+        subscriber,
+
 
         // Block
         blockHeading,

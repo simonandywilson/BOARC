@@ -1,14 +1,13 @@
-import { SeoIconLarge } from "../styles/Icons";
+import { SeoIcon } from "../styles/Icons";
 
 export default {
     title: "SEO",
     name: "seo",
     type: "document",
-    icon: SeoIconLarge,
+    icon: () => SeoIcon(),
     __experimental_actions: [/*'create',*/ "update", /*'delete',*/ "publish"],
     fields: [
         {
-            // Site Title
             title: "Site Title",
             name: "seoTitle",
             type: "string",
@@ -16,7 +15,6 @@ export default {
             validation: (Rule) => [Rule.required().warning(`Your site needs a Title.`)],
         },
         {
-            // Site Acronym
             title: "Site Acronym",
             name: "seoAcronym",
             type: "string",
@@ -24,7 +22,6 @@ export default {
             validation: (Rule) => [Rule.required().warning(`Your site needs an Acronym.`)],
         },
         {
-            // Site Decription
             title: "Site Description",
             name: "seoDescription",
             type: "text",
@@ -38,7 +35,6 @@ export default {
             ],
         },
         {
-            // Social Banner
             title: "SEO Image",
             name: "seoImage",
             type: "image",

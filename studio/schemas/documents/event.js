@@ -1,13 +1,13 @@
 import { isUniqueAcrossAllDocuments } from "../functions/isUniqueAcrossAllDocuments";
 import RenderColour from "../components/colour/RenderColour";
-import { EventsIconLarge } from "../styles/Icons";
+import { EventsIcon } from "../styles/Icons";
 import sanityClient from "part:@sanity/base/client";
 const client = sanityClient.withConfig({ apiVersion: "2022-02-15" });
 
 export default {
     name: "event",
     title: "Events",
-    icon: EventsIconLarge,
+    icon: () => EventsIcon(),
     type: "document",
     groups: [
         {
@@ -206,7 +206,7 @@ export default {
             const date = new Date(subtitle);
             return {
                 title: title ? title : "Untitled Event",
-                media: media ?? EventsIconLarge,
+                media: media ?? (() => EventsIcon()),
                 subtitle: subtitle && date.toLocaleDateString("en-GB"),
             };
         },

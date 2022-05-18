@@ -1,10 +1,10 @@
-import { ImgIcon, ImgIconLarge } from "../styles/Icons";
+import { ImgIcon } from "../styles/Icons";
 
 export default {
     name: "img",
     title: "Image",
     type: "image",
-    icon: ImgIcon,
+    icon: () => ImgIcon(),
     options: {
         hotspot: true,
     },
@@ -29,7 +29,7 @@ export default {
             const { media, subtitle } = selection;
             return {
                 title: "Image",
-                media: media ?? ImgIconLarge,
+                media: media ?? ImgIcon("small"),
                 subtitle: subtitle && subtitle,
             };
         },

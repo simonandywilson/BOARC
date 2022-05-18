@@ -5,9 +5,9 @@ export default {
     name: "blockInternal",
     title: "Internal Link",
     type: "object",
-    icon: InternalIcon,
+    icon: () => InternalIcon("small"),
     blockEditor: {
-        icon: InternalIcon,
+        icon: () => InternalIcon("small"),
         render: RenderBlockInternalLink,
     },
     fields: [

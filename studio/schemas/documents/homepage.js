@@ -1,11 +1,11 @@
 import RenderAsciiBanner from "../components/ascii/RenderAsciiBanner";
-import { HomepageIconLarge } from "../styles/Icons";
+import { HomepageIcon } from "../styles/Icons";
 
 export default {
     name: "homepage",
     title: "Homepage",
     type: "document",
-    icon: HomepageIconLarge,
+    icon: () => HomepageIcon(),
     __experimental_actions: [/*'create',*/ "update", /*'delete',*/ "publish"],
     fields: [
         { name: "title", title: "Website Title", type: "string" },
@@ -35,7 +35,7 @@ export default {
         prepare() {
             return {
                 title: "Homepage",
-                icon: HomepageIconLarge,
+                icon: () => HomepageIcon(),
             };
         },
     },

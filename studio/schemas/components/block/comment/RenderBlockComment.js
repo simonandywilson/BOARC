@@ -14,7 +14,7 @@ const RenderBlockComment = (props) => (
         }}
     >
         <span>
-            {props.children} {CommentIcon()} {}
+            {props.children} {CommentIcon("small")} {}
         </span>
     </div>
 );

@@ -4,7 +4,7 @@ export default {
     name: "blockChat",
     title: "Chat",
     type: "object",
-    icon: ChatIcon,
+    icon: () => ChatIcon("small"),
     fields: [
         {
             name: "title",

@@ -7,10 +7,15 @@
     text-transform: uppercase;
     display: block;
     overflow: hidden;
+    text-align: center;
 }
 
 .border,
 .heading {
     display: block;
     white-space: nowrap;
+}
+
+.heading {
+    text-align: center;
 }

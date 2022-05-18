@@ -1,10 +1,10 @@
 import RenderBorder from "../components/border/RenderBorder";
-import { BordersIconLarge } from "../styles/Icons";
+import { BordersIcon } from "../styles/Icons";
 
 export default {
     name: "borders",
     title: "Borders",
-    icon: BordersIconLarge,
+    icon: () => BordersIcon(),
     type: "document",
     fields: [
         {
@@ -42,7 +42,7 @@ export default {
             const { title, borderTop, borderBottom } = selection;
             return {
                 title: title ?? "Border",
-                media: BordersIconLarge,
+                media: () => BordersIcon(),
                 subtitle:
                     borderTop &&
                     borderBottom &&

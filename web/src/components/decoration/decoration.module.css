@@ -21,5 +21,5 @@
     display: grid;
     grid-template-columns: var(--grid-columns);
     column-gap: var(--grid-columns-gap);
-    transform: translateY(calc(var(--nav-height) + (var(--margin-double) * -1)));
+    transform: translateY(calc( (var(--margin-double) * -1)));
 }

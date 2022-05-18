@@ -1,10 +1,10 @@
 import { orderRankField, orderRankOrdering } from "@sanity/orderable-document-list";
-import { MenuIconLarge, MenuIconSingleLarge } from "../styles/Icons";
+import { MenuIcon, MenuIconSingle } from "../styles/Icons";
 
 export default {
     name: "menu",
     title: "Menu",
-    icon: MenuIconLarge,
+    icon: () => MenuIcon(),
     type: "document",
     orderings: [orderRankOrdering],
     fields: [
@@ -62,7 +62,7 @@ export default {
             const { title, pages } = selection;
             return {
                 title: title ? title : "Menu Item",
-                media: pages && pages.length > 1 ? MenuIconLarge : MenuIconSingleLarge,
+                media: pages && pages.length > 1 ? (() => MenuIcon()) : (() => MenuIconSingle()),
                 subtitle: pages && pages.length > 1 ? "Multi" : "Tabs",
             };
         },

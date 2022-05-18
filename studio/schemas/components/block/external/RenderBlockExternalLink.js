@@ -7,15 +7,15 @@ import { ExternalIcon, PhoneIcon, EmailIcon } from "../../../styles/Icons";
 const RenderBlockExternalLink = ({ children, type }) => {
     const icon = () => {
         if (type === "web") {
-            return ExternalIcon();
+            return ExternalIcon("small");
         }
         if (type === "telephone") {
-            return PhoneIcon();
+            return PhoneIcon("small");
         }
         if (type === "email") {
-            return EmailIcon();
+            return EmailIcon("small");
         }
-        return ExternalIcon();
+        return ExternalIcon("small");
     }
 
     return (

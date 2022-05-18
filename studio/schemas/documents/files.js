@@ -1,9 +1,9 @@
-import { FilesIconLarge } from "../styles/Icons";
+import { FilesIcon} from "../styles/Icons";
 
 export default {
     name: "files",
     title: "Files",
-    icon: FilesIconLarge,
+    icon: () =>FilesIcon(),
     type: "document",
     fields: [
         {

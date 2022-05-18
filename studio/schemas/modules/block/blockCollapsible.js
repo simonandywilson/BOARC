@@ -5,7 +5,7 @@ export default {
     name: "blockCollapsible",
     title: "Collapsible",
     type: "object",
-    icon: CollapsibleIcon,
+    icon: () => CollapsibleIcon("small"),
     fields: [
         {
             name: "type",

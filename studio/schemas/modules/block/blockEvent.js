@@ -1,10 +1,10 @@
-import { EventIconAlt, EventIconAltLarge } from "../../styles/Icons";
+import { EventIconAlt, } from "../../styles/Icons";
 
 export default {
     name: "blockEvent",
     title: "Event",
     type: "object",
-    icon: EventIconAlt,
+    icon: () => EventIconAlt("small"),
     fields: [
         {
             name: "type",
@@ -46,7 +46,7 @@ export default {
             return {
                 title: `${capitalise(tense)} Events`,
                 subtitle: capitalise(type),
-                media: EventIconAltLarge,
+                media: () => EventIconAlt(),
             };
         },
     },

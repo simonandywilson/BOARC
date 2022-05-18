@@ -1,10 +1,10 @@
 import { orderRankField, orderRankOrdering } from "@sanity/orderable-document-list";
-import { FAQIconLarge } from "../styles/Icons";
+import { FAQIcon } from "../styles/Icons";
 
 export default {
     name: "faq",
     title: "FAQ",
-    icon: FAQIconLarge,
+    icon: () => FAQIcon(),
     type: "document",
     orderings: [orderRankOrdering],
     fields: [

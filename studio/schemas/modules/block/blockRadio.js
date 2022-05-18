@@ -4,7 +4,7 @@ export default {
     name: "blockRadio",
     title: "Radio",
     type: "object",
-    icon: RadioIcon,
+    icon: () => RadioIcon("small"),
     fields: [
         {
             name: "title",
