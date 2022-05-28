@@ -1,12 +1,12 @@
 .grid {
-    position: var(--chat-position);
+    position: var(--chat-radio-position);
     display: grid;
     grid-template-columns: var(--grid-columns);
     column-gap: var(--grid-columns-gap);
     margin-top: var(--margin-double);
     padding-top: var(--chat-offset);
     top: 0;
-    width: var(--chat-width);
+    width: var(--chat-radio-width);
     z-index: 1;
     pointer-events: none;
 }

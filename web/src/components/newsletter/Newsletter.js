@@ -18,9 +18,11 @@ const Newsletter = () => {
     const [hidden, setHidden] = useState(false);
     const [visibility, setVisibility] = useState(false);
     const [formstatus, setFormstatus] = useState("default");
+    const [submitStatus, setSubmitStatus] = useState("submit");
 
     const onSubmit = async (data, e) => {
         e.preventDefault();
+        setSubmitStatus("submitting");
         try {
             await axios.post("/api/submit-subscriber", {
                 date: new Date(),
@@ -86,7 +88,11 @@ const Newsletter = () => {
                                     })}
                                     className={style.input}
                                 />
-                                <input type="submit" className={style.submit} />
+                                {submitStatus === "submit" ? (
+                                    <input type="submit" className={style.submit} />
+                                ) : (
+                                    <div className={style.spinner}></div>
+                                )}
                             </div>
                             {errors.email?.type === "required" && (
                                 <p className={style.validation}>Please enter your email.</p>

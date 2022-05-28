@@ -10,7 +10,7 @@ export const HomepageIcon = (size) => <Emoji style={fontSize(size)} symbol="🏠
 export const MenuIcon = (size) => <Emoji style={fontSize(size)} symbol="📂" />;
 export const MenuIconSingle = (size) => <Emoji style={fontSize(size)} symbol="📁" />;
 export const FAQIcon = (size) => <Emoji style={fontSize(size)} symbol="💬" />;
-export const SeoIcon = (size) => <Emoji style={fontSize(size)} symbol="🚦" />;
+export const SeoIcon = (size) => <Emoji style={fontSize(size)} symbol="🚧" />;
 export const FilesIcon = (size) => <Emoji style={fontSize(size)} symbol="🗄" />;
 export const IconsIcon = (size) => <Emoji style={fontSize(size)} symbol="✳️" />;
 export const BordersIcon = (size) => <Emoji style={fontSize(size)} symbol="🌀" />;
@@ -23,7 +23,7 @@ export const InternalIcon = (size) => <Emoji style={fontSize(size)} symbol="📄
 export const ExternalIcon = (size) => <Emoji style={fontSize(size)} symbol="🔗" />;
 export const CopyIcon = (size) => <Emoji style={fontSize(size)} symbol="✏️" />;
 export const CommentIcon = (size) => <Emoji style={fontSize(size)} symbol="💭" />;
-export const SubscriberIcon = (size) => <Emoji style={fontSize(size)} symbol="👀" />;
+export const SubscriberIcon = (size) => <Emoji style={fontSize(size)} symbol="⭐️" />;
 export const LandingIcon = (size) => <Emoji style={fontSize(size)} symbol="🚀" />;
 export const HomeIcon = (size) => <Emoji style={fontSize(size)} symbol="🏠" />;
 export const EmailIcon = (size) => <Emoji style={fontSize(size)} symbol="✉️" />;
@@ -35,9 +35,8 @@ export const ImgGridIcon = (size) => <Emoji style={fontSize(size)} symbol="🖼"
 export const RadioIcon = (size) => <Emoji style={fontSize(size)} symbol="📡" />;
 export const ChatIcon = (size) => <Emoji style={fontSize(size)} symbol="💬" />;
 export const CommentsIcon = (size) => <Emoji style={fontSize(size)} symbol="💭" />;
-export const AllowedIcon = (size) => <Emoji style={fontSize(size)} symbol="✅" />;
-export const DisallowedIcon = (size) => <Emoji style={fontSize(size)} symbol="❌" />;
-export const NewsletterIcon = (size) => <Emoji style={fontSize(size)} symbol="🗞" />;
+export const NewsletterIcon = (size) => <Emoji style={fontSize(size)} symbol="📫" />;
+export const BackgroundIcon = (size) => <Emoji style={fontSize(size)} symbol="✨" />;
 
 export const AsciiIcon = (letter) => (
     <span

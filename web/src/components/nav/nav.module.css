@@ -25,10 +25,35 @@
     color: var(--font-colour);
 }
 
-.container {
+.containerLandscape,
+.containerPortrait {
     position: sticky;
     top: 0;
     width: max-content;
     max-width: 100%;
     margin-bottom: var(--margin);
+}
+
+.containerLandscape {
+    display: var(--nav-landscape-visibility);
+}
+
+.containerPortrait {
+    display: var(--nav-portrait-visibility);
+}
+
+.togglePortrait {
+    background: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
+
+.togglePortrait > svg {
+    fill: var(--purple);
+}
+
+.togglePortrait > svg:hover {
+    fill: var(--red);
 }

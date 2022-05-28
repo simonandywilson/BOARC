@@ -1,11 +1,10 @@
 .grid {
-    position: fixed;
+    position: var(--chat-radio-position);
     z-index: 2;
     display: grid;
     grid-template-columns: var(--grid-columns);
     column-gap: var(--grid-columns-gap);
-    width: calc(100% - var(--margin-double));
-    margin-top: var(--margin);
+    width: var(--chat-radio-width);
     pointer-events: none;
 }
 
@@ -13,6 +12,7 @@
     grid-column: var(--grid-position-radio);
     background: var(--grey);
     pointer-events: all;
+    margin-top: var(--margin);
 }
 
 .title {

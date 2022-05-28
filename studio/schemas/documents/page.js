@@ -18,6 +18,7 @@ export default {
             description: "Choose how this page is displayed on its landing page, if applicable.",
             options: {
                 collapsible: false,
+                columns: 2,
             },
         },
         {
@@ -54,39 +55,22 @@ export default {
     ],
     fields: [
         {
-            name: "referringDocuments",
+            name: "referring",
             title: "",
             type: "array",
-            of: [{ type: "menu" }],
-            readOnly: true,
+            of: [{ type: "ref" }],
+            readOnly: false,
             inputComponent: ReferencedBy,
+            options: { source: "referring", forward: { to: "menu", filter: "menu" } },
             group: "content",
         },
         {
-            name: "referring",
-            title: "Referring",
+            name: "menu",
+            title: "Menu",
             type: "string",
-            readOnly: true,
             group: "content",
             hidden: true,
-        },
-        {
-            name: "landing",
-            title: "Landing",
-            type: "boolean",
             readOnly: true,
-            group: "content",
-            initialValue: false,
-            hidden: true,
-        },
-        {
-            name: "homepage",
-            title: "Homepage",
-            type: "boolean",
-            readOnly: true,
-            group: "content",
-            initialValue: false,
-            hidden: true,
         },
         {
             name: "title",
@@ -136,7 +120,6 @@ export default {
             type: "number",
             fieldset: "landing",
             group: "landing",
-            description: "Choose a column number for the landing page title.",
             initialValue: 1,
             validation: (Rule) => [
                 Rule.required().error(`Please enter a column number.`),
@@ -157,7 +140,6 @@ export default {
             type: "number",
             fieldset: "landing",
             group: "landing",
-            description: "Choose a column number for the landing page description.",
             initialValue: 1,
             validation: (Rule) => [
                 Rule.required().error(`Please enter a column number.`),
@@ -246,20 +228,14 @@ export default {
             },
         },
         {
-            name: "images",
-            title: "Background Images",
-            type: "array",
-            group: "customisation",
-            of: [{ type: "image" }],
-        },
-        {
             title: "SEO Description",
             name: "seoDescription",
             type: "text",
             description: "Appears in search engine results.",
             group: "seo",
+            rows: 3,
             validation: (Rule) => [
-                Rule.required().warning(`Your page needs a description.`),
+                Rule.required().warning(`Your page needs an SEO description.`),
                 Rule.min(50).warning(`Your page description should be a minimum of 50 characters.`),
                 Rule.max(155).warning(
                     `Your page description should be a maximum of 155 characters.`
@@ -273,17 +249,18 @@ export default {
             description:
                 "Appears when page is shared on social media (Facebook, Twitter, LinkedIn, Slack etc.). Image will be cropped to 1200×630px",
             group: "seo",
+            validation: (Rule) => [Rule.required().warning(`Your page needs an SEO image.`)],
         },
     ],
     orderings: [
         {
             title: "Menu",
-            name: "menuAsc",
-            by: [{ field: "referring", direction: "asc" }],
+            name: "menuOrdering",
+            by: [{ field: "menu", direction: "asc" }],
         },
         {
             title: "Title",
-            name: "titleAsc",
+            name: "titleOrdering",
             by: [{ field: "title", direction: "asc" }],
         },
     ],
@@ -291,14 +268,15 @@ export default {
         select: {
             title: "title",
             referring: "referring",
-            homepage: "homepage",
+            menu: "menu",
         },
         prepare(selection) {
-            const { title, referring, homepage } = selection;
+            const { title, referring, menu } = selection;
+            const referringTypes = referring ? referring.map((a) => a.type) : [];
             return {
                 title: title ? title : "Untitled Page",
-                media: homepage ? () => HomeIcon() : () => PageIcon(),
-                subtitle: referring ?? referring,
+                media: referringTypes.includes("homepage") ? () => HomeIcon() : () => PageIcon(),
+                subtitle: menu ?? menu,
             };
         },
     },

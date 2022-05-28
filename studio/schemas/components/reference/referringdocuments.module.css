@@ -1,3 +1,8 @@
+.container {
+    max-height: 250px;
+    overflow-y: scroll;
+}
+
 .link {
     color: inherit;
     text-decoration: none;

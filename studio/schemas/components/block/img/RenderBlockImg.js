@@ -21,8 +21,8 @@ const RenderBlockImg = ({ value }) => {
                         </Text>
                     </Box>
                 }
-                fallbackPlacements={["right", "left"]}
-                placement="top"
+                fallbackPlacements={["left", "bottom"]}
+                placement="right"
                 portal
                 disabled={caption || alt ? false : true}
             >

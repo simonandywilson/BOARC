@@ -8,31 +8,25 @@ const client = sanityClient.withConfig({ apiVersion: "2022-02-15" });
 
 export const RenderHeading = React.forwardRef((props, ref) => {
     const { type, markers, presence, compareValue, parent } = props;
-    
+
     const target = parent.border ? parent.border._ref : undefined;
     const [data, setData] = useState({});
     const borderTop = Object.keys(data).length != 0 ? data.borderTop.repeat(60) : "";
     const borderBottom = Object.keys(data).length != 0 ? data.borderBottom.repeat(60) : "";
-    
+
     useEffect(() => {
         let toFetch = true;
-        
-        if (target !== undefined) {
+        if (target !== undefined && toFetch) {
             const fetchData = async () => {
                 const data = await client.fetch(`*[_id == $targetId][0]`, {
                     targetId: target,
                 });
-
-                if (toFetch) {
-                    setData(data);
-                }
+                setData(data);
             };
-
             fetchData().catch(console.error);
         } else {
             setData({});
         }
-
         return () => (toFetch = false);
     }, [parent.border]);
 

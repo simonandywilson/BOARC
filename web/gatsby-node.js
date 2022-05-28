@@ -1,19 +1,19 @@
 const path = require("path");
 
 exports.createPages = async ({ graphql, actions }) => {
-    const { createRedirect, createPage } = actions;
+    const { createPage } = actions;
 
     const homepageQuery = await graphql(`
         query getQuery {
             homepage: sanityHomepage {
                 initial {
-                    ... on SanityPage {
+                    ... on SanityLanding {
                         id
                         slug {
                             current
                         }
                     }
-                    ... on SanityLanding {
+                    ... on SanityPage {
                         id
                         slug {
                             current
@@ -23,14 +23,6 @@ exports.createPages = async ({ graphql, actions }) => {
             }
         }
     `);
-
-    // createRedirect({
-    //     fromPath: "/",
-    //     exactPath: true,
-    //     isPermanent: false,
-    //     redirectInBrowser: true,
-    //     toPath: `/${homepageQuery.data.homepage.initial.slug.current}`,
-    // });
 
     const landingQuery = await graphql(`
         query getQuery {
@@ -48,9 +40,24 @@ exports.createPages = async ({ graphql, actions }) => {
         query getQuery {
             page: allSanityPage {
                 nodes {
-                    homepage
                     slug {
                         current
+                    }
+                }
+            }
+            homepage: sanityHomepage {
+                initial {
+                    ... on SanityLanding {
+                        id
+                        slug {
+                            current
+                        }
+                    }
+                    ... on SanityPage {
+                        id
+                        slug {
+                            current
+                        }
                     }
                 }
             }
@@ -88,8 +95,8 @@ exports.createPages = async ({ graphql, actions }) => {
     });
     pageQuery.data.page.nodes.forEach((node) => {
         let slug = node.slug.current;
-        if (node.homepage) {
-            slug = "/"
+        if (slug === homepageQuery.data.homepage.initial.slug.current) {
+            slug = "/";
         }
         createPage({
             path: slug,

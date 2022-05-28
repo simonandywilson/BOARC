@@ -1,0 +1,20 @@
+.row {
+    display: grid;
+    font-family: var(--font-mono);
+    color: #ffffff;
+}
+
+.text > a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #ffffff;
+    padding: 0;
+}
+
+.text > a:hover {
+    color: var(--red);
+}
+
+.text > a > span {
+    display: grid;
+}

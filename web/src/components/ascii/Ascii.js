@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import { nanoid } from "nanoid";
 import { useAsciiContext } from "../../state/GlobalState";
 import { useResizeDetector } from "react-resize-detector";
-import Ticker from "./ticker/Ticker";
+  import Ticker from "./ticker/Ticker";
 import PageVisibility from "react-page-visibility";
 
 const Ascii = ({ asciiWidth }) => {
@@ -12,6 +12,11 @@ const Ascii = ({ asciiWidth }) => {
     const AsciiContext = useAsciiContext();
     const { height, ref } = useResizeDetector();
     const [pageIsVisible, setPageIsVisible] = useState(true);
+
+    useEffect(() => {
+        const resizeEvent = new Event("resize");
+        window.dispatchEvent(resizeEvent);
+    }, []);
 
     useEffect(() => {
         if (height && height > 0) {
@@ -22,42 +27,43 @@ const Ascii = ({ asciiWidth }) => {
     const handleVisibilityChange = (isVisible) => setPageIsVisible(isVisible);
 
     return (
-        <header
-            className={style.ascii}
-            style={{
-                width: asciiWidth,
-                height: "var(--ascii-height)",
-                display: AsciiContext === true ? "inline-block" : "none",
-            }}
-        >
-            <div className={style.container}>
-                <PageVisibility onChange={handleVisibilityChange}>
-                    {pageIsVisible && (
-                        <Ticker speed={5}>
-                            {() => (
-                                <div className={style.wrapper} ref={ref}>
-                                    {ascii.ascii.map((asc) => {
-                                        return (
-                                            <table className={style.table} key={asc._id}>
-                                                <tbody>
-                                                    {asc.characterLayout.rows.map((row) => (
-                                                        <tr key={row._key}>
-                                                            {row.cells.map((cell) => (
-                                                                <td key={nanoid()}>{cell}</td>
-                                                            ))}
-                                                        </tr>
-                                                    ))}
-                                                </tbody>
-                                            </table>
-                                        );
-                                    })}
-                                </div>
-                            )}
-                        </Ticker>
-                    )}
-                </PageVisibility>
-            </div>
-        </header>
+        AsciiContext && (
+            <header
+                className={style.ascii}
+                style={{
+                    width: asciiWidth,
+                    height: "var(--ascii-height)",
+                }}
+            >
+                <div className={style.container}>
+                    <PageVisibility onChange={handleVisibilityChange}>
+                        {pageIsVisible && (
+                            <Ticker speed={5}>
+                                {() => (
+                                    <div className={style.wrapper} ref={ref}>
+                                        {ascii.ascii.map((asc) => {
+                                            return (
+                                                <table className={style.table} key={asc._id}>
+                                                    <tbody>
+                                                        {asc.characterLayout.rows.map((row) => (
+                                                            <tr key={row._key}>
+                                                                {row.cells.map((cell) => (
+                                                                    <td key={nanoid()}>{cell}</td>
+                                                                ))}
+                                                            </tr>
+                                                        ))}
+                                                    </tbody>
+                                                </table>
+                                            );
+                                        })}
+                                    </div>
+                                )}
+                            </Ticker>
+                        )}
+                    </PageVisibility>
+                </div>
+            </header>
+        )
     );
 };
 

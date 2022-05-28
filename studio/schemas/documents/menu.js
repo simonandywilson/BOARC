@@ -1,5 +1,6 @@
 import { orderRankField, orderRankOrdering } from "@sanity/orderable-document-list";
 import { MenuIcon, MenuIconSingle } from "../styles/Icons";
+import CreateLanding from "../components/createLanding/CreateLanding";
 
 export default {
     name: "menu",
@@ -19,6 +20,7 @@ export default {
             title: "Landing",
             type: "reference",
             to: [{ type: "landing", title: "Reference to Landing Page" }],
+            options: { disableNew: true },
             hidden: ({ parent }) => {
                 if ("pages" in parent) {
                     if (parent.pages.length <= 1) {
@@ -39,6 +41,26 @@ export default {
                         return true;
                     }
                 }),
+        },
+        {
+            name: "createLanding",
+            title: "Auto Create Landing Page",
+            type: "string",
+            inputComponent: CreateLanding,
+            hidden: ({ parent }) => {
+                if ("pages" in parent) {
+                    if ("landing" in parent) {
+                        return true;
+                    }
+
+                    if (parent.pages.length <= 1) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+                return true;
+            },
         },
         {
             name: "pages",
@@ -62,7 +84,7 @@ export default {
             const { title, pages } = selection;
             return {
                 title: title ? title : "Menu Item",
-                media: pages && pages.length > 1 ? (() => MenuIcon()) : (() => MenuIconSingle()),
+                media: pages && pages.length > 1 ? () => MenuIcon() : () => MenuIconSingle(),
                 subtitle: pages && pages.length > 1 ? "Multi" : "Tabs",
             };
         },

@@ -1,4 +1,4 @@
-import { CommentsIcon, AllowedIcon, DisallowedIcon } from "../styles/Icons";
+import { CommentsIcon } from "../styles/Icons";
 
 export default {
     name: "comments",
@@ -40,10 +40,11 @@ export default {
         },
         prepare(selection) {
             const { title, subtitle, visible } = selection;
+            const status = visible ? "" : "❌";
             return {
                 title: title ?? "Comment",
-                subtitle: subtitle,
-                media: visible ? (() => AllowedIcon()) : (() => DisallowedIcon()),
+                subtitle: subtitle + " " + status,
+                media: () => CommentsIcon(),
             };
         },
     },

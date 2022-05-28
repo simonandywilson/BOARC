@@ -45,8 +45,7 @@ const RenderBlockCollapsible = ({ value }) => {
                         </Text>
                     </Box>
                 }
-                fallbackPlacements={["right", "left"]}
-                placement="top"
+                placement="right"
                 portal
             >
                 <Container>

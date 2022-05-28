@@ -19,6 +19,7 @@ import icons from "./documents/icons";
 import borders from "./documents/borders";
 import comments from "./documents/comments";
 import subscriber from "./documents/subscriber";
+import background from "./documents/background";
 
 // Modules
 
@@ -34,12 +35,13 @@ import blockExternal from "./modules/block/blockExternal";
 import blockComment from "./modules/block/blockComment";
 import blockRadio from "./modules/block/blockRadio";
 import blockChat from "./modules/block/blockChat";
+import blockBackground from "./modules/block/blockBackground";
 
 import blockEvent from "./modules/block/blockEvent";
 import blockShow from "./modules/block/blockShow";
 
 import img from "./modules/img";
-
+import ref from "./modules/ref";
 import pageBlock from "./modules/pageBlock";
 import faqBlock from "./modules/faqBlock";
 import basicBlock from "./modules/basicBlock";
@@ -66,6 +68,7 @@ export default createSchema({
         borders,
         comments,
         subscriber,
+        background,
 
 
         // Block
@@ -83,10 +86,11 @@ export default createSchema({
         blockShow,
         blockRadio,
         blockChat,
+        blockBackground,
 
         // Module
         img,
-
+ref,
         pageBlock,
         faqBlock,
         basicBlock,

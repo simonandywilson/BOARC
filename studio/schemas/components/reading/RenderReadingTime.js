@@ -28,11 +28,13 @@ export const RenderReadingTime = React.forwardRef((props, ref) => {
     }, []);
 
     useEffect(() => {
-        client
-            .patch(document._id)
-            .set({ reading: time?.words && valid !== false ? time.text : "" })
-            .commit()
-            .catch((err) => console.error("The update to 'reading' failed: ", err.message));
+        if (document._id) {
+            client
+                .patch(document._id)
+                .set({ reading: time?.words && valid !== false ? time.text : "" })
+                .commit()
+                .catch((err) => console.error("The update to 'reading' failed: ", err.message));
+        }
     }, [time]);
 
     return (

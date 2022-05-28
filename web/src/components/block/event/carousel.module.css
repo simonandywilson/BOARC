@@ -40,7 +40,7 @@
 }
 
 .carousel {
-    grid-column: var(--grid-position-eventcarousel);
+    grid-column: var(--grid-position-event-carousel);
 }
 
 .slide,
@@ -49,7 +49,6 @@
     width: 100%;
     height: 100%;
     text-align: center;
-    background: #d8d8d8;
 }
 
 .slide:after,
@@ -63,9 +62,15 @@
     padding-bottom: 100%;
 }
 
-.placeholderSlide {
-    background: none;
+.image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
 }
+
 
 .text {
     position: absolute;

@@ -1,15 +1,16 @@
 import S from "@sanity/desk-tool/structure-builder";
 import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 
+
 import {
     ConfigIcon,
-    HomepageIcon,
     MenuIcon,
     NewsletterIcon,
     AsciiIcon,
     IconsIcon,
     BordersIcon,
     SeoIcon,
+    BackgroundIcon,
 } from "../schemas/styles/Icons";
 
 export const ConfigMenu = S.listItem()
@@ -19,12 +20,7 @@ export const ConfigMenu = S.listItem()
         S.list()
             .title("Configuration")
             .items([
-                S.listItem()
-                    .title("Homepage")
-                    .icon(() => HomepageIcon())
-                    .child(
-                        S.document().title("Homepage").schemaType("homepage").documentId("homepage")
-                    ),
+                
                 orderableDocumentListDeskItem({
                     type: "menu",
                     title: "Menu",
@@ -50,7 +46,6 @@ export const ConfigMenu = S.listItem()
                     title: "Icons",
                     icon: () => IconsIcon(),
                 }),
-
                 S.listItem()
                     .title("Borders")
                     .icon(() => BordersIcon())
@@ -59,6 +54,15 @@ export const ConfigMenu = S.listItem()
                             .title("Borders")
                             .filter("_type == $type")
                             .params({ type: "borders" })
+                    ),
+                S.listItem()
+                    .title("Backgrounds")
+                    .icon(() => BackgroundIcon())
+                    .child(
+                        S.documentTypeList("background")
+                            .title("Backgrounds")
+                            .filter("_type == $type")
+                            .params({ type: "background" })
                     ),
                 S.divider(),
                 S.listItem()

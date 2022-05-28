@@ -8,6 +8,8 @@ const EventRendererCarouselSlide = ({ data }) => {
     const [swiper, setSwiper] = useState(null);
     const [margin, setMargin] = useState(0);
 
+    const [swiperProps, setSwiperProps] = useState({ isBeginning: false, isEnd: false });
+
     useEffect(() => {
         const rem = parseFloat(
             getComputedStyle(document.documentElement).getPropertyValue("--margin")
@@ -17,7 +19,11 @@ const EventRendererCarouselSlide = ({ data }) => {
 
     return data.length > 0 ? (
         <div className={style.grid}>
-            <button className={style.arrowLeft} onClick={() => swiper.slidePrev(500, true)}>
+            <button
+                className={style.arrowLeft}
+                onClick={() => swiper.slidePrev(500, true)}
+                style={{ display: swiperProps?.isBeginning ? "none" : "block" }}
+            >
                 <svg
                     width="25.195"
                     height="45.146"
@@ -38,7 +44,13 @@ const EventRendererCarouselSlide = ({ data }) => {
                 <Swiper
                     slidesPerView={2}
                     spaceBetween={margin}
-                    onSwiper={(swiper) => setSwiper(swiper)}
+                    onSwiper={(swiper) => {
+                        setSwiper(swiper);
+                        setSwiperProps({ isBeginning: swiper.isBeginning, isEnd: swiper.isEnd });
+                    }}
+                    onSlideChange={(swiper) =>
+                        setSwiperProps({ isBeginning: swiper.isBeginning, isEnd: swiper.isEnd })
+                    }
                     breakpoints={{
                         500: {
                             slidesPerView: 3,
@@ -69,12 +81,17 @@ const EventRendererCarouselSlide = ({ data }) => {
                                         })}
                                     </div>
                                 </Link>
+                                <img src={slide.icon.url} alt="" className={style.image} />
                             </SwiperSlide>
                         );
                     })}
                 </Swiper>
             </div>
-            <button className={style.arrowRight} onClick={() => swiper.slideNext(500, true)}>
+            <button
+                className={style.arrowRight}
+                onClick={() => swiper.slideNext(500, true)}
+                style={{ display: swiperProps?.isEnd ? "none" : "block" }}
+            >
                 <svg width="25.195" height="45.146" viewBox="0 0 25.195 45.146">
                     <path
                         d="M-22,0,0,21.5-22,43"

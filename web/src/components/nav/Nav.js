@@ -5,7 +5,7 @@ import * as style from "./nav.module.css";
 import Primary from "./Primary";
 import Secondary from "./Secondary";
 
-const Nav = ({ setAsciiWidth }) => {
+const Nav = ({ setAsciiWidth, setNavPortrait }) => {
     const {
         homepage,
         menu: { nodes },
@@ -21,9 +21,16 @@ const Nav = ({ setAsciiWidth }) => {
     return (
         <section className={style.nav} ref={ref}>
             <Title setAsciiWidth={setAsciiWidth} title={homepage.title} />
-            <nav className={style.container}>
-                <Primary menus={menus} />
+            <nav className={style.containerLandscape}>
+                <Primary menus={menus} homepage={homepage.initial.slug.current} />
                 <Secondary menus={menus} />
+            </nav>
+            <nav className={style.containerPortrait}>
+                <button className={style.togglePortrait} onClick={() => setNavPortrait(true)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
+                        <path d="M6 36V33H42V36ZM6 25.5V22.5H42V25.5ZM6 15V12H42V15Z" />
+                    </svg>
+                </button>
             </nav>
         </section>
     );
@@ -50,6 +57,20 @@ const getData = graphql`
     {
         homepage: sanityHomepage {
             title
+            initial {
+                ... on SanityLanding {
+                    id
+                    slug {
+                        current
+                    }
+                }
+                ... on SanityPage {
+                    id
+                    slug {
+                        current
+                    }
+                }
+            }
         }
         menu: allSanityMenu(sort: { fields: [orderRank], order: ASC }) {
             nodes {

@@ -6,27 +6,24 @@ import { Item as DefaultItem, List as DefaultList } from "part:@sanity/component
 import * as style from "./referringdocuments.module.css";
 import { Card, Label, Stack } from "@sanity/ui";
 
-const ReferringDocumentsList = (props) => {
-    const { documents } = props;
-    
-
+const ReferringDocumentsList = ({ references }) => {
     return (
         <DefaultList>
-            <Card padding={[4, 4, 4, 4]} shadow={1} radius={2}>
+            <Card padding={[4, 4, 4, 4]} shadow={1} radius={2} className={style.container}>
                 <Stack space={[3, 3, 4]}>
-                    <Label size={1}>{`This document is referenced within the following ${
-                        documents.length === 1 ? "menu" : "menus"
+                    <Label size={1}>{`This document is referenced in the following ${
+                        references.length === 1 ? "place" : "places"
                     }:`}</Label>
-                    {documents.map((document) => {
-                        const schemaType = schema.get(document._type);
+                    {references.map((reference) => {
+                        const schemaType = schema.get(reference.type);
                         return (
-                            <DefaultItem key={document._id}>
+                            <DefaultItem key={reference.id}>
                                 {schemaType ? (
                                     <Stack space={[3, 3, 4]}>
                                         <IntentLink
                                             className={style.link}
                                             intent="edit"
-                                            params={{ id: document._id, type: document._type }}
+                                            params={{ id: reference.id, type: reference.type }}
                                         >
                                             <Card
                                                 padding={[2, 2, 2, 2]}
@@ -35,13 +32,13 @@ const ReferringDocumentsList = (props) => {
                                                 display={"flex"}
                                                 className={style.card}
                                             >
-                                                <Preview value={document} type={schemaType} />
+                                                <Preview value={reference} type={schemaType} />
                                             </Card>
                                         </IntentLink>
                                     </Stack>
                                 ) : (
                                     <div>
-                                        A document of the unknown type <em>{document._type}</em>
+                                        A document of the unknown type <em>{reference.type}</em>
                                     </div>
                                 )}
                             </DefaultItem>

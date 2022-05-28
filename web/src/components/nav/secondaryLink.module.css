@@ -20,8 +20,7 @@
     padding-left: calc(var(--box-padding) * 2);
     padding-right: calc(var(--box-padding) * 2);
     -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
-    
+    box-decoration-break: clone; 
 }
 
 .secondary > a:hover {

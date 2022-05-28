@@ -101,6 +101,9 @@ export default {
         {
             type: "blockChat",
         },
+        {
+            type: "blockBackground",
+        },
     ],
 };
 

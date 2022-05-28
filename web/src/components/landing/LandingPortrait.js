@@ -17,11 +17,13 @@ const LandingPortrait = ({ pages, rows, delta }) => {
                 >
                     {pages.map((page, index) => {
                         const title = page.landingTitle ? [...page.landingTitle] : [...page.title];
-                        const titlePosition = 1;
+                        const titlePosition = Math.round((columns / 2) - title.length / 2);
                         const description = page.landingDescription
                             ? [...page.landingDescription]
                             : [..."No description"];
-                        const descriptionPosition = 1;
+                        const descriptionPosition = Math.round(
+                            columns / 2 - description.length / 2
+                        );;
                         return (
                             <div
                                 key={page._id + index}

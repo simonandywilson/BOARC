@@ -3,6 +3,7 @@ import * as style from "./show.module.css";
 import ReactPlayer from "react-player/file";
 import { PortableText } from "@portabletext/react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "gatsby-plugin-sanity-image";
 
 const ShowRendererRow = ({ width, show }) => {
     const [open, setOpen] = useState(false);
@@ -26,7 +27,9 @@ const ShowRendererRow = ({ width, show }) => {
                 width={0}
                 height={0}
             />
-            <div className={style.icon}></div>
+            <div className={style.icon}>
+                <Image {...show.icon} className={style.image} alt="" />
+            </div>
             <div className={style.details}>
                 <div className={style.flex}>
                     <div className={style.heading}>

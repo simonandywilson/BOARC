@@ -4,7 +4,7 @@ import * as style from "./primary.module.css";
 import { useActiveContext } from "../../state/GlobalState";
 import { nanoid } from "nanoid";
 
-const Primary = ({ menus }) => {
+const Primary = ({ menus, homepage }) => {
     const ActiveContext = useActiveContext();
     return (
         <div className={style.wrapper}>
@@ -12,7 +12,7 @@ const Primary = ({ menus }) => {
                 const items = menu.pages;
                 const landing = menu.landing;
                 const isMulti = items.length > 1 ? true : false;
-                const isHomepage = isMulti ? false : items[0].homepage ? true : false;
+                const isHomepage = isMulti ? false : items[0].slug.current === homepage ? true : false;
                 const slug = isMulti ? landing.slug.current : items[0].slug.current;
                 const multiSlugs = isMulti && items.map((slug) => `${slug.slug.current}`);
                 const isActive =

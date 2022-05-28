@@ -1,5 +1,3 @@
-
-
 .newsletter {
     position: fixed;
     bottom: 0;
@@ -7,15 +5,15 @@
     max-width: 400px;
     right: 0;
     z-index: 99;
-    
+
     color: #ffffff;
     font-size: var(--font-size);
     padding: var(--margin);
 }
 
 .wrapper {
-padding: calc(var(--box-padding) * 4);
-background: var(--purple);
+    padding: calc(var(--box-padding) * 4);
+    background: var(--purple);
 }
 
 .row {
@@ -23,7 +21,7 @@ background: var(--purple);
     margin-top: calc(var(--box-padding) * 4);
 }
 
-.newsletter > .row:first-child {
+.wrapper > .row:first-child {
     margin: 0;
 }
 
@@ -35,11 +33,10 @@ background: var(--purple);
     height: max-content;
     padding: 0;
     font-family: var(--font);
-    font-size: var(--font-size-large);
+    font-size: var(--font-size);
     color: #ffffff;
     cursor: pointer;
     right: 0;
-    margin-right: var(--margin);
     margin-left: var(--margin);
 }
 
@@ -48,7 +45,8 @@ background: var(--purple);
 }
 
 .input,
-.submit {
+.submit,
+.spinner {
     border: none;
     width: 100%;
     height: var(--margin-double);
@@ -59,39 +57,53 @@ background: var(--purple);
     background: #ffffff;
 }
 
-.input,
-.submit {
-    border: none;
-    width: 100%;
-    height: var(--margin-double);
-    padding-left: var(--margin);
-    font-family: var(--font-family);
-    font-size: var(--font-size);
-    border-radius: none;
-    background: #ffffff;
-}
-
 .input:focus {
     outline: none;
     border: 2px solid #000000;
 }
 
-.submit {
+.submit,.spinner {
     color: #ffffff;
-    background: #000000;
+    background: var(--brown);
     padding: 0;
     cursor: pointer;
     flex-shrink: 2;
 }
 
 .submit:hover {
-    background: var(--purple);
+    background: var(--brown);
 }
-
 
 .validation {
     background: var(--red);
     margin-bottom: 0;
     padding: var(--box-padding);
+}
 
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    font-size: var(--font-size);
+}
+
+.spinner:before {
+    content: "";
+    animation: spinner 700ms steps(1, end) infinite;
+}
+
+@keyframes spinner {
+    0%,
+    100% {
+        content: "-";
+    }
+    25% {
+        content: "\\";
+    }
+    50% {
+        content: "|";
+    }
+    75% {
+        content: "/";
+    }
 }

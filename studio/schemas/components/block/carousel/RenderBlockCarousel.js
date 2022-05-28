@@ -30,8 +30,8 @@ const RenderBlockCarousel = ({ value }) => {
                         </Text>
                     </Box>
                 }
-                fallbackPlacements={["right", "left"]}
-                placement="top"
+                fallbackPlacements={["left", "bottom"]}
+                placement="right"
                 portal
             >
                 <Grid columns={[2, 3, 3, 3]} gap={[1, 1, 2, 2]} padding={2}>

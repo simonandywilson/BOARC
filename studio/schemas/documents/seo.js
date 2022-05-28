@@ -25,6 +25,7 @@ export default {
             title: "Site Description",
             name: "seoDescription",
             type: "text",
+            rows: 3,
             description: "Appears in search engine results.",
             validation: (Rule) => [
                 Rule.required().warning(`Your page needs an SEO description.`),

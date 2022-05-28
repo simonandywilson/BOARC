@@ -30,8 +30,8 @@ const RenderBlockGrid = ({ value }) => {
                         </Text>
                     </Box>
                 }
-                fallbackPlacements={["right", "left"]}
-                placement="top"
+                fallbackPlacements={["left", "bottom"]}
+                placement="right"
                 portal
             >
                 <Grid columns={[2, 3, 3, 3]} gap={[1, 1, 2, 2]} padding={2}>
@@ -39,8 +39,7 @@ const RenderBlockGrid = ({ value }) => {
                         data.map((image) => (
                             <div className={style.container}>
                                 <div className={style.wrapper}>
-                                        <img key={nanoid()} src={image} className={style.image} />
-                                    
+                                    <img key={nanoid()} src={image} className={style.image} />
                                 </div>
                             </div>
                         ))

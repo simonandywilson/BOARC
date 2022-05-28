@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDocumentOperation } from "@sanity/react-hooks";
+import { WithReferringDocuments } from "part:@sanity/base/with-referring-documents";
 
 export default function SetAndPublishAction(props) {
     const { patch, publish } = useDocumentOperation(props.id, props.type);

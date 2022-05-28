@@ -18,7 +18,7 @@ Media Queries
         --grid-position-radio: 1 / 14;
         --grid-position-chat: 1 / 14;
 
-        --grid-position-eventcarousel: 2 / 11;
+        --grid-position-event-carousel: 2 / 11;
         --grid-position-event-back: 1 / 4;
         --grid-position-event-programme: 4 / 6;
         --grid-position-event-description: 6 / 12;
@@ -30,14 +30,20 @@ Media Queries
         --grid-position-image-caption: 5 / 12;
         --grid-position-imagegrid: 1 / 12;
 
-        --chat-position: relative;
-        --chat-offset: calc(var(--margin-double) + (var(--radio-height) * -1));
-        --chat-width: 100%;
+        --page-margin-bottom: calc(
+            (var(--margin-double) + (var(--font-size) * 2) - (var(--box-padding) * 2))
+        );
+
+        --chat-radio-position: relative;
+        --chat-offset: 0;
+        --chat-radio-width: 100%;
 
         --comment-caption-order: 1;
 
         --faq-margin: var(--margin);
 
+        --nav-portrait-visibility: block;
+        --nav-landscape-visibility: none;
         --decoration-visibility: none;
         --landing-portrait-visibility: flex;
         --landing-landscape-visibility: none;
@@ -68,7 +74,7 @@ Media Queries
         --grid-position-radio: 1 / 4;
         --grid-position-chat: 1 / 4;
 
-        --grid-position-eventcarousel: 2 / 11;
+        --grid-position-event-carousel: 2 / 11;
         --grid-position-event-back: 1 / 4;
         --grid-position-event-programme: 4 / 6;
         --grid-position-event-description: 6 / 12;
@@ -80,16 +86,20 @@ Media Queries
         --grid-position-image-caption: 6 / 12;
         --grid-position-imagegrid: 4 / 12;
 
-        --chat-position: fixed;
+        --page-margin-bottom: var(--margin);
+
+        --chat-radio-position: fixed;
         --chat-offset: calc(
             var(--margin-double) + (var(--radio-height) * -1) + (var(--nav-height) * -1)
         );
-        --chat-width: calc(100% - var(--margin-double));
+        --chat-radio-width: calc(100% - var(--margin-double));
 
         --comment-caption-order: 1;
 
         --faq-margin: var(--margin);
 
+        --nav-portrait-visibility: none;
+        --nav-landscape-visibility: block;
         --decoration-visibility: flex;
         --landing-portrait-visibility: none;
         --landing-landscape-visibility: flex;
@@ -120,7 +130,7 @@ Media Queries
         --grid-position-radio: 1 / 4;
         --grid-position-chat: 1 / 4;
 
-        --grid-position-eventcarousel: 2 / 11;
+        --grid-position-event-carousel: 2 / 11;
         --grid-position-event-back: 1 / 4;
         --grid-position-event-programme: 4 / 7;
         --grid-position-event-description: 7 / 12;
@@ -132,16 +142,20 @@ Media Queries
         --grid-position-image-caption: 3 / 6;
         --grid-position-imagegrid: 4 / 12;
 
-        --chat-position: fixed;
+        --page-margin-bottom: var(--margin);
+
+        --chat-radio-position: fixed;
         --chat-offset: calc(
             var(--margin-double) + (var(--radio-height) * -1) + (var(--nav-height) * -1)
         );
-        --chat-width: calc(100% - var(--margin-double));
+        --chat-radio-width: calc(100% - var(--margin-double));
 
         --comment-caption-order: 0;
 
         --faq-margin: calc(var(--column-single) + var(--margin) * 2);
 
+        --nav-portrait-visibility: none;
+        --nav-landscape-visibility: block;
         --decoration-visibility: flex;
         --landing-portrait-visibility: none;
         --landing-landscape-visibility: flex;
@@ -172,7 +186,7 @@ Media Queries
         --grid-position-radio: 1 / 4;
         --grid-position-chat: 1 / 4;
 
-        --grid-position-eventcarousel: 2 / 11;
+        --grid-position-event-carousel: 2 / 11;
         --grid-position-event-back: 1 / 4;
         --grid-position-event-programme: 4 / 6;
         --grid-position-event-description: 6 / 12;
@@ -184,16 +198,20 @@ Media Queries
         --grid-position-image-caption: 4 / 6;
         --grid-position-imagegrid: 4 / 12;
 
+        --page-margin-bottom: var(--margin);
+
         --chat-position: fixed;
         --chat-offset: calc(
             var(--margin-double) + (var(--radio-height) * -1) + (var(--nav-height) * -1)
         );
-        --chat-width: calc(100% - var(--margin-double));
+        --chat-radio-width: calc(100% - var(--margin-double));
 
         --comment-caption-order: 0;
 
         --faq-margin: calc(var(--column-double) + var(--margin) * 2);
 
+        --nav-portrait-visibility: none;
+        --nav-landscape-visibility: block;
         --decoration-visibility: flex;
         --landing-portrait-visibility: none;
         --landing-landscape-visibility: flex;
@@ -238,8 +256,8 @@ Variables
     --font-easy: Khula;
     --font: var(--font-regular);
 
-    --purple: rgb(104, 108, 227, 1);
-    --brown: rgb(120, 106, 47, 1);
+    --purple: #6468e3;
+    --brown: #786a2f;
     --brown-translucent: rgba(120, 106, 47, 0.9);
     --brown-highlight: rgb(120, 106, 47, 0.3);
     --red: #ed6b6c;

@@ -21,7 +21,9 @@ const EventRendererListRow = ({ data, tense, width }) => {
                             : "var(--grid-position-main-normal)",
                 }}
             >
-                <div className={style.icon}></div>
+                <div className={style.icon}>
+                    <img src={data.icon.url} alt="" className={style.image} />
+                </div>
                 <div>
                     <div className={style.details}>
                         <div

@@ -10,7 +10,7 @@ export default {
             name: "text",
             title: "Sign Up Text",
             type: "text",
-            rows: 4,
+            rows: 2,
         },
     ],
 };

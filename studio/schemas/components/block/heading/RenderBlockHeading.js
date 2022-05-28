@@ -15,23 +15,17 @@ const RenderBlockHeading = ({ value }) => {
 
     useEffect(() => {
         let toFetch = true;
-
-        if (target !== undefined) {
+        if (target !== undefined && toFetch) {
             const fetchData = async () => {
                 const data = await client.fetch(`*[_id == $targetId][0]`, {
                     targetId: target,
                 });
-
-                if (toFetch) {
-                    setData(data);
-                }
+                setData(data);
             };
-
             fetchData().catch(console.error);
         } else {
             setData({});
         }
-
         return () => (toFetch = false);
     }, [border]);
 
@@ -45,8 +39,8 @@ const RenderBlockHeading = ({ value }) => {
                         </Text>
                     </Box>
                 }
-                fallbackPlacements={["right", "left"]}
-                placement="top"
+                fallbackPlacements={["left", "bottom"]}
+                placement="right"
                 portal
             >
                 <div>
