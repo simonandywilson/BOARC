@@ -14,7 +14,6 @@ const Layout = ({ children }) => {
     const [sketchKey, setSketchKey] = useState(0);
     const [navPortrait, setNavPortrait] = useState(false);
     const clearSketch = () => setSketchKey((prevState) => prevState + 1);
-    console.log(navPortrait);
     return (
         <GlobalState>
             <main className={style.main}>

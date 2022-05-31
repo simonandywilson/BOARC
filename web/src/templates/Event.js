@@ -4,7 +4,7 @@ import { PortableText } from "@portabletext/react";
 import * as style from "./event.module.css";
 import Image from "gatsby-plugin-sanity-image";
 import { useActiveUpdateContext, useAsciiUpdateContext } from "../state/GlobalState";
-import Seo from "../components/seo/Seo"
+import Seo from "../components/seo/Seo";
 
 const Event = ({ pageContext, data: { sanityEvent } }) => {
     const {
@@ -54,7 +54,7 @@ const Event = ({ pageContext, data: { sanityEvent } }) => {
                 </div>
             </div>
             <div className={style.grid}>
-                <Image {...banner} className={style.banner} alt={""} width={1000} />
+                {banner && <Image {...banner} className={style.banner} alt={""} width={1000} />}
                 <div className={style.programme}>
                     <div className={style.date}>{date}</div>
                     <PortableText value={_rawProgramme} />
