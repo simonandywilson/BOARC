@@ -154,7 +154,6 @@ const getData = graphql`
                         _id
                         _rawContent
                         title
-                        homepage
                         slug {
                             current
                         }

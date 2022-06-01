@@ -30,6 +30,9 @@ Media Queries
         --grid-position-image-caption: 5 / 12;
         --grid-position-imagegrid: 1 / 12;
 
+        --grid-position-background-left: 1 / 4;
+        --grid-position-background-right: 10 / 12;
+
         --page-margin-bottom: calc(
             (var(--margin-double) + (var(--font-size) * 2) - (var(--box-padding) * 2))
         );
@@ -86,6 +89,9 @@ Media Queries
         --grid-position-image-caption: 6 / 12;
         --grid-position-imagegrid: 4 / 12;
 
+        --grid-position-background-left: 1 / 4;
+        --grid-position-background-right: 10 / 12;
+
         --page-margin-bottom: var(--margin);
 
         --chat-radio-position: fixed;
@@ -100,7 +106,7 @@ Media Queries
 
         --nav-portrait-visibility: none;
         --nav-landscape-visibility: block;
-        --decoration-visibility: flex;
+        --decoration-visibility: grid;
         --landing-portrait-visibility: none;
         --landing-landscape-visibility: flex;
 
@@ -142,6 +148,9 @@ Media Queries
         --grid-position-image-caption: 3 / 6;
         --grid-position-imagegrid: 4 / 12;
 
+        --grid-position-background-left: 1 / 4;
+        --grid-position-background-right: 11 / 12;
+
         --page-margin-bottom: var(--margin);
 
         --chat-radio-position: fixed;
@@ -156,7 +165,7 @@ Media Queries
 
         --nav-portrait-visibility: none;
         --nav-landscape-visibility: block;
-        --decoration-visibility: flex;
+        --decoration-visibility: grid;
         --landing-portrait-visibility: none;
         --landing-landscape-visibility: flex;
 
@@ -198,6 +207,9 @@ Media Queries
         --grid-position-image-caption: 4 / 6;
         --grid-position-imagegrid: 4 / 12;
 
+        --grid-position-background-left: 1 / 4;
+        --grid-position-background-right: 10 / 12;
+
         --page-margin-bottom: var(--margin);
 
         --chat-position: fixed;
@@ -212,7 +224,7 @@ Media Queries
 
         --nav-portrait-visibility: none;
         --nav-landscape-visibility: block;
-        --decoration-visibility: flex;
+        --decoration-visibility: grid;
         --landing-portrait-visibility: none;
         --landing-landscape-visibility: flex;
 

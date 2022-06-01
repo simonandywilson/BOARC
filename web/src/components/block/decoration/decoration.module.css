@@ -1,0 +1,25 @@
+.grid {
+    position: relative;
+    display: var(--decoration-visibility);
+    grid-template-columns: var(--grid-columns);
+    column-gap: var(--grid-columns-gap);
+    height: 0;
+    user-select: none;
+}
+
+.decorationLeft {
+    position: absolute;
+    width: 100%;
+    grid-column: var(--grid-position-background-left);
+}
+
+.decorationRight {
+    position: absolute;
+    width: 100%;
+    grid-column: var(--grid-position-background-right);
+}
+
+.image {
+    max-width: 100%;
+    max-height: 100%;
+}

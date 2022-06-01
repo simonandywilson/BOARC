@@ -24,9 +24,9 @@ import RadioRenderer from "../components/block/radio/RadioRenderer";
 import ChatRenderer from "../components/block/chat/ChatRenderer";
 import ImageGridRenderer from "../components/block/imagegrid/ImageGridRenderer";
 import ShowRenderer from "../components/block/show/ShowRenderer";
+import DecorationRenderer from "../components/block/decoration/DecorationRenderer"
 
 import Seo from "../components/seo/Seo";
-import Decoration from "../components/decoration/Decoration";
 
 const Page = ({ data: { page } }) => {
     const {
@@ -35,7 +35,6 @@ const Page = ({ data: { page } }) => {
         backgroundLeft,
         backgroundRight,
         text,
-        images,
         seoDescription,
         seoImage,
     } = page;
@@ -76,6 +75,9 @@ const Page = ({ data: { page } }) => {
                 blockChat: ChatRenderer,
                 blockImgGrid: ImageGridRenderer,
                 blockShow: (data) => <ShowRenderer value={data.value} width={page.width} />,
+                blockBackground: (data) => (
+                    <DecorationRenderer value={data.value} />
+                ),
             },
             marks: {
                 blockFile: FileRenderer,
@@ -93,7 +95,6 @@ const Page = ({ data: { page } }) => {
             <Seo title={title} description={seoDescription} image={seoImage?.asset?.url} />
             <div className={style.page}>
                 <PortableText value={page._rawContent} components={serialiser} />
-                <Decoration hasAscii={page.ascii ? true : false} images={images} />
                 <div
                     className={style.background}
                     style={{
@@ -123,9 +124,6 @@ export const query = graphql`
             backgroundLeft
             backgroundRight
             width
-            images {
-                ...ImageWithPreview
-            }
             ascii
             seoDescription
             seoImage {
@@ -133,7 +131,6 @@ export const query = graphql`
                     url
                 }
             }
-            landing
         }
     }
 `;

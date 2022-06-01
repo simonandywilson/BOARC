@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import { nanoid } from "nanoid";
 import { useAsciiContext } from "../../state/GlobalState";
 import { useResizeDetector } from "react-resize-detector";
-  import Ticker from "./ticker/Ticker";
+import Ticker from "./ticker/Ticker";
 import PageVisibility from "react-page-visibility";
 
 const Ascii = ({ asciiWidth }) => {
@@ -47,9 +47,17 @@ const Ascii = ({ asciiWidth }) => {
                                                     <tbody>
                                                         {asc.characterLayout.rows.map((row) => (
                                                             <tr key={row._key}>
-                                                                {row.cells.map((cell) => (
-                                                                    <td key={nanoid()}>{cell}</td>
-                                                                ))}
+                                                                {row.cells.map((cell) => {
+                                                                    const character =
+                                                                        cell === ""
+                                                                            ? "\u00a0"
+                                                                            : cell;
+                                                                    return (
+                                                                        <td key={nanoid()}>
+                                                                            {character}
+                                                                        </td>
+                                                                    );
+                                                                })}
                                                             </tr>
                                                         ))}
                                                     </tbody>
