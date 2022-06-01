@@ -8,12 +8,16 @@ const DecorationRenderer = ({ value }) => {
         <div className={style.grid}>
             {position === "left" && (
                 <div className={style.decorationLeft}>
-                    <Image {...reference.image} alt="" className={style.image} />
+                    {reference?.image && (
+                        <Image {...reference.image} alt="" className={style.image} />
+                    )}
                 </div>
             )}
             {position === "right" && (
                 <div className={style.decorationRight}>
-                    <Image {...reference.image} alt="" className={style.image} />
+                    {reference?.image && (
+                        <Image {...reference.image} alt="" className={style.image} />
+                    )}
                 </div>
             )}
         </div>
