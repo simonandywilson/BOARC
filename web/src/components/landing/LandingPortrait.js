@@ -3,7 +3,22 @@ import * as style from "./landingPortrait.module.css";
 import { Link } from "gatsby";
 import { nanoid } from "nanoid";
 
-const LandingPortrait = ({ pages, rows, delta }) => {
+const getAbbreviation = (text) => {
+    if (typeof text != "string" || !text) {
+        return "";
+    }
+    const acronym = text
+        .match(/[\p{Alpha}\p{Nd}]+/gu)
+        .reduce(
+            (previous, next) =>
+                previous + (+next === 0 || parseInt(next) ? parseInt(next) : next[0] || ""),
+            ""
+        )
+        .toUpperCase();
+    return acronym;
+};
+
+const LandingPortrait = ({ pages, rows }) => {
     const columns = 30;
     return (
         <div className={style.landing}>
@@ -12,11 +27,11 @@ const LandingPortrait = ({ pages, rows, delta }) => {
                     className={style.landingTextGrid}
                     style={{
                         gridTemplateColumns: "repeat(1, 1fr)",
-                        gridTemplateRows: `repeat(${pages.length * delta}, auto)`,
+                        gridTemplateRows: `repeat(${pages.length}, auto)`,
                     }}
                 >
                     {pages.map((page, index) => {
-                        const title = page.landingTitle ? [...page.landingTitle] : [...page.title];
+                        const title = [...page.title];
                         const titlePosition = Math.round((columns / 2) - title.length / 2);
                         const description = page.landingDescription
                             ? [...page.landingDescription]
@@ -30,7 +45,7 @@ const LandingPortrait = ({ pages, rows, delta }) => {
                                 className={style.landingTextRow}
                                 style={{
                                     gridTemplateColumns: `repeat(${columns}, 1fr)`,
-                                    gridTemplateRows: `repeat(${4 * delta}, 1fr)`,
+                                    gridTemplateRows: `repeat(${4}, 1fr)`,
                                 }}
                             >
                                 <div
@@ -67,10 +82,10 @@ const LandingPortrait = ({ pages, rows, delta }) => {
                     className={style.landingDots}
                     style={{
                         gridTemplateColumns: `repeat(${columns}, 1fr)`,
-                        gridTemplateRows: `repeat(${rows * delta}, auto)`,
+                        gridTemplateRows: `repeat(${rows}, auto)`,
                     }}
                 >
-                    {[...Array(columns * (rows * delta))].map(() => (
+                    {[...Array(columns * (rows))].map(() => (
                         <span key={nanoid()}>.</span>
                     ))}
                 </div>

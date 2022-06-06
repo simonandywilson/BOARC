@@ -18,8 +18,8 @@ const Landing = ({ data: { sanityLanding } }) => {
     return (
         <>
             <Seo title={sanityLanding.title} />
-            <LandingLandscape pages={pages} rows={rows} delta={1} />
-            <LandingPortrait pages={pages} rows={rows} delta={1} />
+            <LandingLandscape pages={pages} rows={rows} />
+            <LandingPortrait pages={pages} rows={rows} />
         </>
     );
 };
@@ -36,7 +36,7 @@ export const query = graphql`
             pages {
                 ... on SanityPage {
                     _id
-                    landingTitle
+                    title
                     landingTitlePosition
                     landingDescription
                     landingDescriptionPosition
