@@ -23,7 +23,6 @@
     max-height: 80vh;
     width: 100%;
     background: #ffffff;
-    
 }
 
 .small:hover > .overlay,
@@ -59,7 +58,7 @@
 .caption {
     grid-column: var(--grid-position-image-caption);
     font-size: var(--font-size-small);
-    order: var(--comment-caption-order);
+    order: var(--caption-order);
     line-height: var(--line-height);
     display: flex;
     align-items: flex-end;

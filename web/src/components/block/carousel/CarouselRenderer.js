@@ -6,6 +6,7 @@ import "swiper/css";
 
 const CarouselRenderer = ({ value }) => {
     const [swiper, setSwiper] = useState(null);
+
     return (
         <div className={style.grid}>
             <div className={style.carousel}>
@@ -20,26 +21,25 @@ const CarouselRenderer = ({ value }) => {
                             d="M-22,0,0,21.5-22,43"
                             transform="translate(23.048 1.073)"
                             fill="none"
-                            stroke="var(--text-colour)"
                             strokeMiterlimit="10"
                             strokeWidth="3"
                         />
                     </svg>
                 </button>
-                <Swiper
-                    onSwiper={(swiper) => setSwiper(swiper)}
-                    loop={true}
-                >
+                <Swiper onSwiper={(swiper) => setSwiper(swiper)} loop={true}>
                     {value.content.map((slide) => {
                         return (
                             <SwiperSlide key={slide._key}>
-                                <div className={style.wrapper}>
-                                    <Image
-                                        {...slide}
-                                        alt={slide.alt}
-                                        width={1000}
-                                        className={style.image}
-                                    />
+                                <div className={style.container}>
+                                    <div className={style.overlay}>
+                                        {/* <div></div> */}
+                                        <Image
+                                            {...slide}
+                                            alt={slide.alt}
+                                            width={1000}
+                                            className={style.image}
+                                        />
+                                    </div>
                                 </div>
                             </SwiperSlide>
                         );
@@ -51,7 +51,6 @@ const CarouselRenderer = ({ value }) => {
                             d="M-22,0,0,21.5-22,43"
                             transform="translate(23.048 1.073)"
                             fill="none"
-                            stroke="var(--text-colour)"
                             strokeMiterlimit="10"
                             strokeWidth="3"
                         />

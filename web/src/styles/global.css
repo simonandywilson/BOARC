@@ -41,15 +41,18 @@ Media Queries
         --chat-offset: 0;
         --chat-radio-width: 100%;
 
-        --comment-caption-order: 1;
+        --comment-order: 1;
+        --caption-order: 1;
 
         --faq-margin: var(--margin);
 
+        --ascii-visibility: none;
         --nav-portrait-visibility: block;
         --nav-landscape-visibility: none;
         --decoration-visibility: none;
         --landing-portrait-visibility: flex;
         --landing-landscape-visibility: none;
+        --newsletter-visibility: hidden;
 
         --event-list-details-font-size: var(--font-size);
         --event-list-links-font-size: var(--font-size-small);
@@ -72,13 +75,13 @@ Media Queries
         --grid-position-main-normal: 4 / 10;
         --grid-position-main-wide: 4 / 12;
 
-        --grid-position-comment: 3 / 7;
+        --grid-position-comment: 1 / 4;
         --grid-position-faq: 1 / 12;
         --grid-position-radio: 1 / 4;
         --grid-position-chat: 1 / 4;
 
         --grid-position-event-carousel: 2 / 11;
-        --grid-position-event-back: 1 / 4;
+        --grid-position-event-back: 1 / 3;
         --grid-position-event-programme: 4 / 6;
         --grid-position-event-description: 6 / 12;
 
@@ -100,15 +103,18 @@ Media Queries
         );
         --chat-radio-width: calc(100% - var(--margin-double));
 
-        --comment-caption-order: 1;
+        --comment-order: 0;
+        --caption-order: 1;
 
         --faq-margin: var(--margin);
 
+        --ascii-visibility: inline-block;
         --nav-portrait-visibility: none;
         --nav-landscape-visibility: block;
         --decoration-visibility: grid;
         --landing-portrait-visibility: none;
         --landing-landscape-visibility: flex;
+        --newsletter-visibility: visible;
 
         --event-list-details-font-size: var(--font-size-medium);
         --event-list-links-font-size: var(--font-size);
@@ -159,15 +165,18 @@ Media Queries
         );
         --chat-radio-width: calc(100% - var(--margin-double));
 
-        --comment-caption-order: 0;
+        --comment-order: 0;
+        --caption-order: 1 0;
 
         --faq-margin: calc(var(--column-single) + var(--margin) * 2);
 
+        --ascii-visibility: inline-block;
         --nav-portrait-visibility: none;
         --nav-landscape-visibility: block;
         --decoration-visibility: grid;
         --landing-portrait-visibility: none;
         --landing-landscape-visibility: flex;
+        --newsletter-visibility: visible;
 
         --event-list-details-font-size: var(--font-size-medium);
         --event-list-links-font-size: var(--font-size);
@@ -218,15 +227,18 @@ Media Queries
         );
         --chat-radio-width: calc(100% - var(--margin-double));
 
-        --comment-caption-order: 0;
+        --comment-order: 0;
+        --caption-order: 0;
 
         --faq-margin: calc(var(--column-double) + var(--margin) * 2);
 
+        --ascii-visibility: inline-block;
         --nav-portrait-visibility: none;
         --nav-landscape-visibility: block;
         --decoration-visibility: grid;
         --landing-portrait-visibility: none;
         --landing-landscape-visibility: flex;
+        --newsletter-visibility: visible;
 
         --event-list-details-font-size: var(--font-size-medium);
         --event-list-links-font-size: var(--font-size);

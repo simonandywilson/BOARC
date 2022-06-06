@@ -2,7 +2,7 @@ import React from "react";
 import * as style from "./text.module.css";
 import { PortableText } from "@portabletext/react";
 
-const TextRenderer = ({ data, width }) => {
+const TextRenderer = ({ data, width, background }) => {
     const { children, value } = data;
 
     const hasComment = children[0]?.props?.markType === "blockComment" ? true : false;
@@ -75,7 +75,12 @@ const TextRenderer = ({ data, width }) => {
         <div className={style.grid}>
             {hasComment && children[0]?.props?.value?.comment ? (
                 <>
-                    <div className={style.comment}>
+                    <div
+                        className={style.comment}
+                        style={{
+                            "--background": background
+                        }}
+                    >
                         <PortableText
                             value={children[0].props.value.comment}
                             components={components}

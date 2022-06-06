@@ -65,7 +65,6 @@
     background: var(--grey);
     padding: var(--margin-half);
     align-items: center;
-    
 }
 
 .toggleEasyRead > button {
@@ -78,32 +77,57 @@
     pointer-events: all;
     cursor: pointer;
     line-height: 100%;
+    margin-right: var(--margin-half);
 }
 
-.toggleEasyRead > button:hover {
-    color: var(--brown) !important;
-    border-color: var(--brown) !important;
+.toggleEasyRead > button:last-child {
+    margin-right: 0;
 }
 
 .toggleText {
     border: none;
-    margin-right: var(--margin-half);
 }
 
-.toggleImage {
-    height: var(--font-size-large);
-    width: calc(var(--font-size-large) * 1.5);
-    flex-shrink: 0;
-    border: 2px solid var(--purple);
-    margin-right: var(--margin-half);
+.toggleText:hover {
+    color: var(--brown) !important;
 }
 
+.toggleImage,
 .clearSketch {
-    background: none;
+    height: var(--font-size-large);
+    flex-shrink: 0;
     border: none;
+    background: none;
     padding: 0;
     margin: 0;
 }
+
+.toggleImage {
+    width: calc(var(--font-size-large) * 1.5);
+    margin-right: var(--margin-half);
+}
+
+.toggleImage:hover > svg {
+    stroke: var(--brown) !important;
+}
+
+.clearSketch > svg,
+.toggleImage > svg {
+    height: 100%;
+    width: 100%;
+    stroke: var(--purple);
+    fill: var(--purple);
+}
+
+.clearSketch > svg {
+    stroke: none;
+}
+
+.clearSketch:hover > svg {
+    fill: var(--brown) !important;
+}
+
+
 
 .panel {
     position: relative;

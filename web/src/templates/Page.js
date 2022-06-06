@@ -24,13 +24,16 @@ import RadioRenderer from "../components/block/radio/RadioRenderer";
 import ChatRenderer from "../components/block/chat/ChatRenderer";
 import ImageGridRenderer from "../components/block/imagegrid/ImageGridRenderer";
 import ShowRenderer from "../components/block/show/ShowRenderer";
-import DecorationRenderer from "../components/block/decoration/DecorationRenderer"
+import DecorationRenderer from "../components/block/decoration/DecorationRenderer";
 
 import Seo from "../components/seo/Seo";
+
+import scrollTo from "gatsby-plugin-smoothscroll";
 
 const Page = ({ data: { page } }) => {
     const {
         title,
+        _rawContent,
         slug,
         backgroundLeft,
         backgroundRight,
@@ -50,9 +53,20 @@ const Page = ({ data: { page } }) => {
         AsciiUpdateContext(page.ascii === "true" ? true : false);
     }, []);
 
+    // useEffect(() => {
+    //     let timer = setTimeout(() =>  scrollTo(`#stay`), 500);
+    //     return () => clearTimeout(timer);
+    // }, []);
+
     const serialiser = useMemo(() => {
         const components = {
-            block: (data) => <TextRenderer data={data} width={page.width} />,
+            block: (data) => (
+                <TextRenderer
+                    data={data}
+                    width={page.width}
+                    background={backgroundLeft ? backgroundLeft : "#ffffff"}
+                />
+            ),
             types: {
                 blockHeading: (data) => <HeadingRenderer data={data} width={page.width} />,
                 blockImg: ImageRenderer,
@@ -75,9 +89,7 @@ const Page = ({ data: { page } }) => {
                 blockChat: ChatRenderer,
                 blockImgGrid: ImageGridRenderer,
                 blockShow: (data) => <ShowRenderer value={data.value} width={page.width} />,
-                blockBackground: (data) => (
-                    <DecorationRenderer value={data.value} />
-                ),
+                blockBackground: (data) => <DecorationRenderer value={data.value} />,
             },
             marks: {
                 blockFile: FileRenderer,
@@ -94,13 +106,14 @@ const Page = ({ data: { page } }) => {
         <>
             <Seo title={title} description={seoDescription} image={seoImage?.asset?.url} />
             <div className={style.page}>
-                <PortableText value={page._rawContent} components={serialiser} />
+                <PortableText value={_rawContent} components={serialiser} />
                 <div
                     className={style.background}
                     style={{
-                        background: backgroundLeft && backgroundRight
-                            ? `linear-gradient(to right, ${backgroundLeft}, ${backgroundRight})`
-                            : "#ffffff",
+                        background:
+                            backgroundLeft && backgroundRight
+                                ? `linear-gradient(to right, ${backgroundLeft}, ${backgroundRight})`
+                                : "#ffffff",
                     }}
                 ></div>
             </div>

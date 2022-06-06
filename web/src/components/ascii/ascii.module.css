@@ -2,7 +2,7 @@
     box-sizing: content-box;
     position: relative;
     padding-top: var(--margin);
-    display: inline-block;
+    display: var(--ascii-visibility);
     letter-spacing: -3px;
     color: var(--purple);
     line-height: 100%;
