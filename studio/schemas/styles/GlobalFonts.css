@@ -4,6 +4,11 @@
 }
 
 @font-face {
+  font-family: 'BOARCCourierMono';
+  src: url("../fonts/BOARCCourierMono.otf") format("opentype"),
+}
+
+@font-face {
   font-family: 'BOARCSymbols';
   src: url("../fonts/BOARCSymbols.otf") format("opentype"),
 }

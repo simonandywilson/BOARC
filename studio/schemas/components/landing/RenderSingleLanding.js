@@ -5,85 +5,103 @@ import { withDocument } from "part:@sanity/form-builder";
 import * as style from "./RenderLanding.css";
 import { nanoid } from "nanoid";
 
-export const RenderSingleLanding = React.forwardRef((props, ref) => {
-    const { type, markers, presence, compareValue, parent, document } = props;
+const getAbbreviation = (text) => {
+    if (typeof text != "string" || !text) {
+        return "";
+    }
+    const acronym = text
+        .match(/[\p{Alpha}\p{Nd}]+/gu)
+        .reduce(
+            (previous, next) =>
+                previous + (+next === 0 || parseInt(next) ? parseInt(next) : next[0] || ""),
+            ""
+        )
+        .toUpperCase();
+    return acronym;
+};
 
-    const title = document.landingTitle ? [...document.landingTitle] : [...document.title];
-    const titlePosition = document.landingTitlePosition ? document.landingTitlePosition : 1;
+const columns = 45;
+const rows = 4;
+
+export const RenderSingleLanding = React.forwardRef((props, ref) => {
+    const { type, document } = props;
+    const titlePosition = document.landingTitlePosition
+        ? Math.max(document.landingTitlePosition, 1)
+        : 1;
+    const title =
+        document.title.length + titlePosition - 2 >= columns
+            ? [...getAbbreviation(document.title)]
+            : [...document.title];
+    const titleDots = columns - (title.length + titlePosition) + 1;
     const description = document.landingDescription
         ? [...document.landingDescription]
         : [..."No description"];
     const descriptionPosition = document.landingDescriptionPosition
-        ? document.landingDescriptionPosition
+        ? Math.max(document.landingDescriptionPosition, 1)
         : 1;
-
-
-    const rows = 4;
-
+    const descriptionDots = columns - (description.length + descriptionPosition) + 1;
     return (
-        <FormField
-            description={type.description}
-            title={type.title}
-            __unstable_markers={markers}
-            __unstable_presence={presence}
-            compareValue={compareValue}
-        >
+        <FormField description={type.description} title={type.title}>
             <Card padding={[2, 2, 2, 2]} shadow={1} ref={ref}>
                 <Grid
                     padding={[2, 2, 2, 2]}
                     columns={[1, 1, 1, 1]}
-                    rows={[1, 1, 1, 1]}
-                    className={style.text}
-                >
-                    <Grid columns={[45, 45, 45, 45]} rows={[rows, rows, rows, rows]}>
-                        <Grid
-                            style={{
-                                gridRow: "2 / span 1",
-                                gridColumn: `${titlePosition} / span 45`,
-                            }}
-                            columns={[
-                                46 - titlePosition,
-                                46 - titlePosition,
-                                46 - titlePosition,
-                                46 - titlePosition,
-                            ]}
-                            rows={[1, 1, 1, 1]}
-                        >
-                            {title.map((t) => (
-                                <span className={style.title} key={nanoid()}>
-                                    {t}
-                                </span>
-                            ))}
-                        </Grid>
-                        <Grid
-                            style={{
-                                gridRow: "3 / span 1",
-                                gridColumn: `${descriptionPosition} / span 45`,
-                            }}
-                            columns={[
-                                46 - descriptionPosition,
-                                46 - descriptionPosition,
-                                46 - descriptionPosition,
-                                46 - descriptionPosition,
-                            ]}
-                            rows={[1, 1, 1, 1]}
-                        >
-                            {description.map((t) => (
-                                <span className={style.description} key={nanoid()}>
-                                    {t}
-                                </span>
-                            ))}
-                        </Grid>
-                    </Grid>
-                </Grid>
-                <Grid
-                    columns={[45, 45, 45, 45]}
                     rows={[rows, rows, rows, rows]}
-                    className={style.dots}
+                    className={style.grid}
                 >
-                    {[...Array(45 * rows)].map(() => (
-                        <span key={nanoid()}>.</span>
-                    ))}
+                    <Grid
+                        columns={[columns, columns, columns, columns]}
+                        rows={[1, 1, 1, 1]}
+                        className={style.row}
+                    >
+                        {[...Array(columns)].map(() => (
+                            <span key={nanoid()}>.</span>
+                        ))}
+                    </Grid>
+                    <Grid
+                        columns={[columns, columns, columns, columns]}
+                        rows={[1, 1, 1, 1]}
+                        className={style.row}
+                    >
+                        {[...Array(titlePosition - 1)].map(() => (
+                            <span key={nanoid()}>.</span>
+                        ))}
+                        {title.map((letter) => (
+                            <span key={nanoid()} className={style.title}>
+                                {letter}
+                            </span>
+                        ))}
+                        {[...Array(titleDots < 0 ? 0 : titleDots)].map(() => (
+                            <span key={nanoid()}>.</span>
+                        ))}
+                    </Grid>
+                    <Grid
+                        columns={[columns, columns, columns, columns]}
+                        rows={[1, 1, 1, 1]}
+                        className={style.row}
+                    >
+                        {[...Array(descriptionPosition - 1)].map(() => (
+                            <span key={nanoid()}>.</span>
+                        ))}
+                        {description.map((letter) => (
+                            <span key={nanoid()} className={style.description}>
+                                {letter}
+                            </span>
+                        ))}
+                        {[...Array(descriptionDots < 0 ? 0 : descriptionDots)].map(() => (
+                            <span key={nanoid()}>.</span>
+                        ))}
+                    </Grid>
+                    <Grid
+                        columns={[columns, columns, columns, columns]}
+                        rows={[1, 1, 1, 1]}
+                        className={style.row}
+                    >
+                        {[...Array(columns)].map(() => (
+                            <span key={nanoid()}>.</span>
+                        ))}
+                    </Grid>
+                    
                 </Grid>
             </Card>
         </FormField>

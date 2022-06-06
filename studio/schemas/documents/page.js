@@ -20,6 +20,17 @@ export default {
                 collapsible: false,
                 columns: 2,
             },
+            hidden: ({ document }) => {
+                const referringTypes = document.referring
+                    ? document.referring.map((a) => a.type)
+                    : [];
+
+                if (referringTypes.includes("landing")) {
+                    return false;
+                } else {
+                    return true;
+                }
+            },
         },
         {
             name: "gradient",
@@ -43,6 +54,17 @@ export default {
         {
             name: "landing",
             title: "Landing",
+            hidden: ({ document }) => {
+                const referringTypes = document.referring
+                    ? document.referring.map((a) => a.type)
+                    : [];
+
+                if (referringTypes.includes("landing")) {
+                    return false;
+                } else {
+                    return true;
+                }
+            },
         },
         {
             name: "customisation",
@@ -78,6 +100,7 @@ export default {
             type: "string",
             group: "content",
         },
+
         {
             name: "slug",
             title: "Slug",
@@ -93,6 +116,12 @@ export default {
             validation: (Rule) => [Rule.required().error(`Please enter a slug.`)],
         },
         {
+            name: "content",
+            title: "Content",
+            type: "pageBlock",
+            group: "content",
+        },
+        {
             name: "reading",
             title: "Reading Time",
             type: "string",
@@ -102,21 +131,26 @@ export default {
             options: { fieldName: "reading", target: "content" },
         },
         {
-            name: "content",
-            title: "Content",
-            type: "pageBlock",
-            group: "content",
-        },
-        {
-            name: "landingTitle",
-            title: "Landing Title",
+            name: "landingDescription",
+            title: "Description",
+            description: "Used on landing page, if applicable.",
             type: "string",
-            fieldset: "landing",
             group: "landing",
+            hidden: ({ document }) => {
+                const referringTypes = document.referring
+                    ? document.referring.map((a) => a.type)
+                    : [];
+
+                if (referringTypes.includes("landing")) {
+                    return false;
+                } else {
+                    return true;
+                }
+            },
         },
         {
             name: "landingTitlePosition",
-            title: "Landing Title Position",
+            title: "Title Position",
             type: "number",
             fieldset: "landing",
             group: "landing",
@@ -127,16 +161,10 @@ export default {
                 Rule.max(45).error(`Please choose a column number smaller than 45.`),
             ],
         },
-        {
-            name: "landingDescription",
-            title: "Landing Description",
-            type: "string",
-            fieldset: "landing",
-            group: "landing",
-        },
+
         {
             name: "landingDescriptionPosition",
-            title: "Landing Description Position",
+            title: "Description Position",
             type: "number",
             fieldset: "landing",
             group: "landing",
@@ -154,6 +182,17 @@ export default {
             readOnly: true,
             group: "landing",
             inputComponent: RenderSingleLanding,
+            hidden: ({ document }) => {
+                const referringTypes = document.referring
+                    ? document.referring.map((a) => a.type)
+                    : [];
+
+                if (referringTypes.includes("landing")) {
+                    return false;
+                } else {
+                    return true;
+                }
+            },
         },
         {
             name: "width",

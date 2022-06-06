@@ -46,6 +46,7 @@ import pageBlock from "./modules/pageBlock";
 import faqBlock from "./modules/faqBlock";
 import basicBlock from "./modules/basicBlock";
 import eventBlock from "./modules/eventBlock";
+import collapsibleBlock from "./modules/collapsibleBlock";
 
 export default createSchema({
     name: "default",
@@ -70,7 +71,6 @@ export default createSchema({
         subscriber,
         background,
 
-
         // Block
         blockHeading,
         blockCarousel,
@@ -90,10 +90,11 @@ export default createSchema({
 
         // Module
         img,
-ref,
+        ref,
         pageBlock,
         faqBlock,
         basicBlock,
         eventBlock,
+        collapsibleBlock,
     ]),
 });

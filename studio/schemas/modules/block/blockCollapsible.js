@@ -46,7 +46,7 @@ export default {
         {
             name: "text",
             title: "Text",
-            type: "basicBlock",
+            type: "collapsibleBlock",
         },
     ],
     preview: {

@@ -1,26 +1,17 @@
 import React from "react";
 import { CopyIcon } from "../styles/Icons";
 import CustomRichTextEditor from "../components/block/CustomRichTextEditor";
+import * as style from "../styles/text.module.css";
 
-const CenteredStyle = (props) => (
-    <div style={{ textAlign: "center" }}>
-        <h4 style={{ fontWeight: 500, margin: 0, paddingBottom: "0.75rem", paddingTop: "0.5rem" }}>
-            {props.children}
-        </h4>
-    </div>
-);
+const SubheadingStyle = (props) => <h5 className={style.subheading}>{props.children}</h5>;
 
-const SubheadingStyle = (props) => (
-    <h3 style={{ fontWeight: 400, margin: 0, paddingBottom: "0.75rem", paddingTop: "0.5rem" }}>{props.children}</h3>
-);
-
-const IndentStyle = (props) => (
-    <div style={{ marginLeft: "2rem" }}>
-        <span>
-            {props.children}
-        </span>
-    </div>
-);
+// const IndentStyle = (props) => (
+//     <div style={{ marginLeft: "2rem" }}>
+//         <span>
+//             {props.children}
+//         </span>
+//     </div>
+// );
 
 export default {
     name: "pageBlock",
@@ -35,29 +26,15 @@ export default {
                 { title: "Body", value: "normal" },
                 {
                     title: "Subheading",
-                    value: "subheading",
+                    value: "h5",
                     blockEditor: {
                         render: SubheadingStyle,
-                    },
-                },
-                {
-                    title: "Centered",
-                    value: "centered",
-                    blockEditor: {
-                        render: CenteredStyle,
-                    },
-                },
-                {
-                    title: "Indent",
-                    value: "indent",
-                    blockEditor: {
-                        render: IndentStyle,
                     },
                 },
             ],
             lists: [],
             marks: {
-                decorators: [],
+                decorators: [{ title: "Strong", value: "strong" }],
                 annotations: [
                     {
                         type: "blockInternal",
@@ -106,4 +83,3 @@ export default {
         },
     ],
 };
-

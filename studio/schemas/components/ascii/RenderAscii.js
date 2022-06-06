@@ -5,15 +5,12 @@ import { withDocument } from "part:@sanity/form-builder";
 import * as style from "./renderascii.module.css"
 
 export const RenderAscii = React.forwardRef((props, ref) => {
-    const { type, markers, presence, compareValue } = props;
+    const { type} = props;
     return (
         <div>
             {props.document.characterLayout ? <FormField
                 description={type.description}
                 title={type.title}
-                __unstable_markers={markers}
-                __unstable_presence={presence}
-                compareValue={compareValue}
             >
                 <Card padding={[4, 4, 4, 4]} shadow={1} ref={ref}>
                     <Flex align={"center"} justify={"center"}>

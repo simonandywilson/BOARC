@@ -1,6 +1,30 @@
-.container, .container > span {
-     border-bottom: 1px solid rgba(255, 255, 255, 0) !important;
+.container {
+    position: relative;
+    display: inline-block;
+    height: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0) !important;
+    color: var(--card-fg-color);
 }
-.container > div > span > span {
-     border-bottom: 1px dashed #45556d !important;
+
+.container * {
+    background: #d1d3f4;
+}
+
+.wrapper {
+    position: relative;
+    border-radius: 5px;
+}
+
+.wrapper > span > span {
+    border-bottom: 1px dashed #45556d !important;
+}
+
+.background {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    border-radius: 5px;
+    z-index: -1;
 }

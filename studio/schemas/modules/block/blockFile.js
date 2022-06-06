@@ -13,7 +13,7 @@ export default {
     fields: [
         {
             name: "reference",
-            title: "Reference to file:",
+            title: "Reference to File:",
             type: "reference",
             to: [{ type: "files" }],
         },

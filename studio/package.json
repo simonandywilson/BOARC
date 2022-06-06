@@ -32,6 +32,7 @@
     "react-colorful": "^5.5.1",
     "react-dom": "^17.0",
     "react-hook-reading-time": "^1.0.0",
+    "react-page-visibility": "^7.0.0",
     "sanity-plugin-color-list": "^2.0.2",
     "sanity-plugin-table": "^2.3.0",
     "slugify": "^1.6.5",

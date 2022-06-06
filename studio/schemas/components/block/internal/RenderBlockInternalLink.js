@@ -10,16 +10,8 @@ const RenderBlockInternalLink = (props) => (
         }}
         className={style.container}
     >
-        <div
-            style={{
-                background: "rgba(104,108,227,0.3)",
-                borderRadius: "5px",
-                padding: "5px",
-                color: "var(--card-fg-color)",
-                background: "rgba(104,108,227,0.3)",
-                display: "inline-block",
-            }}
-        >
+        <div className={style.wrapper}>
+            <div className={style.background}></div>
             <span className={style.border}>
                 {props.children} {InternalIcon("small")} {}
             </span>

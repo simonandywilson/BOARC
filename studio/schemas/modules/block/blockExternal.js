@@ -29,7 +29,8 @@ export default {
             name: "link",
             title: "Link",
             type: "string",
-            description: "Can be website, email or telephone number. If linking to an internal page, use 'Internal Link' instead.",
+            description:
+                "If linking to a page on bidstonobservatory.org, use an 'Internal Link' instead.",
             validation: (Rule) =>
                 Rule.regex(/https:\/\/(www\.|)(bidstonobservatory\.org)\/.*/i, {
                     name: "internal url",

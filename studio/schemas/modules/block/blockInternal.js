@@ -1,5 +1,6 @@
 import RenderBlockInternalLink from "../../components/block/internal/RenderBlockInternalLink";
 import { InternalIcon } from "../../styles/Icons";
+import GetHeadings from "../../components/block/internal/GetHeadings"
 
 export default {
     name: "blockInternal",
@@ -16,6 +17,12 @@ export default {
             title: "Reference to Page:",
             type: "reference",
             to: [{ type: "page" }],
+        },
+        {
+            name: "place",
+            title: "Place on Page",
+            type: "string",
+            inputComponent: GetHeadings,
         },
     ],
 };

@@ -79,19 +79,19 @@ export default {
             },
             validation: (Rule) => Rule.required().error(`Please enter a start date.`),
         },
-        // {
-        //     title: "Event End",
-        //     name: "end",
-        //     type: "datetime",
-        //     group: "preview",
-        //     options: {
-        //         dateFormat: "D MMM YYYY",
-        //         timeFormat: "HH:mm",
-        //         timeStep: 15,
-        //         calendarTodayLabel: "Today",
-        //     },
-        //     validation: (Rule) => Rule.required().error(`Please enter a end date.`),
-        // },
+        {
+            title: "Event End",
+            name: "end",
+            type: "datetime",
+            group: "preview",
+            options: {
+                dateFormat: "D MMM YYYY",
+                timeFormat: "HH:mm",
+                timeStep: 15,
+                calendarTodayLabel: "Today",
+            },
+            validation: (Rule) => Rule.required().error(`Please enter a end date.`),
+        },
         {
             name: "icon",
             title: "Icon",
@@ -166,6 +166,7 @@ export default {
             type: "text",
             description: "Appears in search engine results.",
             group: "seo",
+            rows: 3,
             validation: (Rule) => [
                 Rule.required().warning(`Your page needs a description.`),
                 Rule.min(50).warning(`Your page description should be a minimum of 50 characters.`),
