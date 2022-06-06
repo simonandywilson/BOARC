@@ -18,77 +18,98 @@ const getAbbreviation = (text) => {
     return acronym;
 };
 
-const LandingPortrait = ({ pages, rows }) => {
-    const columns = 30;
+const columns = 30;
+
+const LandingPortrait = ({ pages }) => {
     return (
         <div className={style.landing}>
             <div className={style.container}>
-                <div
-                    className={style.landingTextGrid}
-                    style={{
-                        gridTemplateColumns: "repeat(1, 1fr)",
-                        gridTemplateRows: `repeat(${pages.length}, auto)`,
-                    }}
-                >
-                    {pages.map((page, index) => {
-                        const title = [...page.title];
-                        const titlePosition = Math.round((columns / 2) - title.length / 2);
-                        const description = page.landingDescription
-                            ? [...page.landingDescription]
-                            : [..."No description"];
-                        const descriptionPosition = Math.round(
-                            columns / 2 - description.length / 2
-                        );;
-                        return (
+                {pages.map((page, index) => {
+                    const title =
+                        page.title.length > columns
+                            ? [...getAbbreviation(page.title)]
+                            : [...page.title];
+                    const titlePosition = Math.round(columns / 2 - title.length / 2);
+                    const description = page.landingDescription
+                        ? [...page.landingDescription]
+                        : [..."No description"];
+                    const descriptionPosition = Math.round(columns / 2 - description.length / 2);
+                    const dotsTitleEnd = columns - (title.length + titlePosition) + 1;
+                    const dotsDescriptionEnd = columns - (description.length + descriptionPosition) + 1;
+                    return (
+                        <div key={page._id + index}>
                             <div
-                                key={page._id + index}
-                                className={style.landingTextRow}
+                                className={style.row}
                                 style={{
                                     gridTemplateColumns: `repeat(${columns}, 1fr)`,
-                                    gridTemplateRows: `repeat(${4}, 1fr)`,
                                 }}
                             >
-                                <div
-                                    className={style.landingTextTitle}
+                                {[...Array(columns)].map(() => (
+                                    <span key={nanoid()}>.</span>
+                                ))}
+                            </div>
+                            <div
+                                className={style.row}
+                                style={{
+                                    gridTemplateColumns: `repeat(${columns}, 1fr)`,
+                                }}
+                            >
+                                {[...Array(titlePosition - 1)].map(() => (
+                                    <span key={nanoid()}>.</span>
+                                ))}
+                                <Link
+                                    to={`/${page.slug.current}`}
+                                    className={style.link}
                                     style={{
-                                        gridColumn: `${titlePosition} / span ${columns}`,
-                                        gridTemplateColumns: `repeat(${title.length}, max-content)`,
+                                        gridColumn: `${titlePosition} / span ${title.length}`,
+                                        gridTemplateColumns: `repeat(${title.length}, 1fr)`,
                                     }}
                                 >
-                                    <Link to={`/${page.slug.current}`}>
-                                        {title.map((text) => (
-                                            <span key={nanoid()}>{text}</span>
-                                        ))}
-                                    </Link>
-                                </div>
+                                    {title.map((text) => (
+                                        <span key={nanoid()}>{text}</span>
+                                    ))}
+                                </Link>
+                                {[...Array(dotsTitleEnd)].map(() => (
+                                    <span key={nanoid()}>.</span>
+                                ))}
+                            </div>
+                            <div
+                                className={style.row}
+                                style={{
+                                    gridTemplateColumns: `repeat(${columns}, 1fr)`,
+                                }}
+                            >
+                                {[...Array(descriptionPosition - 1)].map(() => (
+                                    <span key={nanoid()}>.</span>
+                                ))}
                                 <div
-                                    className={style.landingTextDescription}
+                                    className={style.description}
                                     style={{
-                                        gridColumn: `${descriptionPosition} / span ${columns}`,
-                                        gridTemplateColumns: `repeat(${
-                                            columns + 1 - descriptionPosition
-                                        }, 1fr)`,
+                                        gridColumn: `${descriptionPosition} / span ${description.length}`,
+                                        gridTemplateColumns: `repeat(${description.length}, 1fr)`,
                                     }}
                                 >
                                     {description.map((text) => (
                                         <span key={nanoid()}>{text}</span>
                                     ))}
                                 </div>
+                                {[...Array(dotsDescriptionEnd)].map(() => (
+                                    <span key={nanoid()}>.</span>
+                                ))}
                             </div>
-                        );
-                    })}
-                </div>
-                <div
-                    className={style.landingDots}
-                    style={{
-                        gridTemplateColumns: `repeat(${columns}, 1fr)`,
-                        gridTemplateRows: `repeat(${rows}, auto)`,
-                    }}
-                >
-                    {[...Array(columns * (rows))].map(() => (
-                        <span key={nanoid()}>.</span>
-                    ))}
-                </div>
+                            <div
+                                className={style.row}
+                                style={{
+                                    gridTemplateColumns: `repeat(${columns}, 1fr)`,
+                                }}
+                            >
+                                {[...Array(columns)].map(() => (
+                                    <span key={nanoid()}>.</span>
+                                ))}
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );
