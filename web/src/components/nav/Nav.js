@@ -20,23 +20,20 @@ const Nav = ({ setAsciiWidth, setNavPortrait }) => {
 
     return (
         <section className={style.nav} ref={ref}>
-            <Title setAsciiWidth={setAsciiWidth} title={homepage.title} />
+            <Title
+                setAsciiWidth={setAsciiWidth}
+                setNavPortrait={setNavPortrait}
+                title={homepage.title}
+            />
             <nav className={style.containerLandscape}>
                 <Primary menus={menus} homepage={homepage.initial.slug.current} />
                 <Secondary menus={menus} />
-            </nav>
-            <nav className={style.containerPortrait}>
-                <button className={style.togglePortrait} onClick={() => setNavPortrait(true)}>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
-                        <path d="M6 36V33H42V36ZM6 25.5V22.5H42V25.5ZM6 15V12H42V15Z" />
-                    </svg>
-                </button>
             </nav>
         </section>
     );
 };
 
-const Title = ({ setAsciiWidth, title }) => {
+const Title = ({ setAsciiWidth, setNavPortrait, title }) => {
     const { width, ref } = useResizeDetector();
     useEffect(() => {
         if (width !== undefined) {
@@ -45,9 +42,42 @@ const Title = ({ setAsciiWidth, title }) => {
     }, [width]);
 
     return (
-        <div className={style.title} ref={ref}>
-            <Link to="/">{title}</Link>
-        </div>
+        <>
+            <div className={style.title} ref={ref}>
+                <Link to="/">{title}</Link>
+            </div>
+            <button className={style.togglePortrait} onClick={() => setNavPortrait(true)}>
+                <svg width="48" height="36" viewBox="0 0 48 36">
+                    <line
+                        y1="1"
+                        x2="48"
+                        y2="1"
+                        fill="none"
+                        strokeMiterlimit="10"
+                        strokeWidth="2"
+                        vectorEffect="non-scaling-stroke"
+                    />
+                    <line
+                        y1="35"
+                        x2="48"
+                        y2="35"
+                        fill="none"
+                        strokeMiterlimit="10"
+                        strokeWidth="2"
+                        vectorEffect="non-scaling-stroke"
+                    />
+                    <line
+                        y1="18"
+                        x2="48"
+                        y2="18"
+                        fill="none"
+                        strokeMiterlimit="10"
+                        strokeWidth="2"
+                        vectorEffect="non-scaling-stroke"
+                    />
+                </svg>
+            </button>
+        </>
     );
 };
 

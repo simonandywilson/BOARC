@@ -54,9 +54,11 @@ const Page = ({ data: { page } }) => {
     }, []);
 
     // useEffect(() => {
-    //     let timer = setTimeout(() =>  scrollTo(`#stay`), 500);
-    //     return () => clearTimeout(timer);
-    // }, []);
+    //     if (location.state.slug) {
+    //         let timer = setTimeout(() => scrollTo(`#${location.state.slug}`), 500);
+    //         return () => clearTimeout(timer);
+    //     }
+    // }, [location.state]);
 
     const serialiser = useMemo(() => {
         const components = {

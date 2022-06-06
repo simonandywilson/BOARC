@@ -4,7 +4,7 @@ import GlobalState from "../state/GlobalState";
 import Fetch from "../components/fetch/Fetch";
 import Ascii from "../components/ascii/Ascii";
 import Nav from "../components/nav/Nav";
-import NavPortrait from "../components/navPortrait/NavPortrait";
+import NavPortrait from "../components/nav/NavPortrait";
 import Faq from "../components/faq/Faq";
 import Sketch from "../components/sketch/Sketch";
 import Newsletter from "../components/newsletter/Newsletter";

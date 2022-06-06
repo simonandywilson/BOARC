@@ -4,28 +4,23 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: var(--brown-translucent);
+    background: var(--purple-translucent);
     z-index: 999;
     padding: var(--margin);
     color: #ffffff;
     display: var(--landing-portrait-visibility);
     font-size: var(--font-size-large);
     line-height: 120%;
-    font-family: var(--font-mono);
     overflow-y: scroll;
     flex-direction: column;
+    text-transform: uppercase;
 }
 
 .heading {
-    margin-bottom: var(--margin);
-    text-align: center;
-    
+    text-align: right;
 }
 
 .close {
-    position: absolute;
-    right: 0;
-    margin-right: var(--margin);
     background: none;
     border: none;
     font-size: var(--font-size-large);
@@ -38,37 +33,38 @@
     color: var(--red);
 }
 
-.wrapper {
-    position: relative;
-    width: 100%;
+.nav {
+    margin-bottom: var(--margin);
 }
 
-.grid {
-    position: absolute;
-    display: grid;
-    width: 100%;
+.links, .tabs {
+    margin-left: var(--column-double);
 }
 
-.row {
-    display: grid;
-    color: #ffffff;
-}
-
-.row > span {
-    pointer-events: none;
-}
-
-.text > a {
-    text-transform: uppercase;
+.links > a {
+    display: block;
+    cursor: pointer;
     text-decoration: none;
     color: #ffffff;
+    padding: 0;
+    width: max-content;
 }
 
-.textGrid {
-    display: grid;
+.links > a:hover {
+    color: var(--red);
+}
+
+.tabs > button {
+    all: unset;
+    width: 100%;
     cursor: pointer;
+    text-decoration: none;
+    color: #ffffff;
+    padding: 0;
+    margin: 0;
+    display: grid;
 }
 
-.textGrid:hover {
-    color: var(--red) !important;
+.tabs > button:hover {
+    color: var(--red);
 }

@@ -1,0 +1,74 @@
+.navPortrait {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: var(--purple-translucent);
+    z-index: 999;
+    padding: var(--margin);
+    color: #ffffff;
+    display: var(--landing-portrait-visibility);
+    font-size: var(--font-size-large);
+    line-height: 120%;
+    font-family: var(--font-mono);
+    overflow-y: scroll;
+    flex-direction: column;
+}
+
+.heading {
+    margin-bottom: var(--margin);
+    text-align: center;
+    
+}
+
+.close {
+    position: absolute;
+    right: 0;
+    margin-right: var(--margin);
+    background: none;
+    border: none;
+    font-size: var(--font-size-large);
+    font-family: var(--font);
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: var(--red);
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.grid {
+    position: absolute;
+    display: grid;
+    width: 100%;
+}
+
+.row {
+    display: grid;
+    color: #ffffff;
+}
+
+.row > span {
+    pointer-events: none;
+}
+
+.text > a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.textGrid {
+    display: grid;
+    cursor: pointer;
+}
+
+.textGrid:hover {
+    color: var(--red) !important;
+}

@@ -38,20 +38,23 @@
     display: var(--nav-landscape-visibility);
 }
 
-.containerPortrait {
-    display: var(--nav-portrait-visibility);
-}
-
 .togglePortrait {
+    position: absolute;
+    right: 0;
+    top: 0;
     background: none;
     margin: 0;
     padding: 0;
     border: none;
     cursor: pointer;
+    height: max-content;
+    display: var(--nav-portrait-visibility);
 }
 
 .togglePortrait > svg {
-    fill: var(--purple);
+    stroke: var(--purple);
+    width: var(--font-size-large);
+    height: var(--font-size-large);
 }
 
 .togglePortrait > svg:hover {
