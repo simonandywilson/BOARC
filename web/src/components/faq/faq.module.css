@@ -9,7 +9,7 @@
     display: grid;
     grid-template-columns: var(--grid-columns);
     column-gap: var(--grid-columns-gap);
-    padding: var(--margin) var(--margin) var(--margin) var(--margin);
+    padding: var(--margin) var(--margin) calc(var(--margin) + env(safe-area-inset-bottom)) var(--margin);
 }
 
 .panel {

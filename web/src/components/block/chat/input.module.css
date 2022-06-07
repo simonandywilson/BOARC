@@ -19,6 +19,7 @@
     font-size: var(--font-size);
     border-radius: 0;
     background: #ffffff;
+    font-weight: 400;
 }
 
 .input:focus {
@@ -70,4 +71,8 @@
     75% {
         content: "/";
     }
+}
+
+input[type="submit"] {
+    -webkit-appearance: none;
 }
