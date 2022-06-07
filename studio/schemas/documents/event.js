@@ -3,6 +3,7 @@ import RenderColour from "../components/colour/RenderColour";
 import { EventIcon } from "../styles/Icons";
 import sanityClient from "part:@sanity/base/client";
 const client = sanityClient.withConfig({ apiVersion: "2022-02-15" });
+import slugify from "slugify";
 
 export default {
     name: "event",
@@ -57,10 +58,13 @@ export default {
                     const query = "*[_id == $parentId] {'slug': slug.current}";
                     const params = { parentId: doc.eventParent._ref };
                     const parent = await client.fetch(query, params);
-                    const slug = `${parent[0].slug}/${doc.title}`;
-                    return slug.replace(/\.[^/.]+$/, "");
+                    const slugified = slugify(doc.title, {
+                        lower: true,
+                    });
+                    const slug = `${parent[0].slug}/${slugified}`;
+                    return slug;
                 },
-                slugify: (input) => input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
+                slugify: (input) => input,
                 isUnique: isUniqueAcrossAllDocuments,
                 maxLength: 30,
             },

@@ -4,7 +4,7 @@ import { PortableText } from "@portabletext/react";
 import * as style from "./faq.module.css";
 
 import scrollTo from "gatsby-plugin-smoothscroll";
-const slugify = require("slugify");
+import slugify from "slugify";
 
 const Faq = ({ faqOpen, setFaqOpen }) => {
     const { allSanityFaq: faq } = useStaticQuery(getData);
