@@ -6,6 +6,8 @@
     font-size: var(--font-size-event-carousel);
     line-height: var(--line-height);
     text-transform: uppercase;
+    min-height: 0;
+    min-width: 0;
 }
 
 .arrowLeft {
@@ -27,11 +29,15 @@
     font-size: var(--font-size-large);
     font-family: var(--font-family);
     color: var(--brown);
+    min-width: 0;
+    width: 100%;
+    padding: 0;
 }
 
 .arrowLeft > svg,
 .arrowRight > svg {
     max-height: var(--font-size-event-carousel);
+    width: 100%;
 }
 
 .arrowLeft:hover,
@@ -71,7 +77,6 @@
     object-fit: cover;
     filter: contrast(30%);
 }
-
 
 .text {
     position: absolute;

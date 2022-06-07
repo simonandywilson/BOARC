@@ -3,6 +3,7 @@
     bottom: var(--margin);
     bottom: calc(var(--margin) + env(safe-area-inset-bottom));
     left: var(--margin);
+    z-index: 99;
 }
 
 .box {
