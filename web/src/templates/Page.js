@@ -63,7 +63,7 @@ const Page = ({ data: { page } }) => {
             ),
             types: {
                 blockHeading: (data) => <HeadingRenderer data={data} width={page.width} />,
-                blockImg: ImageRenderer,
+                blockImg: (data) => <ImageRenderer data={data} isFirst={_rawContent[0]._key ===data.value._key} />,
                 blockCollapsible: (data) => {
                     return data.value.type === "featured" ? (
                         <CollapsibleFeaturedRenderer
