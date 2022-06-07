@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { PortableText } from "@portabletext/react";
 import * as style from "./faq.module.css";
