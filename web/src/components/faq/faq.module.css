@@ -1,9 +1,7 @@
 .faq {
     position: fixed;
     width: 100vw;
-    height: calc(100vh - env(safe-area-inset-bottom));
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
+    height: 100%;
     top: 0;
     left: 0;
     pointer-events: none;
@@ -11,8 +9,8 @@
     display: grid;
     grid-template-columns: var(--grid-columns);
     column-gap: var(--grid-columns-gap);
-    padding: var(--margin) var(--margin) 0 var(--margin);
-    padding-bottom: env(safe-area-inset-bottom);
+    padding: var(--margin) var(--margin) var(--margin) var(--margin);
+    padding-bottom: calc(env(safe-area-inset-bottom) + var(--margin));
 }
 
 .panel {
@@ -54,6 +52,7 @@
 .content {
     margin-top: var(--margin-double);
     margin-left: var(--faq-margin);
+    padding-right: var(--margin);
 }
 
 .heading {
