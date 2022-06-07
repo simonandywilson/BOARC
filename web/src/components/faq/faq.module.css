@@ -10,6 +10,7 @@
     grid-template-columns: var(--grid-columns);
     column-gap: var(--grid-columns-gap);
     padding: var(--margin) var(--margin) 0 var(--margin);
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 .panel {
