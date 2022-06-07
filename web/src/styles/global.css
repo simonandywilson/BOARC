@@ -1,4 +1,28 @@
 /*----------------------------------------
+Typography
+----------------------------------------*/
+
+@import url("https://fonts.googleapis.com/css2?family=Khula&display=swap");
+
+@font-face {
+    font-family: "BOARCCourier";
+    src: url("../fonts/BOARCCourier.otf") format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "BOARCCourierMono";
+    src: url("../fonts/BOARCCourierMono.otf") format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "BOARCSymbols";
+    src: url("../fonts/BOARCSymbols.otf") format("opentype");
+    font-display: swap;
+}
+
+/*----------------------------------------
 Media Queries
 ----------------------------------------*/
 
@@ -282,11 +306,15 @@ Variables
 
     --box-padding: 3px;
 
-    --font-regular: BOARCCourier;
-    --font-mono: BOARCCourierMono;
-    --font-symbol: BOARCSymbols;
-    --font-easy: Khula;
+    --font-regular: BOARCCourier, var(--mono-stack);
+    --font-mono: BOARCCourierMono, var(--mono-stack);
+    --font-symbol: BOARCSymbols, var(--mono-stack);
+    --font-easy: Khula, var(--sans-stack);
     --font: var(--font-regular);
+
+    --mono-stack: "Courier New", Courier, monospace;
+    --sans-stack: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue,
+        helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
 
     --purple: #6468e3;
     --brown: #786a2f;
@@ -341,23 +369,3 @@ body {
     background: var(--brown-highlight);
 }
 
-/*----------------------------------------
-Typography
-----------------------------------------*/
-
-@import url("https://fonts.googleapis.com/css2?family=Khula&display=swap");
-
-@font-face {
-    font-family: "BOARCCourier";
-    src: url("../fonts/BOARCCourier.otf") format("opentype");
-}
-
-@font-face {
-    font-family: "BOARCCourierMono";
-    src: url("../fonts/BOARCCourierMono.otf") format("opentype");
-}
-
-@font-face {
-    font-family: "BOARCSymbols";
-    src: url("../fonts/BOARCSymbols.otf") format("opentype");
-}

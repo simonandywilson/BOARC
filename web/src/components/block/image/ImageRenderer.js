@@ -1,23 +1,26 @@
-import React from "react";
+import React, {useRef} from "react";
 import Image from "gatsby-plugin-sanity-image";
 import * as style from "./image.module.css";
 import { PortableText } from "@portabletext/react";
 
 const ImageRenderer = ({ value }) => {
+    const image = value
+    delete image.asset.metadata;
     return (
         <div className={style.grid}>
-            {"caption" in value ? (
+            {"caption" in image ? (
                 <>
                     <div className={style.caption}>
-                        <PortableText value={value.caption} components={components} />
+                        <PortableText value={image.caption} components={components} />
                     </div>
                     <div className={style.small}>
                         <div className={style.overlay}></div>
                         <Image
-                            {...value}
+                            {...image}
                             className={style.image}
-                            alt={value?.alt ? value.alt : "Unknown image"}
-                            width={1000}
+                            alt={image?.alt ? image.alt : "Unknown image"}
+                            width={500}
+                            test="next"
                         />
                     </div>
                 </>
@@ -25,9 +28,9 @@ const ImageRenderer = ({ value }) => {
                 <div className={style.large}>
                     <div className={style.overlay}></div>
                     <Image
-                        {...value}
+                        {...image}
                         className={style.image}
-                        alt={value?.alt ? value.alt : "Unknown image"}
+                        alt={image?.alt ? image.alt : "Unknown image"}
                         width={1000}
                     />
                 </div>
