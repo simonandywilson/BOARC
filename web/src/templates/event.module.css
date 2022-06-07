@@ -72,7 +72,6 @@
 .description {
     grid-column: var(--grid-position-event-description);
     color: var(--brown);
-    margin-right: var(--margin);
 }
 
 .date,
