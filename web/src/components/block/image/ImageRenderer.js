@@ -10,8 +10,7 @@ const builder = imageUrlBuilder({
 });
 const urlFor = (source) => builder.image(source);
 
-const ImageRenderer = ({ data }) => {
-    const isFirst = false
+const ImageRenderer = ({ data, isFirst }) => {
     const image = data.value;
     const type = isFirst ? (
         <img

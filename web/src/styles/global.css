@@ -6,19 +6,22 @@ Typography
 
 @font-face {
     font-family: "BOARCCourier";
-    src: url("../fonts/BOARCCourier.otf") format("opentype");
+    src: url("../fonts/BOARCCourier.woff2") format("woff2"),
+        url("../fonts/BOARCCourier.woff") format("woff");
     font-display: swap;
 }
 
 @font-face {
     font-family: "BOARCCourierMono";
-    src: url("../fonts/BOARCCourierMono.otf") format("opentype");
+    src: url("../fonts/BOARCCourierMono.woff2") format("woff2"),
+        url("../fonts/BOARCCourier.woff") format("woff");
     font-display: swap;
 }
 
 @font-face {
     font-family: "BOARCSymbols";
-    src: url("../fonts/BOARCSymbols.otf") format("opentype");
+    src: url("../fonts/BOARCSymbols.woff2") format("woff2"),
+        url("../fonts/BOARCCourier.woff") format("woff");
     font-display: swap;
 }
 
@@ -368,4 +371,3 @@ body {
 ::-moz-selection {
     background: var(--brown-highlight);
 }
-
