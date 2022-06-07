@@ -24,13 +24,19 @@
     background: none;
     border: none;
     font-size: var(--font-size-large);
-    font-family: var(--font);
-    color: #ffffff;
     cursor: pointer;
+    padding: 0;
+    margin: 0;
 }
 
-.close:hover {
-    color: var(--red);
+.close > svg {
+    width: var(--font-size-large);
+    height: var(--font-size-large);
+    fill: #ffffff;
+}
+
+.close:hover > svg {
+    fill: var(--red);
 }
 
 .nav {
@@ -39,6 +45,8 @@
 
 .links, .tabs {
     margin-left: var(--column-double);
+    display: flex;
+    flex-direction: column;
 }
 
 .links > a {
@@ -56,13 +64,12 @@
 
 .tabs > button {
     all: unset;
-    width: 100%;
+    width: max-content;
     cursor: pointer;
     text-decoration: none;
     color: #ffffff;
     padding: 0;
     margin: 0;
-    display: grid;
 }
 
 .tabs > button:hover {

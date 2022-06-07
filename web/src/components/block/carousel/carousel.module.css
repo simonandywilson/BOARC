@@ -24,7 +24,7 @@
 }
 
 .overlay {
-    background: var(--brown);
+    background-color: var(--brown);
     mix-blend-mode: multiply;
     height: 100%;
     transition: background 0.5s;
@@ -35,7 +35,7 @@
 }
 
 .container:hover > .overlay > .image {
-    filter: none;
+    filter: grayscale(0) contrast(1);
 }
 
 .image {

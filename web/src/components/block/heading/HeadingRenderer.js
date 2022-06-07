@@ -13,6 +13,8 @@ const HeadingRenderer = ({ data, width }) => {
         lower: true,
     });
 
+    const colour = value.colour?.value && value.colour?.value === "#ed6b6c" ? "var(--red)" : "var(--font-colour)"
+
     useLayoutEffect(() => {
         if (firstUpdate.current) {
             firstUpdate.current = false;
@@ -28,6 +30,7 @@ const HeadingRenderer = ({ data, width }) => {
                 className={style.heading}
                 ref={ref}
                 style={{
+                    color: colour,
                     gridColumn:
                         width === "wide"
                             ? "var(--grid-position-main-wide)"

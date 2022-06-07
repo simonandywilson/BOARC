@@ -17,7 +17,7 @@
     padding-left: var(--margin);
     font-family: var(--font-family);
     font-size: var(--font-size);
-    border-radius: none;
+    border-radius: 0;
     background: #ffffff;
 }
 

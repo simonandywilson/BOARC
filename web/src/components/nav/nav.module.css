@@ -53,8 +53,8 @@
 
 .togglePortrait > svg {
     stroke: var(--purple);
-    width: var(--font-size-large);
-    height: var(--font-size-large);
+    width: var(--font-size-button);
+    height: var(--font-size-button);
 }
 
 .togglePortrait > svg:hover {

@@ -9,125 +9,8 @@
     display: grid;
     grid-template-columns: var(--grid-columns);
     column-gap: var(--grid-columns-gap);
-    padding: var(--margin) var(--margin) 0 var(--margin);
+    padding: var(--margin) var(--margin) var(--margin) var(--margin);
 }
-
-.box {
-    position: absolute;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding-bottom: var(--margin);
-    padding-left: var(--margin);
-}
-
-.box > div {
-    display: flex;
-}
-
-.toggleMain {
-    background: var(--red);
-    flex-direction: column;
-    width: max-content;
-    padding: calc(var(--box-padding) * 2);
-    padding-bottom: calc(var(--box-padding) * 1);
-    padding-left: calc(var(--box-padding) * 0.8);
-    padding-right: calc(var(--box-padding) * 0.8);
-}
-
-.toggleMain > button {
-    background: none;
-    border: none;
-    text-align: left;
-    width: max-content;
-    height: max-content;
-
-    font-family: var(--font);
-    font-size: var(--font-size);
-    color: #ffffff;
-    text-transform: uppercase;
-    pointer-events: all;
-    cursor: pointer;
-}
-
-.toggleMain > button > p {
-    margin: 0;
-    line-height: 100%;
-    vertical-align: bottom;
-}
-
-.toggleMain > button:hover {
-    color: var(--purple);
-}
-
-.toggleEasyRead {
-    background: var(--grey);
-    padding: var(--margin-half);
-    align-items: center;
-}
-
-.toggleEasyRead > button {
-    background: none;
-    text-align: left;
-    padding: 0;
-    font-family: var(--font);
-    font-size: var(--font-size-large);
-    color: var(--purple);
-    pointer-events: all;
-    cursor: pointer;
-    line-height: 100%;
-    margin-right: var(--margin-half);
-}
-
-.toggleEasyRead > button:last-child {
-    margin-right: 0;
-}
-
-.toggleText {
-    border: none;
-}
-
-.toggleText:hover {
-    color: var(--brown) !important;
-}
-
-.toggleImage,
-.clearSketch {
-    height: var(--font-size-large);
-    flex-shrink: 0;
-    border: none;
-    background: none;
-    padding: 0;
-    margin: 0;
-}
-
-.toggleImage {
-    width: calc(var(--font-size-large) * 1.5);
-    margin-right: var(--margin-half);
-}
-
-.toggleImage:hover > svg {
-    stroke: var(--brown) !important;
-}
-
-.clearSketch > svg,
-.toggleImage > svg {
-    height: 100%;
-    width: 100%;
-    stroke: var(--purple);
-    fill: var(--purple);
-}
-
-.clearSketch > svg {
-    stroke: none;
-}
-
-.clearSketch:hover > svg {
-    fill: var(--brown) !important;
-}
-
-
 
 .panel {
     position: relative;
@@ -157,7 +40,7 @@
     cursor: pointer;
     right: 0;
     margin-right: var(--margin-double);
-    background: var(--brown);
+    background: #83794b;
     padding: var(--box-padding);
 }
 
@@ -173,7 +56,7 @@
 .heading {
     position: sticky;
     top: 0;
-    background: var(--brown);
+    background: #83794b;
     width: max-content;
     padding: var(--box-padding);
 }

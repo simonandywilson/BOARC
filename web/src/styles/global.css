@@ -9,6 +9,7 @@ Media Queries
         --font-size-medium: calc(var(--font-size) * 1.25);
         --font-size-large: 5vw;
         --font-size-event-carousel: var(--font-size-medium);
+        --font-size-button: 2rem;
 
         --grid-position-main-normal: 1 / 12;
         --grid-position-main-wide: 1 / 12;
@@ -53,6 +54,7 @@ Media Queries
         --landing-portrait-visibility: flex;
         --landing-landscape-visibility: none;
         --newsletter-visibility: hidden;
+        --comment-collapsible-visibility: none;
 
         --event-list-details-font-size: var(--font-size);
         --event-list-links-font-size: var(--font-size-small);
@@ -71,6 +73,7 @@ Media Queries
         --font-size-medium: calc(var(--font-size) * 1.25);
         --font-size-large: 2.95vw;
         --font-size-event-carousel: var(--font-size-medium);
+        --font-size-button: 2rem;
 
         --grid-position-main-normal: 4 / 10;
         --grid-position-main-wide: 4 / 12;
@@ -115,6 +118,7 @@ Media Queries
         --landing-portrait-visibility: none;
         --landing-landscape-visibility: flex;
         --newsletter-visibility: visible;
+        --comment-collapsible-visibility: grid;
 
         --event-list-details-font-size: var(--font-size-medium);
         --event-list-links-font-size: var(--font-size);
@@ -133,6 +137,7 @@ Media Queries
         --font-size-medium: calc(var(--font-size) * 1.25);
         --font-size-large: 2.95vw;
         --font-size-event-carousel: var(--font-size-large);
+        --font-size-button: 2rem;
 
         --grid-position-main-normal: 4 / 11;
         --grid-position-main-wide: 4 / 12;
@@ -177,6 +182,7 @@ Media Queries
         --landing-portrait-visibility: none;
         --landing-landscape-visibility: flex;
         --newsletter-visibility: visible;
+        --comment-collapsible-visibility: grid;
 
         --event-list-details-font-size: var(--font-size-medium);
         --event-list-links-font-size: var(--font-size);
@@ -195,6 +201,7 @@ Media Queries
         --font-size-medium: calc(var(--font-size) * 1.25);
         --font-size-large: 2.95vw;
         --font-size-event-carousel: var(--font-size-large);
+        --font-size-button: 2rem;
 
         --grid-position-main-normal: 4 / 10;
         --grid-position-main-wide: 4 / 12;
@@ -239,6 +246,7 @@ Media Queries
         --landing-portrait-visibility: none;
         --landing-landscape-visibility: flex;
         --newsletter-visibility: visible;
+        --comment-collapsible-visibility: grid;
 
         --event-list-details-font-size: var(--font-size-medium);
         --event-list-links-font-size: var(--font-size);

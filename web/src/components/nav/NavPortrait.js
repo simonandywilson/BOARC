@@ -2,7 +2,7 @@ import React from "react";
 import * as style from "./navportrait.module.css";
 import { nanoid } from "nanoid";
 import { useStaticQuery, graphql, Link, navigate } from "gatsby";
-import { useActiveContext, useSubheadingContext } from "../../state/GlobalState";
+import { useActiveContext, useSubheadingContext, useSubheadingUpdateContext } from "../../state/GlobalState";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import slugify from "slugify";
 
@@ -24,6 +24,7 @@ const getAbbreviation = (text) => {
 const NavPortrait = ({ navPortrait, setNavPortrait }) => {
     const ActiveContext = useActiveContext();
     const SubheadingContext = useSubheadingContext();
+    const SubheadingUpdateContext = useSubheadingUpdateContext();
 
     const {
         homepage,
@@ -36,7 +37,13 @@ const NavPortrait = ({ navPortrait, setNavPortrait }) => {
             <div className={style.navPortrait}>
                 <div className={style.heading}>
                     <button className={style.close} onClick={() => setNavPortrait(false)}>
-                        X
+                        <svg
+                            width="45.54"
+                            height="48"
+                            viewBox="0 0 45.54 48"
+                        >
+                            <path d="M0,48v-3.98H4.35L20.47,22.77,6.15,4.02H1.6V0H18.13V4.02h-6.97l11.65,15.55,11.98-15.55h-6.48V0h15.59V4.02h-4.35l-14.32,18.75,15.88,21.25h4.43v3.94H28.31v-3.94h7.63l-13.13-18.09-13.7,18.09h9.03v3.94l-18.13,.04Z" />
+                        </svg>
                     </button>
                 </div>
                 {menus.map((menu) => {
@@ -59,6 +66,7 @@ const NavPortrait = ({ navPortrait, setNavPortrait }) => {
                                         return (
                                             <Link
                                                 key={nanoid()}
+                                                onClick={() => SubheadingUpdateContext("")}
                                                 to={`/${link.slug.current}`}
                                                 style={{
                                                     textDecoration:

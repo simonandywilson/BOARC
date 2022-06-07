@@ -1,0 +1,96 @@
+.easyread {
+    position: fixed;
+    bottom: var(--margin);
+    bottom: calc(var(--margin) + env(safe-area-inset-bottom));
+    left: var(--margin);
+}
+
+.box {
+    background: var(--red);
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    padding: calc(var(--box-padding) * 2);
+    padding-bottom: calc(var(--box-padding) * 1);
+}
+
+.box > button {
+    background: none;
+    border: none;
+    text-align: left;
+    width: max-content;
+    height: max-content;
+    padding: 0;
+    margin: 0;
+    font-family: var(--font);
+    font-size: var(--font-size);
+    color: #ffffff;
+    text-transform: uppercase;
+    pointer-events: all;
+    cursor: pointer;
+}
+
+.box > button > p {
+    margin: 0;
+    line-height: 100%;
+    vertical-align: bottom;
+}
+
+.box > button:hover {
+    color: var(--purple);
+}
+
+.controls {
+    display: flex;
+    background: var(--grey);
+    padding: var(--margin-half);
+    align-items: center;
+}
+
+.controls > button {
+    background: none;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    pointer-events: all;
+    flex-shrink: 0;
+    cursor: pointer;
+    height: var(--font-size-button);
+    margin-right: var(--margin-half);
+    border: none;
+}
+
+.controls > button:last-child {
+    margin-right: 0;
+}
+
+.controls > button > svg {
+    height: var(--font-size-button);
+    width: max-content;
+    max-width: calc(var(--font-size-button) * 1.5);
+}
+
+.toggleText {
+    fill: var(--purple) !important;
+    margin-right: var(--margin-half);
+}
+
+.toggleText:hover > svg {
+    fill: var(--brown) !important;
+}
+
+.toggleImage {
+    stroke: var(--purple) !important;
+}
+
+.toggleImage:hover > svg {
+    stroke: var(--brown) !important;
+}
+
+.clearSketch > svg {
+    fill: var(--purple) !important;
+}
+
+.clearSketch:hover > svg {
+    fill: var(--brown) !important;
+}
