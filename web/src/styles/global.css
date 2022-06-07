@@ -20,9 +20,9 @@ Media Queries
         --grid-position-chat: 1 / 14;
 
         --grid-position-event-carousel: 2 / 11;
-        --grid-position-event-back: 1 / 4;
-        --grid-position-event-programme: 4 / 6;
-        --grid-position-event-description: 6 / 12;
+        --grid-position-event-back: 1 / 12;
+        --grid-position-event-programme: 1 / 5;
+        --grid-position-event-description: 5 / 12;
 
         --grid-position-ascii: 1 / 5;
         --grid-position-carousel: 3 / 12;

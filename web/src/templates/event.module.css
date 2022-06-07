@@ -4,12 +4,13 @@
     grid-template-columns: var(--grid-columns);
     column-gap: var(--grid-columns-gap);
     color: var(--brown);
+    padding-left: var(--margin);
+    padding-right: var(--margin);
 }
 
 .back {
     grid-column: var(--grid-position-event-back);
     margin: var(--block-margin);
-    padding-left: var(--margin);
     text-transform: uppercase;
     color: var(--brown);
     text-decoration: none;
@@ -19,13 +20,11 @@
     grid-column: var(--grid-position-main-wide);
     display: flex;
     justify-content: space-between;
-    margin-right: var(--margin);
     overflow: hidden;
 }
 
 .prev,
 .next {
-    position: absolute;
     margin: var(--block-margin);
     color: var(--brown);
     text-decoration: none;
@@ -39,10 +38,11 @@
 
 .next {
     right: 0;
-    margin-right: var(--margin);
 }
 
 .border {
+    position: absolute;
+    padding-right: var(--margin);
     display: block;
     overflow-wrap: break-word;
     overflow: hidden;
@@ -54,13 +54,13 @@
     display: grid;
     grid-template-columns: var(--grid-columns);
     column-gap: var(--grid-columns-gap);
+    padding: 0 var(--margin) var(--page-margin-bottom) var(--margin);
 }
 
 .banner {
     grid-column: var(--grid-position-main-wide);
     width: 100%;
     max-height: 300px;
-    padding-right: var(--margin);
     margin-bottom: var(--margin);
 }
 
