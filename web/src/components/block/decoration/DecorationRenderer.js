@@ -9,14 +9,14 @@ const DecorationRenderer = ({ value }) => {
             {position === "left" && (
                 <div className={style.decorationLeft}>
                     {reference?.image && (
-                        <Image {...reference.image} alt="" className={style.image} />
+                        <Image {...reference.image} alt="" className={style.image} width={300} />
                     )}
                 </div>
             )}
             {position === "right" && (
                 <div className={style.decorationRight}>
                     {reference?.image && (
-                        <Image {...reference.image} alt="" className={style.image} />
+                        <Image {...reference.image} alt="" className={style.image} width={300} />
                     )}
                 </div>
             )}
