@@ -10,7 +10,11 @@ const CarouselRenderer = ({ value }) => {
     return (
         <div className={style.grid}>
             <div className={style.carousel}>
-                <button className={style.arrowLeft} onClick={() => swiper.slidePrev(500, true)}>
+                <button
+                    className={style.arrowLeft}
+                    onClick={() => swiper.slidePrev(500, true)}
+                    aria-label="Move carousel left"
+                >
                     <svg
                         width="25.195"
                         height="45.146"
@@ -45,7 +49,11 @@ const CarouselRenderer = ({ value }) => {
                         );
                     })}
                 </Swiper>
-                <button className={style.arrowRight} onClick={() => swiper.slideNext(500, true)}>
+                <button
+                    className={style.arrowRight}
+                    onClick={() => swiper.slideNext(500, true)}
+                    aria-label="Move carousel right"
+                >
                     <svg width="25.195" height="45.146" viewBox="0 0 25.195 45.146">
                         <path
                             d="M-22,0,0,21.5-22,43"

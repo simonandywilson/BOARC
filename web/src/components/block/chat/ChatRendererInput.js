@@ -41,6 +41,7 @@ const ChatRendererInput = ({ username, setUsername, setErrorMessage }) => {
                 defaultValue={username}
                 {...register("username", { required: true, maxLength: 20 })}
                 className={style.input}
+                aria-label="Chat username input"
             />
             {errors.name?.type === "required" && (
                 <span className={style.error}>A name is required.</span>
@@ -54,6 +55,7 @@ const ChatRendererInput = ({ username, setUsername, setErrorMessage }) => {
                 {...register("message", { required: true, maxLength: 75 })}
                 className={style.input}
                 placeholder="Message…"
+                aria-label="Chat message input"
             />
             {errors.message?.type === "required" && (
                 <span className={style.error}>A message is required.</span>

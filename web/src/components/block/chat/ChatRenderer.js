@@ -148,6 +148,7 @@ const ChatRenderer = ({ value }) => {
                     ref={chatboxRef}
                     onMouseEnter={() => setChatboxHover(true)}
                     onMouseLeave={() => setChatboxHover(false)}
+                    tabIndex="0"
                 >
                     {chats.map((chat, index) => {
                         return <ChatRendererComment key={index} chat={chat} />;

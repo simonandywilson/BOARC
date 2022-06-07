@@ -43,9 +43,9 @@ const Title = ({ setAsciiWidth, setNavPortrait, title }) => {
 
     return (
         <>
-            <div className={style.title} ref={ref}>
+            <h1 className={style.title} ref={ref}>
                 <Link to="/">{title}</Link>
-            </div>
+            </h1>
             <button className={style.togglePortrait} onClick={() => setNavPortrait(true)}>
                 <svg width="48" height="36" viewBox="0 0 48 36">
                     <line

@@ -24,7 +24,7 @@ const Faq = ({ faqOpen, setFaqOpen }) => {
                                 className={style.tab}
                                 onClick={() =>
                                     scrollTo(
-                                        `#${slugify(title.title, {
+                                        `#${slugify(`${title.title}-faq`, {
                                             lower: true,
                                         })}`
                                     )
@@ -39,7 +39,7 @@ const Faq = ({ faqOpen, setFaqOpen }) => {
                         return (
                             <div key={text._id}>
                                 <span
-                                    id={slugify(text.title, {
+                                    id={slugify(`${text.title}-faq`, {
                                         lower: true,
                                     })}
                                     className={style.anchor}

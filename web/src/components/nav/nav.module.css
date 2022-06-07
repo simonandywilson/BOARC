@@ -13,6 +13,8 @@
     color: var(--purple);
     width: max-content;
     max-width: calc(100% - var(--margin-double));
+    font-weight: 400;
+    font-size: var(--font-size);
 }
 
 .title > a {

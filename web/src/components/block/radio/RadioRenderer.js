@@ -39,6 +39,7 @@ const RadioRenderer = ({ value }) => {
                     <button
                         onClick={() => setPlaying((prevPlaying) => !prevPlaying)}
                         className={style.play}
+                        aria-label="Play/pause radio"
                     >
                         {playing ? (
                             <svg
@@ -71,6 +72,7 @@ const RadioRenderer = ({ value }) => {
                             defaultValue="1"
                             step="0.01"
                             onChange={(e) => setVolume(e.target.value)}
+                            aria-label="Change radio volume"
                         />
                     </div>
                 </div>
