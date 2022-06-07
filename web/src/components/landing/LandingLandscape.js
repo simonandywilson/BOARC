@@ -36,8 +36,8 @@ const LandingLandscape = ({ pages }) => {
                     const descriptionPosition = page.landingDescriptionPosition
                         ? page.landingDescriptionPosition
                         : 1;
-                    const dotsTitleEnd = columns - (title.length + titlePosition);
-                    const dotsDescriptionEnd = columns - (description.length + descriptionPosition);
+                    const dotsTitleEnd = Math.max(columns - (title.length + titlePosition), 0);
+                    const dotsDescriptionEnd = Math.max(columns - (description.length + descriptionPosition), 0);
                     return (
                         <div key={page._id + index}>
                             <div

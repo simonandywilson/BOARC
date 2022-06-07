@@ -10,6 +10,7 @@ import {
 } from "../state/GlobalState";
 
 import TextRenderer from "../components/block/text/TextRenderer";
+import BoldRenderer from "../components/block/text/BoldRenderer";
 import HeadingRenderer from "../components/block/heading/HeadingRenderer";
 import ImageRenderer from "../components/block/image/ImageRenderer";
 import CollapsibleFeaturedRenderer from "../components/block/collapsible/CollapsibleFeaturedRenderer";
@@ -27,8 +28,6 @@ import ShowRenderer from "../components/block/show/ShowRenderer";
 import DecorationRenderer from "../components/block/decoration/DecorationRenderer";
 
 import Seo from "../components/seo/Seo";
-
-import scrollTo from "gatsby-plugin-smoothscroll";
 
 const Page = ({ data: { page } }) => {
     const {
@@ -53,13 +52,6 @@ const Page = ({ data: { page } }) => {
         AsciiUpdateContext(page.ascii === "true" ? true : false);
     }, []);
 
-    // useEffect(() => {
-    //     if (location.state.slug) {
-    //         let timer = setTimeout(() => scrollTo(`#${location.state.slug}`), 500);
-    //         return () => clearTimeout(timer);
-    //     }
-    // }, [location.state]);
-
     const serialiser = useMemo(() => {
         const components = {
             block: (data) => (
@@ -74,9 +66,17 @@ const Page = ({ data: { page } }) => {
                 blockImg: ImageRenderer,
                 blockCollapsible: (data) => {
                     return data.value.type === "featured" ? (
-                        <CollapsibleFeaturedRenderer value={data.value} width={page.width} />
+                        <CollapsibleFeaturedRenderer
+                            value={data.value}
+                            width={page.width}
+                            background={backgroundLeft ? backgroundLeft : "#ffffff"}
+                        />
                     ) : (
-                        <CollapsibleRenderer value={data.value} width={page.width} />
+                        <CollapsibleRenderer
+                            value={data.value}
+                            width={page.width}
+                            background={backgroundLeft ? backgroundLeft : "#ffffff"}
+                        />
                     );
                 },
                 blockCarousel: CarouselRenderer,
@@ -94,6 +94,7 @@ const Page = ({ data: { page } }) => {
                 blockBackground: (data) => <DecorationRenderer value={data.value} />,
             },
             marks: {
+                strong: BoldRenderer,
                 blockFile: FileRenderer,
                 blockInternal: InternalRenderer,
                 blockExternal: ExternalRenderer,

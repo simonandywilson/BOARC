@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import * as style from "./collapsible.module.css";
 import { PortableText } from "@portabletext/react";
 import { motion, AnimatePresence } from "framer-motion";
+import TextRendererCollapsible from "./TextRendererCollapsible";
 
-const CollapsibleRenderer = ({ value, width }) => {
+const CollapsibleRenderer = ({ value, width, background }) => {
     const [open, setOpen] = useState(false);
+
+    const serialiser = useMemo(() => {
+        const components = {
+            block: (data) => <TextRendererCollapsible data={data} background={background} />,
+        };
+        return components;
+    }, []);
+
     return (
         <div className={style.grid}>
             <div
@@ -40,7 +49,7 @@ const CollapsibleRenderer = ({ value, width }) => {
                                     }}
                                     transition={{ duration: 0.25 }}
                                 >
-                                    <PortableText value={value.text} components={components} />
+                                    <PortableText value={value.text} components={serialiser} />
                                 </motion.div>
                             )}
                         </AnimatePresence>
@@ -49,12 +58,6 @@ const CollapsibleRenderer = ({ value, width }) => {
             </div>
         </div>
     );
-};
-
-const components = {
-    block: {
-        normal: ({ children }) => <p>{children}</p>,
-    },
 };
 
 export default CollapsibleRenderer;

@@ -9,8 +9,9 @@ const InternalRenderer = ({ text, value }) => {
         },
     } = useStaticQuery(getData);
     const slug = value.reference.slug.current;
+    const place = value?.place ? value.place : ""
     return (
-        <Link to={initial.slug.current === slug ? "/" : `/${value.reference.slug.current}`} className={style.internal}>
+        <Link to={initial.slug.current === slug ? `/#${place}` : `/${value.reference.slug.current}#${place}`} className={style.internal}>
             {text}
         </Link>
     );

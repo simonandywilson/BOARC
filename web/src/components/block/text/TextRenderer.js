@@ -9,40 +9,10 @@ const TextRenderer = ({ data, width, background }) => {
 
     const format = (text) => {
         switch (value.style) {
-            case "subheading":
-                return (
-                    <h3
-                        className={style.subheading}
-                        style={{
-                            gridColumn:
-                                width === "wide"
-                                    ? "var(--grid-position-main-wide)"
-                                    : "var(--grid-position-main-normal)",
-                        }}
-                    >
-                        {text}
-                    </h3>
-                );
-
-            case "centered":
+            case "h5":
                 return (
                     <p
                         className={style.centered}
-                        style={{
-                            gridColumn:
-                                width === "wide"
-                                    ? "var(--grid-position-main-wide)"
-                                    : "var(--grid-position-main-normal)",
-                        }}
-                    >
-                        {text}
-                    </p>
-                );
-
-            case "indent":
-                return (
-                    <p
-                        className={style.indent}
                         style={{
                             gridColumn:
                                 width === "wide"
