@@ -1,7 +1,9 @@
 .faq {
     position: fixed;
-    height: calc(100vh - env(safe-area-inset-bottom));
     width: 100vw;
+    height: calc(100vh - env(safe-area-inset-bottom));
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
     top: 0;
     left: 0;
     pointer-events: none;
