@@ -7,11 +7,11 @@
 @font-face {
     font-family: "BOARCCourierMono";
     src: url("../fonts/BOARCCourierMono.woff2") format("woff2"),
-        url("../fonts/BOARCCourier.woff") format("woff");
+        url("../fonts/BOARCCourierMono.woff") format("woff");
 }
 
 @font-face {
     font-family: "BOARCSymbols";
     src: url("../fonts/BOARCSymbols.woff2") format("woff2"),
-        url("../fonts/BOARCCourier.woff") format("woff");
+        url("../fonts/BOARCSymbols.woff") format("woff");
 }

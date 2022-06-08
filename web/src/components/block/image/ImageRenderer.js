@@ -2,21 +2,16 @@ import React from "react";
 import Image from "gatsby-plugin-sanity-image";
 import * as style from "./image.module.css";
 import { PortableText } from "@portabletext/react";
-import imageUrlBuilder from "@sanity/image-url";
-
-const builder = imageUrlBuilder({
-    projectId: process.env.GATSBY_SANITY_PROJECT_ID,
-    dataset: "production",
-});
-const urlFor = (source) => builder.image(source);
 
 const ImageRenderer = ({ data, isFirst }) => {
     const image = data.value;
     const type = isFirst ? (
-        <img
-            src={urlFor(image.asset.id).auto("format").fit("max").width(1500).toString()}
-            alt={image.alt ? image.alt : ""}
+        <Image
+            {...image}
             className={style.image}
+            alt={image?.alt ? image.alt : "Unknown image"}
+            width={1000}
+            loading="eager"
         />
     ) : (
         <Image
