@@ -1,11 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { Card, Grid, Text } from "@sanity/ui";
+import { Card, Grid } from "@sanity/ui";
 import { FormField } from "@sanity/base/components";
 import { withDocument } from "part:@sanity/form-builder";
-import * as style from "./RenderLanding.css";
+import * as style from "./landing.module.css";
 import sanityClient from "part:@sanity/base/client";
 const client = sanityClient.withConfig({ apiVersion: "2022-02-15" });
 import { nanoid } from "nanoid";
+
+const getAbbreviation = (text) => {
+    if (typeof text != "string" || !text) {
+        return "";
+    }
+    const acronym = text
+        .match(/[\p{Alpha}\p{Nd}]+/gu)
+        .reduce(
+            (previous, next) =>
+                previous + (+next === 0 || parseInt(next) ? parseInt(next) : next[0] || ""),
+            ""
+        )
+        .toUpperCase();
+    return acronym;
+};
 
 const columns = 45;
 const rows = 4;
@@ -51,10 +66,13 @@ export const RenderLanding = React.forwardRef((props, ref) => {
                 >
                     {data &&
                         data.map((page) => {
-                            const title = [...page.title];
                             const titlePosition = page.landingTitlePosition
                                 ? page.landingTitlePosition
                                 : 1;
+                            const title =
+                                page.title.length + titlePosition - 2 >= columns
+                                    ? [...getAbbreviation(page.title)]
+                                    : [...page.title];
                             const titleDots = columns - (title.length + titlePosition) + 1;
                             const description = page.landingDescription
                                 ? [...page.landingDescription]

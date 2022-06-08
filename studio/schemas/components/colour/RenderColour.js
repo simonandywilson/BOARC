@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState, useEffect } from "react";
-import PatchEvent, { set, unset } from "@sanity/form-builder/PatchEvent";
+import PatchEvent, { set } from "@sanity/form-builder/PatchEvent";
 import { withDocument } from "part:@sanity/form-builder";
 import { HexColorPicker, HexColorInput } from "react-colorful";
 import useClickOutside from "./useClickOutside";

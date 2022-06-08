@@ -1,3 +1,9 @@
+@font-face {
+    font-family: "BOARCCourierMono";
+    src: url("../../fonts/BOARCCourierMono.woff2") format("woff2"),
+        url("../../fonts/BOARCCourierMono.woff") format("woff");
+}
+
 .grid {
     font-family: BOARCCourierMono;
     font-size: 1.2rem;

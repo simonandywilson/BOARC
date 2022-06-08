@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Grid } from "@sanity/ui";
 import { FormField } from "@sanity/base/components";
 import { withDocument } from "part:@sanity/form-builder";
-import * as style from "./RenderLanding.css";
+import * as style from "./landing.module.css";
 import { nanoid } from "nanoid";
 
 const getAbbreviation = (text) => {

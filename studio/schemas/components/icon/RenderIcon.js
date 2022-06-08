@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Flex } from "@sanity/ui";
 import { FormField } from "@sanity/base/components";
 import { withDocument } from "part:@sanity/form-builder";
-import * as style from "./rendericon.module.css";
+import * as style from "./icon.module.css";
 
 export const RenderIcon = React.forwardRef((props, ref) => {
     const { type, markers, presence, compareValue, document } = props;
