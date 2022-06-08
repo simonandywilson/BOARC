@@ -6,23 +6,18 @@ export default {
     name: "blockInternal",
     title: "Internal Link",
     type: "object",
+    // options: { editModal: "dialog" },
     icon: () => InternalIcon("small"),
     blockEditor: {
         icon: () => InternalIcon("small"),
         render: RenderBlockInternalLink,
     },
     fields: [
-        // {
-        //     name: "reference",
-        //     title: "Reference to Page, Landing or Event:",
-        //     type: "reference",
-        //     to: [{ type: "page" }, { type: "landing" }, { type: "event" }],
-        // },
         {
             name: "reference",
-            title: "Reference to Page",
+            title: "Reference to Page, Landing or Event:",
             type: "reference",
-            to: [{ type: "page" }],
+            to: [{ type: "page" }, { type: "landing" }, { type: "event" }],
         },
         {
             name: "place",

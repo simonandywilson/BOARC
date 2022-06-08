@@ -1,11 +1,13 @@
 import React, { useState, useMemo } from "react";
 import * as style from "./collapsible.module.css";
 import { PortableText } from "@portabletext/react";
-import { motion, AnimatePresence } from "framer-motion";
 import TextRendererCollapsible from "./TextRendererCollapsible";
+import useCollapse from "react-collapsed";
+
 
 const CollapsibleRenderer = ({ value, width, background }) => {
-    const [open, setOpen] = useState(false);
+    const [isExpanded, setExpanded] = useState(false);
+    const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
 
     const serialiser = useMemo(() => {
         const components = {
@@ -26,33 +28,19 @@ const CollapsibleRenderer = ({ value, width, background }) => {
                 }}
             >
                 <div className={style.wrapper}>
-                    <span className={style.icon}>{open ? "–" : "+"}&nbsp;</span>
+                    <span className={style.icon}>{isExpanded ? "–" : "+"}&nbsp;</span>
                     <div className={style.content}>
                         <button
-                            onClick={() => {
-                                setOpen((prevState) => !prevState);
-                            }}
+                            {...getToggleProps({
+                                onClick: () => setExpanded((prevExpanded) => !prevExpanded),
+                            })}
                             className={style.button}
                         >
                             {value.title}
                         </button>
-                        <AnimatePresence>
-                            {open && (
-                                <motion.div
-                                    className={style.text}
-                                    initial="collapsed"
-                                    animate="open"
-                                    exit="collapsed"
-                                    variants={{
-                                        open: { opacity: 1, height: "auto" },
-                                        collapsed: { opacity: 0, height: 0 },
-                                    }}
-                                    transition={{ duration: 0.25 }}
-                                >
-                                    <PortableText value={value.text} components={serialiser} />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
+                        <div className={style.text} {...getCollapseProps()}>
+                            <PortableText value={value.text} components={serialiser} />
+                        </div>
                     </div>
                 </div>
             </div>
