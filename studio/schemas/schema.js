@@ -48,6 +48,8 @@ import basicBlock from "./modules/basicBlock";
 import eventBlock from "./modules/eventBlock";
 import collapsibleBlock from "./modules/collapsibleBlock";
 
+import eventExternal from "./documents/eventExternal";
+
 export default createSchema({
     name: "default",
     types: schemaTypes.concat([
@@ -96,5 +98,7 @@ export default createSchema({
         basicBlock,
         eventBlock,
         collapsibleBlock,
+        
+        eventExternal,
     ]),
 });

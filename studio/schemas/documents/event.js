@@ -83,15 +83,8 @@ export default {
                 isUnique: isUniqueAcrossAllDocuments,
                 maxLength: 30,
             },
-            validation: (Rule) =>
-                Rule.custom((name, context) => {
-                    if (context?.parent?.type === "external" || name.current) {
-                        return true;
-                    } else {
-                        return "Please enter a slug.";
-                    }
-                }),
-            hidden: ({ document }) => (document?.type === "internal" ? false : true),
+            validation: (Rule) => Rule.required().error(`Please enter a slug.`),
+            hidden: ({ document }) => !document?.type,
         },
         {
             name: "url",
@@ -264,13 +257,13 @@ export default {
             title: "title",
             subtitle: "start",
             media: "icon",
-            type: "type"
+            type: "type",
         },
         prepare(selection) {
             const { title, subtitle, media, type } = selection;
-            
+
             const date = new Date(subtitle);
-            const eventType = type && type === "external" ? ` ↗️` : ""
+            const eventType = type && type === "external" ? ` ↗️` : "";
             return {
                 title: title ? title : "Untitled Event",
                 media: media ?? (() => EventIcon()),

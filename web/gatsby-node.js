@@ -106,12 +106,10 @@ exports.createPages = async ({ graphql, actions }) => {
         });
     });
     eventQuery.data.event.edges.forEach(({ node, next, previous }) => {
-        if (node.type === "internal" && node.slug?.current) {
-            createPage({
-                path: node.slug.current,
-                component: path.resolve(`src/templates/Event.js`),
-                context: { slug: node.slug.current, next, previous },
-            });
-        }
+        createPage({
+            path: node.slug.current,
+            component: path.resolve(`src/templates/Event.js`),
+            context: { slug: node.slug.current, next, previous },
+        });
     });
 };
