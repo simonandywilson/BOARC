@@ -3,6 +3,12 @@ import { Link } from "gatsby";
 import * as style from "./carousel.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import imageUrlBuilder from "@sanity/image-url";
+const builder = imageUrlBuilder({
+    projectId: process.env.GATSBY_SANITY_PROJECT_ID,
+    dataset: "production",
+});
+const urlFor = (source) => builder.image(source);
 
 const EventRendererCarouselSlide = ({ data }) => {
     const [swiper, setSwiper] = useState(null);
@@ -42,7 +48,7 @@ const EventRendererCarouselSlide = ({ data }) => {
             </button>
             <div className={style.carousel}>
                 <Swiper
-                    slidesPerView={2}
+                    slidesPerView={data.length < 2 ? data.length : 2}
                     spaceBetween={margin}
                     onSwiper={(swiper) => {
                         setSwiper(swiper);
@@ -53,10 +59,10 @@ const EventRendererCarouselSlide = ({ data }) => {
                     }
                     breakpoints={{
                         500: {
-                            slidesPerView: 3,
+                            slidesPerView: data.length < 3 ? data.length : 3,
                         },
                         1200: {
-                            slidesPerView: 5,
+                            slidesPerView: data.length < 5 ? data.length : 5,
                         },
                     }}
                 >
@@ -81,7 +87,15 @@ const EventRendererCarouselSlide = ({ data }) => {
                                         })}
                                     </div>
                                 </Link>
-                                <img src={slide.icon.url} alt="" className={style.image} />
+                                <img
+                                    src={urlFor(slide.icon)
+                                        .auto("format")
+                                        .fit("max")
+                                        .width(250)
+                                        .toString()}
+                                    alt="Event icon"
+                                    className={style.image}
+                                />
                             </SwiperSlide>
                         );
                     })}

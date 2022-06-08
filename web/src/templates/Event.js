@@ -6,20 +6,27 @@ import Image from "gatsby-plugin-sanity-image";
 import { useActiveUpdateContext, useAsciiUpdateContext } from "../state/GlobalState";
 import Seo from "../components/seo/Seo";
 
+const optionsDate = { day: "numeric", weekday: "long", year: "numeric", month: "long" };
+const dateFormat = new Intl.DateTimeFormat("en-GB", optionsDate);
+
 const Event = ({ pageContext, data: { sanityEvent } }) => {
     const {
         parent,
+        type,
         title,
+        icon,
         banner,
+        url,
         start,
+        end,
         _rawProgramme,
         _rawDescription,
+        text,
         background,
         seoDescription,
         seoImage,
     } = sanityEvent;
-    const options = { day: "numeric", year: "numeric", month: "short" };
-    const date = new Date(start).toLocaleDateString("en-GB", options);
+
     const ActiveUpdateContext = useActiveUpdateContext();
     const AsciiUpdateContext = useAsciiUpdateContext();
 
@@ -28,6 +35,15 @@ const Event = ({ pageContext, data: { sanityEvent } }) => {
         AsciiUpdateContext(false);
     }, []);
 
+    const textColour = text?.value === "#ffffff" ? "#ffffff" : "var(--brown)";
+
+    const dateStart = new Date(start);
+    const dateEnd = new Date(end);
+    const timeStart = new Date(start).toLocaleTimeString([], { timeStyle: "short" });
+    const timeEnd = new Date(start).toLocaleTimeString([], { timeStyle: "short" });
+    const sameDay = dateStart.toDateString() === dateEnd.toDateString();
+    const formattedDate = dateFormat.formatRange(dateStart, dateEnd);
+
     return (
         <>
             <Seo
@@ -35,32 +51,81 @@ const Event = ({ pageContext, data: { sanityEvent } }) => {
                 description={seoDescription}
                 image={seoImage?.asset?.url}
             />
-            <div className={style.nav}>
-                <Link to={`/${sanityEvent.parent.slug.current}`} className={style.back}>
+            <div className={style.nav} style={{ color: textColour }}>
+                <Link
+                    to={`/${sanityEvent.parent.slug.current}`}
+                    className={style.back}
+                    style={{ color: textColour }}
+                >
                     &lsaquo;{`Back to ${sanityEvent.parent.title}`}
                 </Link>
                 <div className={style.subNav}>
                     <div className={style.border}>{"-".repeat(100)}</div>
                     {pageContext.previous && (
-                        <Link to={`/${pageContext.previous.slug.current}`} className={style.prev}>
+                        <Link
+                            to={`/${pageContext.previous.slug.current}`}
+                            className={style.prev}
+                            style={{ color: textColour }}
+                        >
                             &lsaquo;Previous event
                         </Link>
                     )}
                     {pageContext.next && (
-                        <Link to={`/${pageContext.next.slug.current}`} className={style.next}>
+                        <Link
+                            to={`/${pageContext.next.slug.current}`}
+                            className={style.next}
+                            style={{ color: textColour }}
+                        >
                             Next event&rsaquo;
                         </Link>
                     )}
                 </div>
             </div>
-            <div className={style.grid}>
-                {banner && <Image {...banner} className={style.banner} alt={""} width={1000} />}
+            <div className={style.grid} style={{ color: textColour }}>
+                {banner ? (
+                    <Image
+                        {...banner}
+                        className={style.banner}
+                        alt={""}
+                        width={1000}
+                        loading="eager"
+                    />
+                ) : (
+                    <Image
+                        {...icon}
+                        className={style.banner}
+                        alt={""}
+                        width={1000}
+                        loading="eager"
+                    />
+                )}
                 <div className={style.programme}>
-                    <div className={style.date}>{date}</div>
+                    <div className={style.date}>{formattedDate}</div>
+                    {sameDay && (
+                        <div className={style.time}>
+                            <br />
+                            {timeStart}{" "}–{" "}
+                            {timeEnd}
+                        </div>
+                    )}
                     <PortableText value={_rawProgramme} />
                 </div>
                 <div className={style.description}>
                     <div className={style.title}>{title}</div>
+                    {type === "external" && (
+                        <>
+                            <br />
+                            <a
+                                className={style.link}
+                                href={url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{ color: textColour }}
+                            >
+                                visit external event site
+                            </a>
+                        </>
+                    )}
                     <PortableText value={_rawDescription} />
                 </div>
             </div>
@@ -77,14 +142,20 @@ export default Event;
 export const query = graphql`
     query getSingleEvent($slug: String) {
         sanityEvent(slug: { current: { eq: $slug } }) {
+            type
             banner {
                 ...ImageWithPreview
             }
             start
+            end
             title
+            icon {
+                ...ImageWithPreview
+            }
+            url
             _rawProgramme
             _rawDescription
-            text {
+            text: text {
                 value
             }
             background

@@ -83,6 +83,7 @@ Media Queries
         --newsletter-visibility: hidden;
         --comment-collapsible-visibility: none;
 
+        --event-list-date-width: calc(var(--column-double) * 2);
         --event-list-details-font-size: var(--font-size);
         --event-list-links-font-size: var(--font-size-small);
         --event-list-icon-width: var(--column-double);
@@ -147,6 +148,7 @@ Media Queries
         --newsletter-visibility: visible;
         --comment-collapsible-visibility: grid;
 
+        --event-list-date-width: var(--column-double);
         --event-list-details-font-size: var(--font-size-medium);
         --event-list-links-font-size: var(--font-size);
         --event-list-icon-width: var(--column-single);
@@ -211,6 +213,7 @@ Media Queries
         --newsletter-visibility: visible;
         --comment-collapsible-visibility: grid;
 
+        --event-list-date-width: var(--column-double);
         --event-list-details-font-size: var(--font-size-medium);
         --event-list-links-font-size: var(--font-size);
         --event-list-icon-width: var(--column-single);
@@ -275,6 +278,7 @@ Media Queries
         --newsletter-visibility: visible;
         --comment-collapsible-visibility: grid;
 
+        --event-list-date-width: var(--column-double);
         --event-list-details-font-size: var(--font-size-medium);
         --event-list-links-font-size: var(--font-size);
         --event-list-icon-width: var(--column-single);

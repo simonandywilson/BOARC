@@ -3,7 +3,6 @@
     display: grid;
     grid-template-columns: var(--grid-columns);
     column-gap: var(--grid-columns-gap);
-    color: var(--brown);
     padding-left: var(--margin);
     padding-right: var(--margin);
 }
@@ -12,7 +11,6 @@
     grid-column: var(--grid-position-event-back);
     margin: var(--block-margin);
     text-transform: uppercase;
-    color: var(--brown);
     text-decoration: none;
 }
 
@@ -26,14 +24,13 @@
 .prev,
 .next {
     margin: var(--block-margin);
-    color: var(--brown);
     text-decoration: none;
 }
 
 .back:hover,
 .prev:hover,
 .next:hover {
-    color: var(--purple);
+    color: var(--purple) !important;
 }
 
 .next {
@@ -67,17 +64,21 @@
 
 .programme {
     grid-column: var(--grid-position-event-programme);
-    color: var(--brown);
 }
 
 .description {
     grid-column: var(--grid-position-event-description);
-    color: var(--brown);
 }
 
 .date,
-.title {
+.title,
+.link {
     font-size: var(--font-size-medium);
+    text-decoration: none;
+}
+
+.time {
+    font-size: var(--font-size-);
 }
 
 .background {
@@ -87,4 +88,8 @@
     top: 0;
     left: 0;
     z-index: -1;
+}
+
+.link:hover {
+    color: var(--purple)!important;
 }

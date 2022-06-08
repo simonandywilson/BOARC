@@ -148,7 +148,6 @@ export default {
             group: "preview",
             hidden: ({ document }) => !document?.type,
         },
-
         {
             name: "banner",
             title: "Banner",

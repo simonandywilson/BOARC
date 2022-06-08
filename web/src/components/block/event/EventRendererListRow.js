@@ -2,11 +2,22 @@ import React, { useState } from "react";
 import { Link } from "gatsby";
 import * as style from "./list.module.css";
 import { motion, AnimatePresence } from "framer-motion";
+import imageUrlBuilder from "@sanity/image-url";
+const builder = imageUrlBuilder({
+    projectId: process.env.GATSBY_SANITY_PROJECT_ID,
+    dataset: "production",
+});
+const urlFor = (source) => builder.image(source);
+const optionsDate = { day: "numeric", year: "numeric", month: "short" };
+const dateFormat = new Intl.DateTimeFormat("en-GB", optionsDate);
 
 const EventRendererListRow = ({ data, tense, width }) => {
-    const options = { day: "numeric", year: "numeric", month: "short" };
-    const date = new Date(data.start).toLocaleDateString("en-GB", options);
     const [open, setOpen] = useState(false);
+
+    const dateStart = new Date(data.start);
+    const dateEnd = new Date(data.end);
+    const formattedDate = dateFormat.formatRange(dateStart, dateEnd);
+
     return (
         <div
             className={style.grid}
@@ -22,7 +33,11 @@ const EventRendererListRow = ({ data, tense, width }) => {
                 }}
             >
                 <div className={style.icon}>
-                    <img src={data.icon.url} alt="" className={style.image} />
+                    <img
+                        src={urlFor(data.icon).auto("format").fit("max").width(150).toString()}
+                        alt="Event icon"
+                        className={style.image}
+                    />
                 </div>
                 <div>
                     <div className={style.details}>
@@ -30,13 +45,10 @@ const EventRendererListRow = ({ data, tense, width }) => {
                             className={style.date}
                             style={{
                                 textDecoration: tense === "future" ? "none" : "line-through",
-                                marginRight:
-                                    width === "wide"
-                                        ? "calc(var(--column-single) + var(--margin))"
-                                        : 0,
+                                marginRight: width === "wide" ? "var(--margin)" : 0,
                             }}
                         >
-                            {date}
+                            {formattedDate}
                         </div>
                         <div
                             className={style.title}
@@ -79,7 +91,16 @@ const EventRendererListRow = ({ data, tense, width }) => {
                                 visit event site
                             </Link>
                         ) : (
-                            <a href={data.url} target="_blank" rel="noopener noreferrer">visit external event site</a>
+                            <a
+                                href={data.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                    color: tense === "future" ? "var(--brown)" : "var(--red)",
+                                }}
+                            >
+                                visit external event site
+                            </a>
                         )}
                         <button
                             className={style.dropdown}

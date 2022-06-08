@@ -49,7 +49,7 @@
 
 .date {
     flex-shrink: 0;
-    width: var(--column-single);
+    width: var(--event-list-date-width);
 }
 
 .title {
@@ -71,6 +71,10 @@
     font-size: var(--event-list-links-font-size);
 }
 
+.links > a {
+    text-decoration: none;
+}
+
 .dropdown,
 .hyperlink {
     background: none;
@@ -81,6 +85,7 @@
     text-decoration: none;
 }
 
+.links > a:hover,
 .dropdown:hover,
 .hyperlink:hover {
     color: var(--purple) !important;
