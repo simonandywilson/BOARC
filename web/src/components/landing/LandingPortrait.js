@@ -29,13 +29,17 @@ const LandingPortrait = ({ pages }) => {
                         page.title.length > columns
                             ? [...getAbbreviation(page.title)]
                             : [...page.title];
-                    const titlePosition = Math.round(columns / 2 - title.length / 2);
+                    const titlePosition = Math.max(Math.round(columns / 2 - title.length / 2), 1);
                     const description = page.landingDescription
                         ? [...page.landingDescription]
                         : [..."No description"];
-                    const descriptionPosition = Math.round(columns / 2 - description.length / 2);
-                    const dotsTitleEnd = columns - (title.length + titlePosition) + 1;
-                    const dotsDescriptionEnd = columns - (description.length + descriptionPosition) + 1;
+                    const descriptionPosition = Math.max(
+                        Math.round(columns / 2 - description.length / 2),
+                        1
+                    );
+                    const dotsTitleEnd = Math.max(columns - (title.length + titlePosition) + 1, 0);
+                    const dotsDescriptionEnd =
+                        Math.max(columns - (description.length + descriptionPosition) + 1, 0);
                     return (
                         <div key={page._id + index}>
                             <div

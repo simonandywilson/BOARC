@@ -249,12 +249,12 @@ export default {
             by: [{ field: "start", direction: "asc" }],
         },
         {
-            title: "Event Type, Desc",
+            title: "Event Type, Internal",
             name: "typeDesc",
             by: [{ field: "type", direction: "desc" }],
         },
         {
-            title: "Event Type, Asc",
+            title: "Event Type, External",
             name: "typeAcs",
             by: [{ field: "type", direction: "asc" }],
         },

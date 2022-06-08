@@ -25,7 +25,7 @@ const LandingLandscape = ({ pages }) => {
         <div className={style.landing}>
             <div className={style.container}>
                 {pages.map((page, index) => {
-                    const titlePosition = page.landingTitlePosition ? page.landingTitlePosition : 1;
+                    const titlePosition = page.landingTitlePosition ? Math.max(page.landingTitlePosition, 0) : 1;
                     const title =
                         page.title.length > columns + 1 - titlePosition
                             ? [...getAbbreviation(page.title)]
@@ -34,7 +34,7 @@ const LandingLandscape = ({ pages }) => {
                         ? [...page.landingDescription]
                         : [..."No description"];
                     const descriptionPosition = page.landingDescriptionPosition
-                        ? page.landingDescriptionPosition
+                        ? Math.max(page.landingDescriptionPosition , 0)
                         : 1;
                     const dotsTitleEnd = Math.max(columns - (title.length + titlePosition), 0);
                     const dotsDescriptionEnd = Math.max(columns - (description.length + descriptionPosition), 0);

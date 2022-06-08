@@ -7,7 +7,6 @@ const EventRendererListRow = ({ data, tense, width }) => {
     const options = { day: "numeric", year: "numeric", month: "short" };
     const date = new Date(data.start).toLocaleDateString("en-GB", options);
     const [open, setOpen] = useState(false);
-    console.log(data.type, data.title);
     return (
         <div
             className={style.grid}
@@ -69,15 +68,19 @@ const EventRendererListRow = ({ data, tense, width }) => {
                         </AnimatePresence>
                     </div>
                     <div className={style.links}>
-                        <Link
-                            className={style.hyperlink}
-                            to={`/${data.slug}`}
-                            style={{
-                                color: tense === "future" ? "var(--brown)" : "var(--red)",
-                            }}
-                        >
-                            visit event site
-                        </Link>
+                        {data.type === "internal" ? (
+                            <Link
+                                className={style.hyperlink}
+                                to={`/${data.slug}`}
+                                style={{
+                                    color: tense === "future" ? "var(--brown)" : "var(--red)",
+                                }}
+                            >
+                                visit event site
+                            </Link>
+                        ) : (
+                            <a href={data.url} target="_blank" rel="noopener noreferrer">visit external event site</a>
+                        )}
                         <button
                             className={style.dropdown}
                             onClick={() => setOpen((prevOpen) => !prevOpen)}
