@@ -41,10 +41,25 @@ export default {
             validation: (Rule) => Rule.required().error(`Please select a parent page.`),
         },
         {
+            title: "Type",
+            name: "type",
+            type: "string",
+            group: "preview",
+            options: {
+                list: [
+                    { title: "Internal Page", value: "internal" },
+                    { title: "External Page", value: "external" },
+                ],
+            },
+            validation: (Rule) => Rule.required().error(`Please choose a event type.`),
+        },
+        {
             name: "title",
             title: "Title",
             type: "string",
             group: "preview",
+            hidden: ({ document }) => !document?.type,
+            validation: (Rule) => Rule.required().error(`Please enter a title for your event.`),
         },
         {
             name: "slug",
@@ -68,7 +83,30 @@ export default {
                 isUnique: isUniqueAcrossAllDocuments,
                 maxLength: 30,
             },
-            validation: (Rule) => Rule.required().error(`Please enter a slug.`),
+            validation: (Rule) =>
+                Rule.custom((name, context) => {
+                    if (context?.parent?.type === "external" || name.current) {
+                        return true;
+                    } else {
+                        return "Please enter a slug.";
+                    }
+                }),
+            hidden: ({ document }) => (document?.type === "internal" ? false : true),
+        },
+        {
+            name: "url",
+            title: "URL",
+            type: "url",
+            group: "preview",
+            validation: (Rule) =>
+                Rule.custom((name, context) => {
+                    if (context?.parent?.type === "internal" || name.current) {
+                        return true;
+                    } else {
+                        return "Please enter a URL.";
+                    }
+                }),
+            hidden: ({ document }) => (document?.type === "external" ? false : true),
         },
         {
             title: "Event Start",
@@ -82,6 +120,7 @@ export default {
                 calendarTodayLabel: "Today",
             },
             validation: (Rule) => Rule.required().error(`Please enter a start date.`),
+            hidden: ({ document }) => !document?.type,
         },
         {
             title: "Event End",
@@ -95,6 +134,7 @@ export default {
                 calendarTodayLabel: "Today",
             },
             validation: (Rule) => Rule.required().error(`Please enter a end date.`),
+            hidden: ({ document }) => !document?.type,
         },
         {
             name: "icon",
@@ -106,12 +146,14 @@ export default {
             options: {
                 hotspot: true,
             },
+            hidden: ({ document }) => !document?.type,
         },
         {
             name: "previewText",
             title: "Preview Text",
             type: "text",
             group: "preview",
+            hidden: ({ document }) => !document?.type,
         },
 
         {
@@ -122,18 +164,21 @@ export default {
             options: {
                 hotspot: true,
             },
+            hidden: ({ document }) => (document?.type === "internal" ? false : true),
         },
         {
             name: "programme",
             title: "Programme",
             type: "eventBlock",
             group: "content",
+            hidden: ({ document }) => (document?.type === "internal" ? false : true),
         },
         {
             name: "description",
             title: "Description",
             type: "eventBlock",
             group: "content",
+            hidden: ({ document }) => (document?.type === "internal" ? false : true),
         },
         {
             name: "text",
@@ -153,6 +198,7 @@ export default {
                 darken: 20,
             },
             initialValue: { title: "Brown", value: "#786A2F" },
+            hidden: ({ document }) => (document?.type === "internal" ? false : true),
         },
         {
             name: "background",
@@ -163,6 +209,7 @@ export default {
             options: {
                 defaultColour: "#f2ff8e",
             },
+            hidden: ({ document }) => (document?.type === "internal" ? false : true),
         },
         {
             title: "SEO Description",
@@ -178,6 +225,7 @@ export default {
                     `Your page description should be a maximum of 155 characters.`
                 ),
             ],
+            hidden: ({ document }) => (document?.type === "internal" ? false : true),
         },
         {
             title: "SEO Image",
@@ -186,6 +234,7 @@ export default {
             description:
                 "Appears when page is shared on social media (Facebook, Twitter, LinkedIn, Slack etc.). Image will be cropped to 1200×630px",
             group: "seo",
+            hidden: ({ document }) => (document?.type === "internal" ? false : true),
         },
     ],
     orderings: [

@@ -51,7 +51,7 @@ export default () =>
                     S.documentTypeList("event")
                         .title("Events")
                         .filter("_type == $type")
-                        .params({ type: "event" })
+                        .params({ type: "event" }),
                 ),
 
             S.listItem()

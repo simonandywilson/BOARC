@@ -7,30 +7,54 @@ import sanityClient from "part:@sanity/base/client";
 const client = sanityClient.withConfig({ apiVersion: "2022-02-15" });
 import Ticker from "./ticker/Ticker";
 import PageVisibility from "react-page-visibility";
+import { nanoid } from "nanoid";
+
+const createGroq = (targets) =>
+    targets
+        .map((target) => {
+            if (target._ref) {
+                return `*[_id == '${target._ref}'][0]`;
+            }
+        })
+        .join(" ,");
 
 export const RenderAsciiBanner = React.forwardRef((props, ref) => {
-    const { type } = props;
-    const [data, setData] = useState([]);
+    const { type, document } = props;
+    const [refs, setRefs] = useState([]);
+    const [data, setData] = useState(null);
+    const [key, setKey] = useState(nanoid());
     const [pageIsVisible, setPageIsVisible] = useState(true);
 
-    const targets = props.document.ascii.map((target) => {
-        if (target._ref) {
-            return `*[_id == '${target._ref}'][0]`;
+    useEffect(() => {
+        if (data) {
+            setKey(nanoid());
         }
-    });
+    }, [data]);
+
+    useEffect(() => {
+        setRefs(document.ascii);
+    }, []);
+
+    useEffect(() => {
+        if (
+            JSON.stringify(document.ascii) !== JSON.stringify(refs) &&
+            document.ascii.every((obj) => obj.hasOwnProperty("_ref"))
+        ) {
+            setRefs(document.ascii);
+        }
+    }, [document.ascii]);
 
     useEffect(() => {
         let toFetch = true;
         const fetchData = async () => {
-            const data = await client.fetch(`[${targets.join(" ,")}]`);
-
+            const data = await client.fetch(`[${createGroq(refs)}]`);
             if (toFetch) {
                 setData(data.filter((i) => i));
             }
         };
         fetchData().catch(console.error);
         return () => (toFetch = false);
-    }, [props.document.ascii]);
+    }, [refs]);
 
     useEffect(() => {
         const resizeEvent = new Event("resize");
@@ -46,7 +70,7 @@ export const RenderAsciiBanner = React.forwardRef((props, ref) => {
                     <div>
                         <PageVisibility onChange={handleVisibilityChange}>
                             {pageIsVisible && (
-                                <Ticker speed={5}>
+                                <Ticker speed={5} key={key}>
                                     {() => (
                                         <Flex align={"center"} justify={"center"} direction={"row"}>
                                             {data.map((ascii, index) => {
