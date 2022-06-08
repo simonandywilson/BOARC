@@ -101,13 +101,13 @@ const Event = ({ pageContext, data: { sanityEvent } }) => {
                 )}
                 <div className={style.programme}>
                     <div className={style.date}>{formattedDate}</div>
-                    {sameDay && (
+                    {/* {sameDay && (
                         <div className={style.time}>
                             <br />
                             {timeStart}{" "}–{" "}
                             {timeEnd}
                         </div>
-                    )}
+                    )} */}
                     <PortableText value={_rawProgramme} />
                 </div>
                 <div className={style.description}>
