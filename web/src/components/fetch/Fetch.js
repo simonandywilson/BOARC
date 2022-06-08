@@ -14,10 +14,10 @@ const client = sanityClient({
     apiVersion: "2022-03-08",
     useCdn: true,
 });
-const futureEvents = `*[_type == "event" && dateTime(start) > dateTime(now())] {_id, title, "slug": slug.current, start, "icon": icon.asset->{url}, previewText} | order(start asc)`;
+const futureEvents = `*[_type == "event" && dateTime(start) > dateTime(now())] {_id, type, title, "slug": slug.current, url, start, end, "icon": icon.asset->{url}, previewText} | order(start asc)`;
 
 const pastEvents =
-    '*[_type == "event" && dateTime(start) < dateTime(now())] {_id, title, "slug": slug.current, start, "icon": icon.asset->{url}, previewText} | order(start asc)';
+    '*[_type == "event" && dateTime(start) < dateTime(now())] {_id, type, title, "slug": slug.current, url, start, end, "icon": icon.asset->{url}, previewText} | order(start desc)';
 
 const Fetch = () => {
     const EventsFutureContext = useEventsFutureContext();

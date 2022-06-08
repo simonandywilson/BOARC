@@ -7,6 +7,7 @@ const EventRendererListRow = ({ data, tense, width }) => {
     const options = { day: "numeric", year: "numeric", month: "short" };
     const date = new Date(data.start).toLocaleDateString("en-GB", options);
     const [open, setOpen] = useState(false);
+    console.log(data.type, data.title);
     return (
         <div
             className={style.grid}

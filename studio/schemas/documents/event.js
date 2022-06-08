@@ -100,7 +100,7 @@ export default {
             group: "preview",
             validation: (Rule) =>
                 Rule.custom((name, context) => {
-                    if (context?.parent?.type === "internal" || name.current) {
+                    if (context?.parent?.type === "internal" || name) {
                         return true;
                     } else {
                         return "Please enter a URL.";
@@ -248,20 +248,33 @@ export default {
             name: "dateAsc",
             by: [{ field: "start", direction: "asc" }],
         },
+        {
+            title: "Event Type, Desc",
+            name: "typeDesc",
+            by: [{ field: "type", direction: "desc" }],
+        },
+        {
+            title: "Event Type, Asc",
+            name: "typeAcs",
+            by: [{ field: "type", direction: "asc" }],
+        },
     ],
     preview: {
         select: {
             title: "title",
             subtitle: "start",
             media: "icon",
+            type: "type"
         },
         prepare(selection) {
-            const { title, subtitle, media } = selection;
+            const { title, subtitle, media, type } = selection;
+            
             const date = new Date(subtitle);
+            const eventType = type && type === "external" ? ` ↗️` : ""
             return {
                 title: title ? title : "Untitled Event",
                 media: media ?? (() => EventIcon()),
-                subtitle: subtitle && date.toLocaleDateString("en-GB"),
+                subtitle: `${subtitle && date.toLocaleDateString("en-GB")}${eventType}`,
             };
         },
     },
