@@ -7,8 +7,6 @@ const TextRendererCollapsible = ({ data, background }) => {
 
     const hasComment = children[0]?.props?.markType === "blockComment" ? true : false;
 
-    console.log(hasComment);
-
     // const format = (text) => {
     //     switch (value.style) {
     //         case "h5":
