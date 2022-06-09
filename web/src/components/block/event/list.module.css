@@ -109,8 +109,7 @@
     overflow: hidden;
     height: calc(var(--font-size) * 1.2);
     font-size: var(--font-size);
-    
-    line-height: calc(var(--font-size) * 2.4);
+    line-height: calc(var(--font-size) * 2.35);
 }
 
 .loader {
