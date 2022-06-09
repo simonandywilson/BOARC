@@ -8,14 +8,12 @@
 }
 
 .decorationLeft {
-    position: absolute;
-    width: 100%;
+    position: relative;
     grid-column: var(--grid-position-background-left);
 }
 
 .decorationRight {
-    position: absolute;
-    width: 100%;
+    position: relative;
     grid-column: var(--grid-position-background-right);
 }
 
