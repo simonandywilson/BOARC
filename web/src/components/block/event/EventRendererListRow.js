@@ -39,8 +39,8 @@ const EventRendererListRow = ({ data, tense, width }) => {
                         className={style.image}
                     />
                 </div>
-                <div>
-                    <div className={style.details}>
+                <div className={style.wrapper}>
+                    <div className={style.info}>
                         <div
                             className={style.date}
                             style={{
@@ -79,40 +79,42 @@ const EventRendererListRow = ({ data, tense, width }) => {
                             )}
                         </AnimatePresence>
                     </div>
-                    <div className={style.links}>
-                        {data.type === "internal" ? (
-                            <Link
-                                className={style.hyperlink}
-                                to={`/${data.slug}`}
+                    <div className={style.details}>
+                        <div className={style.links}>
+                            {data.type === "internal" ? (
+                                <Link
+                                    className={style.hyperlink}
+                                    to={`/${data.slug}`}
+                                    style={{
+                                        color: tense === "future" ? "var(--brown)" : "var(--red)",
+                                    }}
+                                >
+                                    visit event site
+                                </Link>
+                            ) : (
+                                <a
+                                    href={data.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{
+                                        color: tense === "future" ? "var(--brown)" : "var(--red)",
+                                    }}
+                                >
+                                    visit external event site
+                                </a>
+                            )}
+                            <button
+                                className={style.dropdown}
+                                onClick={() => setOpen((prevOpen) => !prevOpen)}
                                 style={{
                                     color: tense === "future" ? "var(--brown)" : "var(--red)",
                                 }}
                             >
-                                visit event site
-                            </Link>
-                        ) : (
-                            <a
-                                href={data.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style={{
-                                    color: tense === "future" ? "var(--brown)" : "var(--red)",
-                                }}
-                            >
-                                visit external event site
-                            </a>
-                        )}
-                        <button
-                            className={style.dropdown}
-                            onClick={() => setOpen((prevOpen) => !prevOpen)}
-                            style={{
-                                color: tense === "future" ? "var(--brown)" : "var(--red)",
-                            }}
-                        >
-                            learn more
-                        </button>
+                                learn more
+                            </button>
+                        </div>
+                        <span className={style.border}>{"-".repeat(100)}</span>
                     </div>
-                    <span className={style.border}>{"-".repeat(100)}</span>
                 </div>
             </div>
         </div>

@@ -50,6 +50,7 @@ const EventRendererCarouselSlide = ({ data }) => {
                 <Swiper
                     slidesPerView={data.length < 2 ? data.length : 2}
                     spaceBetween={margin}
+                    centerInsufficientSlides={true}
                     onSwiper={(swiper) => {
                         setSwiper(swiper);
                         setSwiperProps({ isBeginning: swiper.isBeginning, isEnd: swiper.isEnd });
@@ -62,7 +63,7 @@ const EventRendererCarouselSlide = ({ data }) => {
                             slidesPerView: data.length < 3 ? data.length : 3,
                         },
                         1200: {
-                            slidesPerView: data.length < 5 ? data.length : 5,
+                            slidesPerView: 5,
                         },
                     }}
                 >

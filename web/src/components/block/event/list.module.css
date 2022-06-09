@@ -14,6 +14,12 @@
     display: flex;
 }
 
+.wrapper {
+    min-height: var(--event-list-icon-width);
+    display: flex;
+    flex-direction: column;
+}
+
 .icon {
     position: relative;
     width: var(--event-list-icon-width);
@@ -42,7 +48,7 @@
     object-fit: cover;
 }
 
-.details {
+.info {
     display: flex;
     flex-direction: row;
 }
@@ -62,6 +68,12 @@
 
 .description {
     font-size: var(--font-size);
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
 }
 
 .links {
@@ -97,6 +109,8 @@
     overflow: hidden;
     height: calc(var(--font-size) * 1.2);
     font-size: var(--font-size);
+    
+    line-height: calc(var(--font-size) * 2.4);
 }
 
 .loader {

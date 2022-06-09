@@ -144,13 +144,13 @@ export const query = graphql`
         sanityEvent(slug: { current: { eq: $slug } }) {
             type
             banner {
-                ...ImageWithPreview
+                ...Image
             }
             start
             end
             title
             icon {
-                ...ImageWithPreview
+                ...Image
             }
             url
             _rawProgramme
