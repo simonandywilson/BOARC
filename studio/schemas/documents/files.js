@@ -2,7 +2,7 @@ import { FilesIcon} from "../styles/Icons";
 
 export default {
     name: "files",
-    title: "Files",
+    title: "File",
     icon: () =>FilesIcon(),
     type: "document",
     fields: [

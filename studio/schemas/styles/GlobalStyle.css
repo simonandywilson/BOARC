@@ -19,3 +19,6 @@
 }
 
 
+:global([data-ui="Text"] span) {
+    border-bottom: none !important;
+}

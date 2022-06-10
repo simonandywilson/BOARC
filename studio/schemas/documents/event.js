@@ -7,7 +7,7 @@ import slugify from "slugify";
 
 export default {
     name: "event",
-    title: "Events",
+    title: "Event",
     icon: () => EventIcon(),
     type: "document",
     groups: [

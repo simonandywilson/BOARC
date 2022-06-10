@@ -2,8 +2,9 @@ import { CommentsIcon } from "../styles/Icons";
 
 export default {
     name: "comments",
-    title: "Comments",
+    title: "Comment",
     icon: () => CommentsIcon(),
+    __experimental_actions: [ /*'create',*/ "update", "delete", "publish"],
     type: "document",
     fields: [
         {

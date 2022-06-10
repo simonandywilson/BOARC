@@ -5,21 +5,19 @@ export default {
     of: [
         {
             type: "block",
-            styles: [
-                { title: "Body", value: "normal" },
-            ],
+            styles: [{ title: "Body", value: "normal" }],
             lists: [],
             marks: {
                 decorators: [],
                 annotations: [
                     {
-                        type: "blockFile",
-                    },
-                    {
                         type: "blockInternal",
                     },
                     {
                         type: "blockExternal",
+                    },
+                    {
+                        type: "blockFile",
                     },
                 ],
             },

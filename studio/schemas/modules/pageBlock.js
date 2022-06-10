@@ -4,14 +4,8 @@ import CustomRichTextEditor from "../components/block/CustomRichTextEditor";
 import * as style from "../styles/text.module.css";
 
 const SubheadingStyle = (props) => <h5 className={style.subheading}>{props.children}</h5>;
-
-// const IndentStyle = (props) => (
-//     <div style={{ marginLeft: "2rem" }}>
-//         <span>
-//             {props.children}
-//         </span>
-//     </div>
-// );
+const LargeIcon = () => <span className={style.large_icon}>XL</span>;
+const LargeStyle = (props) => <span className={style.large}>{props.children}</span>;
 
 export default {
     name: "pageBlock",
@@ -34,7 +28,16 @@ export default {
             ],
             lists: [],
             marks: {
-                decorators: [{ title: "Strong", value: "strong" }],
+                decorators: [
+                    {
+                        title: "Large",
+                        value: "strong",
+                        blockEditor: {
+                            icon: LargeIcon,
+                            render: LargeStyle,
+                        },
+                    },
+                ],
                 annotations: [
                     {
                         type: "blockInternal",

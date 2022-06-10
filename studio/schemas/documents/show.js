@@ -2,7 +2,7 @@ import { ShowIcon } from "../styles/Icons";
 
 export default {
     name: "show",
-    title: "Shows",
+    title: "Show",
     icon: () => ShowIcon(),
     type: "document",
     fields: [

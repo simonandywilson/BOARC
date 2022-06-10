@@ -8,7 +8,7 @@ import { PageIcon, HomeIcon } from "../styles/Icons";
 
 export default {
     name: "page",
-    title: "Pages",
+    title: "Page",
     icon: () => PageIcon(),
     type: "document",
     fieldsets: [

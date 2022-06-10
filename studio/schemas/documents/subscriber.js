@@ -5,6 +5,7 @@ export default {
     title: "Subscriber",
     icon: () => SubscriberIcon(),
     type: "document",
+    __experimental_actions: [ /*'create',*/ /*"update"*/ "delete" /*"publish"*/],
     fields: [
         {
             name: "subscribedAt",

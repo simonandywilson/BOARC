@@ -5,7 +5,7 @@ import { orderRankField, orderRankOrdering } from "@sanity/orderable-document-li
 
 export default {
     name: "icons",
-    title: "Icons",
+    title: "Icon",
     icon: () => IconsIcon(),
     type: "document",
     orderings: [orderRankOrdering],

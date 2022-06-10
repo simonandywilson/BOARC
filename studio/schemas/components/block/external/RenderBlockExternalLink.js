@@ -19,8 +19,9 @@ const RenderBlockExternalLink = ({ children, type }) => {
     }
 
     return (
-        <span className={style.link}>
-            {children} {icon()} {}
+        <span>
+            <span className={style.background}>{children}</span>
+            {icon()}
         </span>
     );
 };

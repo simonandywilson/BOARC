@@ -19,8 +19,9 @@ export const HeadingIcon = (size) => <Emoji style={fontSize(size)} symbol="📣"
 export const CarouselIcon = (size) => <Emoji style={fontSize(size)} symbol="🎠" />;
 export const CollapsibleIcon = (size) => <Emoji style={fontSize(size)} symbol="↕️" />;
 export const FileIcon = (size) => <Emoji style={fontSize(size)} symbol="📎" />;
+export const LinkIcon = (size) => <Emoji style={fontSize(size)} symbol="🔗" />;
 export const InternalIcon = (size) => <Emoji style={fontSize(size)} symbol="📄" />;
-export const ExternalIcon = (size) => <Emoji style={fontSize(size)} symbol="🔗" />;
+export const ExternalIcon = (size) => <Emoji style={fontSize(size)} symbol="🌐" />;
 export const CopyIcon = (size) => <Emoji style={fontSize(size)} symbol="✏️" />;
 export const CommentIcon = (size) => <Emoji style={fontSize(size)} symbol="💭" />;
 export const SubscriberIcon = (size) => <Emoji style={fontSize(size)} symbol="⭐️" />;
@@ -73,3 +74,4 @@ export const AsciiIcon = (letter) => (
         </svg>
     </span>
 );
+

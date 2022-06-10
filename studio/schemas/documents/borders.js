@@ -3,7 +3,7 @@ import { BordersIcon } from "../styles/Icons";
 
 export default {
     name: "borders",
-    title: "Borders",
+    title: "Border",
     icon: () => BordersIcon(),
     type: "document",
     fields: [

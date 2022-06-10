@@ -2,7 +2,7 @@ import { BackgroundIcon } from "../styles/Icons";
 
 export default {
     name: "background",
-    title: "Backgrounds",
+    title: "Background",
     icon: () => BackgroundIcon(),
     type: "document",
     fields: [

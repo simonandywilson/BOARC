@@ -84,13 +84,9 @@ const Event = ({ pageContext, data: { sanityEvent } }) => {
             </div>
             <div className={style.grid} style={{ color: textColour }}>
                 {bannerImage && (
-                    <Image
-                        {...bannerImage}
-                        className={style.banner}
-                        alt={""}
-                        width={1000}
-                        loading="eager"
-                    />
+                    <div className={style.banner}>
+                        <Image {...bannerImage} alt={""} width={1000} loading="eager" />
+                    </div>
                 )}
 
                 <div className={style.programme}>

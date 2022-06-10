@@ -1,4 +1,7 @@
-.link  {
-    color: #686CE3;
-    border-bottom: 1px dashed #686CE3 !important;
+.background {
+    background: rgba(100, 104, 227, 0.2);
+    padding-left: 2px;
+    padding-right: 2px;
+    border-radius: 5px;
+    box-decoration-break: clone;
 }

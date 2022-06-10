@@ -14,13 +14,13 @@ export default {
                 decorators: [],
                 annotations: [
                     {
-                        type: "blockFile",
-                    },
-                    {
                         type: "blockInternal",
                     },
                     {
                         type: "blockExternal",
+                    },
+                    {
+                        type: "blockFile",
                     },
                     {
                         type: "blockComment",

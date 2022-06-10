@@ -5,6 +5,7 @@ import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 import {
     ConfigIcon,
     MenuIcon,
+    LandingIcon,
     NewsletterIcon,
     AsciiIcon,
     IconsIcon,
@@ -20,21 +21,21 @@ export const ConfigMenu = S.listItem()
         S.list()
             .title("Configuration")
             .items([
-                
                 orderableDocumentListDeskItem({
                     type: "menu",
                     title: "Menu",
                     icon: () => MenuIcon(),
                 }),
                 S.listItem()
-                    .title("Newsletter")
-                    .icon(() => NewsletterIcon())
+                    .title("Landings")
+                    .icon(() => LandingIcon())
                     .child(
-                        S.document()
-                            .title("Newsletter")
-                            .schemaType("newsletter")
-                            .documentId("newsletter")
+                        S.documentTypeList("landing")
+                            .title("Landing Pages")
+                            .filter("_type == $type")
+                            .params({ type: "landing" })
                     ),
+
                 S.divider(),
                 orderableDocumentListDeskItem({
                     type: "ascii",
@@ -65,6 +66,15 @@ export const ConfigMenu = S.listItem()
                             .params({ type: "background" })
                     ),
                 S.divider(),
+                S.listItem()
+                    .title("Newsletter")
+                    .icon(() => NewsletterIcon())
+                    .child(
+                        S.document()
+                            .title("Newsletter")
+                            .schemaType("newsletter")
+                            .documentId("newsletter")
+                    ),
                 S.listItem()
                     .title("SEO")
                     .icon(() => SeoIcon())

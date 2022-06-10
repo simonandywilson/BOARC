@@ -64,7 +64,7 @@
 
 .description {
     font-size: var(--font-size);
-    transition: opacity 1s;
+     margin-top: var(--margin);
 }
 
 .details {

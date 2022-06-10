@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { FileIcon } from "../../../styles/Icons";
 import * as style from "./blockfiles.module.css";
 
-const RenderBlockFiles = (props) => (
-    <span className={style.link}>
-        {props.children} {FileIcon("small")} {}
+const RenderBlockFiles = ({ children }) => (
+    <span>
+        <span className={style.background}>{children}</span>{" "}{FileIcon("small")}
     </span>
 );
 

@@ -7,7 +7,6 @@ export default {
     type: "object",
     icon: () => CommentIcon("small"),
     blockEditor: {
-        icon: () => CommentIcon("small"),
         render: RenderBlockComment,
     },
     options: {

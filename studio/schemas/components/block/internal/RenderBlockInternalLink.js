@@ -3,20 +3,11 @@ import PropTypes from "prop-types";
 import { InternalIcon } from "../../../styles/Icons";
 import * as style from "./blockinternal.module.css";
 
-const RenderBlockInternalLink = (props) => (
-    <div
-        style={{
-            maxWidth: "100%",
-        }}
-        className={style.container}
-    >
-        <div className={style.wrapper}>
-            <div className={style.background}></div>
-            <span className={style.border}>
-                {props.children} {InternalIcon("small")} {}
-            </span>
-        </div>
-    </div>
+const RenderBlockInternalLink = ({ children }) => (
+    <span>
+        <span className={style.background}>{children}</span>
+        {InternalIcon("small")}
+    </span>
 );
 
 RenderBlockInternalLink.propTypes = {

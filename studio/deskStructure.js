@@ -5,7 +5,6 @@ import { ConfigMenu } from "./structure/configMenu";
 import {
     HomepageIcon,
     PageIcon,
-    LandingIcon,
     ShowIcon,
     EventIcon,
     FAQIcon,
@@ -34,15 +33,11 @@ export default () =>
                         .filter("_type == $type")
                         .params({ type: "page" })
                 ),
-            S.listItem()
-                .title("Landings")
-                .icon(() => LandingIcon())
-                .child(
-                    S.documentTypeList("landing")
-                        .title("Landing Pages")
-                        .filter("_type == $type")
-                        .params({ type: "landing" })
-                ),
+            orderableDocumentListDeskItem({
+                type: "faq",
+                title: "FAQ",
+                icon: () => FAQIcon(),
+            }),
             S.divider(),
             S.listItem()
                 .title("Events")
@@ -63,11 +58,7 @@ export default () =>
                         .params({ type: "show" })
                 ),
             S.divider(),
-            orderableDocumentListDeskItem({
-                type: "faq",
-                title: "FAQ",
-                icon: () => FAQIcon(),
-            }),
+
             S.listItem()
                 .title("Files")
                 .icon(() => FilesIcon())

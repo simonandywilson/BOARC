@@ -51,7 +51,6 @@ const EventRendererListRow = ({ data, tense, width }) => {
                         </div>
                         <div className={style.content}>
                             <div
-                                className={style.title}
                                 style={{
                                     textDecoration: tense === "future" ? "none" : "line-through",
                                 }}
@@ -59,7 +58,7 @@ const EventRendererListRow = ({ data, tense, width }) => {
                                 {data.title}
                             </div>
                             <div className={style.description} {...getCollapseProps()}>
-                                {data.previewText}
+                                <span>{data.previewText}</span>
                             </div>
                         </div>
                     </div>
