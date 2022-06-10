@@ -8,6 +8,21 @@ export default {
     icon: () => ImgGridIcon("small"),
     fields: [
         {
+            title: "Presentation",
+            name: "type",
+            type: "string",
+            description: "Choose whether images in grid are tinted in brown.",
+            options: {
+                list: [
+                    { title: "Tinted", value: "tinted" },
+                    { title: "Clear", value: "clear" },
+                ],
+                layout: "radio",
+                direction: "horizontal",
+            },
+            initialValue: "tinted",
+        },
+        {
             name: "image",
             title: "Image",
             type: "array",

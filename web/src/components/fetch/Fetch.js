@@ -4,6 +4,10 @@ import {
     useEventsFutureUpdateContext,
     useEventsPastContext,
     useEventsPastUpdateContext,
+    useEventsPastCountUpdateContext,
+    useEventsPastFetchSpanContext,
+    useEventsPastFetchStatusContext,
+    useEventsPastFetchStatusUpdateContext,
     useEventsAccessedContext,
     useColoursContext,
 } from "../../state/GlobalState";
@@ -17,13 +21,19 @@ const client = sanityClient({
 const futureEvents = `*[_type == "event" && dateTime(start) > dateTime(now())] {_id, type, title, "slug": slug.current, url, start, end, "icon": icon.asset->_id, previewText} | order(start asc)`;
 
 const pastEvents =
-    '*[_type == "event" && dateTime(start) < dateTime(now())] {_id, type, title, "slug": slug.current, url, start, end, "icon": icon.asset->_id, previewText} | order(start desc)';
+    '*[_type == "event" && dateTime(start) < dateTime(now())][$start..$end] {_id, type, title, "slug": slug.current, url, start, end, "icon": icon.asset->_id, previewText} | order(start desc)';
+
+const pastEventsCount = 'count(*[_type == "event" && dateTime(start) < dateTime(now())])';
 
 const Fetch = () => {
     const EventsFutureContext = useEventsFutureContext();
     const EventsFutureUpdateContext = useEventsFutureUpdateContext();
     const EventsPastContext = useEventsPastContext();
     const EventsPastUpdateContext = useEventsPastUpdateContext();
+    const EventsPastCountUpdateContext = useEventsPastCountUpdateContext();
+    const EventsPastFetchSpanContext = useEventsPastFetchSpanContext();
+    const EventsPastFetchStatusContext = useEventsPastFetchStatusContext();
+    const EventsPastFetchStatusUpdateContext = useEventsPastFetchStatusUpdateContext();
     const EventsAccessedContext = useEventsAccessedContext();
 
     const ColoursContext = useColoursContext();
@@ -43,15 +53,36 @@ const Fetch = () => {
                     `{
                     "futureEvents": ${futureEvents},
                     "pastEvents": ${pastEvents},
-                    }`
+                    "pastEventsCount": ${pastEventsCount},
+                    }`,
+                    { start: 0, end: 5 }
                 )
                 .then((events) => {
                     EventsFutureUpdateContext(events.futureEvents);
                     EventsPastUpdateContext(events.pastEvents);
+                    EventsPastCountUpdateContext(events.pastEventsCount);
                 })
                 .catch((error) => console.error(error.message));
         }
     }, [EventsAccessedContext]);
+
+    // Fetch older events on request
+    useEffect(() => {
+        let mounted = true;
+        if (mounted && EventsPastFetchStatusContext === "fetching") {
+            client
+                .fetch(pastEvents, {
+                    start: EventsPastFetchSpanContext.start,
+                    end: EventsPastFetchSpanContext.end,
+                })
+                .then((chats) => {
+                    EventsPastFetchStatusUpdateContext("default");
+                    EventsPastUpdateContext((oldArray) => [...oldArray, ...chats]);
+                });
+        }
+        return () => (mounted = false);
+    }, [EventsPastFetchSpanContext]);
+
     return null;
 };
 

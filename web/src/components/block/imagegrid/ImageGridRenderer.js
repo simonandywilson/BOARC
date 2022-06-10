@@ -3,6 +3,8 @@ import * as style from "./imagegrid.module.css";
 import Image from "gatsby-plugin-sanity-image";
 
 const ImageGridRenderer = ({ value }) => {
+    const tinted = value.type
+    console.log(tinted);
     return (
         <div className={style.grid}>
             <div className={style.imagegrid}>
@@ -15,11 +17,16 @@ const ImageGridRenderer = ({ value }) => {
                                 className={style.wrapper}
                                 style={{ left: `${left}%`, top: `${top}%` }}
                             >
+                                {tinted === "tinted" && <div className={style.overlay}></div>}
                                 <Image
                                     {...item}
                                     className={style.image}
                                     alt={item?.alt ? item.alt : "Unknown image"}
                                     width={500}
+                                    style={{
+                                        mixBlendMode: tinted === "tinted" ? "multiply" : "unset",
+                                        "--filter": tinted === "tinted" ? "grayscale(100%) contrast(1)" : "unset"
+                                    }}
                                 />
                             </div>
                         </div>

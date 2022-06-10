@@ -60,6 +60,41 @@ export const useEventsPastUpdateContext = () => {
     return useContext(EventsPastUpdateContext);
 };
 
+// Events Past Count
+const EventsPastCountContext = createContext();
+const EventsPastCountUpdateContext = createContext();
+
+export const useEventsPastCountContext = () => {
+    return useContext(EventsPastCountContext);
+};
+
+export const useEventsPastCountUpdateContext = () => {
+    return useContext(EventsPastCountUpdateContext);
+};
+
+// Events Past Fetch Span
+const EventsPastFetchSpanContext = createContext();
+const EventsPastFetchSpanUpdateContext = createContext();
+
+export const useEventsPastFetchSpanContext = () => {
+    return useContext(EventsPastFetchSpanContext);
+};
+
+export const useEventsPastFetchSpanUpdateContext = () => {
+    return useContext(EventsPastFetchSpanUpdateContext);
+};
+// Events Past Fetch Status
+const EventsPastFetchStatusContext = createContext();
+const EventsPastFetchStatusUpdateContext = createContext();
+
+export const useEventsPastFetchStatusContext = () => {
+    return useContext(EventsPastFetchStatusContext);
+};
+
+export const useEventsPastFetchStatusUpdateContext = () => {
+    return useContext(EventsPastFetchStatusUpdateContext);
+};
+
 // Events Accessed
 const EventsAccessedContext = createContext();
 const EventsAccessedUpdateContext = createContext();
@@ -103,6 +138,9 @@ const ContextProvider = ({ children }) => {
     const [easyRead, setEasyRead] = useState({ text: false, image: false });
     const [eventsFuture, setEventsFuture] = useState([]);
     const [eventsPast, setEventsPast] = useState([]);
+    const [eventsPastCount, setEventsPastCount] = useState(null);
+    const [eventsPastFetchSpan, setEventsPastFetchSpan] = useState({ start: 0, end: 5 });
+    const [eventsPastFetchStatus, setEventsPastFetchStatus] = useState("default");
     const [eventsAccessed, setEventsAccessed] = useState(false);
     const [colours, setColours] = useState({ text: "var(--brown)" });
     const [ascii, setAscii] = useState(true);
@@ -118,29 +156,67 @@ const ContextProvider = ({ children }) => {
                                     <EventsFutureUpdateContext.Provider value={setEventsFuture}>
                                         <EventsPastContext.Provider value={eventsPast}>
                                             <EventsPastUpdateContext.Provider value={setEventsPast}>
-                                                <EventsAccessedContext.Provider
-                                                    value={eventsAccessed}
+                                                <EventsPastCountContext.Provider
+                                                    value={eventsPastCount}
                                                 >
-                                                    <EventsAccessedUpdateContext.Provider
-                                                        value={setEventsAccessed}
+                                                    <EventsPastCountUpdateContext.Provider
+                                                        value={setEventsPastCount}
                                                     >
-                                                        <ColoursContext.Provider value={colours}>
-                                                            <ColoursUpdateContext.Provider
-                                                                value={setColours}
+                                                        <EventsPastFetchSpanContext.Provider
+                                                            value={eventsPastFetchSpan}
+                                                        >
+                                                            <EventsPastFetchSpanUpdateContext.Provider
+                                                                value={setEventsPastFetchSpan}
                                                             >
-                                                                <AsciiContext.Provider
-                                                                    value={ascii}
+                                                                <EventsPastFetchStatusContext.Provider
+                                                                    value={eventsPastFetchStatus}
                                                                 >
-                                                                    <AsciiUpdateContext.Provider
-                                                                        value={setAscii}
+                                                                    <EventsPastFetchStatusUpdateContext.Provider
+                                                                        value={
+                                                                            setEventsPastFetchStatus
+                                                                        }
                                                                     >
-                                                                        {children}
-                                                                    </AsciiUpdateContext.Provider>
-                                                                </AsciiContext.Provider>
-                                                            </ColoursUpdateContext.Provider>
-                                                        </ColoursContext.Provider>
-                                                    </EventsAccessedUpdateContext.Provider>
-                                                </EventsAccessedContext.Provider>
+                                                                        <EventsAccessedContext.Provider
+                                                                            value={eventsAccessed}
+                                                                        >
+                                                                            <EventsAccessedUpdateContext.Provider
+                                                                                value={
+                                                                                    setEventsAccessed
+                                                                                }
+                                                                            >
+                                                                                <ColoursContext.Provider
+                                                                                    value={colours}
+                                                                                >
+                                                                                    <ColoursUpdateContext.Provider
+                                                                                        value={
+                                                                                            setColours
+                                                                                        }
+                                                                                    >
+                                                                                        <AsciiContext.Provider
+                                                                                            value={
+                                                                                                ascii
+                                                                                            }
+                                                                                        >
+                                                                                            <AsciiUpdateContext.Provider
+                                                                                                value={
+                                                                                                    setAscii
+                                                                                                }
+                                                                                            >
+                                                                                                {
+                                                                                                    children
+                                                                                                }
+                                                                                            </AsciiUpdateContext.Provider>
+                                                                                        </AsciiContext.Provider>
+                                                                                    </ColoursUpdateContext.Provider>
+                                                                                </ColoursContext.Provider>
+                                                                            </EventsAccessedUpdateContext.Provider>
+                                                                        </EventsAccessedContext.Provider>
+                                                                    </EventsPastFetchStatusUpdateContext.Provider>
+                                                                </EventsPastFetchStatusContext.Provider>
+                                                            </EventsPastFetchSpanUpdateContext.Provider>
+                                                        </EventsPastFetchSpanContext.Provider>
+                                                    </EventsPastCountUpdateContext.Provider>
+                                                </EventsPastCountContext.Provider>
                                             </EventsPastUpdateContext.Provider>
                                         </EventsPastContext.Provider>
                                     </EventsFutureUpdateContext.Provider>

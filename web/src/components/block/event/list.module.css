@@ -13,6 +13,27 @@
     display: flex;
 }
 
+.load {
+    display: flex;
+    justify-content: center;
+    padding-left: var(--event-list-icon-width);
+}
+
+.load > button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--event-list-details-font-size);
+    font-family: var(--font-family);
+    cursor: pointer;
+    color: var(--red);
+}
+
+.load > button:hover {
+    color: var(--purple);
+}
+
 .wrapper {
     width: 100%;
     min-height: var(--event-list-icon-width);
@@ -64,7 +85,7 @@
 
 .description {
     font-size: var(--font-size);
-     margin-top: var(--margin);
+    margin-top: var(--margin);
 }
 
 .details {

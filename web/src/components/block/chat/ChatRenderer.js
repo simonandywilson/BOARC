@@ -17,16 +17,21 @@ const ChatRenderer = ({ value }) => {
     const { title } = value;
     const [username, setUsername] = useState("Guest");
     const [chats, setChats] = useState([]);
+    const [chatCount, setChatCount] = useState(null);
+    const [fetchStatus, setFetchStatus] = useState("default");
+    const toFetch = 20;
+    const [fetchSpan, setFetchSpan] = useState({ start: 0, end: toFetch });
     const [onlineUsersCount, setOnlineUsersCount] = useState(0);
     const [errorMessage, setErrorMessage] = useState("");
-    const [chatboxHover, setChatboxHover] = useState(false);
     const [chatAlert, setChatAlert] = useState(false);
     // const [onlineUsers, setOnlineUsers] = useState([]);
     // const [usersRemoved, setUsersRemoved] = useState([]);
     const chatboxRef = useRef(null);
 
     const chatQuery =
-        '*[_type == "comments" && visible]| order(_createdAt desc)[0..49] {name, message, publishedAt}';
+        '*[_type == "comments" && visible]| order(_createdAt desc)[$start..$end] {name, message, publishedAt}';
+
+    const chatCountQuery = 'count(*[_type == "comments" && visible])';
 
     const pusher = useMemo(() => {
         const pusherInit = new Pusher(process.env.GATSBY_PUSHER_KEY, {
@@ -73,20 +78,47 @@ const ChatRenderer = ({ value }) => {
     // Fetch old chats
     useEffect(() => {
         let mounted = true;
-        if (mounted) client.fetch(chatQuery).then((comments) => setChats(comments));
+        if (mounted) {
+            client
+                .fetch(
+                    `{
+                    "chatList": ${chatQuery},
+                    "chatCountQuery": ${chatCountQuery},
+                    }`,
+                    { start: fetchSpan.start, end: fetchSpan.end }
+                )
+                .then((chats) => {
+                    setChatCount(chats.chatCountQuery);
+                    setChats(chats.chatList);
+                });
+        }
         return () => (mounted = false);
     }, []);
+
+    // Fetch older chats on request
+    useEffect(() => {
+        let mounted = true;
+        if (mounted && fetchStatus === "fetching") {
+            client
+                .fetch(chatQuery, { start: fetchSpan.start, end: fetchSpan.end })
+                .then((chats) => {
+                    setFetchStatus("default");
+                    setChats((oldArray) => [...oldArray, ...chats]);
+                });
+        }
+        return () => (mounted = false);
+    }, [fetchSpan]);
 
     // Listen for chat updates
     useEffect(() => {
         const query = '*[_type == "comments"]';
-
         const subscription = client.listen(query).subscribe((update) => {
             const { name, message, publishedAt } = update.result;
             const newMessage = { message: message, name: name, publishedAt: publishedAt };
             setChats((prevArray) => [newMessage, ...prevArray]);
+            setChatCount((prevState) => prevState + 1);
+            triggerAlert();
         });
-
         return () => subscription.unsubscribe();
     }, []);
 
@@ -97,19 +129,22 @@ const ChatRenderer = ({ value }) => {
         });
     };
 
-    useEffect(() => {
-        if (!chatboxHover) {
-            scrollToTop();
-        } else {
-            if (chatboxRef.current.scrollTop !== 0) {
-                setChatAlert(true);
-            }
+    const triggerAlert = () => {
+        if (chatboxRef.current.scrollTop !== 0) {
+            setChatAlert(true);
         }
-    }, [chats]);
+    };
 
     const variants = {
         hidden: { bottom: 0 },
         visible: { bottom: -50 },
+    };
+
+    const updateFetchSpan = () => {
+        setFetchStatus("fetching");
+        setFetchSpan((prevState) => {
+            return { start: prevState.end + 1, end: prevState.end + toFetch + 1 };
+        });
     };
 
     return (
@@ -143,16 +178,24 @@ const ChatRenderer = ({ value }) => {
                         </button>
                     </motion.div>
                 </div>
-                <div
-                    className={style.chatbox}
-                    ref={chatboxRef}
-                    onMouseEnter={() => setChatboxHover(true)}
-                    onMouseLeave={() => setChatboxHover(false)}
-                    tabIndex="0"
-                >
+                <div className={style.chatbox} ref={chatboxRef}>
                     {chats.map((chat, index) => {
                         return <ChatRendererComment key={index} chat={chat} />;
                     })}
+                    {chats.length > 0 && chats.length !== chatCount && (
+                        <button
+                            className={style.load}
+                            onClick={updateFetchSpan}
+                            aria-label="Load more past events"
+                            disabled={fetchStatus === "default" ? false : true}
+                        >
+                            {fetchStatus === "default" ? (
+                                <span>Load more...</span>
+                            ) : (
+                                <span className={style.spinner}></span>
+                            )}
+                        </button>
+                    )}
                 </div>
                 {chats.length === 0 && (
                     <div className={style.loader}>

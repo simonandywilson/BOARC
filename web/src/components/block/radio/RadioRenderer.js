@@ -8,7 +8,8 @@ const RadioRenderer = ({ value }) => {
     const [playing, setPlaying] = useState(false);
     const [volume, setVolume] = useState(1);
     const playerRef = useRef(null);
-
+    // const playable = ReactPlayer.canPlay(url);
+    const playable = true;
     const { height, ref } = useResizeDetector();
 
     useEffect(
@@ -32,14 +33,21 @@ const RadioRenderer = ({ value }) => {
                     ref={playerRef}
                 />
                 <div className={style.title}>{title}</div>
-                <div className={style.status}>
-                    NOW LIVE <span className={style.spinner}></span>
-                </div>
+                {/* {playable ? (
+                    <div className={style.status}>
+                        NOW LIVE <span className={style.spinner}></span>
+                    </div>
+                ) : (
+                    <div className={style.status}>
+                        OFFLINE
+                    </div>
+                )} */}
                 <div className={style.controls}>
                     <button
                         onClick={() => setPlaying((prevPlaying) => !prevPlaying)}
                         className={style.play}
                         aria-label="Play/pause radio"
+                        // disabled={playable ? false : true}
                     >
                         {playing ? (
                             <svg

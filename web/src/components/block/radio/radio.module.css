@@ -72,6 +72,11 @@
     padding-bottom: 100%;
 }
 
+.play:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .volume {
     height: var(--margin-double);
     flex: 1;

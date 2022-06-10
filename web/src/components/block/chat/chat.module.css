@@ -16,7 +16,9 @@
     grid-column: var(--grid-position-chat);
     background: var(--grey);
     width: 100%;
-    max-height: calc(100vh - ((var(--margin) * 8.5) + (var(--radio-height) * -1) + (var(--nav-height) * -1)));
+    max-height: calc(
+        100vh - ((var(--margin) * 8.5) + (var(--radio-height) * -1) + (var(--nav-height) * -1))
+    );
     display: flex;
     flex-direction: column;
     pointer-events: all;
@@ -88,7 +90,7 @@
     width: 100%;
     text-align: center;
     padding-left: var(--margin);
-    margin-bottom: var(--margin)
+    margin-bottom: var(--margin);
 }
 
 .spinner:before {
@@ -110,4 +112,24 @@
     75% {
         content: "/";
     }
+}
+
+.load {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    margin-top: var(--margin);
+    margin-bottom: var(--margin);
+    font: var(--font-family);
+    font-size: var(--font-size-small);
+    
+}
+
+.load > span {
+    cursor: pointer;
+}
+
+.load > span:hover {
+    color: var(--purple);
 }
