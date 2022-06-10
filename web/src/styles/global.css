@@ -247,7 +247,7 @@ Media Queries
         --grid-position-event-description: 6 / 12;
 
         --grid-position-ascii: 1 / 5;
-        --grid-position-carousel: 4 / 12;
+        --grid-position-carousel: 3 / 12;
         --grid-position-image-large: 3 / 12;
         --grid-position-image-small: 6 / 12;
         --grid-position-image-caption: 4 / 6;
@@ -310,6 +310,7 @@ Variables
     --ascii-height: 0;
     --nav-height: 0;
     --radio-height: 0;
+    --image-max-height: 64vh;
 
     --box-padding: 3px;
 
@@ -318,7 +319,6 @@ Variables
     --font-symbol: BOARCSymbols, var(--mono-stack);
     --font-easy: Khula, var(--sans-stack);
     --font: var(--font-regular);
-
     --mono-stack: "Courier New", Courier, monospace;
     --sans-stack: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue,
         helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
@@ -331,7 +331,6 @@ Variables
     --red: #ed6b6c;
     --grey: #d8d8d8;
     --dark-grey: #c7c7c7;
-
     --text-colour: var(--brown);
 }
 

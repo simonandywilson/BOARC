@@ -18,23 +18,25 @@
     position: relative;
     width: 100%;
     height: 100%;
-    max-height: 64vh;
-    display: flex;
-    justify-content: center;
+    max-height: var(--image-max-height);
 }
 
 .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
     background-color: var(--brown);
     mix-blend-mode: multiply;
-    height: 100%;
-    transition: background 0.5s;
+    transition: opacity 0.5s;
 }
 
 .container:hover > .overlay {
-    background: rgba(120, 106, 47, 0);
+    opacity: 0;
 }
 
-.container:hover > .overlay > .image {
+.container:hover > .image {
     filter: grayscale(0) contrast(1);
 }
 
@@ -58,13 +60,10 @@
     cursor: pointer;
     background: none;
     border: none;
-    font-size: var(--font-size-large);
-    font-family: var(--font-family);
-    color: var(--brown);
     z-index: 10;
     margin: 0;
     padding: var(--margin);
-    stroke: var(--text-colour);
+    stroke: #ffffff;
     -webkit-tap-highlight-color: transparent;
 }
 

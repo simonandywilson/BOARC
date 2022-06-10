@@ -35,15 +35,13 @@ const CarouselRenderer = ({ value }) => {
                         return (
                             <SwiperSlide key={slide._key}>
                                 <div className={style.container}>
-                                    <div className={style.overlay}>
-                                        {/* <div></div> */}
-                                        <Image
-                                            {...slide}
-                                            alt={slide.alt}
-                                            width={1000}
-                                            className={style.image}
-                                        />
-                                    </div>
+                                    <div className={style.overlay}></div>
+                                    <Image
+                                        {...slide}
+                                        alt={slide.alt}
+                                        width={1500}
+                                        className={style.image}
+                                    />
                                 </div>
                             </SwiperSlide>
                         );
@@ -70,3 +68,13 @@ const CarouselRenderer = ({ value }) => {
 };
 
 export default CarouselRenderer;
+
+{
+    /* <SwiperSlide key={slide._key}>
+    <div className={style.container}>
+        <div className={style.overlay}>
+            <Image {...slide} alt={slide.alt} width={1000} className={style.image} />
+        </div>
+    </div>
+</SwiperSlide>; */
+}

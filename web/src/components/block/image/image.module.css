@@ -20,7 +20,7 @@
 .small,
 .large {
     position: relative;
-    max-height: 80vh;
+    max-height: var(--image-max-height);
     width: 100%;
     background: #ffffff;
 }
