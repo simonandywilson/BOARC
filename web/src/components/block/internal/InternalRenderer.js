@@ -4,16 +4,19 @@ import * as style from "./internal.module.css";
 
 const InternalRenderer = ({ text, value }) => {
     const {
-        homepage: {
-            initial,
-        },
+        homepage: { initial },
     } = useStaticQuery(getData);
-    const slug = value.reference.slug.current;
-    const place = value?.place ? value.place : ""
-    return (
-        <Link to={initial.slug.current === slug ? `/#${place}` : `/${value.reference.slug.current}#${place}`} className={style.internal}>
+    const slug = value?.reference?.slug?.current
+    const place = value?.place ? value.place : "";
+    return slug ? (
+        <Link
+            to={initial.slug.current === slug ? `/#${place}` : `/${slug}#${place}`}
+            className={style.internal}
+        >
             {text}
         </Link>
+    ) : (
+        <span>{text}</span>
     );
 };
 
