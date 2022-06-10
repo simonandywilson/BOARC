@@ -6,7 +6,7 @@ import Image from "gatsby-plugin-sanity-image";
 import { useActiveUpdateContext, useAsciiUpdateContext } from "../state/GlobalState";
 import Seo from "../components/seo/Seo";
 
-const optionsDate = { day: "numeric", weekday: "long", year: "numeric", month: "long" };
+const optionsDate = { day: "numeric", year: "numeric", month: "long" };
 const dateFormat = new Intl.DateTimeFormat("en-GB", optionsDate);
 
 const Event = ({ pageContext, data: { sanityEvent } }) => {
@@ -39,10 +39,11 @@ const Event = ({ pageContext, data: { sanityEvent } }) => {
 
     const dateStart = new Date(start);
     const dateEnd = new Date(end);
-    const timeStart = new Date(start).toLocaleTimeString([], { timeStyle: "short" });
-    const timeEnd = new Date(start).toLocaleTimeString([], { timeStyle: "short" });
-    const sameDay = dateStart.toDateString() === dateEnd.toDateString();
+    // const timeStart = new Date(start).toLocaleTimeString([], { timeStyle: "short" });
+    // const timeEnd = new Date(start).toLocaleTimeString([], { timeStyle: "short" });
+    // const sameDay = dateStart.toDateString() === dateEnd.toDateString();
     const formattedDate = dateFormat.formatRange(dateStart, dateEnd);
+    const bannerImage = banner ? banner : icon;
 
     return (
         <>
@@ -82,32 +83,18 @@ const Event = ({ pageContext, data: { sanityEvent } }) => {
                 </div>
             </div>
             <div className={style.grid} style={{ color: textColour }}>
-                {banner ? (
+                {bannerImage && (
                     <Image
-                        {...banner}
-                        className={style.banner}
-                        alt={""}
-                        width={1000}
-                        loading="eager"
-                    />
-                ) : (
-                    <Image
-                        {...icon}
+                        {...bannerImage}
                         className={style.banner}
                         alt={""}
                         width={1000}
                         loading="eager"
                     />
                 )}
+
                 <div className={style.programme}>
                     <div className={style.date}>{formattedDate}</div>
-                    {/* {sameDay && (
-                        <div className={style.time}>
-                            <br />
-                            {timeStart}{" "}–{" "}
-                            {timeEnd}
-                        </div>
-                    )} */}
                     <PortableText value={_rawProgramme} />
                 </div>
                 <div className={style.description}>

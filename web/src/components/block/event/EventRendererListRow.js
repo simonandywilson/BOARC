@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "gatsby";
 import * as style from "./list.module.css";
-import { motion, AnimatePresence } from "framer-motion";
 import imageUrlBuilder from "@sanity/image-url";
+import useCollapse from "react-collapsed";
 const builder = imageUrlBuilder({
     projectId: process.env.GATSBY_SANITY_PROJECT_ID,
     dataset: "production",
@@ -12,8 +12,7 @@ const optionsDate = { day: "numeric", year: "numeric", month: "short" };
 const dateFormat = new Intl.DateTimeFormat("en-GB", optionsDate);
 
 const EventRendererListRow = ({ data, tense, width }) => {
-    const [open, setOpen] = useState(false);
-
+    const { getCollapseProps, getToggleProps } = useCollapse();
     const dateStart = new Date(data.start);
     const dateEnd = new Date(data.end);
     const formattedDate = dateFormat.formatRange(dateStart, dateEnd);
@@ -50,34 +49,19 @@ const EventRendererListRow = ({ data, tense, width }) => {
                         >
                             {formattedDate}
                         </div>
-                        <div
-                            className={style.title}
-                            style={{
-                                textDecoration: tense === "future" ? "none" : "line-through",
-                            }}
-                        >
-                            {data.title}
+                        <div className={style.content}>
+                            <div
+                                className={style.title}
+                                style={{
+                                    textDecoration: tense === "future" ? "none" : "line-through",
+                                }}
+                            >
+                                {data.title}
+                            </div>
+                            <div className={style.description} {...getCollapseProps()}>
+                                {data.previewText}
+                            </div>
                         </div>
-                    </div>
-
-                    <div className={style.content}>
-                        <AnimatePresence>
-                            {open && (
-                                <motion.div
-                                    className={style.description}
-                                    initial="collapsed"
-                                    animate="open"
-                                    exit="collapsed"
-                                    variants={{
-                                        open: { opacity: 1, height: "auto" },
-                                        collapsed: { opacity: 0, height: 0 },
-                                    }}
-                                    transition={{ duration: 0.25 }}
-                                >
-                                    {data.previewText}
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
                     </div>
                     <div className={style.details}>
                         <div className={style.links}>
@@ -105,7 +89,7 @@ const EventRendererListRow = ({ data, tense, width }) => {
                             )}
                             <button
                                 className={style.dropdown}
-                                onClick={() => setOpen((prevOpen) => !prevOpen)}
+                                {...getToggleProps()}
                                 style={{
                                     color: tense === "future" ? "var(--brown)" : "var(--red)",
                                 }}
@@ -113,8 +97,8 @@ const EventRendererListRow = ({ data, tense, width }) => {
                                 learn more
                             </button>
                         </div>
-                        <span className={style.border}>{"-".repeat(100)}</span>
                     </div>
+                    <span className={style.border}>{"-".repeat(100)}</span>
                 </div>
             </div>
         </div>

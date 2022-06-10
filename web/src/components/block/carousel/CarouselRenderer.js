@@ -68,13 +68,3 @@ const CarouselRenderer = ({ value }) => {
 };
 
 export default CarouselRenderer;
-
-{
-    /* <SwiperSlide key={slide._key}>
-    <div className={style.container}>
-        <div className={style.overlay}>
-            <Image {...slide} alt={slide.alt} width={1000} className={style.image} />
-        </div>
-    </div>
-</SwiperSlide>; */
-}
