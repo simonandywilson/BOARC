@@ -14,7 +14,7 @@ const DecorationRenderer = ({ value }) => {
                                 {...reference.image}
                                 alt=""
                                 className={style.image}
-                                width={300}
+                                width={200}
                             />
                         )}
                     </div>
@@ -28,7 +28,7 @@ const DecorationRenderer = ({ value }) => {
                                 {...reference.image}
                                 alt=""
                                 className={style.image}
-                                width={300}
+                                width={200}
                             />
                         )}
                     </div>

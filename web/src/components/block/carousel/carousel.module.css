@@ -20,6 +20,7 @@
     height: 100%;
     aspect-ratio: 3 / 2;
     display: flex;
+    overflow: hidden;
 }
 
 .overlay {
