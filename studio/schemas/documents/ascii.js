@@ -1,6 +1,6 @@
 import { orderRankField, orderRankOrdering } from "@sanity/orderable-document-list";
 import RenderAscii from "../components/ascii/RenderAscii";
-import {AsciiIcon} from "../styles/Icons"
+import { AsciiIcon } from "../styles/Icons";
 
 export default {
     name: "ascii",
@@ -64,6 +64,34 @@ export default {
                         return true;
                     })
                     .error(),
+            initialValue: {
+                rows: [
+                    {
+                        _type: "tableRow",
+                        cells: ["", "", "", "", "", ""],
+                    },
+                    {
+                        _type: "tableRow",
+                        cells: ["", "", "", "", "", ""],
+                    },
+                    {
+                        _type: "tableRow",
+                        cells: ["", "", "", "", "", ""],
+                    },
+                    {
+                        _type: "tableRow",
+                        cells: ["", "", "", "", "", ""],
+                    },
+                    {
+                        _type: "tableRow",
+                        cells: ["", "", "", "", "", ""],
+                    },
+                    {
+                        _type: "tableRow",
+                        cells: ["", "", "", "", "", ""],
+                    },
+                ],
+            },
         },
         {
             name: "characterPreview",

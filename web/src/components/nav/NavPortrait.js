@@ -2,7 +2,11 @@ import React from "react";
 import * as style from "./navportrait.module.css";
 import { nanoid } from "nanoid";
 import { useStaticQuery, graphql, Link, navigate } from "gatsby";
-import { useActiveContext, useSubheadingContext, useSubheadingUpdateContext } from "../../state/GlobalState";
+import {
+    useActiveContext,
+    useSubheadingContext,
+    useSubheadingUpdateContext,
+} from "../../state/GlobalState";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import slugify from "slugify";
 
@@ -37,11 +41,7 @@ const NavPortrait = ({ navPortrait, setNavPortrait }) => {
             <div className={style.navPortrait}>
                 <div className={style.heading}>
                     <button className={style.close} onClick={() => setNavPortrait(false)}>
-                        <svg
-                            width="45.54"
-                            height="48"
-                            viewBox="0 0 45.54 48"
-                        >
+                        <svg width="45.54" height="48" viewBox="0 0 45.54 48">
                             <path d="M0,48v-3.98H4.35L20.47,22.77,6.15,4.02H1.6V0H18.13V4.02h-6.97l11.65,15.55,11.98-15.55h-6.48V0h15.59V4.02h-4.35l-14.32,18.75,15.88,21.25h4.43v3.94H28.31v-3.94h7.63l-13.13-18.09-13.7,18.09h9.03v3.94l-18.13,.04Z" />
                         </svg>
                     </button>
@@ -66,7 +66,10 @@ const NavPortrait = ({ navPortrait, setNavPortrait }) => {
                                         return (
                                             <Link
                                                 key={nanoid()}
-                                                onClick={() => SubheadingUpdateContext("")}
+                                                onClick={() => {
+                                                    SubheadingUpdateContext("");
+                                                    setNavPortrait(false);
+                                                }}
                                                 to={`/${link.slug.current}`}
                                                 style={{
                                                     textDecoration:
@@ -110,8 +113,10 @@ const NavPortrait = ({ navPortrait, setNavPortrait }) => {
                                                                           index !== 0 ? tabSlug : ""
                                                                       }`
                                                             );
+                                                            setNavPortrait(false);
                                                         } else {
                                                             scrollTo(`#${tabSlug}`);
+                                                            setNavPortrait(false);
                                                         }
                                                     }}
                                                 >

@@ -4,7 +4,6 @@ import {
     useToast,
     Dialog,
     Box,
-    Container,
     Card,
     Flex,
     Heading,
@@ -13,6 +12,7 @@ import {
     Button,
     Spinner,
     TextInput,
+    Label,
 } from "@sanity/ui";
 import { DownloadIcon, SyncIcon, CheckmarkIcon, TrashIcon } from "@sanity/icons";
 
@@ -22,7 +22,7 @@ import { ExportToCsv } from "export-to-csv";
 
 const capitalise = (s) => s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
 
-const ExportSubscribers = () => {
+const Subscriber = () => {
     const [status, setStatus] = useState("load");
     const [deleteStatus, setDeleteStatus] = useState("default");
     const [data, setData] = useState([]);
@@ -109,6 +109,7 @@ const ExportSubscribers = () => {
                         status: "success",
                         title: "Subscribers successfully deleted.",
                     });
+                    setValue("");
                 })
                 .catch((error) => {
                     console.log(error);
@@ -124,7 +125,7 @@ const ExportSubscribers = () => {
     useEffect(() => {
         if (deleteStatus === "deleted") {
             const timer = setTimeout(() => {
-                onClose()
+                onClose();
                 setDeleteStatus("default");
             }, 2000);
             return () => clearTimeout(timer);
@@ -133,78 +134,72 @@ const ExportSubscribers = () => {
 
     return (
         <ToastProvider>
-            <Container width={0} height={"stretch"} display={"flex"}>
-                <Flex align={"center"} justify={"center"}>
-                    <Container width={3}>
-                        <Card margin={3} padding={4} radius={2} shadow={1} tone="default">
-                            <Stack space={5}>
-                                <Heading as="h1" size={3}>
-                                    Subscriber Export Dashboard
-                                </Heading>
-                                <Text as="p">
-                                    Download your newsletter subscribers here for phpList.
-                                </Text>
-                                <Card>
-                                    <div style={{ display: "flex", width: "100%" }}>
+            <Card margin={3} padding={4} radius={2} shadow={1}>
+                <Stack space={4}>
+                    <Card>
+                        <Heading as="h1" size={3}>
+                            Subscriber Export & Delete Tool
+                        </Heading>
+                    </Card>
+                    <Card padding={4} radius={2} shadow={1} tone="default">
+                        <Stack space={4}>
+                            <Text as="p">
+                                Download your newsletter subscribers here for phpList.
+                            </Text>
+                            <Card>
+                                <div style={{ display: "flex", width: "100%" }}>
+                                    <Button
+                                        fontSize={2}
+                                        icon={icon()}
+                                        mode="ghost"
+                                        padding={3}
+                                        text={capitalise(status)}
+                                        onClick={handleLoad}
+                                        disabled={status === "loaded" ? true : false}
+                                    />
+                                    <Card style={{ flexGrow: 2 }} marginLeft={4}>
                                         <Button
                                             fontSize={2}
-                                            icon={icon()}
-                                            mode="ghost"
+                                            icon={DownloadIcon}
                                             padding={3}
-                                            text={capitalise(status)}
-                                            onClick={handleLoad}
-                                            disabled={status === "loaded" ? true : false}
+                                            text="Download"
+                                            tone="primary"
+                                            disabled={status === "loaded" ? false : true}
+                                            onClick={() => {
+                                                if (data.length > 0) {
+                                                    const csvExporter = new ExportToCsv(options);
+                                                    csvExporter.generateCsv(data);
+                                                } else {
+                                                    toast.push({
+                                                        status: "warning",
+                                                        title: "There are no subscribers to download.",
+                                                    });
+                                                }
+                                            }}
+                                            style={{ width: "100%" }}
                                         />
-                                        <Card style={{ flexGrow: 2 }} marginLeft={4}>
-                                            <Button
-                                                fontSize={2}
-                                                icon={DownloadIcon}
-                                                padding={3}
-                                                text="Download"
-                                                tone="primary"
-                                                disabled={status === "loaded" ? false : true}
-                                                onClick={() => {
-                                                    if (data.length > 0) {
-                                                        const csvExporter = new ExportToCsv(
-                                                            options
-                                                        );
-                                                        csvExporter.generateCsv(data);
-                                                    } else {
-                                                        toast.push({
-                                                            status: "warning",
-                                                            title: "There are no subscribers to download.",
-                                                        });
-                                                    }
-                                                }}
-                                                style={{ width: "100%" }}
-                                            />
-                                        </Card>
-                                    </div>
-                                </Card>
-                            </Stack>
-                        </Card>
-                        <Card
-                            margin={3}
-                            padding={4}
-                            radius={2}
-                            shadow={1}
-                            tone="default"
-                            style={{ visibility: open ? "hidden" : "visible" }}
-                        >
-                            <Stack space={5}>
-                                <Button
-                                    fontSize={[2, 2, 2]}
-                                    icon={TrashIcon}
-                                    padding={[3, 3, 3]}
-                                    text="Delete Subscribers..."
-                                    tone="critical"
-                                    onClick={onOpen}
-                                />
-                            </Stack>
-                        </Card>
-                    </Container>
-                </Flex>
-            </Container>
+                                    </Card>
+                                </div>
+                            </Card>
+                        </Stack>
+                    </Card>
+                    <Card >
+                        <Stack space={4}>
+                            {/* <Text as="p">Delete old newsletter subscribers here.</Text> */}
+                            <Button
+                                fontSize={[2, 2, 2]}
+                                icon={TrashIcon}
+                                padding={[3, 3, 3]}
+                                text="Delete Subscribers..."
+                                tone={open ? "default" : "critical"}
+                                disabled={open ? true : false}
+                                onClick={onOpen}
+                            />
+                        </Stack>
+                    </Card>
+                </Stack>
+            </Card>
+
             {open && (
                 <Dialog
                     header="Delete Subscribers"
@@ -214,11 +209,10 @@ const ExportSubscribers = () => {
                 >
                     <Box padding={4}>
                         <Stack space={5}>
-                            <Text as="p">
-                                First type ‘delete’ in the box below, then press ‘Delete
-                                Subscribers’ to remove existing subscribers.
-                            </Text>
                             <Card>
+                                <Card marginBottom={3}>
+                                    <Label size={2}>Type 'delete' below to confirm</Label>
+                                </Card>
                                 <TextInput
                                     fontSize={3}
                                     onChange={(event) => setValue(event.currentTarget.value)}
@@ -243,4 +237,4 @@ const ExportSubscribers = () => {
     );
 };
 
-export default ExportSubscribers;
+export default Subscriber;

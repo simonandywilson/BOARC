@@ -7,8 +7,8 @@
     color: var(--purple);
     line-height: 100%;
     font-family: var(--font-mono);
-    overflow: hidden;
     margin-left: var(--margin);
+    overflow: hidden;
 }
 
 .container {

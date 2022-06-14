@@ -117,6 +117,10 @@
     text-decoration: none;
 }
 
+.dropdown {
+    line-height: 0;
+}
+
 .links > a:hover,
 .dropdown:hover,
 .hyperlink:hover {

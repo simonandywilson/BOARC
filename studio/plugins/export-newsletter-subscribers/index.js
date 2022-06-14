@@ -1,9 +1,9 @@
-import ExportSubscribers from "./ExportSubscribers";
-import { EnvelopeIcon } from "@sanity/icons";
+import Dashboard from "./Dashboard";
+import { DashboardIcon } from "@sanity/icons";
 
 export default {
-    title: "Export",
-    name: "export-subscribers",
-    icon: EnvelopeIcon,
-    component: ExportSubscribers,
+    title: "Dashboard",
+    name: "dashboard",
+    icon: DashboardIcon,
+    component: Dashboard,
 };

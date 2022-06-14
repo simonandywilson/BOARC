@@ -260,13 +260,15 @@ export default {
         },
         prepare(selection) {
             const { title, subtitle, media, type } = selection;
-
             const date = new Date(subtitle);
             const eventType = type && type === "external" ? ` ↗️` : "";
+            const optionsDate = { day: "numeric", year: "numeric", month: "short" };
             return {
                 title: title ? title : "Untitled Event",
                 media: media ?? (() => EventIcon()),
-                subtitle: `${subtitle && date.toLocaleDateString("en-GB")}${eventType}`,
+                subtitle: `${
+                    subtitle && date.toLocaleDateString("en-GB", optionsDate)
+                }${eventType}`,
             };
         },
     },

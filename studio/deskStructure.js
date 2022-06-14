@@ -69,11 +69,11 @@ export default () =>
                         .params({ type: "files" })
                 ),
             S.listItem()
-                .title("Comments")
+                .title("Chats")
                 .icon(() => CommentsIcon())
                 .child(
                     S.documentTypeList("comments")
-                        .title("Comments")
+                        .title("Chats")
                         .filter("_type == $type")
                         .params({ type: "comments" })
                 ),

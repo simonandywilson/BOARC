@@ -4,7 +4,6 @@ import Image from "gatsby-plugin-sanity-image";
 
 const ImageGridRenderer = ({ value }) => {
     const tinted = value.type
-    console.log(tinted);
     return (
         <div className={style.grid}>
             <div className={style.imagegrid}>

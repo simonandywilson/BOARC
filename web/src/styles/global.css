@@ -52,9 +52,9 @@ Media Queries
         --grid-position-event-description: 5 / 12;
 
         --grid-position-ascii: 1 / 5;
-        --grid-position-carousel: 3 / 12;
-        --grid-position-image-large: 3 / 12;
-        --grid-position-image-small: 5 / 12;
+        --grid-position-carousel: 1 / 12;
+        --grid-position-image-large: 1 / 12;
+        --grid-position-image-small: 1 / 12;
         --grid-position-image-caption: 5 / 12;
         --grid-position-imagegrid: 1 / 12;
 
@@ -117,7 +117,7 @@ Media Queries
         --grid-position-event-description: 6 / 12;
 
         --grid-position-ascii: 1 / 5;
-        --grid-position-carousel: 3 / 12;
+        --grid-position-carousel: 4 / 12;
         --grid-position-image-large: 3 / 12;
         --grid-position-image-small: 6 / 12;
         --grid-position-image-caption: 6 / 12;
@@ -182,7 +182,7 @@ Media Queries
         --grid-position-event-description: 7 / 12;
 
         --grid-position-ascii: 1 / 5;
-        --grid-position-carousel: 3 / 12;
+        --grid-position-carousel: 4 / 12;
         --grid-position-image-large: 3 / 12;
         --grid-position-image-small: 6 / 12;
         --grid-position-image-caption: 3 / 6;
@@ -241,7 +241,7 @@ Media Queries
         --grid-position-radio: 1 / 4;
         --grid-position-chat: 1 / 4;
 
-        --grid-position-event-carousel: 2 / 11;
+        --grid-position-event-carousel: 4 / 11;
         --grid-position-event-back: 1 / 4;
         --grid-position-event-programme: 4 / 6;
         --grid-position-event-description: 6 / 12;
@@ -310,7 +310,6 @@ Variables
     --ascii-height: 0;
     --nav-height: 0;
     --radio-height: 0;
-    --image-max-height: 64vh;
 
     --box-padding: 3px;
 

@@ -10,7 +10,7 @@ import PageVisibility from "react-page-visibility";
 const Ascii = ({ asciiWidth }) => {
     const { homepage: ascii } = useStaticQuery(getData);
     const AsciiContext = useAsciiContext();
-    const { height, ref } = useResizeDetector();
+    const { height, width, ref } = useResizeDetector();
     const [pageIsVisible, setPageIsVisible] = useState(true);
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const Ascii = ({ asciiWidth }) => {
         if (height && height > 0) {
             document.documentElement.style.setProperty("--ascii-height", `${height}px`);
         }
-    }, [height]);
+    }, [height, width]);
 
     const handleVisibilityChange = (isVisible) => setPageIsVisible(isVisible);
 
