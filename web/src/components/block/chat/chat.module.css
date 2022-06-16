@@ -16,9 +16,7 @@
     grid-column: var(--grid-position-chat);
     background: var(--grey);
     width: 100%;
-    max-height: calc(
-        100vh - ((var(--margin) * 8.5) + (var(--radio-height) * -1) + (var(--nav-height) * -1))
-    );
+    max-height: var(--chat-max-height);
     display: flex;
     flex-direction: column;
     pointer-events: all;
