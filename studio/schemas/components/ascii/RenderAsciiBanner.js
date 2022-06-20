@@ -84,11 +84,17 @@ export const RenderAsciiBanner = React.forwardRef((props, ref) => {
                                                                 (row) => (
                                                                     <tr key={row._key}>
                                                                         {row.cells.map(
-                                                                            (cell, i) => (
-                                                                                <td key={i}>
-                                                                                    {cell}
-                                                                                </td>
-                                                                            )
+                                                                            (cell, i) => {
+                                                                                const character =
+                                                                                    cell === ""
+                                                                                        ? "\u00a0"
+                                                                                        : cell;
+                                                                                return (
+                                                                                    <td key={i}>
+                                                                                        {character}
+                                                                                    </td>
+                                                                                );
+                                                                            }
                                                                         )}
                                                                     </tr>
                                                                 )

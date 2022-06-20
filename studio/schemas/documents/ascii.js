@@ -90,6 +90,10 @@ export default {
                         _type: "tableRow",
                         cells: ["", "", "", "", "", ""],
                     },
+                    {
+                        _type: "tableRow",
+                        cells: ["", "", "", "", "", ""],
+                    },
                 ],
             },
         },

@@ -27,6 +27,10 @@
     overflow: hidden;
 }
 
+.small {
+    overflow: visible;
+}
+
 .small:hover > .overlay,
 .large:hover > .overlay {
     opacity: 0;

@@ -19,6 +19,7 @@ const ImageRenderer = ({ data, isFirst }) => {
             className={style.image}
             alt={image?.alt ? image.alt : "Unknown image"}
             width={1000}
+            config={{ quality: 50, fit: "max", auto: "format" }}
         />
     );
 

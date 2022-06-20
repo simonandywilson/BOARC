@@ -15,6 +15,7 @@ const DecorationRenderer = ({ value }) => {
                                 alt=""
                                 className={style.image}
                                 width={200}
+                                config={{ quality: 50, fit: "max", auto: "format" }}
                             />
                         )}
                     </div>
@@ -29,6 +30,7 @@ const DecorationRenderer = ({ value }) => {
                                 alt=""
                                 className={style.image}
                                 width={200}
+                                config={{ quality: 50, fit: "max", auto: "format" }}
                             />
                         )}
                     </div>
