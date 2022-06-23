@@ -21,7 +21,7 @@ const ChatRendererInput = ({ username, setUsername, setErrorMessage }) => {
         try {
             await axios.post("/api/submit-chat", {
                 message: data.message,
-                username,
+                username: data.username,
                 date: new Date(),
             });
             reset();
