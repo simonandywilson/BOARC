@@ -66,12 +66,15 @@
     z-index: 10;
     margin: 0;
     padding: var(--margin);
+    align-items: center;
     stroke: #ffffff;
     -webkit-tap-highlight-color: transparent;
+    display: flex;
 }
 
 .arrowRight {
     right: 0;
+    justify-content: flex-end;
 }
 
 .arrowLeft > svg,
