@@ -34,11 +34,11 @@
     transition: opacity 0.5s;
 }
 
-.container:hover > .overlay {
+.carousel:hover > * .overlay {
     opacity: 0;
 }
 
-.container:hover > .image {
+.carousel:hover > * .image {
     filter: grayscale(0) contrast(1);
 }
 
@@ -58,9 +58,7 @@
 .arrowRight {
     position: absolute;
     height: 100%;
-    width: max-content;
-    min-width: 150px;
-    cursor: pointer;
+    width: 50%;
     background: none;
     border: none;
     z-index: 10;
@@ -72,9 +70,14 @@
     display: flex;
 }
 
+.arrowLeft {
+    cursor: w-resize;
+}
+
 .arrowRight {
     right: 0;
     justify-content: flex-end;
+    cursor: e-resize;
 }
 
 .arrowLeft > svg,
