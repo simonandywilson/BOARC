@@ -18,10 +18,10 @@ const client = sanityClient({
     apiVersion: "2022-03-08",
     useCdn: true,
 });
-const futureEvents = `*[_type == "event" && dateTime(start) > dateTime(now())] {_id, type, title, "slug": slug.current, url, start, end, "icon": icon.asset->_id, previewText} | order(start asc)`;
+const futureEvents = `*[_type == "event" && dateTime(end) > dateTime(now())] {_id, type, title, "slug": slug.current, url, start, end, "icon": icon.asset->_id, previewText} | order(start asc)`;
 
 const pastEvents =
-    '*[_type == "event" && dateTime(start) < dateTime(now())][$start..$end] {_id, type, title, "slug": slug.current, url, start, end, "icon": icon.asset->_id, previewText} | order(start desc)';
+    '*[_type == "event" && dateTime(end) < dateTime(now())][$start..$end] {_id, type, title, "slug": slug.current, url, start, end, "icon": icon.asset->_id, previewText} | order(start desc)';
 
 const pastEventsCount = 'count(*[_type == "event" && dateTime(start) < dateTime(now())])';
 

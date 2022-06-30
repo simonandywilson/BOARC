@@ -7,9 +7,8 @@ const RadioRenderer = ({ value }) => {
     const { title, url } = value;
     const [playing, setPlaying] = useState(false);
     const [volume, setVolume] = useState(1);
+    const [error, setError] = useState(true)
     const playerRef = useRef(null);
-    // const playable = ReactPlayer.canPlay(url);
-    const playable = true;
     const { height, ref } = useResizeDetector();
 
     useEffect(
@@ -31,17 +30,18 @@ const RadioRenderer = ({ value }) => {
                     onPlay={() => setPlaying(true)}
                     onPause={() => setPlaying(false)}
                     ref={playerRef}
+                    onError={() => setError(true)}
                 />
                 <div className={style.title}>{title}</div>
-                {/* {playable ? (
+                {!error ? (
                     <div className={style.status}>
                         NOW LIVE <span className={style.spinner}></span>
                     </div>
                 ) : (
-                    <div className={style.status}>
+                    <div className={style.offline}>
                         OFFLINE
                     </div>
-                )} */}
+                )}
                 <div className={style.controls}>
                     <button
                         onClick={() => setPlaying((prevPlaying) => !prevPlaying)}

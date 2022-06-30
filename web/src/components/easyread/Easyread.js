@@ -73,15 +73,15 @@ const Easyread = ({ clearSketch, setFaqOpen }) => {
                             width="70"
                             height="46"
                             fill="none"
-                            stroke-miterlimit="10"
-                            stroke-width="3"
+                            strokeMiterlimit="10"
+                            strokeWidth="3"
                             vectorEffect="non-scaling-stroke"
                         />
                         <polyline
                             points="1 36.77 21.73 13.21 41.94 36.19 54.67 21.73 71 40.29"
                             fill="none"
-                            stroke-miterlimit="10"
-                            stroke-width="2"
+                            strokeMiterlimit="10"
+                            strokeWidth="2"
                             vectorEffect="non-scaling-stroke"
                         />
                         <circle
@@ -89,8 +89,8 @@ const Easyread = ({ clearSketch, setFaqOpen }) => {
                             cy="15.77"
                             r="7.95"
                             fill="none"
-                            stroke-miterlimit="10"
-                            stroke-width="2"
+                            strokeMiterlimit="10"
+                            strokeWidth="2"
                             vectorEffect="non-scaling-stroke"
                         />
                     </svg>
