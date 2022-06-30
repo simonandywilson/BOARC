@@ -60,7 +60,7 @@ const EventRendererCarouselSlide = ({ data }) => {
                     }
                     breakpoints={{
                         500: {
-                            slidesPerView: data.length < 3 ? data.length : 3,
+                            slidesPerView: 3,
                         },
                         1200: {
                             slidesPerView: 5,
