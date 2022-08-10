@@ -50,6 +50,8 @@ const RadioRenderer = ({ value }) => {
 					playsinline={true}
 					onBuffer={() => setStatus("buffering")}
 					onBufferEnd={() => setStatus("playing")}
+					onPause={() => setStatus("paused")}
+					onPlay={() => setStatus("playing")}
 				/>
 				<div className={style.title}>{title}</div>
 				{metadata?.icestats?.server_start ? (
