@@ -6,11 +6,20 @@ import { useResizeDetector } from "react-resize-detector";
 const RadioRenderer = ({ value }) => {
 	const { title, url } = value;
 	const [playing, setPlaying] = useState(false);
+	const [status, setStatus] = useState("paused");
 	const [volume, setVolume] = useState(1);
-	const [error, setError] = useState(true);
 	const [metadata, setMetadata] = useState({});
 	const playerRef = useRef(null);
 	const { height, ref } = useResizeDetector();
+
+	const handleStatus = () => {
+		if (status === "playing") {
+			setStatus("paused");
+		}
+		if (status === "paused") {
+			setStatus("playing");
+		}
+	};
 
 	useEffect(
 		() => document.documentElement.style.setProperty("--radio-height", `-${height}px`),
@@ -24,10 +33,8 @@ const RadioRenderer = ({ value }) => {
 				setMetadata(JSON.parse(data));
 			})
 			.catch(console.error);
-    }, []);
+	}, []);
 
-    console.log(metadata);
-    
 	return (
 		<div className={style.grid}>
 			<div className={style.radio} ref={ref}>
@@ -37,12 +44,12 @@ const RadioRenderer = ({ value }) => {
 					controls={false}
 					height={0}
 					width={0}
-					playing={playing ? true : false}
-					volume={volume}
-					onPlay={() => setPlaying(true)}
-					onPause={() => setPlaying(false)}
+					playing={status === "playing" || status === "buffering" ? true : false}
+					volume={Number(volume)}
 					ref={playerRef}
 					playsinline={true}
+					onBuffer={() => setStatus("buffering")}
+					onBufferEnd={() => setStatus("playing")}
 				/>
 				<div className={style.title}>{title}</div>
 				{metadata?.icestats?.server_start ? (
@@ -54,12 +61,12 @@ const RadioRenderer = ({ value }) => {
 				)}
 				<div className={style.controls}>
 					<button
-						onClick={() => setPlaying((prevPlaying) => !prevPlaying)}
+						onClick={handleStatus}
 						className={style.play}
 						aria-label="Play/pause radio"
 						// disabled={playable ? false : true}
 					>
-						{playing ? (
+						{status === "playing" && (
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="40"
@@ -69,7 +76,9 @@ const RadioRenderer = ({ value }) => {
 								<rect x="2.68" width="15" height="40" />
 								<rect x="22.32" width="15" height="40" />
 							</svg>
-						) : (
+						)}
+						{status === "buffering" && <span className={style.buffer}></span>}
+						{status === "paused" && (
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="40"
