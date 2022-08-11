@@ -5,13 +5,12 @@ import { useResizeDetector } from "react-resize-detector";
 
 const RadioRenderer = ({ value }) => {
 	const { title, url } = value;
-	const [playing, setPlaying] = useState(false);
 	const [status, setStatus] = useState("paused");
 	const [volume, setVolume] = useState(1);
 	const [metadata, setMetadata] = useState({});
 	const playerRef = useRef(null);
-	const { height, ref } = useResizeDetector();
-
+    const { height, ref } = useResizeDetector();
+    
 	const handleStatus = () => {
 		if (status === "playing") {
 			setStatus("paused");
@@ -54,7 +53,7 @@ const RadioRenderer = ({ value }) => {
 					onPlay={() => setStatus("playing")}
 				/>
 				<div className={style.title}>{title}</div>
-				{metadata?.icestats?.server_start ? (
+				{metadata?.icestats?.source ? (
 					<div className={style.status}>
 						NOW LIVE <span className={style.spinner}></span>
 					</div>
