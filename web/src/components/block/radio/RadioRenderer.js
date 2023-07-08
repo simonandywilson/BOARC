@@ -26,7 +26,8 @@ const RadioRenderer = ({ value }) => {
 	);
 
 	useEffect(() => {
-		fetch(url.replace("stream", "status-json.xsl"))
+		// using replace is sloppy
+		fetch(url.replace("domes", "status-json.xsl"))
 			.then((response) => response.text())
 			.then((data) => {
 				setMetadata(JSON.parse(data));
