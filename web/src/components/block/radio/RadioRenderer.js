@@ -9,8 +9,8 @@ const RadioRenderer = ({ value }) => {
 	const [volume, setVolume] = useState(1);
 	const [metadata, setMetadata] = useState({});
 	const playerRef = useRef(null);
-    const { height, ref } = useResizeDetector();
-    
+	const { height, ref } = useResizeDetector();
+
 	const handleStatus = () => {
 		if (status === "playing") {
 			setStatus("paused");

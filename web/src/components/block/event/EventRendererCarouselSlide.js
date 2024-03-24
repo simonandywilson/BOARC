@@ -88,7 +88,7 @@ const EventRendererCarouselSlide = ({ data }) => {
                                         })}
                                     </div>
                                 </Link>
-                                <img
+                                {slide?.icon && <img
                                     src={urlFor(slide.icon)
                                         .auto("format")
                                         .fit("max")
@@ -96,7 +96,7 @@ const EventRendererCarouselSlide = ({ data }) => {
                                         .toString()}
                                     alt="Event icon"
                                     className={style.image}
-                                />
+                                />}
                             </SwiperSlide>
                         );
                     })}

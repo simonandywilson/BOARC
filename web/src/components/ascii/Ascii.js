@@ -41,9 +41,9 @@ const Ascii = ({ asciiWidth }) => {
                             <Ticker speed={5}>
                                 {() => (
                                     <div className={style.wrapper} ref={ref}>
-                                        {ascii.ascii.map((asc) => {
+                                        {ascii.ascii.map((asc, index) => {
                                             return (
-                                                <table className={style.table} key={asc._id}>
+                                                <table className={style.table} key={asc._id + index}>
                                                     <tbody>
                                                         {asc.characterLayout.rows.map((row) => (
                                                             <tr key={row._key}>
