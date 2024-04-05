@@ -1,0 +1,77 @@
+.navPortrait {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: var(--purple-translucent);
+    z-index: 999;
+    padding: var(--margin);
+    color: #ffffff;
+    display: var(--landing-portrait-visibility);
+    font-size: var(--font-size-large);
+    line-height: 120%;
+    overflow-y: scroll;
+    flex-direction: column;
+    text-transform: uppercase;
+}
+
+.heading {
+    text-align: right;
+}
+
+.close {
+    background: none;
+    border: none;
+    font-size: var(--font-size-large);
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+.close > svg {
+    width: var(--font-size-large);
+    height: var(--font-size-large);
+    fill: #ffffff;
+}
+
+.close:hover > svg {
+    fill: var(--red);
+}
+
+.nav {
+    margin-bottom: var(--margin);
+}
+
+.links, .tabs {
+    margin-left: var(--column-double);
+    display: flex;
+    flex-direction: column;
+}
+
+.links > a {
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    color: #ffffff;
+    padding: 0;
+    width: max-content;
+}
+
+.links > a:hover {
+    color: var(--red);
+}
+
+.tabs > button {
+    all: unset;
+    width: max-content;
+    cursor: pointer;
+    text-decoration: none;
+    color: #ffffff;
+    padding: 0;
+    margin: 0;
+}
+
+.tabs > button:hover {
+    color: var(--red);
+}

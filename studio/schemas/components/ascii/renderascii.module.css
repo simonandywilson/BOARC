@@ -1,0 +1,10 @@
+.table {
+    font-family: BOARCCourier;
+    font-size: 1.5rem;
+    color: #696cdc;
+    line-height: 100%;
+    letter-spacing: -3px;
+    text-transform: uppercase;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}

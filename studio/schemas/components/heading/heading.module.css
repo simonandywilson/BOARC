@@ -1,0 +1,29 @@
+@font-face {
+    font-family: "BOARCCourier";
+    src: url("../../fonts/BOARCCourier.woff2") format("woff2"),
+        url("../../fonts/BOARCCourier.woff") format("woff");
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    font-family: BOARCCourier;
+    font-size: 1.2rem;
+    line-height: 100%;
+    text-transform: uppercase;
+    display: block;
+    overflow: hidden;
+    text-align: center;
+}
+
+.border,
+.heading {
+    display: block;
+    white-space: nowrap;
+    overflow-wrap: break-word;
+    overflow: hidden;
+}
+
+.heading {
+    text-align: center;
+}

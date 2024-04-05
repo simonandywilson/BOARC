@@ -1,0 +1,38 @@
+.wrapper {
+    position: relative;
+    left: 0;
+    width: max-content;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.secondary {
+    background: #ffffff;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.secondary > a {
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--purple);
+    padding-left: calc(var(--box-padding) * 2);
+    padding-right: calc(var(--box-padding) * 2);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone; 
+}
+
+.secondary > a:hover {
+    color: var(--red);
+}
+
+.secondary > .divider {
+    color: var(--purple);
+}
+
+.divider {
+    pointer-events: none;
+    margin-left: calc(var(--box-padding) * -1);
+    margin-right: calc(var(--box-padding) * -1);
+}

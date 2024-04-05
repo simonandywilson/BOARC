@@ -1,0 +1,133 @@
+.grid {
+    position: var(--chat-radio-position);
+    display: grid;
+    grid-template-columns: var(--grid-columns);
+    column-gap: var(--grid-columns-gap);
+    margin-top: var(--margin-double);
+    padding-top: var(--chat-offset);
+    top: 0;
+    width: var(--chat-radio-width);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.chat {
+    position: relative;
+    grid-column: var(--grid-position-chat);
+    background: var(--grey);
+    width: 100%;
+    max-height: var(--chat-max-height);
+    display: flex;
+    flex-direction: column;
+    pointer-events: all;
+    margin-bottom: var(--margin);
+}
+
+.header {
+    position: relative;
+    background: var(--grey);
+}
+
+.title {
+    font-size: var(--font-size-medium);
+    margin: var(--margin);
+    margin-bottom: 0;
+    color: #000000;
+}
+
+.status {
+    position: relative;
+    width: 100%;
+    color: var(--red);
+    margin-top: var(--margin-half);
+    margin-left: var(--margin);
+}
+
+.chatAlertMask {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    height: 30px;
+    background: #d8d8d8;
+    z-index: 2;
+}
+
+.chatAlert {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    z-index: 1;
+}
+
+.chatAlert > button {
+    background: var(--red);
+    padding: var(--margin-half);
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: var(--font-family);
+}
+
+.chatbox {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    min-height: 0;
+}
+
+.chatbox > div:last-child {
+    margin-bottom: var(--margin);
+}
+
+.loader {
+    width: 100%;
+    text-align: center;
+    padding-left: var(--margin);
+    margin-bottom: var(--margin);
+}
+
+.spinner:before {
+    content: "";
+    animation: spinner 700ms steps(1, end) infinite;
+}
+
+@keyframes spinner {
+    0%,
+    100% {
+        content: "-";
+    }
+    25% {
+        content: "\\";
+    }
+    50% {
+        content: "|";
+    }
+    75% {
+        content: "/";
+    }
+}
+
+.load {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    margin-top: var(--margin);
+    margin-bottom: var(--margin);
+    font: var(--font-family);
+    font-size: var(--font-size-small);
+    
+}
+
+.load > span {
+    cursor: pointer;
+}
+
+.load > span:hover {
+    color: var(--purple);
+}

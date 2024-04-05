@@ -1,0 +1,49 @@
+.grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--grid-columns);
+    column-gap: var(--grid-columns-gap);
+}
+
+.collapsible {
+    margin: var(--block-margin);
+    padding-left: var(--margin-double);
+}
+
+.wrapper {
+    display: flex;    
+}
+
+.content {
+    padding-left: var(--margin)
+}
+
+.icon {
+    width: var(--margin);
+    flex-shrink: 0;
+}
+
+.button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: var(--font);
+    font-size: var(--font-size);
+    color: var(--brown);
+    cursor: pointer;
+    text-align: left;
+    margin-bottom: var(--margin);
+}
+
+.button:hover {
+    color: var(--purple);
+}
+
+.text > p:first-child {
+    margin-top: 0;
+}
+
+.text > * {
+    margin-bottom: 0;
+}

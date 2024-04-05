@@ -1,0 +1,24 @@
+:global([data-ui="PaneItem"] *:not(svg) + span) {
+    box-shadow: none !important;
+}
+
+:global(#faq-orderable-faq-0 [data-ui="Box"] *:not(svg) + span) {
+    box-shadow: none !important;
+}
+
+:global(#ascii-orderable-ascii-0 [data-ui="Box"] *:not(svg) + span) {
+    box-shadow: none !important;
+}
+
+:global(#menu-orderable-menu-0 [data-ui="Box"] *:not(svg) + span) {
+    box-shadow: none !important;
+}
+
+:global([data-testid="Media"] *:not(svg) + span) {
+    box-shadow: none !important;
+}
+
+
+:global([data-ui="Text"] span) {
+    border-bottom: none !important;
+}

@@ -1,0 +1,20 @@
+.container {
+    max-height: 250px;
+    overflow-y: scroll;
+}
+
+.link {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card {
+    width: 100%;
+}
+
+.card:hover {
+    background: #f2f2f2!important;
+}

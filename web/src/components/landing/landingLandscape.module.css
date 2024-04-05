@@ -1,0 +1,31 @@
+.landing {
+    padding-left: var(--margin);
+    padding-right: var(--margin);
+    display: var(--landing-landscape-visibility);
+    justify-content: flex-end;
+    font-size: var(--font-size-large);
+    line-height: 120%;
+    color: var(--brown);
+    font-family: var(--font-mono);
+}
+
+.container {
+    position: relative;
+}
+
+.row, .description {
+    display: grid;
+}
+
+.link {
+    display: grid;
+    white-space: nowrap;
+    text-decoration: none;
+    color: var(--purple);
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.link:hover {
+    color: var(--red);
+}

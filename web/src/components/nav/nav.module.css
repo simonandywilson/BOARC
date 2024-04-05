@@ -1,0 +1,64 @@
+.nav {
+    position: sticky;
+    display: block;
+    top: var(--margin);
+    margin: var(--margin) var(--margin) var(--margin) var(--margin);
+    text-transform: uppercase;
+    z-index: 99;
+    max-width: calc(100% - var(--margin-double));
+}
+
+.title {
+    margin-bottom: var(--margin);
+    color: var(--purple);
+    width: max-content;
+    max-width: calc(100% - var(--margin-double));
+    font-weight: 400;
+    font-size: var(--font-size);
+}
+
+.title > a {
+    background: #ffffff;
+    padding-left: calc(var(--box-padding) * 2);
+    padding-right: calc(var(--box-padding) * 2);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    text-decoration: none;
+    color: var(--font-colour);
+}
+
+.containerLandscape,
+.containerPortrait {
+    position: sticky;
+    top: 0;
+    width: max-content;
+    max-width: 100%;
+    margin-bottom: var(--margin);
+}
+
+.containerLandscape {
+    display: var(--nav-landscape-visibility);
+}
+
+.togglePortrait {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    height: max-content;
+    display: var(--nav-portrait-visibility);
+}
+
+.togglePortrait > svg {
+    stroke: var(--purple);
+    width: var(--font-size-button);
+    height: var(--font-size-button);
+}
+
+.togglePortrait > svg:hover {
+    fill: var(--red);
+}

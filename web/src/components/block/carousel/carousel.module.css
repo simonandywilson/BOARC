@@ -1,0 +1,92 @@
+.grid {
+    position: relative;
+    visibility: var(--image-visibility);
+    grid-template-columns: var(--grid-columns);
+    column-gap: var(--grid-columns-gap);
+    justify-items: end;
+    display: grid;
+}
+
+.carousel {
+    position: relative;
+    grid-column: var(--grid-position-carousel);
+    width: 100%;
+    display: flex;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3 / 2;
+    display: flex;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--brown);
+    mix-blend-mode: multiply;
+    transition: opacity 0.5s;
+}
+
+.carousel:hover > * .overlay {
+    opacity: 0;
+}
+
+.carousel:hover > * .image {
+    filter: grayscale(0) contrast(1);
+}
+
+.image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+    filter: grayscale(100%) contrast(1);
+    mix-blend-mode: screen;
+    z-index: 1;
+    transition: filter 0.5s;
+}
+
+.arrowLeft,
+.arrowRight {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    background: none;
+    border: none;
+    z-index: 10;
+    margin: 0;
+    padding: var(--margin);
+    align-items: center;
+    stroke: #ffffff;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+}
+
+.arrowLeft {
+    cursor: w-resize;
+}
+
+.arrowRight {
+    right: 0;
+    justify-content: flex-end;
+    cursor: e-resize;
+}
+
+.arrowLeft > svg,
+.arrowRight > svg {
+    max-width: var(--font-size-event-carousel);
+    max-height: var(--font-size-event-carousel);
+}
+
+.arrowLeft:hover,
+.arrowRight:hover {
+    color: var(--purple);
+}

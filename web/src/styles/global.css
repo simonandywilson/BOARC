@@ -1,0 +1,385 @@
+/*----------------------------------------
+Typography
+----------------------------------------*/
+
+@import url("https://fonts.googleapis.com/css2?family=Khula&display=swap");
+
+@font-face {
+    font-family: "BOARCCourier";
+    src: url("../fonts/BOARCCourier.woff2") format("woff2"),
+        url("../fonts/BOARCCourier.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "BOARCCourierMono";
+    src: url("../fonts/BOARCCourierMono.woff2") format("woff2"),
+        url("../fonts/BOARCCourier.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "BOARCSymbols";
+    src: url("../fonts/BOARCSymbols.woff2") format("woff2"),
+        url("../fonts/BOARCCourier.woff") format("woff");
+    font-display: swap;
+}
+
+/*----------------------------------------
+Media Queries
+----------------------------------------*/
+
+@media only screen and (max-width: 649px) {
+    :root {
+        --font-size: 1.1rem;
+        --font-size-small: 0.9rem;
+        --font-size-medium: calc(var(--font-size) * 1.25);
+        --font-size-large: 5vw;
+        --font-size-event-carousel: var(--font-size-medium);
+        --font-size-button: 2rem;
+
+        --grid-position-main-normal: 1 / 12;
+        --grid-position-main-wide: 1 / 12;
+
+        --grid-position-comment: 3 / 12;
+        --grid-position-faq: 1 / 12;
+        --grid-position-radio: 1 / 14;
+        --grid-position-chat: 1 / 14;
+
+        --grid-position-event-carousel: 2 / 11;
+        --grid-position-event-back: 1 / 12;
+        --grid-position-event-programme: 1 / 5;
+        --grid-position-event-description: 5 / 12;
+
+        --grid-position-ascii: 1 / 5;
+        --grid-position-carousel: 1 / 12;
+        --grid-position-image-large: 1 / 12;
+        --grid-position-image-small: 1 / 12;
+        --grid-position-image-caption: 5 / 12;
+        --grid-position-imagegrid: 1 / 12;
+
+        --grid-position-background-left: 1 / 4;
+        --grid-position-background-right: 10 / 12;
+
+        --page-margin-bottom: calc(
+            (var(--margin-double) + (var(--font-size) * 2) - (var(--box-padding) * 2))
+        );
+
+        --chat-radio-position: relative;
+        --chat-offset: 0;
+        --chat-radio-width: 100%;
+        --chat-max-height: 50vh;
+
+        --comment-order: 1;
+        --caption-order: 1;
+
+        --faq-margin: var(--margin);
+
+        --ascii-visibility: none;
+        --nav-portrait-visibility: block;
+        --nav-landscape-visibility: none;
+        --decoration-visibility: none;
+        --landing-portrait-visibility: flex;
+        --landing-landscape-visibility: none;
+        --newsletter-visibility: hidden;
+        --comment-collapsible-visibility: none;
+
+        --event-list-date-width: calc(var(--column-double) * 2);
+        --event-list-details-font-size: var(--font-size);
+        --event-list-links-font-size: var(--font-size-small);
+        --event-list-icon-width: var(--column-double);
+
+        --show-details-font-size: var(--font-size);
+        --show-tracklist-font-size: var(--font-size-small);
+        --show-icon-width: var(--column-double);
+    }
+}
+
+@media only screen and (min-width: 650px) {
+    :root {
+        --font-size: 1.2rem;
+        --font-size-small: 0.9rem;
+        --font-size-medium: calc(var(--font-size) * 1.25);
+        --font-size-large: 2.95vw;
+        --font-size-event-carousel: var(--font-size-medium);
+        --font-size-button: 2rem;
+
+        --grid-position-main-normal: 4 / 10;
+        --grid-position-main-wide: 4 / 12;
+
+        --grid-position-comment: 1 / 4;
+        --grid-position-faq: 1 / 12;
+        --grid-position-radio: 1 / 4;
+        --grid-position-chat: 1 / 4;
+
+        --grid-position-event-carousel: 2 / 11;
+        --grid-position-event-back: 1 / 3;
+        --grid-position-event-programme: 4 / 6;
+        --grid-position-event-description: 6 / 12;
+
+        --grid-position-ascii: 1 / 5;
+        --grid-position-carousel: 4 / 12;
+        --grid-position-image-large: 3 / 12;
+        --grid-position-image-small: 6 / 12;
+        --grid-position-image-caption: 6 / 12;
+        --grid-position-imagegrid: 4 / 12;
+
+        --grid-position-background-left: 1 / 4;
+        --grid-position-background-right: 10 / 12;
+
+        --page-margin-bottom: var(--margin);
+
+        --chat-radio-position: fixed;
+        --chat-offset: calc(
+            var(--margin-double) + (var(--radio-height) * -1) + (var(--nav-height) * -1)
+        );
+        --chat-radio-width: calc(100% - var(--margin-double));
+        --chat-max-height: calc(
+            100vh - ((var(--margin) * 8.5) + (var(--radio-height) * -1) + (var(--nav-height) * -1))
+        );
+
+        --comment-order: 0;
+        --caption-order: 1;
+
+        --faq-margin: var(--margin);
+
+        --ascii-visibility: inline-block;
+        --nav-portrait-visibility: none;
+        --nav-landscape-visibility: block;
+        --decoration-visibility: grid;
+        --landing-portrait-visibility: none;
+        --landing-landscape-visibility: flex;
+        --newsletter-visibility: visible;
+        --comment-collapsible-visibility: grid;
+
+        --event-list-date-width: var(--column-double);
+        --event-list-details-font-size: var(--font-size-medium);
+        --event-list-links-font-size: var(--font-size);
+        --event-list-icon-width: var(--column-single);
+
+        --show-details-font-size: var(--font-size-medium);
+        --show-tracklist-font-size: var(--font-size);
+        --show-icon-width: var(--column-single);
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    :root {
+        --font-size: 1.3rem;
+        --font-size-small: 0.9rem;
+        --font-size-medium: calc(var(--font-size) * 1.25);
+        --font-size-large: 2.95vw;
+        --font-size-event-carousel: var(--font-size-large);
+        --font-size-button: 2rem;
+
+        --grid-position-main-normal: 4 / 11;
+        --grid-position-main-wide: 4 / 12;
+
+        --grid-position-comment: 1 / 4;
+        --grid-position-faq: 2 / 12;
+        --grid-position-radio: 1 / 4;
+        --grid-position-chat: 1 / 4;
+
+        --grid-position-event-carousel: 2 / 11;
+        --grid-position-event-back: 1 / 4;
+        --grid-position-event-programme: 4 / 7;
+        --grid-position-event-description: 7 / 12;
+
+        --grid-position-ascii: 1 / 5;
+        --grid-position-carousel: 4 / 12;
+        --grid-position-image-large: 3 / 12;
+        --grid-position-image-small: 6 / 12;
+        --grid-position-image-caption: 3 / 6;
+        --grid-position-imagegrid: 4 / 12;
+
+        --grid-position-background-left: 1 / 4;
+        --grid-position-background-right: 11 / 12;
+
+        --page-margin-bottom: var(--margin);
+
+        --chat-radio-position: fixed;
+        --chat-offset: calc(
+            var(--margin-double) + (var(--radio-height) * -1) + (var(--nav-height) * -1)
+        );
+        --chat-radio-width: calc(100% - var(--margin-double));
+        --chat-max-height: calc(
+            100vh - ((var(--margin) * 8.5) + (var(--radio-height) * -1) + (var(--nav-height) * -1))
+        );
+
+        --comment-order: 0;
+        --caption-order: 1 0;
+
+        --faq-margin: calc(var(--column-single) + var(--margin) * 2);
+
+        --ascii-visibility: inline-block;
+        --nav-portrait-visibility: none;
+        --nav-landscape-visibility: block;
+        --decoration-visibility: grid;
+        --landing-portrait-visibility: none;
+        --landing-landscape-visibility: flex;
+        --newsletter-visibility: visible;
+        --comment-collapsible-visibility: grid;
+
+        --event-list-date-width: var(--column-double);
+        --event-list-details-font-size: var(--font-size-medium);
+        --event-list-links-font-size: var(--font-size);
+        --event-list-icon-width: var(--column-single);
+
+        --show-details-font-size: var(--font-size-medium);
+        --show-tracklist-font-size: var(--font-size);
+        --show-icon-width: var(--column-single);
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    :root {
+        --font-size: 1.3rem;
+        --font-size-small: 1rem;
+        --font-size-medium: calc(var(--font-size) * 1.25);
+        --font-size-large: 2.95vw;
+        --font-size-event-carousel: var(--font-size-large);
+        --font-size-button: 2rem;
+
+        --grid-position-main-normal: 4 / 10;
+        --grid-position-main-wide: 4 / 12;
+
+        --grid-position-comment: 2 / 4;
+        --grid-position-faq: 2 / 12;
+        --grid-position-radio: 1 / 4;
+        --grid-position-chat: 1 / 4;
+
+        --grid-position-event-carousel: 4 / 11;
+        --grid-position-event-back: 1 / 4;
+        --grid-position-event-programme: 4 / 6;
+        --grid-position-event-description: 6 / 12;
+
+        --grid-position-ascii: 1 / 5;
+        --grid-position-carousel: 4 / 12;
+        --grid-position-image-large: 3 / 12;
+        --grid-position-image-small: 6 / 12;
+        --grid-position-image-caption: 4 / 6;
+        --grid-position-imagegrid: 4 / 12;
+
+        --grid-position-background-left: 1 / 4;
+        --grid-position-background-right: 10 / 12;
+
+        --page-margin-bottom: var(--margin);
+
+        --chat-position: fixed;
+        --chat-offset: calc(
+            var(--margin-double) + (var(--radio-height) * -1) + (var(--nav-height) * -1)
+        );
+        --chat-radio-width: calc(100% - var(--margin-double));
+        --chat-max-height: calc(
+            100vh - ((var(--margin) * 8.5) + (var(--radio-height) * -1) + (var(--nav-height) * -1))
+        );
+
+        --comment-order: 0;
+        --caption-order: 0;
+
+        --faq-margin: calc(var(--column-double) + var(--margin) * 2);
+
+        --ascii-visibility: inline-block;
+        --nav-portrait-visibility: none;
+        --nav-landscape-visibility: block;
+        --decoration-visibility: grid;
+        --landing-portrait-visibility: none;
+        --landing-landscape-visibility: flex;
+        --newsletter-visibility: visible;
+        --comment-collapsible-visibility: grid;
+
+        --event-list-date-width: var(--column-double);
+        --event-list-details-font-size: var(--font-size-medium);
+        --event-list-links-font-size: var(--font-size);
+        --event-list-icon-width: var(--column-single);
+
+        --show-details-font-size: var(--font-size-medium);
+        --show-tracklist-font-size: var(--font-size);
+        --show-icon-width: var(--column-single);
+    }
+}
+
+/*----------------------------------------
+Variables
+----------------------------------------*/
+
+:root {
+    --line-height: 120%;
+
+    --grid-columns: repeat(11, 1fr);
+    --grid-columns-gap: var(--margin);
+
+    --column-single: calc(((100vw - var(--margin)) / 11) - var(--margin));
+    --column-double: calc(var(--column-single) * 2);
+
+    --margin: var(--font-size);
+    --margin-half: calc(var(--margin) / 2);
+    --margin-double: calc(var(--margin) * 2);
+    --block-margin: var(--font-size) 0 var(--font-size) 0;
+
+    --ascii-height: 154px;
+    --nav-height: 0;
+    --radio-height: 0;
+
+    --box-padding: 3px;
+
+    --font-regular: BOARCCourier, var(--mono-stack);
+    --font-mono: BOARCCourierMono, var(--mono-stack);
+    --font-symbol: BOARCSymbols, var(--mono-stack);
+    --font-easy: Khula, var(--sans-stack);
+    --font: var(--font-regular);
+    --mono-stack: "Courier New", Courier, monospace;
+    --sans-stack: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue,
+        helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+
+    --purple: #6468e3;
+    --brown: #786a2f;
+    --brown-translucent: rgba(120, 106, 47, 0.9);
+    --purple-translucent: rgb(100, 104, 227, 0.9);
+    --brown-highlight: #d5d2c2;
+    --red: #ed6b6c;
+    --grey: #d8d8d8;
+    --dark-grey: #c7c7c7;
+    --text-colour: var(--brown);
+}
+
+/*----------------------------------------
+Main
+----------------------------------------*/
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+@-ms-viewport {
+    width: device-width;
+}
+
+html body {
+    position: absolute;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    top: 0;
+    font-family: var(--font);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    left: 0;
+    top: 0;
+}
+
+::selection {
+    background: var(--brown-highlight);
+}
+
+::-moz-selection {
+    background: var(--brown-highlight);
+}

@@ -1,0 +1,8 @@
+.internal {
+    color: var(--purple);
+    text-decoration: none;
+}
+
+.internal:hover {
+    color: var(--red);
+}

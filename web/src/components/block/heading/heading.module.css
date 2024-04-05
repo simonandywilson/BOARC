@@ -1,0 +1,27 @@
+.grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--grid-columns);
+    column-gap: var(--grid-columns-gap);
+}
+
+.heading {
+    font-size: var(--font-size);
+    font-weight: normal;
+    text-transform: uppercase;
+    overflow: hidden;
+    margin: var(--block-margin);
+    text-align: center;
+}
+
+.heading > span {
+    display: block;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    height: calc(var(--font-size) * 1.2);
+    text-align: left;
+}
+
+.anchor {
+    transform: translateY(calc(var(--nav-height) + (var(--margin-double) * -1)));
+}

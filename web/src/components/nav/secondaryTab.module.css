@@ -1,0 +1,40 @@
+.wrapper {
+    position: relative;
+    left: 0;
+    width: max-content;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.secondary {
+    background: #ffffff;
+    white-space: nowrap;
+}
+
+.secondary > button {
+    all: unset;
+}
+
+.secondary > button {
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--purple);
+    padding-left: calc(var(--box-padding) * 2);
+    padding-right: calc(var(--box-padding) * 2);
+    white-space: nowrap;
+}
+
+.secondary > button:hover {
+    color: var(--red);
+}
+
+.secondary > .divider {
+    color: var(--purple);
+}
+
+.divider {
+    pointer-events: none;
+    margin-left: calc(var(--box-padding) * -2);
+    margin-right: calc(var(--box-padding) * -1);
+}

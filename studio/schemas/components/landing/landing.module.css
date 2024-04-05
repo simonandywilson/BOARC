@@ -1,0 +1,29 @@
+@font-face {
+    font-family: "BOARCCourierMono";
+    src: url("../../fonts/BOARCCourierMono.woff2") format("woff2"),
+        url("../../fonts/BOARCCourierMono.woff") format("woff");
+}
+
+.grid {
+    font-family: BOARCCourierMono;
+    font-size: 1.2rem;
+    line-height: 100%;
+}
+
+.row {
+    position: relative;
+    width: 100%;
+    height: 1.2rem;
+    grid-template-rows: 1fr!important;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.title {
+    color: #686ce3;
+    text-transform: uppercase;
+}
+
+.description {
+    color: #786a2f;
+}

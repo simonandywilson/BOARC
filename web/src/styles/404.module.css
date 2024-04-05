@@ -1,0 +1,61 @@
+.container {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 9999;
+    font-size: var(--font-size-medium);
+    color: var(--red);
+}
+
+.container > a {
+    color: var(--red);
+    text-decoration: none;
+}
+
+.container > a:hover {
+    color: var(--purple);
+}
+
+.spinner:before {
+    content: "";
+    animation: spinner 700ms steps(1, end) infinite;
+}
+
+@keyframes spinner {
+    0% {
+        content: "،  ";
+    }
+    10% {
+        content: "′  ";
+    }
+    20% {
+        content: " ´ ";
+    }
+    30% {
+        content: " ‾ ";
+    }
+    40% {
+        content: "  ⸌";
+    }
+    50% {
+        content: "  ⸊";
+    }
+    60% {
+        content: "  |";
+    }
+    70% {
+        content: "  ⁎";
+    }
+    80% {
+        content: "  ⁕";
+    }
+    90% {
+        content: " ෴ ";
+    }
+    100% {
+        content: "،  ";
+    }
+}

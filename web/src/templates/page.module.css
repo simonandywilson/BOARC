@@ -1,0 +1,19 @@
+.page {
+    position: relative;
+    padding: 0 var(--margin) var(--page-margin-bottom) var(--margin);
+    color: var(--text-colour);
+    width: 100vw;
+}
+
+.page > div:first-child {
+    margin-top: 0 !important;
+}
+
+.background {
+    position: fixed;
+    height: 150vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: -2;
+}

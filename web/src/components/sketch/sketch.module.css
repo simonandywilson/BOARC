@@ -1,0 +1,7 @@
+.sketch {
+    position: fixed;
+    z-index: 999;
+    opacity: 0.1;
+    pointer-events: none;
+    visibility: var(--image-visibility);
+}

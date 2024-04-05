@@ -1,0 +1,22 @@
+.comment {
+    background: var(--dark-grey);
+    margin: 0 var(--margin) calc(var(--margin-half) / 2) var(--margin);
+    padding: calc(var(--margin-half) / 2);
+    word-wrap: break-word;
+    font-size: var(--font-size-small);
+    line-height: 110%;
+}
+
+.name {
+    color: var(--purple);
+}
+
+.message {
+    color: #000000;
+    overflow: hidden;
+}
+
+.date {
+    font-size: var(--font-size-small);
+    color: var(--brown);
+}

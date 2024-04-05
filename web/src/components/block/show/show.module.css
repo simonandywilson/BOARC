@@ -1,0 +1,116 @@
+.grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--grid-columns);
+    grid-template-rows: auto auto;
+    column-gap: var(--grid-columns-gap);
+    row-gap: var(--margin);
+    margin-bottom: var(--margin-double);
+    overflow: hidden;
+    font-size: var(--show-details-font-size);
+    line-height: var(--line-height);
+}
+
+.row {
+    display: flex;
+    z-index: 1;
+}
+
+.player {
+    visibility: hidden;
+}
+
+.icon {
+    position: relative;
+    width: var(--show-icon-width);
+    flex-shrink: 0;
+    height: max-content;
+    background: #d8d8d8;
+    margin-right: var(--margin);
+}
+
+.icon:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+.image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+
+.details {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.flex {
+    display: flex;
+    min-height: var(--column-single);
+    flex-shrink: 0;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.heading {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: var(--margin);
+}
+
+.play {
+    background: none;
+    border: none;
+    height: max-content;
+    font-size: var(--font-size);
+    font-family: var(--font-family);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.tracklist {
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: max-content;
+    font-size: var(--show-tracklist-font-size);
+    font-family: var(--font-family);
+    color: var(--text-color);
+    cursor: pointer;
+    line-height: 100%;
+}
+
+.play:hover,
+.tracklist:hover {
+    color: #ffffff;
+}
+
+.info *  {
+    all: unset;
+}
+
+.info {
+    font-size: var(--show-tracklist-font-size);
+}
+
+.info:before {
+    content: " ";
+    display:block;
+    height: var(--margin);
+}
+
+.border {
+    display: block;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    height: calc(var(--font-size) * 1.2);
+    font-size: var(--font-size);
+}

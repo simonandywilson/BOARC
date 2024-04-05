@@ -1,0 +1,18 @@
+@font-face {
+    font-family: "BOARCSymbols";
+    src: url("../../fonts/BOARCSymbols.woff2") format("woff2"),
+        url("../../fonts/BOARCSymbols.woff") format("woff");
+}
+
+.icon {
+    font-weight: 400;
+    color: #786a2f;
+    font-size: 8rem;
+    margin: 0;
+    font-family: BOARCSymbols;
+    padding: 0;
+}
+
+.text {
+    font-family: BOARCSymbols;
+}
