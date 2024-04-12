@@ -338,7 +338,7 @@ Variables
 	--dark-grey: #c7c7c7;
 	--text-colour: var(--brown);
 
-	--bw-filter: hidden;
+	--bw-filter: none;
 }
 
 /*----------------------------------------
