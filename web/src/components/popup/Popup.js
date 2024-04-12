@@ -5,6 +5,7 @@ import { useEasyReadContext, useEasyReadUpdateContext } from "../../state/Global
 
 const Popup = () => {
 	const [visibility, setVisibility] = useState(true);
+	const [countdown, setCountdown] = useState(10);
 	const EasyReadContext = useEasyReadContext();
 	const EasyReadUpdateContext = useEasyReadUpdateContext();
 
@@ -13,6 +14,17 @@ const Popup = () => {
 			setVisibility(false);
 		}, 10000);
 		return () => clearTimeout(timer);
+	}, []);
+
+	useEffect(() => {
+		const timer = setInterval(() => {
+			setCountdown((prevState) => {
+				if (prevState > 0) {
+					return prevState - 1;
+				}
+			});
+		}, 1000);
+		return () => clearInterval(timer);
 	}, []);
 
 	const variants = {
@@ -77,10 +89,9 @@ const Popup = () => {
 						</svg>
 						<span> simple font</span>
 					</button>
-                    
 				</div>
-                <br/>
-				<p className={style.disappear}>This window will disappear in 10 seconds</p>
+				<br />
+				<p className={style.disappear}>This window will disappear in {countdown} seconds</p>
 			</div>
 		</motion.div>
 	);

@@ -2,7 +2,6 @@
 Typography
 ----------------------------------------*/
 
-@import url("https://fonts.googleapis.com/css2?family=Khula&display=swap");
 
 @font-face {
 	font-family: "BOARCCourier";
@@ -20,6 +19,20 @@ Typography
 	font-family: "BOARCSymbols";
 	src: url("../fonts/BOARCSymbols.woff2") format("woff2"), url("../fonts/BOARCCourier.woff") format("woff");
 	font-display: swap;
+}
+
+@font-face {
+	font-family: "CenturyGothic";
+	src: url("../fonts/CenturyGothicPaneuropeanItalic.woff") format("woff"), url("../fonts/CenturyGothicPaneuropeanItalic.ttf") format("truetype");
+	font-weight: 400;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: "CenturyGothic";
+	src: url("../fonts/CenturyGothicPaneuropeanRegular.woff") format("woff"), url("../fonts/CenturyGothicPaneuropeanRegular.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
 }
 
 /*----------------------------------------
@@ -309,7 +322,7 @@ Variables
 	--font-regular: BOARCCourier, var(--mono-stack);
 	--font-mono: BOARCCourierMono, var(--mono-stack);
 	--font-symbol: BOARCSymbols, var(--mono-stack);
-	--font-easy: Khula, var(--sans-stack);
+	--font-easy: CenturyGothic, var(--sans-stack);
 	--font: var(--font-regular);
 	--mono-stack: "Courier New", Courier, monospace;
 	--sans-stack: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
@@ -324,7 +337,6 @@ Variables
 	--grey: #d8d8d8;
 	--dark-grey: #c7c7c7;
 	--text-colour: var(--brown);
-
 }
 
 /*----------------------------------------
@@ -334,7 +346,6 @@ Main
 * {
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
- 
 }
 
 @-ms-viewport {
@@ -353,15 +364,12 @@ html body {
 	line-height: var(--line-height);
 	overflow-x: hidden;
 	scroll-behavior: smooth;
-    /* filter: grayscale(100%); */
-
 }
 
 body {
 	margin: 0;
 	left: 0;
 	top: 0;
-    
 }
 
 ::selection {

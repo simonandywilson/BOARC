@@ -27,15 +27,15 @@ const Easyread = ({ clearSketch, setFaqOpen }) => {
 		}
 	}, [EasyReadContext.image]);
 
-	// useEffect(() => {
-	// 	if (EasyReadContext.bw) {
-	// 		document.documentElement.style.setProperty("--bw-filter", "grayscale(100%)");
-	// 	}
+	useEffect(() => {
+		if (EasyReadContext.bw) {
+			document.documentElement.style.setProperty("--bw-filter", "block");
+		}
 
-	// 	if (!EasyReadContext.bw) {
-	// 		document.documentElement.style.setProperty("--bw-filter", "grayscale(0%)");
-	// 	}
-	// }, [EasyReadContext.bw]);
+		if (!EasyReadContext.bw) {
+			document.documentElement.style.setProperty("--bw-filter", "none");
+		}
+	}, [EasyReadContext.bw]);
 
 	return (
 		<div className={style.easyread}>
@@ -130,44 +130,33 @@ const Controls = ({ easyReadOpen, EasyReadContext, EasyReadUpdateContext }) => {
 				<span> hide images</span>
 			</button>
 			<button
-        className={style.button}
-        onClick={() =>
-            EasyReadUpdateContext((prevState) => ({
-                ...prevState,
-                bw: !prevState.bw,
-            }))
-        }
-        style={{ color: EasyReadContext.bw ? "var(--purple)" : "var(--white)", background: EasyReadContext.bw ? "var(--white)" : "var(--purple)" }}>
-        
-        <svg
-            width="36"
-            height="36"
-            viewBox="0 0 36 36"
-            fill={"currentColor"}>
-            
-            <rect
-                x="0"
-                width="6"
-                height="6"
-            />
-            <rect
-                x="6"
-                y="6"
-                width="6"
-                height="6"
-            />
-            <polygon points="36 18 36 30 30 30 30 24 12 24 12 12 24 12 24 18 36 18" />
-            <rect
-                x="24"
-                y="6"
-                width="6"
-                height="6"
-            />
-            <polygon points="12 24 12 36 0 36 0 30 6 30 6 24 12 24" />
-        </svg>
-        <span> black & white</span>
-
-    </button>
+				className={style.button}
+				onClick={() =>
+					EasyReadUpdateContext((prevState) => ({
+						...prevState,
+						bw: !prevState.bw,
+					}))
+				}
+				style={{ color: EasyReadContext.bw ? "var(--purple)" : "var(--white)", background: EasyReadContext.bw ? "var(--white)" : "var(--purple)" }}>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 36 36"
+					width="36"
+					height="36"
+					stroke={"currentColor"}
+					fill={"currentColor"}
+					>
+					<path
+						fill="transparent"
+						
+						stroke-miterlimit="10"
+						d="M35.67 17.997A17.673 17.673 0 0 1 17.997 35.67 17.673 17.673 0 0 1 .324 17.997a17.673 17.673 0 0 1 35.346 0z"
+						stroke-width=".647"
+					/>
+					<path d="M18.003.324v35.353C8.241 35.676.324 27.759.324 17.997S8.241.324 18.003.324" />
+				</svg>
+				<span> greyscale</span>
+			</button>
 			<button
 				className={style.button}
 				onClick={() =>

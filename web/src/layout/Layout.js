@@ -44,6 +44,7 @@ const Layout = ({ children }) => {
 				/>
 				<Popup />
 				<Newsletter />
+				<div className={style.bw}></div>
 			</main>
 		</GlobalState>
 	);

@@ -37,7 +37,7 @@
 .box > button {
 	border: none;
 	text-align: left;
-	padding: 0 var(--margin-half);
+	padding: calc(var(--box-padding) * 2);
 	font-family: var(--font-easy);
 	font-size: var(--font-size);
 	color: #ffffff;
@@ -57,7 +57,7 @@
 
 .accessibilityButton {
 	background: var(--purple);
-	width: 180px;
+	width: 175px;
     
 }
 
@@ -91,7 +91,7 @@
 	background: var(--purple);
 	padding: var(--margin-half);
 	gap: var(--margin-half);
-	width: 180px;
+	width: 175px;
 }
 
 @media only screen and (min-width: 650px) {

@@ -1,3 +1,16 @@
 .main {
     width: 100vw;
 }
+
+.bw {
+    backdrop-filter: grayscale(100%) contrast(2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    user-select: none;
+    pointer-events: none;
+    display: var(--bw-filter);
+}

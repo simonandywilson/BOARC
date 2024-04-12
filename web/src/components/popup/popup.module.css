@@ -9,6 +9,8 @@
 	font-size: var(--font-size);
 	padding: var(--margin);
 	visibility: var(--newsletter-visibility);
+	font-family: var(--font-easy);
+
 }
 
 .popup p {
