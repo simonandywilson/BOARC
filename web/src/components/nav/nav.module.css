@@ -8,6 +8,12 @@
     max-width: calc(100% - var(--margin-double));
 }
 
+@media only screen and (min-width: 800px) {
+	.nav {
+		top: calc(var(--margin)* 4);
+	}
+}
+
 .title {
     margin-bottom: var(--margin);
     color: var(--purple);

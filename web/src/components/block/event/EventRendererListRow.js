@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "gatsby";
 import * as style from "./list.module.css";
 import imageUrlBuilder from "@sanity/image-url";
-// import useCollapse from "react-collapsed";
 const builder = imageUrlBuilder({
 	projectId: process.env.GATSBY_SANITY_PROJECT_ID,
 	dataset: "production",
@@ -12,7 +11,7 @@ const optionsDate = { day: "numeric", year: "numeric", month: "short" };
 const dateFormat = new Intl.DateTimeFormat("en-GB", optionsDate);
 
 const EventRendererListRow = ({ data, tense, width }) => {
-	// const { getCollapseProps, getToggleProps } = useCollapse();
+	const [toggle, setToggle] = useState(false);
 	const dateStart = new Date(data.start);
 	const dateEnd = new Date(data.end);
 	const formattedDate = dateFormat.formatRange(dateStart, dateEnd);
@@ -52,11 +51,9 @@ const EventRendererListRow = ({ data, tense, width }) => {
 								}}>
 								{data.title}
 							</div>
-							{/* <div
-								className={style.description}
-								{...getCollapseProps()}>
+							{toggle && <div className={style.description}>
 								<span>{data.previewText}</span>
-							</div> */}
+							</div>}
 						</div>
 					</div>
 					<div className={style.details}>
@@ -81,14 +78,14 @@ const EventRendererListRow = ({ data, tense, width }) => {
 									visit external event site
 								</a>
 							)}
-							{/* <button
+							<button
 								className={style.dropdown}
-								{...getToggleProps()}
+								onClick={() => setToggle((prevToggle) =>!prevToggle)}
 								style={{
 									color: tense === "future" ? "var(--brown)" : "var(--red)",
 								}}>
 								learn more
-							</button> */}
+							</button>
 						</div>
 					</div>
 					<span className={style.border}>{"-".repeat(100)}</span>
