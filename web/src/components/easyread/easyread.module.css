@@ -81,7 +81,7 @@
 		margin-top: 0;
 		margin-left: auto;
 		order: 3;
-		padding: 5px calc((var(--box-padding) * 2));
+		padding: 5px calc(var(--box-padding) * 2);
 		line-height: 2;
 	}
 }
@@ -116,7 +116,7 @@
 	justify-content: space-between;
 	gap: var(--margin);
 	border: 1px solid white;
-	padding: var(--box-padding) calc((var(--box-padding) * 2));
+	padding: var(--box-padding) calc(var(--box-padding) * 2);
 	line-height: 1;
 	font-family: var(--font-easy);
 	font-size: var(--font-size);
@@ -125,7 +125,7 @@
 @media only screen and (min-width: 800px) {
 	.button {
 		font-size: var(--font-size-small);
-		padding: calc((var(--box-padding) * 1)) calc((var(--box-padding) * 2));
+		padding: calc(var(--box-padding) * 1) calc(var(--box-padding) * 4);
 	}
 }
 
