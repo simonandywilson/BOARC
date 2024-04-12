@@ -135,7 +135,7 @@ export const useAsciiUpdateContext = () => {
 const ContextProvider = ({ children }) => {
     const [active, setActive] = useState("");
     const [subheading, setSubheading] = useState("");
-    const [easyRead, setEasyRead] = useState({ text: false, image: false });
+    const [easyRead, setEasyRead] = useState({ text: false, image: false, bw: false, traces: false });
     const [eventsFuture, setEventsFuture] = useState([]);
     const [eventsPast, setEventsPast] = useState([]);
     const [eventsPastCount, setEventsPastCount] = useState(null);

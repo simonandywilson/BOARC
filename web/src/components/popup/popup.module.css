@@ -1,0 +1,89 @@
+.popup {
+	position: fixed;
+	bottom: 0;
+	width: calc(100vw - (var(--margin-double) + (var(--column-double) * 3)));
+	max-width: 600px;
+	left: 0;
+	z-index: 100;
+	color: #ffffff;
+	font-size: var(--font-size);
+	padding: var(--margin);
+	visibility: var(--newsletter-visibility);
+}
+
+.popup p {
+	margin: 0;
+}
+
+.wrapper {
+	padding: calc(var(--box-padding) * 4);
+	background: var(--purple);
+}
+
+.row {
+	display: flex;
+	margin-top: calc(var(--box-padding) * 4);
+}
+
+.wrapper > .row:first-child {
+	margin: 0;
+}
+
+.close {
+	background: none;
+	border: none;
+	text-align: left;
+	width: max-content;
+	height: max-content;
+	padding: 0;
+	font-family: var(--font);
+	font-size: var(--font-size);
+	color: #ffffff;
+	cursor: pointer;
+	right: 0;
+	margin-left: var(--margin);
+}
+
+.close:hover {
+	color: var(--red);
+}
+
+.disappear {
+	font-size: var(--font-size-small);
+}
+
+.controls > button:last-child {
+	margin-right: 0;
+}
+
+.buttons {
+	display: flex;
+	gap: var(--margin);
+}
+
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--margin);
+	border: 1px solid white;
+	line-height: 1;
+	font-family: var(--font-easy);
+	font-size: var(--font-size);
+	padding: var(--box-padding) calc((var(--box-padding) * 3));
+}
+
+.button > svg {
+	height: 25px;
+	max-width: 30px;
+	stroke: 1px;
+	width: auto;
+}
+
+.button > span {
+	padding-top: 5px;
+}
+
+.boarcCourier {
+	font-family: var(--font-mono) !important;
+}

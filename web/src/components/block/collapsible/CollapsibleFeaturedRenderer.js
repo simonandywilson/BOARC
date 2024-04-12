@@ -2,21 +2,21 @@ import React, { useState, useMemo } from "react";
 import * as style from "./collapsibleFeatured.module.css";
 import { PortableText } from "@portabletext/react";
 import TextRendererCollapsible from "./TextRendererCollapsible";
-import useCollapse from "react-collapsed";
+// import useCollapse from "react-collapsed";
 
 const CollapsibleFeaturedRenderer = ({ value, width, background }) => {
-    const [isExpanded, setExpanded] = useState(false);
-    const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
+    // const [isExpanded, setExpanded] = useState(false);
+    // const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
 
-    const serialiser = useMemo(() => {
-        const components = {
-            block: (data) => <TextRendererCollapsible data={data} background={background} />,
-        };
-        return components;
-    }, []);
+    // const serialiser = useMemo(() => {
+    //     const components = {
+    //         block: (data) => <TextRendererCollapsible data={data} background={background} />,
+    //     };
+    //     return components;
+    // }, []);
     return (
         <div className={style.grid}>
-            <div
+            {/* <div
                 className={style.collapsible}
                 style={{
                     gridColumn:
@@ -46,7 +46,7 @@ const CollapsibleFeaturedRenderer = ({ value, width, background }) => {
                 <div className={style.text} {...getCollapseProps()}>
                     <PortableText value={value.text} components={serialiser} />
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

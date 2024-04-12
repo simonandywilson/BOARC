@@ -2,12 +2,12 @@ import React, { useState, useMemo } from "react";
 import * as style from "./collapsible.module.css";
 import { PortableText } from "@portabletext/react";
 import TextRendererCollapsible from "./TextRendererCollapsible";
-import useCollapse from "react-collapsed";
+// import useCollapse from "react-collapsed";
 
 
 const CollapsibleRenderer = ({ value, width, background }) => {
     const [isExpanded, setExpanded] = useState(false);
-    const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
+    // const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
 
     const serialiser = useMemo(() => {
         const components = {
@@ -18,7 +18,7 @@ const CollapsibleRenderer = ({ value, width, background }) => {
 
     return (
         <div className={style.grid}>
-            <div
+            {/* <div
                 className={style.collapsible}
                 style={{
                     gridColumn:
@@ -43,7 +43,7 @@ const CollapsibleRenderer = ({ value, width, background }) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

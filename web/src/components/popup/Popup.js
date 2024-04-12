@@ -1,0 +1,89 @@
+import React, { useEffect, useState } from "react";
+import * as style from "./popup.module.css";
+import { motion } from "framer-motion";
+import { useEasyReadContext, useEasyReadUpdateContext } from "../../state/GlobalState";
+
+const Popup = () => {
+	const [visibility, setVisibility] = useState(true);
+	const EasyReadContext = useEasyReadContext();
+	const EasyReadUpdateContext = useEasyReadUpdateContext();
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setVisibility(false);
+		}, 10000);
+		return () => clearTimeout(timer);
+	}, []);
+
+	const variants = {
+		visible: { x: 0 },
+		hidden: { x: "-100%" },
+	};
+
+	return (
+		<motion.div
+			className={style.popup}
+			animate={visibility ? "visible" : "hidden"}
+			initial={"hidden"}
+			variants={variants}
+			transition={{
+				default: { type: "tween" },
+			}}>
+			<div className={style.wrapper}>
+				<div className={style.row}>
+					<div>
+						<p>Welcome to BOARC,</p>
+						<br />
+						<p>
+							You can read this website in a simple font or BOARC Courier which was created just for the project. If you change your mind you can easily switch using the accessibility bar at the top
+							of the page.
+						</p>
+						<br />
+					</div>
+					<button
+						className={style.close}
+						onClick={() => setVisibility(false)}>
+						X
+					</button>
+				</div>
+				<div className={style.buttons}>
+					<button
+						className={style.button}
+						style={{ color: EasyReadContext.text ? "var(--white)" : "var(--purple)", background: EasyReadContext.text ? "var(--purple)" : "var(--white)" }}
+						onClick={() =>
+							EasyReadUpdateContext((prevState) => ({
+								...prevState,
+								text: false,
+							}))
+						}>
+						<span className={style.boarcCourier}>BOARC Courier</span>
+					</button>
+					<button
+						className={style.button}
+						style={{ color: EasyReadContext.text ? "var(--purple)" : "var(--white)", background: EasyReadContext.text ? "var(--white)" : "var(--purple)" }}
+						onClick={() =>
+							EasyReadUpdateContext((prevState) => ({
+								...prevState,
+								text: true,
+							}))
+						}>
+						<svg
+							width="90.65"
+							height="48"
+							viewBox="0 0 90.65 48"
+							fill={"currentColor"}>
+							<path d="M43.85,43.17h4.23v3.51h-6.9l-6.26-15.28-10.81,7.02-10.97-7.06-6.14,15.32H0v-3.51H4.39L21.99,0h4.39l17.48,43.17ZM14.68,27.57l9.42,6.06,9.3-6.02L24.02,4.87,14.68,27.57Z" />
+							<path d="M90.65,43.01v3.67h-11.45s-.04-2.43-.04-5.63c-4.67,4.07-9.82,6.94-15.44,6.94-8.86,0-13.65-6.62-13.65-15.36,0-11.89,8.62-21.47,20.47-21.67,7.74,0,12.81,4.19,12.81,11.85-.04,2.79,0,14.2,0,20.19h7.3Zm-11.45-20.19c0-5.19-3.55-7.34-8.62-7.34-9.9,0-16,7.54-16,17.16,0,6.82,2.47,10.85,9.26,10.85,6.3,0,10.89-3.23,15.32-7.66,0-4.51,.04-9.5,.04-13.01Z" />
+						</svg>
+						<span> simple font</span>
+					</button>
+                    
+				</div>
+                <br/>
+				<p className={style.disappear}>This window will disappear in 10 seconds</p>
+			</div>
+		</motion.div>
+	);
+};
+
+export default Popup;
