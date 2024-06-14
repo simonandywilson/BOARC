@@ -65,7 +65,7 @@ const components = {
 
 const getData = graphql`
     {
-        allSanityFaq(sort: { fields: orderRank, order: ASC }) { 
+        allSanityFaq(sort: {orderRank: ASC}) { 
             faq: nodes {
                 _id
                 title

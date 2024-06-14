@@ -157,7 +157,7 @@ const getData = graphql`
                 }
             }
         }
-        menu: allSanityMenu(sort: { fields: [orderRank], order: ASC }) {
+        menu: allSanityMenu(sort: {orderRank: ASC}) {
             nodes {
                 _id
                 title

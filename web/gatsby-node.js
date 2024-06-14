@@ -65,7 +65,7 @@ exports.createPages = async ({ graphql, actions }) => {
     `);
     const eventQuery = await graphql(`
         query getQuery {
-            event: allSanityEvent(sort: { fields: [start], order: ASC }) {
+            event: allSanityEvent(sort: {start: ASC}) {
                 edges {
                     node {
                         type
