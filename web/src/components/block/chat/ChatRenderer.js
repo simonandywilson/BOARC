@@ -10,7 +10,7 @@ import {createClient} from '@sanity/client'
 const client = createClient({
     projectId: process.env.GATSBY_SANITY_PROJECT_ID,
     dataset: "production",
-    apiVersion: "2022-04-21",
+    apiVersion: "2023-04-21",
     token: process.env.GATSBY_SANITY_TOKEN,
     useCdn: false,
 });

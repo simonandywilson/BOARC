@@ -149,9 +149,9 @@ const Controls = ({ easyReadOpen, EasyReadContext, EasyReadUpdateContext }) => {
 					<path
 						fill="transparent"
 						
-						stroke-miterlimit="10"
+						strokeMiterlimit="10"
 						d="M35.67 17.997A17.673 17.673 0 0 1 17.997 35.67 17.673 17.673 0 0 1 .324 17.997a17.673 17.673 0 0 1 35.346 0z"
-						stroke-width=".647"
+						strokeWidth=".647"
 					/>
 					<path d="M18.003.324v35.353C8.241 35.676.324 27.759.324 17.997S8.241.324 18.003.324" />
 				</svg>
