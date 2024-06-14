@@ -11,13 +11,16 @@ import {
     useEventsAccessedContext,
     useColoursContext,
 } from "../../state/GlobalState";
-const sanityClient = require("@sanity/client");
-const client = sanityClient({
+import {createClient} from '@sanity/client'
+
+const client = createClient({
     projectId: process.env.GATSBY_SANITY_PROJECT_ID,
     dataset: "production",
-    apiVersion: "2022-03-08",
+    apiVersion: "2022-04-21",
+    token: process.env.GATSBY_SANITY_TOKEN,
     useCdn: true,
 });
+
 const futureEvents = `*[_type == "event" && dateTime(end) > dateTime(now())] {_id, type, title, "slug": slug.current, url, start, end, "icon": icon.asset->_id, previewText} | order(start asc)`;
 
 const pastEvents =

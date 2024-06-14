@@ -1,5 +1,6 @@
-const sanityClient = require("@sanity/client");
-const client = sanityClient({
+import {createClient} from '@sanity/client'
+
+const client = createClient({
     projectId: process.env.GATSBY_SANITY_PROJECT_ID,
     dataset: "production",
     apiVersion: "2022-04-21",

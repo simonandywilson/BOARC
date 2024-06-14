@@ -5,14 +5,15 @@ import ChatRendererInput from "./ChatRendererInput";
 import ChatRendererComment from "./ChatRendererComment";
 import { motion } from "framer-motion";
 
-const sanityClient = require("@sanity/client");
-const client = sanityClient({
+import {createClient} from '@sanity/client'
+
+const client = createClient({
     projectId: process.env.GATSBY_SANITY_PROJECT_ID,
     dataset: "production",
     apiVersion: "2022-04-21",
+    token: process.env.GATSBY_SANITY_TOKEN,
     useCdn: false,
 });
-
 const ChatRenderer = ({ value }) => {
     const { title } = value;
     const [username, setUsername] = useState("Guest");
